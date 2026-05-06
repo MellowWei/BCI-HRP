@@ -3,306 +3,1674 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BCI-HRP Lab Collaboration Portal · Human Return Protocol</title>
+  <title>BCI-HRP Lab Portal · Human Return Protocol · Mellow Jueran Wei</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;650;800&family=Fraunces:opsz,wght@9..144,500;9..144,750&display=swap');
-    :root{
-      --bg:#03040a;--bg2:#070817;--panel:rgba(8,10,28,.72);--panel2:rgba(255,255,255,.045);
-      --text:#f4f7ff;--muted:#9aa6c8;--dim:#667094;--cyan:#00f5ff;--blue:#64d2ff;--pink:#ff2bd6;--green:#35ff9f;--yellow:#ffe66d;--purple:#8d5cff;--red:#ff4d6d;
-      --line:rgba(0,245,255,.20);--mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--serif:Fraunces,Georgia,serif;
-      --shadow:0 24px 100px rgba(0,0,0,.58),0 0 38px rgba(0,245,255,.075);
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+    :root {
+      --bg: #03040a;
+      --bg2: #070817;
+      --panel: rgba(8, 10, 28, 0.68);
+      --text: #f4f7ff;
+      --muted: #9aa6c8;
+      --dim: #5e6688;
+      --cyan: #00f5ff;
+      --blue: #64d2ff;
+      --pink: #ff2bd6;
+      --purple: #8d5cff;
+      --green: #35ff9f;
+      --yellow: #ffe66d;
+      --red: #ff4d6d;
+      --border: rgba(0, 245, 255, 0.2);
+      --shadow-deep: 0 24px 100px rgba(0, 0, 0, 0.58);
+      --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;color:var(--text);font-family:var(--sans);background:radial-gradient(circle at 12% 8%,rgba(0,245,255,.16),transparent 30%),radial-gradient(circle at 84% 16%,rgba(255,43,214,.15),transparent 30%),radial-gradient(circle at 50% 95%,rgba(141,92,255,.16),transparent 42%),linear-gradient(180deg,#03040a 0%,#060717 52%,#02030a 100%);overflow-x:hidden;padding-top:92px}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.18;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.045) 0 1px,transparent 1px 5px);mix-blend-mode:overlay}
-    #field{position:fixed;inset:0;z-index:-4;width:100vw;height:100vh}.grid-bg{position:fixed;inset:0;z-index:-3;pointer-events:none;opacity:.30;background-image:linear-gradient(rgba(0,245,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,43,214,.10) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 72%,transparent 100%)}.vignette{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.35) 58%,rgba(0,0,0,.82) 100%)}
-    header{position:fixed;top:0;left:0;right:0;z-index:99999;min-height:92px;padding:14px 18px 12px;display:flex;flex-direction:column;gap:10px;justify-content:center;background:rgba(5,6,20,.96);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,245,255,.24);box-shadow:0 0 30px rgba(0,245,255,.08)}
-    .brand{display:flex;align-items:center;gap:14px;color:var(--text);font-family:var(--mono);font-size:13px;letter-spacing:.14em;line-height:1.25}.dot{width:14px;height:14px;border-radius:999px;background:var(--cyan);box-shadow:0 0 18px rgba(0,245,255,.9),0 0 36px rgba(255,43,214,.35);flex:0 0 auto;animation:pulse 1.8s ease-in-out infinite}@keyframes pulse{0%,100%{transform:scale(.82);opacity:.72}50%{transform:scale(1.2);opacity:1}}
-    nav{display:flex;flex-wrap:wrap;gap:8px 15px;align-items:center}nav a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.09em;white-space:nowrap;transition:.2s}nav a:hover{color:var(--cyan);text-shadow:0 0 14px rgba(0,245,255,.65)}
-    main{width:min(1220px,calc(100% - 40px));margin:0 auto}section{min-height:100vh;display:grid;align-items:center;padding:96px 0 70px;scroll-margin-top:112px}.hero{min-height:calc(100vh - 92px)}
-    .eyebrow{margin-bottom:18px;color:var(--cyan);font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;text-shadow:0 0 12px rgba(0,245,255,.72),0 0 26px rgba(255,43,214,.28)}
-    h1{margin:0;max-width:1120px;font-size:clamp(52px,8.4vw,124px);line-height:.88;letter-spacing:-.085em;font-weight:800;text-shadow:0 0 16px rgba(0,245,255,.34),0 0 34px rgba(255,43,214,.19)}
-    h2{margin:0 0 22px;max-width:1000px;font-size:clamp(34px,5vw,72px);line-height:.96;letter-spacing:-.065em;font-weight:800;text-shadow:0 0 18px rgba(0,245,255,.14),0 0 34px rgba(255,43,214,.10)}h3{margin:0 0 10px;font-size:22px;letter-spacing:-.035em;color:var(--text)}p{margin:0;color:var(--muted);font-size:16px;line-height:1.68}.cn{margin-top:8px;color:rgba(244,247,255,.92)}.jp{margin-top:8px;color:rgba(226,238,255,.86)}.sub{max-width:960px;margin-top:20px;color:var(--muted);font-size:18px;line-height:1.65}.thesis{max-width:980px;margin-top:30px;color:rgba(244,247,255,.93);font-size:clamp(22px,3vw,38px);line-height:1.1;letter-spacing:-.045em}.glow{color:var(--green);text-shadow:0 0 12px rgba(53,255,159,.48)}
-    .actions,.tag-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button,.tag{border:1px solid rgba(0,245,255,.24);border-radius:999px;background:linear-gradient(90deg,rgba(0,245,255,.08),rgba(255,43,214,.07)),rgba(255,255,255,.035);color:var(--text);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.07em;padding:12px 16px;box-shadow:0 0 18px rgba(0,245,255,.08),inset 0 0 18px rgba(255,255,255,.025);transition:.2s}.button:hover{transform:translateY(-2px);border-color:rgba(53,255,159,.48);box-shadow:0 0 22px rgba(53,255,159,.16),0 0 36px rgba(0,245,255,.18)}.tag{color:var(--muted);padding:8px 11px;font-size:11px}.tag.green{border-color:rgba(53,255,159,.36);color:var(--green)}.tag.pink{border-color:rgba(255,43,214,.36);color:var(--pink)}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
-    .card{position:relative;overflow:hidden;border:1px solid rgba(0,245,255,.20);border-radius:28px;background:linear-gradient(180deg,rgba(0,245,255,.06),rgba(255,43,214,.035)),var(--panel);backdrop-filter:blur(18px);box-shadow:var(--shadow);padding:28px}.card:before{content:"";position:absolute;top:0;left:22px;right:22px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);opacity:.72}.neon{border-color:rgba(53,255,159,.30);box-shadow:0 0 50px rgba(53,255,159,.11),0 0 70px rgba(0,245,255,.08),var(--shadow)}
-    .status-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 28px}.status{border:1px solid rgba(0,245,255,.20);border-radius:18px;padding:14px 15px;background:linear-gradient(90deg,rgba(0,245,255,.07),rgba(255,43,214,.045)),rgba(8,10,28,.58);backdrop-filter:blur(16px)}.status-label{color:var(--green);font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:7px}.status-value{color:rgba(244,247,255,.86);font-family:var(--mono);font-size:12px;line-height:1.45;letter-spacing:.06em;text-transform:uppercase}
-    .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin-top:18px}.node,.loop-item{min-height:150px;border:1px solid rgba(0,245,255,.17);border-radius:22px;padding:20px;background:rgba(255,255,255,.035)}.arrow{color:var(--pink);font-size:30px;text-shadow:0 0 18px rgba(255,43,214,.65)}.num{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--green);margin-bottom:14px}.loop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.pain-card .quote{font-family:var(--serif);font-size:20px;color:rgba(244,247,255,.92);line-height:1.35;margin:12px 0 18px}.small{font-size:13px;line-height:1.55;color:var(--dim)}
-    table{width:100%;border-collapse:collapse;margin-top:18px;border-radius:18px;overflow:hidden}th,td{border:1px solid rgba(0,245,255,.15);padding:14px;text-align:left;vertical-align:top;color:var(--muted);line-height:1.55}th{color:var(--cyan);font-family:var(--mono);font-size:11px;letter-spacing:.1em;background:rgba(0,245,255,.06)}td strong{color:var(--text)}
-    details{border:1px solid rgba(0,245,255,.20);border-radius:22px;background:rgba(255,255,255,.035);overflow:hidden;margin-top:12px}summary{cursor:pointer;list-style:none;padding:18px 20px;font-family:var(--mono);color:var(--text);letter-spacing:.06em}summary::-webkit-details-marker{display:none}details[open] summary{border-bottom:1px solid rgba(0,245,255,.14);background:linear-gradient(90deg,rgba(53,255,159,.08),rgba(0,245,255,.05),rgba(255,43,214,.035))}.detail-body{padding:20px}
-    .lab-strip{border-left:3px solid var(--green);padding-left:18px;margin-top:20px}.risk{border-left:3px solid var(--yellow)}.danger{border-left:3px solid var(--red)}
-    .form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}label{display:grid;gap:6px;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.06em}input,select,textarea{width:100%;border:1px solid rgba(0,245,255,.20);border-radius:14px;background:rgba(0,0,0,.22);color:var(--text);padding:12px;font:inherit;outline:none}textarea{min-height:110px;resize:vertical}.csvbox{white-space:pre-wrap;color:var(--green);font-family:var(--mono);font-size:12px;line-height:1.6;background:rgba(0,0,0,.24);border:1px solid rgba(0,245,255,.16);border-radius:18px;padding:18px;overflow:auto;max-height:300px}
-    @media(max-width:960px){body{padding-top:128px}header{min-height:122px}.status-grid,.flow,.loop,.two,.three,.form-grid{grid-template-columns:1fr}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:1/-1}.arrow{transform:rotate(90deg);text-align:center}main{width:calc(100% - 24px)}section{padding-top:72px}.brand{font-size:11px}nav a{font-size:10px}}
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(0, 245, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 82% 18%, rgba(255, 43, 214, 0.15), transparent 29%),
+        radial-gradient(circle at 50% 92%, rgba(141, 92, 255, 0.16), transparent 38%),
+        linear-gradient(180deg, #03040a 0%, #050515 48%, #02030a 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      padding-top: 118px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.22;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.045) 0px,
+          rgba(255, 255, 255, 0.045) 1px,
+          transparent 1px,
+          transparent 5px
+        );
+      mix-blend-mode: overlay;
+    }
+
+    #field {
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .grid-bg {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      opacity: 0.32;
+      background-image:
+        linear-gradient(rgba(0, 245, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 43, 214, 0.1) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 70%, transparent 100%);
+    }
+
+    .vignette {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.34) 58%, rgba(0, 0, 0, 0.8) 100%);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      min-height: 92px;
+      padding: 14px 18px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(5, 6, 20, 0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(0,245,255,.24);
+      box-shadow: 0 0 30px rgba(0,245,255,.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.25;
+      letter-spacing: .15em;
+      opacity: .95;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 18px rgba(0,245,255,.9);
+      flex: 0 0 auto;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px 14px;
+      width: 100%;
+      line-height: 1.3;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.25;
+      letter-spacing: .10em;
+      white-space: nowrap;
+      transition: color .18s ease, text-shadow .18s ease;
+    }
+
+    nav a:hover {
+      color: var(--cyan);
+      text-shadow: 0 0 14px rgba(0,245,255,.65);
+    }
+
+    main {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    section {
+      position: relative;
+      min-height: 90vh;
+      display: grid;
+      align-items: center;
+      padding: 86px 0 64px;
+      scroll-margin-top: 126px;
+    }
+
+    .eyebrow {
+      margin-bottom: 18px;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px rgba(0, 245, 255, 0.72), 0 0 26px rgba(255, 43, 214, 0.28);
+    }
+
+    h1 {
+      max-width: 1120px;
+      margin: 0;
+      font-size: clamp(48px, 8.5vw, 122px);
+      line-height: 0.88;
+      letter-spacing: -0.09em;
+      font-weight: 860;
+      text-shadow: 0 0 12px rgba(0, 245, 255, 0.45), 0 0 32px rgba(255, 43, 214, 0.22);
+    }
+
+    h2 {
+      max-width: 1040px;
+      margin: 0 0 24px;
+      font-size: clamp(34px, 5vw, 70px);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      font-weight: 820;
+      text-shadow: 0 0 18px rgba(0, 245, 255, 0.16), 0 0 34px rgba(255, 43, 214, 0.1);
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 23px;
+      letter-spacing: -0.035em;
+      text-shadow: 0 0 14px rgba(0, 245, 255, 0.18);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .cn {
+      margin-top: 9px;
+      color: rgba(244, 247, 255, 0.92);
+      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+
+    .jp {
+      margin-top: 9px;
+      color: rgba(244, 247, 255, 0.82);
+      font-family: system-ui, "Hiragino Sans", "Yu Gothic", sans-serif;
+    }
+
+    .sub {
+      max-width: 960px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .thesis {
+      max-width: 980px;
+      margin-top: 34px;
+      color: rgba(244, 247, 255, 0.92);
+      font-size: clamp(22px, 3vw, 38px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      text-shadow: 0 0 18px rgba(0, 245, 255, 0.12);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(0, 245, 255, 0.06), rgba(255, 43, 214, 0.035)), rgba(8, 10, 28, 0.62);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-deep), 0 0 36px rgba(0, 245, 255, 0.08), inset 0 0 32px rgba(255, 255, 255, 0.025);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 22px;
+      right: 22px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--pink), transparent);
+      opacity: 0.72;
+    }
+
+    .neon-card {
+      border-color: rgba(53, 255, 159, 0.28);
+      box-shadow: 0 0 50px rgba(53, 255, 159, 0.1), 0 0 70px rgba(0, 245, 255, 0.08), var(--shadow-deep);
+    }
+
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
+    .span-7 { grid-column: span 7; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      padding: 8px 11px;
+      border: 1px solid rgba(0, 245, 255, 0.22);
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(0, 245, 255, 0.07), rgba(255, 43, 214, 0.045));
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.025);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      appearance: none;
+      position: relative;
+      overflow: hidden;
+      padding: 13px 18px;
+      border: 1px solid rgba(0, 245, 255, 0.26);
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(0, 245, 255, 0.08), rgba(255, 43, 214, 0.07)), rgba(255, 255, 255, 0.035);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(0, 245, 255, 0.1), inset 0 0 18px rgba(255, 255, 255, 0.03);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 43, 214, 0.48);
+      box-shadow: 0 0 22px rgba(0, 245, 255, 0.28), 0 0 36px rgba(255, 43, 214, 0.18);
+    }
+
+    .button.primary {
+      border-color: rgba(53, 255, 159, 0.46);
+      box-shadow: 0 0 22px rgba(53, 255, 159, 0.2), 0 0 44px rgba(0, 245, 255, 0.12);
+    }
+
+    .system-loop {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .loop-item {
+      position: relative;
+      overflow: hidden;
+      min-height: 190px;
+      padding: 22px;
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(0, 245, 255, 0.055), rgba(141, 92, 255, 0.035)), rgba(255, 255, 255, 0.035);
+      box-shadow: inset 0 0 24px rgba(0, 245, 255, 0.035), 0 0 28px rgba(0, 245, 255, 0.05);
+    }
+
+    .num {
+      margin-bottom: 18px;
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .table th, .table td {
+      border: 1px solid rgba(0,245,255,0.16);
+      padding: 14px;
+      vertical-align: top;
+      text-align: left;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .table th {
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .12em;
+      background: rgba(0,245,255,0.06);
+    }
+
+    .hardware-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .flow-node {
+      min-height: 150px;
+      border: 1px solid rgba(0,245,255,0.18);
+      border-radius: 22px;
+      padding: 20px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    .flow-arrow {
+      color: var(--pink);
+      font-size: 30px;
+      text-shadow: 0 0 18px rgba(255,43,214,0.65);
+    }
+
+    .device-frame {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      perspective: 1000px;
+      border: 1px solid rgba(0,245,255,.18);
+      border-radius: 28px;
+      background: rgba(255,255,255,.03);
+      overflow: hidden;
+    }
+
+    .cuff-body {
+      position: relative;
+      width: min(500px, 86vw);
+      height: 235px;
+      border-radius: 52% 52% 42% 42% / 78% 78% 46% 46%;
+      border: 1px solid rgba(100, 210, 255, 0.54);
+      background:
+        radial-gradient(circle at 26% 28%, rgba(255,255,255,0.26), transparent 20%),
+        linear-gradient(135deg, rgba(34,39,54,0.98), rgba(5,6,15,0.96) 52%, rgba(36,30,56,0.95));
+      box-shadow:
+        0 0 42px rgba(0,245,255,0.30),
+        0 0 92px rgba(255,43,214,0.20),
+        inset 0 0 42px rgba(255,255,255,0.07);
+      transform: rotateX(58deg) rotateZ(-8deg);
+      animation: floatCuff 7s ease-in-out infinite;
+    }
+
+    @keyframes floatCuff {
+      0%,100% { transform: rotateX(58deg) rotateZ(-8deg) translateY(0); }
+      50% { transform: rotateX(62deg) rotateZ(-3deg) translateY(-8px); }
+    }
+
+    .cuff-body::before {
+      content: "";
+      position: absolute;
+      inset: 46px 62px;
+      border-radius: inherit;
+      background: #050611;
+      box-shadow: inset 0 0 38px rgba(0,0,0,0.92), 0 0 20px rgba(0,245,255,0.16);
+    }
+
+    .cuff-body::after {
+      content: "44271";
+      position: absolute;
+      left: 50%;
+      top: 44px;
+      transform: translateX(-50%);
+      color: rgba(244,247,255,0.8);
+      font-family: var(--mono);
+      font-size: 21px;
+      letter-spacing: .18em;
+    }
+
+    .signal {
+      position: absolute;
+      height: 5px;
+      border-radius: 999px;
+      z-index: 2;
+    }
+
+    .signal.cyan { left: 46px; top: 94px; width: 190px; background: var(--cyan); box-shadow: 0 0 18px var(--cyan), 0 0 36px rgba(0,245,255,0.42); }
+    .signal.pink { right: 54px; bottom: 64px; width: 190px; background: var(--pink); box-shadow: 0 0 18px var(--pink), 0 0 36px rgba(255,43,214,0.42); }
+
+    .accordion { display: grid; gap: 14px; }
+    details {
+      border: 1px solid rgba(0,245,255,.22);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(0,245,255,.045), rgba(255,43,214,.028)), rgba(8,10,28,.68);
+      overflow: hidden;
+      box-shadow: var(--shadow-deep), 0 0 28px rgba(0,245,255,.06);
+    }
+    summary {
+      cursor: pointer;
+      padding: 22px 24px;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    details[open] summary { border-bottom: 1px solid rgba(0,245,255,.16); background: linear-gradient(90deg, rgba(53,255,159,.08), rgba(0,245,255,.05), rgba(255,43,214,.035)); }
+    .details-body { padding: 24px; }
+
+    .mini-form {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .mini-form label { display: grid; gap: 6px; color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; }
+    .mini-form input, .mini-form select, .mini-form textarea {
+      width: 100%;
+      border: 1px solid rgba(0,245,255,.22);
+      border-radius: 14px;
+      background: rgba(255,255,255,.045);
+      color: var(--text);
+      padding: 11px;
+      font-family: var(--mono);
+    }
+    .mini-form textarea { min-height: 90px; grid-column: 1 / -1; }
+
+
+    /* v4 expanded music + cuff bridge */
+    .music-lab-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 20px;
+    }
+
+    .music-sampling-stage {
+      position: relative;
+      min-height: 460px;
+      border: 1px solid rgba(0,245,255,.22);
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(0,245,255,.12), transparent 30%),
+        radial-gradient(circle at 18% 16%, rgba(255,43,214,.12), transparent 30%),
+        radial-gradient(circle at 84% 78%, rgba(53,255,159,.10), transparent 34%),
+        rgba(255,255,255,.035);
+      box-shadow: inset 0 0 42px rgba(0,245,255,.045), 0 0 40px rgba(0,245,255,.06);
+    }
+
+    #musicSamplingCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .music-core-orb {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 184px;
+      height: 184px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border: 1px solid rgba(53,255,159,.42);
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.22), transparent 18%),
+        radial-gradient(circle, rgba(53,255,159,.16), rgba(0,245,255,.13) 54%, rgba(255,43,214,.08) 72%, transparent);
+      box-shadow:
+        0 0 34px rgba(53,255,159,.24),
+        0 0 74px rgba(0,245,255,.16),
+        inset 0 0 32px rgba(255,255,255,.05);
+      animation: musicOrbBreathe 3.2s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes musicOrbBreathe {
+      0%,100% { transform: translate(-50%, -50%) scale(.94); opacity:.78; }
+      50% { transform: translate(-50%, -50%) scale(1.07); opacity:1; }
+    }
+
+    .music-core-orb span {
+      font-family: var(--mono);
+      color: var(--text);
+      letter-spacing: .12em;
+      line-height:1.45;
+      text-shadow:0 0 14px rgba(0,245,255,.75);
+      font-size: 12px;
+    }
+
+    .music-ring-label {
+      position: absolute;
+      z-index: 3;
+      padding: 10px 12px;
+      border: 1px solid rgba(0,245,255,.22);
+      border-radius: 16px;
+      background: rgba(3,4,10,.68);
+      backdrop-filter: blur(12px);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing:.08em;
+      box-shadow: 0 0 20px rgba(0,245,255,.08);
+    }
+
+    .music-ring-label small {
+      display:block;
+      color: var(--muted);
+      margin-top:4px;
+      letter-spacing:.04em;
+    }
+
+    .ring-bpm { left: 50%; top: 26px; transform: translateX(-50%); }
+    .ring-sync { right: 24px; top: 50%; transform: translateY(-50%); }
+    .ring-body { left: 50%; bottom: 26px; transform: translateX(-50%); }
+    .ring-cuff { left: 24px; top: 50%; transform: translateY(-50%); }
+
+    .music-control-panel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .music-mode-btn {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(0,245,255,.18);
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      text-align: left;
+      font-size: 13px;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    }
+
+    .music-mode-btn:hover,
+    .music-mode-btn.active {
+      color: var(--text);
+      transform: translateX(3px);
+      border-color: rgba(53,255,159,.42);
+      background: linear-gradient(90deg, rgba(53,255,159,.09), rgba(0,245,255,.06));
+    }
+
+    .music-output-title {
+      font-size: clamp(32px, 4vw, 56px);
+      line-height: .92;
+      letter-spacing: -.06em;
+      margin-bottom: 16px;
+    }
+
+    .music-param-grid,
+    .bio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .param-card,
+    .bio-card {
+      border: 1px solid rgba(0,245,255,.16);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .param-card strong,
+    .bio-card strong {
+      display:block;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      margin-bottom: 8px;
+    }
+
+    .meter {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .meter span {
+      display:block;
+      height:100%;
+      width: var(--w, 62%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--green));
+      box-shadow: 0 0 12px rgba(0,245,255,.5);
+      animation: meterBreath 3s ease-in-out infinite;
+    }
+
+    @keyframes meterBreath {
+      0%,100% { transform: scaleX(.88); transform-origin:left; opacity:.72; }
+      50% { transform: scaleX(1); opacity:1; }
+    }
+
+    .cuff-bridge {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .bridge-step {
+      position: relative;
+      min-height: 168px;
+      padding: 18px;
+      border: 1px solid rgba(0,245,255,.18);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(0,245,255,.04), rgba(255,43,214,.025)), rgba(255,255,255,.03);
+    }
+
+    .bridge-step::after {
+      content: "→";
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--pink);
+      font-size: 26px;
+      text-shadow: 0 0 14px rgba(255,43,214,.7);
+      z-index: 3;
+    }
+
+    .bridge-step:last-child::after { display: none; }
+
+    .sampling-table td:first-child,
+    .sampling-table th:first-child {
+      width: 170px;
+    }
+
+    @media (max-width: 980px) {
+      .music-lab-grid,
+      .music-param-grid,
+      .bio-grid,
+      .cuff-bridge {
+        grid-template-columns: 1fr;
+      }
+      .bridge-step::after {
+        right: 50%;
+        top: auto;
+        bottom: -26px;
+        transform: translateX(50%) rotate(90deg);
+      }
+      .music-sampling-stage { min-height: 520px; }
+      .ring-bpm, .ring-sync, .ring-body, .ring-cuff {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+      .ring-bpm { top: 20px; }
+      .ring-sync { top: 112px; }
+      .ring-body { bottom: 112px; }
+      .ring-cuff { top: auto; bottom: 20px; }
+    }
+
+    @media (max-width: 980px) {
+      body { padding-top: 150px; }
+      main { width: calc(100% - 22px); }
+      .span-3, .span-4, .span-5, .span-6, .span-7, .span-8, .span-12 { grid-column: 1 / -1; }
+      .system-loop, .hardware-flow, .mini-form { grid-template-columns: 1fr; }
+      .flow-arrow { transform: rotate(90deg); text-align: center; }
+      header { max-height: 170px; overflow-y: auto; }
+      h1 { font-size: clamp(42px, 17vw, 84px); }
+      h2 { font-size: clamp(30px, 10vw, 52px); }
+    }
   </style>
 </head>
 <body>
-<canvas id="field"></canvas><div class="grid-bg"></div><div class="vignette"></div>
-<header>
-  <div class="brand"><span class="dot"></span> BCI-HRP LAB PORTAL // HUMAN RETURN PROTOCOL // TOKYO COLLABORATION</div>
-  <nav>
-    <a href="#top">TOP</a><a href="#lab-gate">LAB GATE</a><a href="#ux">UX RESEARCH</a><a href="#pain">PAIN POINTS</a><a href="#journey">JOURNEY</a><a href="#system">SYSTEM</a><a href="#cuff">NEURAL CUFF</a><a href="#aiq">AiAiQ&lt;10</a><a href="#sound">SOUND</a><a href="#prototype">PROTOTYPE</a><a href="#prototype-stack">PROTOTYPES</a><a href="#controlled-experiment">CONTROL EXP</a><a href="#validation">VALIDATION</a><a href="#micro-pilot">MICRO-PILOT</a><a href="#tokyo">TOKYO ASK</a>
-  </nav>
-</header>
-<main>
-<section id="top" class="hero">
-  <div>
-    <div class="status-grid">
-      <div class="status"><div class="status-label">Purpose</div><div class="status-value">For BCI / NeuroAI / HCI / Tech Labs</div></div>
-      <div class="status"><div class="status-label">Current Stage</div><div class="status-value">Early-stage falsifiable prototype</div></div>
-      <div class="status"><div class="status-label">Boundary</div><div class="status-value">Not clinical · Not verified BCI · Testable pathway</div></div>
-    </div>
-    <div class="eyebrow">BCI-HRP // LAB COLLABORATION PORTAL // 中英日实验室入口</div>
-    <h1>Human Return Protocol for labs.</h1>
-    <div class="thesis">A user-centered Neuro-AI design research case for adaptive auditory-AI self-regulation, wearable sensing, and future BCI validation.<div class="cn">一个面向实验室合作的 Neuro-AI 设计研究案例：自适应声音-AI 自我调节、可穿戴传感与未来脑机验证。</div><div class="jp">注意・感情調整のための適応型 Auditory-AI 研究プロトタイプ、および将来的な BCI 検証入口。</div></div>
-    <p class="sub">This site consolidates the valuable parts of the original BCI site — HRP system body, 44271 Neural Cuff, QDR Engine, Human Return App, AiAiQ&lt;10, genre-driven intervention matrix, validation page, and design-thinking UX research — into a lab-readable collaboration portal.</p>
-    <p class="cn sub">本站把原 BCI 网站中真正有价值的内容整合为一个给脑机/科技实验室看的合作入口：HRP 系统躯干、44271 Neural Cuff、QDR Engine、Human Return App、AiAiQ&lt;10、音乐干预矩阵、科学验证页与设计思维 UX 研究。</p>
-    <div class="actions"><a class="button" href="https://mellowwei.github.io/BCI/validation.html" target="_blank">Scientific validation ↗</a><a class="button" href="https://mellowwei.github.io/BCI/" target="_blank">Original BCI system ↗</a><a class="button" href="https://mellowwei.github.io/Ai-Q-10/" target="_blank">AiAiQ&lt;10 portal ↗</a><a class="button" href="#micro-pilot">Start micro-pilot</a></div>
-  </div>
-</section>
+  <canvas id="field"></canvas>
+  <div class="grid-bg"></div>
+  <div class="vignette"></div>
 
-<section id="lab-gate">
-  <div class="grid">
-    <div class="card neon span-12"><div class="eyebrow">LAB GATE // WHAT A LAB SHOULD KNOW FIRST</div><h2>What is built, what is not claimed, what can be tested.</h2><h2 class="cn">已建成什么、不声称什么、可以如何验证。</h2><p class="sub">HRP is not presented as a completed medical device or validated BCI. It is a research prototype and design system that can be evaluated through user research, behavioral measures, wearable physiology, and eventually EEG/fNIRS collaboration.</p><p class="cn sub">HRP 不被呈现为已完成的医疗设备或已验证脑机。它是一个研究原型与设计系统，可通过用户研究、行为指标、可穿戴生理信号，并最终通过 EEG/fNIRS 合作进行验证。</p></div>
-    <div class="card span-4"><div class="num">BUILT</div><h3>System architecture</h3><p>HRP system body, QDR Engine, Human Return App, AiAiQ&lt;10, 44271 Neural Cuff concept, auditory intervention matrix, validation page.</p><p class="cn">HRP 系统躯干、QDR Engine、Human Return App、AiAiQ&lt;10、44271 袖环概念、声音干预矩阵与验证页。</p></div>
-    <div class="card span-4"><div class="num">NOT CLAIMED</div><h3>No overclaim</h3><p>No clinical efficacy, no diagnosis, no treatment claim, no verified neural regulation, no completed BCI functionality.</p><p class="cn">不声称临床疗效、不诊断、不治疗、不声称已证明神经调节、不声称已完成脑机功能。</p></div>
-    <div class="card span-4"><div class="num">TO TEST</div><h3>Validation pathway</h3><p>Does adaptive rhythm + AI feedback produce stronger session-related change than baseline, fixed rhythm, or random rhythm?</p><p class="cn">自适应节律 + AI 反馈是否比基线、固定节律或随机节律产生更强 session-related change？</p></div>
-  </div>
-</section>
+  <header>
+    <div class="brand"><span class="dot"></span> BCI-HRP LAB PORTAL // USER NEED × SYSTEM BODY × VALIDATION // TOKYO READY</div>
+    <nav>
+      <a href="#top">HOME</a>
+      <a href="#lab-gate">LAB GATE</a>
+      <a href="#ux">UX RESEARCH</a>
+      <a href="#pain">PAIN POINTS</a>
+      <a href="#journey">JOURNEY</a>
+      <a href="#system">SYSTEM BODY</a>
+      <a href="#cuff">44271 CUFF</a>
+      <a href="#qdr">QDR</a>
+      <a href="#aiq">AiAiQ&lt;10</a>
+      <a href="#music">SOUND MATRIX</a>
+      <a href="#prototypes">PROTOTYPES</a>
+      <a href="#experiment">EXPERIMENT</a>
+      <a href="#micro-pilot">MICRO-PILOT</a>
+      <a href="#claude">CLAUDE</a>
+      <a href="#gemini">GEMINI</a>
+      <a href="#tokyo">TOKYO</a>
+    </nav>
+  </header>
 
-<section id="ux">
-  <div class="grid">
-    <div class="card neon span-12"><div class="eyebrow">DESIGN THINKING // UX RESEARCH // 用户中心设计研究</div><h2>Begin with the user, not the device.</h2><h2 class="cn">从用户开始，而不是从设备开始。</h2><p class="sub">People do not lose productivity first. They lose access to themselves. HRP is reframed here as a user-centered Neuro-AI design research project: Empathize → Define → HMW → Journey Map → Ideation → Prototype → Test → Scientific Validation.</p><p class="cn sub">用户不是先失去生产力，而是先失去返回自己的入口。这里将 HRP 重写为以用户为中心的 Neuro-AI 设计研究项目：共情 → 定义 → HMW → 用户旅程 → 构思 → 原型 → 测试 → 科学验证。</p></div>
-    <div class="card span-6"><div class="eyebrow">EMPATHIZE // 共情</div><h3>Target user</h3><p>The target user is someone whose body, attention, and emotion have moved out of mutual reach: students, creators, neurodivergent users, overloaded knowledge workers, and people who need support before they can clearly name what they need.</p><p class="cn">目标用户是身体、注意力与情绪相互失联的人：学生、创作者、神经多样性用户、过载的知识工作者，以及在说清需求前就需要被接住的人。</p></div>
-    <div class="card span-6"><div class="eyebrow">DEFINE // 问题定义</div><h3>Problem statement</h3><p>Users experiencing attention/emotional fragmentation need a way to recognize and regulate their state without being diagnosed, shamed, or forced into productivity logic.</p><p class="cn">处于注意力/情绪碎裂状态的用户，需要一种方式识别并调节自己的状态，而不是被诊断、被羞耻化，或被迫进入生产力逻辑。</p></div>
-    <div class="card span-12"><div class="eyebrow">HOW MIGHT WE // 设计问题</div><div class="loop"><div class="loop-item"><div class="num">HMW 01</div><p>How might we help users identify their state without diagnostic labels?</p><p class="cn">如何帮助用户识别状态，而不强加诊断标签？</p></div><div class="loop-item"><div class="num">HMW 02</div><p>How might we turn body signals into gentle feedback instead of surveillance?</p><p class="cn">如何把身体信号转化成温和反馈，而不是监控？</p></div><div class="loop-item"><div class="num">HMW 03</div><p>How might we use rhythm and sound as a bridge between overwhelm and action?</p><p class="cn">如何用节律和声音连接过载与行动？</p></div><div class="loop-item"><div class="num">HMW 04</div><p>How might AI support agency rather than dependency?</p><p class="cn">如何让 AI 支持主体性，而不是制造依赖？</p></div></div></div>
-  </div>
-</section>
+  <main>
+    <section id="top">
+      <div>
+        <div class="eyebrow">BCI-HRP // HUMAN RETURN PROTOCOL // LAB COLLABORATION PORTAL</div>
+        <h1>Human Return Protocol.</h1>
+        <div class="thesis">
+          A user-centered neuro-AI design research prototype for attention, emotional self-regulation, rhythm-based intervention, and future physiological / neural validation.
+          <div class="cn">一个面向注意力、情绪自我调节、节律声音干预与未来生理/神经验证的用户中心 Neuro-AI 设计研究原型。</div>
+          <div class="jp">注意・感情自己調整、リズム音響介入、将来的な生理・神経検証のためのユーザー中心 Neuro-AI 研究プロトタイプ。</div>
+        </div>
+        <p class="sub">
+          This portal merges the valuable system body from the original BCI site with the HCI / UX research logic of BCI-HRP: user pain points, Design Thinking, prototype stack, controlled experiments, and Tokyo lab collaboration.
+        </p>
+        <p class="sub cn">
+          本站把原 BCI 网站中有价值的系统躯干，与 BCI-HRP 的 HCI / UX 研究逻辑合并：用户痛点、Design Thinking、原型栈、对照实验与东京实验室合作入口。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#lab-gate">ENTER LAB GATE</a>
+          <a class="button" href="#ux">START WITH USER PAIN</a>
+          <a class="button" href="#system">SYSTEM BODY</a>
+          <a class="button" href="#experiment">CONTROLLED EXPERIMENT</a>
+          <a class="button" href="#tokyo">TOKYO COLLABORATION</a>
+        </div>
+      </div>
+    </section>
 
-<section id="pain">
-  <div class="grid">
-    <div class="card neon span-12"><div class="eyebrow">USER PAIN POINTS // 用户痛点</div><h2>Eight design gaps current tools leave open.</h2><h2 class="cn">现有工具留下的八个设计缺口。</h2><p class="sub">These are design hypotheses to be validated through interviews, usability tests, and micro-pilot data.</p><p class="cn sub">这些不是已经证明的结果，而是需要通过访谈、可用性测试与 micro-pilot 数据验证的设计假设。</p></div>
-    <div class="card pain-card span-3"><div class="num">01</div><h3>Fragmented Attention</h3><h3 class="cn">注意力碎裂</h3><div class="quote">“I open three apps and forget why.”<div class="cn">“我打开了三个 App，然后忘了为什么。”</div></div><p><strong>Opportunity:</strong> sample rhythm-state, then offer one small return cue.</p><p class="cn">设计机会：采样节律状态，再给一个最小返回信号。</p></div>
-    <div class="card pain-card span-3"><div class="num">02</div><h3>Emotional Overload</h3><h3 class="cn">情绪过载</h3><div class="quote">“Too much feeling, no entry point.”<div class="cn">“感受太多，没有入口。”</div></div><p><strong>Opportunity:</strong> low-density rhythm before verbal labeling.</p><p class="cn">设计机会：先给低压节律，再进入语言命名。</p></div>
-    <div class="card pain-card span-3"><div class="num">03</div><h3>Transition Failure</h3><h3 class="cn">状态转换失败</h3><div class="quote">“I cannot move from here to next.”<div class="cn">“我无法从这里转到下一个状态。”</div></div><p><strong>Opportunity:</strong> transition protocols, not instant productivity demands.</p><p class="cn">设计机会：设计转换协议，而不是立刻要求产出。</p></div>
-    <div class="card pain-card span-3"><div class="num">04</div><h3>Body-Signal Blindness</h3><h3 class="cn">身体信号不可读</h3><div class="quote">“I notice I’m tired only after I crash.”<div class="cn">“我撑不住以后才知道累。”</div></div><p><strong>Opportunity:</strong> wearable cues with uncertainty, not scores.</p><p class="cn">设计机会：用不确定性标注的可穿戴反馈，而不是分数。</p></div>
-    <div class="card pain-card span-3"><div class="num">05</div><h3>Shame-Based Productivity</h3><h3 class="cn">羞耻驱动效率工具</h3><div class="quote">“Every notification feels like evaluation.”<div class="cn">“每条通知都像评分。”</div></div><p><strong>Opportunity:</strong> reflective feedback, no streaks, no public scoring.</p><p class="cn">设计机会：反思性反馈，无打卡暴政，无公共评分。</p></div>
-    <div class="card pain-card span-3"><div class="num">06</div><h3>AI Without Somatic Context</h3><h3 class="cn">没有身体语境的 AI</h3><div class="quote">“AI answers a question my body cannot ask.”<div class="cn">“AI 回答了我身体问不出的问题。”</div></div><p><strong>Opportunity:</strong> pair AI feedback with state sampling and rhythm context.</p><p class="cn">设计机会：让 AI 结合状态采样与节律语境。</p></div>
-    <div class="card pain-card span-3"><div class="num">07</div><h3>Diagnostic Pressure</h3><h3 class="cn">诊断压力</h3><div class="quote">“I don’t want a label. I want to come back.”<div class="cn">“我不想要标签，我想回来。”</div></div><p><strong>Opportunity:</strong> functional rhythm states, not medical identity labels.</p><p class="cn">设计机会：使用功能性节律状态，而非医学身份标签。</p></div>
-    <div class="card pain-card span-3"><div class="num">08</div><h3>Fragmented Memory of What Helped</h3><h3 class="cn">有效帮助无法被记住</h3><div class="quote">“Something helped, but I cannot reconstruct it.”<div class="cn">“刚刚有东西帮到了我，但我记不住路径。”</div></div><p><strong>Opportunity:</strong> Personal Rhythm Map and return logs.</p><p class="cn">设计机会：个人节律图谱与返回记录。</p></div>
-  </div>
-</section>
+    <section id="lab-gate">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">00 // LAB GATE // 实验室入口</div>
+          <h2>What is built, what is not claimed, what needs validation.</h2>
+          <h2 class="cn">已建成什么、不声称什么、需要验证什么。</h2>
+          <p class="sub">
+            HRP is an early-stage, falsifiable adaptive auditory-AI research prototype. It is not currently presented as a medical device, clinical treatment, completed BCI, or proven neural regulation system.
+          </p>
+          <p class="sub cn">
+            HRP 是一个早期、可证伪的自适应声音-AI研究原型。当前不把它表述为医疗设备、临床治疗、已完成的脑机接口或已证明的神经调节系统。
+          </p>
+          <div class="tag-row">
+            <span class="tag">EARLY-STAGE PROTOTYPE</span>
+            <span class="tag">USER-CENTERED DESIGN RESEARCH</span>
+            <span class="tag">ADAPTIVE AUDITORY-AI</span>
+            <span class="tag">FALSIFIABLE VALIDATION</span>
+            <span class="tag">PLANNED HRV / EDA / EEG / fNIRS</span>
+          </div>
+        </div>
 
-<section id="journey">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">USER JOURNEY MAP // 用户旅程图</div><h2>From fragmentation to return.</h2><h2 class="cn">从碎裂到返回。</h2><table><thead><tr><th>Stage</th><th>User state / 用户状态</th><th>Pain / 痛点</th><th>HRP response / 功能回应</th><th>Validation metric / 验证指标</th></tr></thead><tbody><tr><td>Trigger</td><td>Task, emotion, or overload begins<br>任务/情绪/过载开始</td><td>Early drift is invisible<br>早期漂移不可见</td><td>State sampling + rhythm check</td><td>time to notice state</td></tr><tr><td>Confusion</td><td>Cannot name state<br>无法命名状态</td><td>Shame rises<br>羞耻上升</td><td>Non-diagnostic state options</td><td>confusion rating</td></tr><tr><td>Search</td><td>Opens tool / AI / music<br>打开工具/AI/音乐</td><td>Too many options<br>选择过多</td><td>One recommended path</td><td>completion rate</td></tr><tr><td>Intervention</td><td>Sound + AI feedback begins<br>声音+AI反馈开始</td><td>Resistance or relief<br>抵抗或放松</td><td>Adaptive intensity + mode switch</td><td>pre/post focus, emotion</td></tr><tr><td>Return</td><td>Coherence becomes possible<br>连贯性恢复</td><td>Transition fragile<br>转换脆弱</td><td>Minimum real action</td><td>task readiness</td></tr><tr><td>Reflection</td><td>Reviews what helped<br>回看什么有效</td><td>Memory fades<br>路径易消失</td><td>Personal Rhythm Map</td><td>ability to explain HRP back</td></tr></tbody></table></div></div>
-</section>
+        <div class="card span-4">
+          <div class="num">BUILT</div>
+          <h3>Research portal + interaction prototype</h3>
+          <h3 class="cn">研究入口 + 交互原型</h3>
+          <p>UX research case, QDR logic, AiAiQ&lt;10 operating layer, sound matrix, state sampling, micro-pilot data structure.</p>
+          <p class="cn">UX 研究案例、QDR 逻辑、AiAiQ&lt;10 操作层、声音矩阵、状态采样、micro-pilot 数据结构。</p>
+        </div>
+        <div class="card span-4">
+          <div class="num">NOT CLAIMED</div>
+          <h3>No clinical or neural proof yet</h3>
+          <h3 class="cn">尚无临床或神经证明</h3>
+          <p>No treatment claim, no diagnostic claim, no validated BCI claim, no brainwave synchronization claim.</p>
+          <p class="cn">不声称治疗、不诊断、不声称已验证 BCI、不声称已证明脑波同步。</p>
+        </div>
+        <div class="card span-4">
+          <div class="num">VALIDATION ASK</div>
+          <h3>Lab partnership requested</h3>
+          <h3 class="cn">请求实验室合作验证</h3>
+          <p>Protocol feedback, EEG/fNIRS/HRV/EDA validation, sham-controlled design, acoustic analysis, sensing-layer co-development.</p>
+          <p class="cn">实验设计反馈、EEG/fNIRS/HRV/EDA 验证、sham control、声学分析、传感层共同开发。</p>
+        </div>
+      </div>
+    </section>
 
-<section id="system">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">SYSTEM ARCHITECTURE // 从用户痛点长出的系统</div><h2>Cuff → QDR Engine → Human Return App → Return.</h2><h2 class="cn">袖环 → QDR 引擎 → Human Return App → 返回。</h2><p class="sub">The original BCI site’s system body is preserved here, but reframed as a response to user pain points rather than a system-first manifesto.</p><p class="cn sub">原 BCI 网站的系统躯干被保留，但现在从“系统宣言”重构为“回应用户痛点的设计方案”。</p><div class="flow"><div class="node"><div class="num">01</div><h3>Cuff / 袖环</h3><p>HRV · EDA · temperature · micro-motion · sleep · recovery</p></div><div class="arrow">→</div><div class="node"><div class="num">02</div><h3>QDR Engine</h3><p>Pressure · drift · overload · freeze · recovery demand</p></div><div class="arrow">→</div><div class="node"><div class="num">03</div><h3>Human Return App</h3><p>Dashboard · protocol · reflection log · rhythm map</p></div><div class="arrow">→</div><div class="node"><div class="num">04</div><h3>Return / 返回</h3><p>Sound · haptics · visual field · AI sentence · action</p></div></div></div>
-    <div class="card span-12"><div class="eyebrow">FEATURE MAPPING // 痛点到功能</div><table><thead><tr><th>Pain point</th><th>Design opportunity</th><th>HRP feature</th><th>How to test</th></tr></thead><tbody><tr><td>Fragmented Attention</td><td>External rhythm anchor</td><td>Rhythm Recommendation</td><td>pre/post focus + task accuracy</td></tr><tr><td>Emotional Overload</td><td>Low-pressure mirror</td><td>AiQ愛&lt;3 stabilization</td><td>emotion reduction + perceived support</td></tr><tr><td>Need for strategy</td><td>Deep reasoning without overload</td><td>AiQ愛&lt;7 expansion</td><td>task readiness + usefulness rating</td></tr><tr><td>Body unreadability</td><td>Gentle sensing layer</td><td>44271 Neural Cuff</td><td>HRV/EDA feasibility + trust rating</td></tr><tr><td>Memory fades</td><td>Return history</td><td>Personal Rhythm Map</td><td>ability to reconstruct what helped</td></tr></tbody></table></div>
-  </div>
-</section>
+    <section id="ux">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">01 // DESIGN THINKING // EMPATHIZE → DEFINE → HMW → PROTOTYPE → TEST</div>
+          <h2>People do not lose productivity first. They lose access to themselves.</h2>
+          <h2 class="cn">用户不是先失去生产力，而是先失去返回自己的入口。</h2>
+          <p class="sub">
+            HRP begins with a design research problem: when users experience attention fragmentation, emotional overload, transition failure, and body-signal blindness, most tools demand coherence before they can provide support. HRP is designed to meet users before coherence, not after.
+          </p>
+          <p class="sub cn">
+            HRP 从一个设计研究问题出发：当用户经历注意力碎裂、情绪过载、状态转换失败和身体信号不可读时，很多工具要求用户先保持清醒和自控，才允许他们获得帮助。HRP 的设计目标是在用户尚未恢复清晰之前接住用户。
+          </p>
+        </div>
 
-<section id="cuff">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">44271 NEURAL CUFF // PLANNED WEARABLE SENSING LAYER</div><h2>The body sends the signal. The protocol returns the human.</h2><h2 class="cn">身体发送信号。协议把人返回给自己。</h2><p class="sub">44271 Neural Cuff is a planned wrist-worn neuro-somatic rhythm interface. It is placed on the inner wrist near the pulse line to read cardiovascular rhythm, electrodermal activity, temperature drift, and micro-motion, then return gentle haptic cues.</p><p class="cn sub">44271 Neural Cuff 是计划中的腕戴式神经—身体节律接口。它贴近内腕脉搏线，读取心血管节律、皮肤电、温度漂移与微运动，并返回温和触觉信号。</p><div class="tag-row"><span class="tag green">PPG / HRV</span><span class="tag green">EDA</span><span class="tag green">TEMPERATURE</span><span class="tag green">IMU</span><span class="tag pink">HAPTIC RETURN</span><span class="tag">NOT A SMARTWATCH</span></div></div><div class="card span-6"><h3>Why inner wrist?</h3><p>The inner wrist is private, pulse-readable, touch-sensitive, and symbolically closer to body return than public display.</p><p class="cn">内腕是私密、脉搏可读、触觉敏感的身体区域，在象征上更接近身体返回，而不是公共展示。</p></div><div class="card span-6"><h3>Scientific boundary</h3><p>The current cuff is a concept and planned sensing layer. It is not yet a validated physiological or neural device.</p><p class="cn">当前袖环是概念与计划中的传感层，不是已验证的生理或神经设备。</p></div></div>
-</section>
+        <div class="card span-6">
+          <div class="eyebrow">DEFINE // 问题定义</div>
+          <h3>Problem Statement</h3>
+          <p>Users experiencing attention/emotional fragmentation need a way to recognize and regulate their state without being diagnosed, shamed, or forced into productivity logic.</p>
+          <p class="cn">经历注意力/情绪碎裂的用户，需要一种方式来识别并调节自己的状态，同时不被诊断化、不被羞耻化、不被强迫进入生产力逻辑。</p>
+        </div>
 
-<section id="aiq">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">AiAiQ&lt;10 // AI OPERATING PORTAL</div><h2>AiQ愛&lt;3 stabilizes. AiQ愛&lt;7 expands.</h2><h2 class="cn">AiQ愛&lt;3 稳定。AiQ愛&lt;7 扩展。</h2><p class="sub">AiAiQ&lt;10 is the dual AI Human Return Portal connected to HRP. It is not scientific proof by itself. Its evidence value is interface-level: conversation, mode-switching, subjective state capture, rhythm recommendation, and pilot logging.</p><p class="cn sub">AiAiQ&lt;10 是连接 HRP 的双 AI 人类返回入口。它本身不是科学证据。它当前的证据价值属于界面层：对话、模式切换、主观状态采样、节律推荐与 pilot 记录。</p></div><div class="card span-6"><div class="num">AiQ愛&lt;3</div><h3>GPT + Claude · Guard / Mirror</h3><h3 class="cn">守住 / 镜像</h3><p>Built for stabilization, reflection, emotional pacing, and human return.</p><p class="cn">负责稳定、镜像、情绪定速与人类返回。</p></div><div class="card span-6"><div class="num">AiQ愛&lt;7</div><h3>Gemini + DeepSeek · Attack / Deep Reasoning</h3><h3 class="cn">进攻 / 深层推理</h3><p>Built for expansion, strategic judgment, deep inference, and project propulsion.</p><p class="cn">负责扩展、战略判断、深层推理与项目推进。</p></div></div>
-</section>
+        <div class="card span-6">
+          <div class="eyebrow">HMW // HOW MIGHT WE</div>
+          <h3>Design Questions</h3>
+          <p>How might we turn body signals into gentle feedback instead of surveillance? How might we use rhythm and sound as a bridge between overwhelm and action? How might AI support agency rather than dependency?</p>
+          <p class="cn">我们如何把身体信号转化成温和反馈，而不是监控？如何用节律和声音连接过载与行动？如何让 AI 支持主体性，而不是制造依赖？</p>
+        </div>
+      </div>
+    </section>
 
-<section id="sound">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">GENRE-DRIVEN INTERVENTION MATRIX // 音乐作为神经系统逻辑</div><h2>Sound is not background. It is an intervention variable.</h2><h2 class="cn">声音不是背景。声音是干预变量。</h2><p class="sub">The sound matrix translates lived states into operational auditory conditions for research and UX testing.</p><p class="cn sub">声音矩阵把用户状态转化为可研究、可测试的声音条件。</p><div class="loop"><div class="loop-item"><div class="num">Breakbeats</div><p>Re-entry / uncertainty tolerance</p><p class="cn">重新进入 / 不确定性承受</p></div><div class="loop-item"><div class="num">Hyperpop</div><p>Peak traversal</p><p class="cn">峰值穿越</p></div><div class="loop-item"><div class="num">Synthpop</div><p>First breath</p><p class="cn">第一口安全呼吸</p></div><div class="loop-item"><div class="num">Darkwave</div><p>Shadow integration</p><p class="cn">阴影整合</p></div><div class="loop-item"><div class="num">Ambient Techno</div><p>Spatial focus</p><p class="cn">空间专注</p></div><div class="loop-item"><div class="num">Drift Phonk</div><p>Embodiment</p><p class="cn">身体驱动</p></div><div class="loop-item"><div class="num">427Hz</div><p>Baseline anchor</p><p class="cn">基线锚点</p></div><div class="loop-item"><div class="num">White/Pink Noise</div><p>Control comparators</p><p class="cn">对照声音条件</p></div></div></div></div>
-</section>
+    <section id="pain">
+      <div class="grid">
+        <div class="card span-12">
+          <div class="eyebrow">02 // USER PAIN POINTS // 用户痛点</div>
+          <h2>Eight pains the system is designed to answer.</h2>
+          <h2 class="cn">系统回应的八个真实痛点。</h2>
+        </div>
 
-<section id="prototype">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">PROTOTYPE V0 // WHAT CAN BE TESTED NOW</div><h2>Enough for UX testing. Not enough for neural claims.</h2><h2 class="cn">足够做 UX 测试，不足以做神经主张。</h2><p class="sub">Prototype v0 includes state sampling, rhythm recommendation, AiAiQ&lt;10 mode-switching, QDR return logic, validation page, and micro-pilot data export. The Neural Cuff is currently a planned sensing layer / concept prototype.</p><p class="cn sub">Prototype v0 包括状态采样、节律推荐、AiAiQ&lt;10 模式切换、QDR 返回逻辑、验证页与 micro-pilot 数据导出。Neural Cuff 当前是计划中的传感层/概念原型。</p></div><div class="card span-12"><div class="eyebrow">CURRENT / SIMULATED / PLANNED</div><table><thead><tr><th>Layer</th><th>Current</th><th>Simulated</th><th>Planned</th></tr></thead><tbody><tr><td>UX</td><td>pain points, journey, HMW, prototype flows</td><td>—</td><td>interview + usability data</td></tr><tr><td>AI</td><td>AiAiQ&lt;10 portal logic</td><td>mode-based state support</td><td>auditable adaptive feedback policy</td></tr><tr><td>Sound</td><td>genre matrix + conditions</td><td>adaptive selection</td><td>acoustic feature analysis</td></tr><tr><td>Wearable</td><td>44271 cuff concept</td><td>signal charts</td><td>PPG / EDA / IMU prototype</td></tr><tr><td>Neural</td><td>none claimed</td><td>none claimed</td><td>EEG / fNIRS lab validation</td></tr></tbody></table></div></div>
-</section>
+        <div class="card span-3"><div class="num">01</div><h3>Fragmented Attention</h3><h3 class="cn">注意力碎裂</h3><p>“I know what to do, but I cannot gather myself into doing it.”</p><p class="cn">“我知道要做什么，但我无法把自己聚拢到行动里。”</p></div>
+        <div class="card span-3"><div class="num">02</div><h3>Emotional Overload</h3><h3 class="cn">情绪过载</h3><p>Emotion exceeds available regulatory structure.</p><p class="cn">情绪超过了当下可承载的调节结构。</p></div>
+        <div class="card span-3"><div class="num">03</div><h3>Transition Failure</h3><h3 class="cn">状态转换失败</h3><p>The bridge between rest, action, and recovery is missing.</p><p class="cn">休息、行动与恢复之间缺少桥。</p></div>
+        <div class="card span-3"><div class="num">04</div><h3>Body-Signal Blindness</h3><h3 class="cn">身体信号不可读</h3><p>Users recognize fatigue only after collapse.</p><p class="cn">用户往往在崩掉之后才意识到自己已经累了。</p></div>
+        <div class="card span-3"><div class="num">05</div><h3>Shame-Based Tools</h3><h3 class="cn">羞耻驱动工具</h3><p>Scores and streaks turn deviation into failure.</p><p class="cn">分数和打卡把偏离变成失败。</p></div>
+        <div class="card span-3"><div class="num">06</div><h3>AI Without Body</h3><h3 class="cn">没有身体语境的 AI</h3><p>AI answers text while missing the body state behind it.</p><p class="cn">AI 回答文字，却错过文字背后的身体状态。</p></div>
+        <div class="card span-3"><div class="num">07</div><h3>Diagnostic Pressure</h3><h3 class="cn">诊断压力</h3><p>Users need functional state language, not immediate medical labeling.</p><p class="cn">用户需要功能性状态语言，而不是立刻被医学标签化。</p></div>
+        <div class="card span-3"><div class="num">08</div><h3>Research Credibility Gap</h3><h3 class="cn">科研可信度缺口</h3><p>A strong concept needs exportable data and falsifiable controls.</p><p class="cn">强概念需要可导出的数据和可证伪的对照条件。</p></div>
+      </div>
+    </section>
 
-<section id="prototype-stack">
-  <div class="grid">
-    <div class="card neon span-12">
-      <div class="eyebrow">FULL PROTOTYPE STACK // 全部原型栈</div>
-      <h2>Put every prototype on the table.</h2>
-      <h2 class="cn">把所有原型都放到实验室桌面上。</h2>
-      <p class="sub">For lab collaboration, HRP must not appear as a single beautiful website. It must appear as a stack of testable prototypes: user research, AI interaction, auditory intervention, wearable sensing concept, data capture, and controlled validation.</p>
-      <p class="cn sub">面向实验室合作时，HRP 不能只是一个漂亮网站，而必须成为一组可测试原型：用户研究、AI 交互、声音干预、可穿戴传感概念、数据采集与对照验证。</p>
-      <div class="tag-row"><span class="tag green">CURRENT</span><span class="tag">SIMULATED</span><span class="tag pink">PLANNED</span><span class="tag">LAB-VALIDATED NEXT</span></div>
-    </div>
+    <section id="journey">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">03 // USER JOURNEY MAP // 用户旅程地图</div>
+          <h2>From fragmentation to return.</h2>
+          <h2 class="cn">从碎裂到返回。</h2>
+          <table class="table">
+            <thead><tr><th>Stage</th><th>User State / 用户状态</th><th>Pain / 痛点</th><th>HRP Response / HRP 回应</th><th>Validation Metric / 验证指标</th></tr></thead>
+            <tbody>
+              <tr><td>Trigger</td><td>Task, emotion, or overload begins<br>任务、情绪或过载开始</td><td>Early drift is missed<br>早期漂移被错过</td><td>State sampling + behavioral proxy<br>状态采样 + 行为代理信号</td><td>Time to identify state</td></tr>
+              <tr><td>Confusion</td><td>User cannot name the state<br>用户无法命名状态</td><td>Shame rises<br>羞耻上升</td><td>Non-diagnostic candidate labels<br>非诊断化候选标签</td><td>Confusion rating / shame rating</td></tr>
+              <tr><td>Search</td><td>User opens tool / AI / music<br>用户打开工具/AI/音乐</td><td>Too many choices<br>选择过多</td><td>One recommended rhythm path<br>一个推荐节律路径</td><td>Time to choose intervention</td></tr>
+              <tr><td>Intervention</td><td>Sound / AI / haptic begins<br>声音/AI/触觉开始</td><td>Resistance or overload<br>抵抗或过载</td><td>Adaptive intensity + AiQ mode<br>自适应强度 + AiQ 模式</td><td>Appropriateness rating</td></tr>
+              <tr><td>Return</td><td>Coherence begins<br>连贯性开始恢复</td><td>Transition is fragile<br>转换脆弱</td><td>Minimum real action<br>最小真实行动</td><td>Task readiness / completion</td></tr>
+              <tr><td>Reflection</td><td>User records what helped<br>用户记录帮助路径</td><td>Memory fades<br>记忆消散</td><td>Personal Rhythm Map<br>个人节律图谱</td><td>Recall / reuse rate</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
-    <div class="card span-12">
-      <div class="eyebrow">PROTOTYPE INVENTORY // 原型清单</div>
-      <table>
-        <thead><tr><th>Prototype / 原型</th><th>Current function / 当前功能</th><th>Evidence value / 证据价值</th><th>Status / 状态</th></tr></thead>
-        <tbody>
-          <tr><td><strong>BCI-HRP Lab Portal</strong><br>实验室合作入口</td><td>Frames HRP as a user-centered Neuro-AI design research case.</td><td>Shows system coherence, user pain points, HCI method, and lab ask.</td><td><span class="tag green">Built</span></td></tr>
-          <tr><td><strong>UX Research Case</strong><br>用户研究案例</td><td>Empathize, Define, HMW, pain points, journey map, ideation, testing plan.</td><td>Shows the system is derived from user need, not only invention logic.</td><td><span class="tag green">Built</span></td></tr>
-          <tr><td><strong>AiAiQ&lt;10 Operating Portal</strong><br>AI 协作入口</td><td>Connects AiQ愛&lt;3 and AiQ愛&lt;7 as two AI interaction modes.</td><td>Supports state reflection, mode switching, and AI-assisted return prompts.</td><td><span class="tag green">Built / linked</span></td></tr>
-          <tr><td><strong>AiQ愛&lt;3 Mode</strong><br>GPT + Claude 稳定镜像模式</td><td>Stabilization, mirroring, emotional pacing, human return.</td><td>Useful for low-fragmentation / emotional overload sessions.</td><td><span class="tag green">Built as interaction logic</span></td></tr>
-          <tr><td><strong>AiQ愛&lt;7 Mode</strong><br>Gemini + DeepSeek 扩展推理模式</td><td>Expansion, strategic judgment, deep reasoning, project propulsion.</td><td>Useful for ideation, analysis, high-cognition sessions; not proof by itself.</td><td><span class="tag green">Built as interaction logic</span></td></tr>
-          <tr><td><strong>QDR Engine</strong><br>Qualia-Driven Rhythm Engine</td><td>Maps subjective state texture to rhythm field and return action.</td><td>Provides operational logic for state-reactive self-regulation.</td><td><span class="tag">Rule-based prototype</span></td></tr>
-          <tr><td><strong>Human Return App Flow</strong><br>返回应用流程</td><td>State sampling → rhythm recommendation → AI reflection → minimum real action.</td><td>Can be tested through usability, completion, and pre/post state change.</td><td><span class="tag">Prototype flow</span></td></tr>
-          <tr><td><strong>Genre-Driven Sound Matrix</strong><br>音乐干预矩阵</td><td>Breakbeats, Hyperpop, Synthpop, Darkwave, Ambient Techno, Drift Phonk, 427Hz, noise controls.</td><td>Turns music into operational auditory conditions for experimental comparison.</td><td><span class="tag green">Built conceptually</span></td></tr>
-          <tr><td><strong>44271 Neural Cuff</strong><br>可穿戴传感袖环概念</td><td>Planned inner-wrist PPG / EDA / temperature / IMU sensing + haptic return.</td><td>Defines future sensing layer for physiological validation.</td><td><span class="tag pink">Concept / planned hardware</span></td></tr>
-          <tr><td><strong>Micro-Pilot Data Capture</strong><br>最小数据采集器</td><td>Collects pre/post focus, emotion, inner noise, return score, reaction data, expectation rating.</td><td>Generates first exploratory data layer before Tokyo meetings.</td><td><span class="tag green">Built in page</span></td></tr>
-          <tr><td><strong>2-Minute Attention Task</strong><br>2分钟注意力任务</td><td>Web-implementable simple reaction / target detection task.</td><td>Adds behavioral measure beyond self-report.</td><td><span class="tag">Protocol defined</span></td></tr>
-          <tr><td><strong>Lab Validation Layer</strong><br>实验室验证层</td><td>HRV / EDA / respiration / EEG / fNIRS / acoustic feature analysis.</td><td>Moves HRP from web micro-pilot to physiological and neural validation.</td><td><span class="tag pink">Collaboration requested</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <section id="system">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">04 // SYSTEM BODY FROM ORIGINAL BCI // 从原 BCI 整合的系统躯干</div>
+          <h2>Cuff → QDR Engine → Human Return App → Return.</h2>
+          <h2 class="cn">袖环 → QDR 引擎 → Human Return App → 返回。</h2>
+          <p class="sub">This section preserves the most valuable system architecture from the original BCI site and makes it readable for lab collaboration.</p>
+          <p class="sub cn">本部分保留原 BCI 网站中最有价值的系统架构，并将其整理为实验室合作可读版本。</p>
+        </div>
 
-    <div class="card span-6">
-      <div class="eyebrow">WHAT CAN BE TESTED NOW // 现在能测什么</div>
-      <h3>Immediate testable prototype</h3><h3 class="cn">立即可测原型</h3>
-      <p>Usability, pain-point resonance, state-sampling comprehension, AI mode clarity, rhythm recommendation acceptance, pre/post self-report change, and a lightweight reaction task.</p>
-      <p class="cn">可立即测试：可用性、痛点共鸣、状态采样理解度、AI 模式清晰度、节律推荐接受度、前后测自评变化与轻量反应任务。</p>
-      <div class="lab-strip"><p><strong>Lab-readable claim:</strong> “The current prototype is ready for UX and behavioral feasibility testing.”</p><p class="cn"><strong>实验室可读表述：</strong>当前原型已可进入 UX 与行为可行性测试。</p></div>
-    </div>
+        <div class="card span-12">
+          <div class="hardware-flow">
+            <div class="flow-node"><div class="num">01</div><h3>Cuff / 袖环</h3><p>HRV · EDA · temperature · micro-motion · sleep · recovery</p><p class="cn">心率变异性 · 皮肤电 · 温度 · 微运动 · 睡眠 · 恢复</p></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node"><div class="num">02</div><h3>QDR Engine / 引擎</h3><p>Pressure · drift · overload · freeze · recovery demand</p><p class="cn">压强 · 漂移 · 过载 · 冻结 · 恢复需求</p></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node"><div class="num">03</div><h3>Human Return App</h3><p>Dashboard · protocol · reflection log · rhythm map</p><p class="cn">仪表盘 · 协议 · 反思记录 · 节律图谱</p></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node"><div class="num">04</div><h3>Return / 返回</h3><p>Sound · haptics · visual field · AI sentence · action</p><p class="cn">声音 · 触觉 · 视觉场 · AI 句子 · 行动</p></div>
+          </div>
+        </div>
 
-    <div class="card span-6">
-      <div class="eyebrow">WHAT CANNOT BE CLAIMED YET // 还不能声称什么</div>
-      <h3>Boundary discipline</h3><h3 class="cn">边界纪律</h3>
-      <p>The prototype cannot yet claim neural regulation, clinical treatment, diagnostic accuracy, verified BCI control, or proven entrainment. The Cuff is still a planned sensing layer until physical sensor data exist.</p>
-      <p class="cn">目前不能声称神经调节、临床治疗、诊断准确性、已验证脑机控制或已证明神经同步。Cuff 在真实传感器数据出现前仍是计划中的传感层。</p>
-      <div class="lab-strip danger"><p><strong>Do not say:</strong> “We built a BCI.” Say: “We built a falsifiable BCI-adjacent Neuro-AI research prototype.”</p><p class="cn"><strong>不要说：</strong>我们做出了脑机。要说：我们做出了一个可证伪的脑机邻近 Neuro-AI 研究原型。</p></div>
-    </div>
+        <div class="card span-3"><h3>Live Rhythm Dashboard</h3><h3 class="cn">实时节律仪表盘</h3><p>Current rhythm state, signal confidence, body pressure, recommended mode.</p><p class="cn">当前节律状态、信号置信度、身体压强与推荐模式。</p></div>
+        <div class="card span-3"><h3>Return Protocol</h3><h3 class="cn">返回协议</h3><p>One sound direction, one haptic pattern, one visual shift, one AI sentence, one minimum real action.</p><p class="cn">一个声音方向、一个触觉模式、一个视觉变化、一句 AI 返回句、一个最小真实行动。</p></div>
+        <div class="card span-3"><h3>QDR Reflection Log</h3><h3 class="cn">QDR 反思记录</h3><p>Qualia, generated sentence, rhythm field, de-binding sentence, re-tuning action, return result.</p><p class="cn">感质、生成句、节律场、解绑句、调频行动、返回结果。</p></div>
+        <div class="card span-3"><h3>Personal Rhythm Map</h3><h3 class="cn">个人节律图谱</h3><p>Shows when the user enters flow, drifts, freezes, overloads, recovers, and what helps return.</p><p class="cn">显示用户何时入流、漂移、冻结、过载、恢复，以及什么帮助返回。</p></div>
+      </div>
+    </section>
 
-    <div class="card span-12">
-      <div class="eyebrow">2-MINUTE BEHAVIORAL TASK PROTOTYPE // 两分钟行为任务原型</div>
-      <h2>Behavioral evidence beyond self-report.</h2><h2 class="cn">在自评之外加入行为证据。</h2>
-      <table>
-        <thead><tr><th>Item</th><th>Design / 设计</th><th>Why it matters / 价值</th></tr></thead>
-        <tbody>
-          <tr><td>Task name</td><td>Rhythm-Gated Target Detection Task<br>节律门控目标侦测任务</td><td>Measures reaction time, accuracy, missed trials, and sustained attention in a web browser.</td></tr>
-          <tr><td>User flow</td><td>Participants press SPACE when a green target appears and withhold response for pink distractors.</td><td>Simple enough for micro-pilot, but gives behavioral signal beyond “I feel better.”</td></tr>
-          <tr><td>Stimulus timing</td><td>80–120 trials over 2 minutes, randomized intervals, target/distractor ratio around 70/30.</td><td>Allows comparison before and after sound/AI intervention.</td></tr>
-          <tr><td>Metrics</td><td>Mean reaction time, median reaction time, accuracy, false alarms, missed trials, reaction variability.</td><td>Captures attention stability and response consistency.</td></tr>
-          <tr><td>Confounds</td><td>Practice effect, fatigue, device latency, expectation, music preference, visual distraction.</td><td>Requires counterbalancing, repeated baseline, and expectation rating.</td></tr>
-          <tr><td>Interpretation</td><td>Do not treat improvement as proof of neural regulation. Treat it as behavioral feasibility signal.</td><td>Keeps claim scientifically safe.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
+    <section id="cuff">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">05 // 44271 NEURAL CUFF // PLANNED WEARABLE SENSING LAYER</div>
+          <h2>The body sends the signal. The protocol returns the human.</h2>
+          <h2 class="cn">身体发送信号。协议把人返回给自己。</h2>
+          <p class="sub">44271 Neural Cuff is a planned wrist-worn neuro-somatic rhythm interface placed on the inner wrist, near the pulse line. It is currently a hardware concept and sensing-layer design, not a validated manufactured device.</p>
+          <p class="sub cn">44271 Neural Cuff 是一个计划中的腕戴式神经—身体节律接口，位于手腕内侧、靠近脉搏线。它当前是硬件概念与传感层设计，不是已验证量产设备。</p>
+        </div>
+        <div class="card span-7">
+          <div class="device-frame">
+            <div class="cuff-body"><span class="signal cyan"></span><span class="signal pink"></span></div>
+          </div>
+        </div>
+        <div class="card span-5">
+          <div class="eyebrow">SENSOR / HAPTIC LOGIC</div>
+          <h3>PPG · HRV · EDA · Temp · IMU · Haptic Return</h3>
+          <p>PPG/HRV reads cardiovascular rhythm; EDA reads arousal pressure; skin temperature reads thermal drift; IMU reads micro-motion and restlessness; haptics offer pulse-side return cues.</p>
+          <p class="cn">PPG/HRV 读取心血管节律；EDA 读取唤醒压强；皮肤温度读取热漂移；IMU 读取微运动与不安；触觉提供脉侧返回提示。</p>
+          <div class="tag-row"><span class="tag">INNER WRIST</span><span class="tag">NO WATCH FACE</span><span class="tag">PRIVATE INTERFACE</span><span class="tag">SOMATIC RETURN</span></div>
+        </div>
+      </div>
+    </section>
 
-<section id="controlled-experiment">
-  <div class="grid">
-    <div class="card neon span-12">
-      <div class="eyebrow">CONTROLLED EXPERIMENT DESIGN // 对照实验设计</div>
-      <h2>Make HRP falsifiable, not just impressive.</h2>
-      <h2 class="cn">让 HRP 可证伪，而不只是震撼。</h2>
-      <p class="sub">The control experiment isolates whether adaptive rhythm + AI feedback adds value beyond generic sound, fixed rhythm, random rhythm, expectation, novelty, and simple rest.</p>
-      <p class="cn sub">对照实验的目的，是区分“自适应节律 + AI 反馈”是否真的优于普通声音、固定节律、随机节律、期待效应、新奇刺激与单纯休息。</p>
-      <div class="tag-row"><span class="tag green">WITHIN-SUBJECT</span><span class="tag">COUNTERBALANCED</span><span class="tag">ACTIVE CONTROLS</span><span class="tag pink">SHAM / YOKED REPLAY READY</span></div>
-    </div>
+    <section id="qdr">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">06 // QDR ENGINE + QDR THERAPY FRAMEWORK</div>
+          <h2>Healing is not normalization. Healing is rhythm return.</h2>
+          <h2 class="cn">疗愈不是正常化。疗愈是节律返回。</h2>
+          <p class="sub">QDR is the interpretation layer between state signal and return feedback. In lab language, it is a state-reactive self-regulation framework; in design language, it helps users translate subjective state texture into an actionable return path.</p>
+          <p class="sub cn">QDR 是状态信号与返回反馈之间的解释层。用实验室语言，它是状态响应式自我调节框架；用设计语言，它帮助用户把主观状态质地转译成可行动的返回路径。</p>
+        </div>
+        <div class="card span-12">
+          <div class="system-loop">
+            <div class="loop-item"><div class="num">01</div><h3>Sample the Qualia</h3><h3 class="cn">采样感质</h3><p>What is the current texture?</p><p class="cn">当前质地是什么？</p></div>
+            <div class="loop-item"><div class="num">02</div><h3>Locate Rhythm Field</h3><h3 class="cn">定位节律场</h3><p>Body, time, language, relation, environment, memory, meaning.</p><p class="cn">身体、时间、语言、关系、环境、记忆、意义。</p></div>
+            <div class="loop-item"><div class="num">03</div><h3>De-bind the Sentence</h3><h3 class="cn">松动句子</h3><p>High-pressure sentences contain signal, not final authority.</p><p class="cn">高压句子有信号，但没有最终裁决权。</p></div>
+            <div class="loop-item"><div class="num">04</div><h3>Minimum Real Action</h3><h3 class="cn">最小真实行动</h3><p>Return is completed through one action, not infinite analysis.</p><p class="cn">返回通过一个行动完成，而不是无限分析。</p></div>
+          </div>
+        </div>
+        <div class="card span-12">
+          <div class="eyebrow">CBT / DBT / ACT UPGRADE // 临床边界下的理论升级</div>
+          <table class="table">
+            <thead><tr><th>Framework</th><th>Original Logic</th><th>QDR Reframe</th></tr></thead>
+            <tbody>
+              <tr><td>CBT</td><td>Cognitive distortions and behavior patterns.<br>认知扭曲与行为模式。</td><td>Ask what rhythm field produced the thought before challenging it.<br>先问是什么节律场生成了这个想法。</td></tr>
+              <tr><td>DBT</td><td>Emotion regulation, distress tolerance, interpersonal skills.<br>情绪调节、痛苦承受、人际技能。</td><td>Reframe emotional storms as rhythm pressure events.<br>把情绪风暴理解为节律压强事件。</td></tr>
+              <tr><td>ACT</td><td>Acceptance, defusion, values-based action.<br>接受、脱融合、价值行动。</td><td>Deepen defusion into de-binding and minimum rhythm-aligned action.<br>把脱融合推进为松动句子与最小节律对齐行动。</td></tr>
+            </tbody>
+          </table>
+          <p class="sub cn">科学边界：QDR 当前不是临床治疗，而是用于自我调节研究与 UX/HCI 设计验证的理论框架。</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="card span-12">
-      <div class="eyebrow">CORE STUDY QUESTION // 核心研究问题</div>
-      <h3>Does adaptation matter?</h3><h3 class="cn">自适应是否真的重要？</h3>
-      <p class="sub">Primary question: Does adaptive rhythm + AiAiQ&lt;10 feedback produce stronger session-related improvement than baseline rest, fixed rhythm, random rhythm, and yoked replay?</p>
-      <p class="cn sub">核心问题：自适应节律 + AiAiQ&lt;10 反馈是否比基线休息、固定节律、随机节律与 yoked replay 产生更强的 session-related improvement？</p>
-    </div>
-
-    <div class="card span-12">
-      <div class="eyebrow">EXPERIMENTAL CONDITIONS // 实验条件</div>
-      <table>
-        <thead><tr><th>Condition</th><th>What user receives / 用户收到什么</th><th>What it controls / 控制什么</th><th>Claim allowed / 允许的结论</th></tr></thead>
-        <tbody>
-          <tr><td><strong>A · Baseline Rest</strong><br>基线休息</td><td>Silence or neutral ambient sound, no AI feedback.</td><td>Natural recovery, regression to mean, simple rest.</td><td>Whether any session changes occur without HRP intervention.</td></tr>
-          <tr><td><strong>B · Fixed Rhythm</strong><br>固定节律</td><td>Same pre-selected rhythm for all participants or all sessions.</td><td>Effect of rhythm exposure without personalization.</td><td>Whether rhythm alone supports state change.</td></tr>
-          <tr><td><strong>C · Random Rhythm</strong><br>随机节律</td><td>Rhythm condition selected randomly, not based on state.</td><td>Novelty, aesthetic variation, random audio benefit.</td><td>Whether state-contingency matters.</td></tr>
-          <tr><td><strong>D · Adaptive + AiQ愛&lt;3</strong><br>自适应 + 稳定镜像</td><td>State sampling + rhythm recommendation + GPT/Claude stabilization mirror.</td><td>Effect of supportive reflective AI with adaptive rhythm.</td><td>Whether stabilization/mirror mode improves return-related measures.</td></tr>
-          <tr><td><strong>E · Adaptive + AiQ愛&lt;7</strong><br>自适应 + 扩展推理</td><td>State sampling + rhythm recommendation + Gemini/DeepSeek expansion/deep reasoning.</td><td>Effect of analysis/strategy mode with adaptive rhythm.</td><td>Whether different AI modes support different user states.</td></tr>
-          <tr><td><strong>F · Yoked Replay</strong><br>配对回放</td><td>Participant receives another participant’s adaptive sequence without live adaptation.</td><td>Separates true closed-loop contingency from good-looking adaptive sequences.</td><td>If live adaptive condition beats yoked replay, adaptation is more plausible.</td></tr>
-          <tr><td><strong>G · Expectation-Control Script</strong><br>期待控制</td><td>Same explanation style across all conditions; participants rate expected helpfulness.</td><td>Placebo / expectation effects.</td><td>Whether outcomes survive expectation adjustment.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card span-6">
-      <div class="eyebrow">MICRO-PILOT VERSION // 出发前最小版本</div>
-      <h3>N = 8–12 · within-subject</h3><h3 class="cn">N = 8–12 · 被试内设计</h3>
-      <p>Each participant completes 3–4 short sessions across different days or separated by washout breaks: A baseline, B fixed, C random, and D/E adaptive. If time is limited, yoked replay becomes a Phase 2 lab version.</p>
-      <p class="cn">每位参与者完成 3–4 个短 session，可跨天或中间加入 washout break：A 基线、B 固定、C 随机、D/E 自适应。如果时间有限，yoked replay 放到 Phase 2 实验室版本。</p>
-      <div class="lab-strip"><p><strong>Before Tokyo:</strong> focus on feasibility, completion, data export, and directional signal — not statistical proof.</p><p class="cn"><strong>东京前目标：</strong>证明可行、能完成、能导出数据、有方向性信号，不追求统计证明。</p></div>
-    </div>
-
-    <div class="card span-6">
-      <div class="eyebrow">LAB VERSION // 实验室加强版</div>
-      <h3>N = 20–30 · counterbalanced + physiology</h3><h3 class="cn">N = 20–30 · 平衡顺序 + 生理指标</h3>
-      <p>Tokyo labs can help implement counterbalancing, HRV/EDA, EEG/fNIRS, acoustic feature extraction, condition blinding, yoked replay, and mixed-effects analysis.</p>
-      <p class="cn">东京实验室可以帮助加入平衡顺序、HRV/EDA、EEG/fNIRS、声学特征提取、条件盲法、yoked replay 与 mixed-effects 分析。</p>
-      <div class="lab-strip"><p><strong>Collaboration ask:</strong> help convert web-based prototype into physiological/neural validation study.</p><p class="cn"><strong>合作请求：</strong>帮助把网页原型推进为生理/神经验证研究。</p></div>
-    </div>
-
-    <div class="card span-12">
-      <div class="eyebrow">COUNTERBALANCING // 顺序平衡</div>
-      <h3>Prevent condition order from becoming the result.</h3><h3 class="cn">防止实验顺序本身变成结果。</h3>
-      <table>
-        <thead><tr><th>Participant group</th><th>Session 1</th><th>Session 2</th><th>Session 3</th><th>Session 4</th></tr></thead>
-        <tbody>
-          <tr><td>Group 1</td><td>A Baseline</td><td>B Fixed</td><td>C Random</td><td>D/E Adaptive</td></tr>
-          <tr><td>Group 2</td><td>B Fixed</td><td>C Random</td><td>D/E Adaptive</td><td>A Baseline</td></tr>
-          <tr><td>Group 3</td><td>C Random</td><td>D/E Adaptive</td><td>A Baseline</td><td>B Fixed</td></tr>
-          <tr><td>Group 4</td><td>D/E Adaptive</td><td>A Baseline</td><td>B Fixed</td><td>C Random</td></tr>
-        </tbody>
-      </table>
-      <p class="cn sub">如果样本量很小，至少不要让所有人都按同一顺序完成实验；否则练习效应、疲劳和期待会污染结果。</p>
-    </div>
-
-    <div class="card span-12">
-      <div class="eyebrow">MEASURES + ANALYSIS // 指标与分析</div>
-      <table>
-        <thead><tr><th>Layer</th><th>Measures / 指标</th><th>Analysis / 分析</th><th>Safe interpretation / 安全解释</th></tr></thead>
-        <tbody>
-          <tr><td>Subjective</td><td>pre/post focus, emotion, body tension, inner noise, task readiness, return-to-self</td><td>pre-post difference by condition; effect size; individual trajectories</td><td>Session-related subjective change, not treatment efficacy.</td></tr>
-          <tr><td>Behavioral</td><td>reaction time, accuracy, missed trials, false alarms, reaction variability</td><td>compare pre/post and condition differences; adjust for practice effect</td><td>Behavioral feasibility signal, not proof of neural mechanism.</td></tr>
-          <tr><td>Expectation</td><td>expectation_rating, condition_guess, music_preference_rating, ai_helpfulness_rating</td><td>check whether outcomes are explained by expectation or preference</td><td>Controls placebo, demand characteristics, and aesthetic preference.</td></tr>
-          <tr><td>Physiology</td><td>HRV, heart rate, EDA, respiration</td><td>within-session change and correlation with subjective/behavioral change</td><td>Physiological proxy, not neural proof.</td></tr>
-          <tr><td>Neural</td><td>EEG alpha/theta/beta, fNIRS prefrontal oxygenation</td><td>lab-led pre-registered analysis</td><td>Only after direct measurement can neural hypotheses be discussed.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card span-6">
-      <div class="eyebrow">FALSIFICATION // 如何证伪</div>
-      <h3>What would weaken HRP?</h3><h3 class="cn">什么结果会削弱 HRP？</h3>
-      <p>If adaptive conditions do not outperform fixed, random, baseline, or yoked replay; if users cannot understand the system; if expectation ratings explain all gains; if AI mode adds confusion or dependency; or if physiological/neural measures do not converge in lab studies, the model must be revised.</p>
-      <p class="cn">如果自适应条件不优于固定、随机、基线或配对回放；如果用户无法理解系统；如果期待评分解释所有改善；如果 AI 模式增加混乱或依赖；或实验室生理/神经指标不收敛，则模型必须修改。</p>
-    </div>
-
-    <div class="card span-6">
-      <div class="eyebrow">REPORTING RULE // 如何汇报</div>
-      <h3>No hype, no clinical language.</h3><h3 class="cn">不夸大，不使用临床语言。</h3>
-      <p>Report micro-pilot results as exploratory, non-clinical, not statistically conclusive. Use language such as “associated with,” “session-related change,” “feasibility signal,” and “requires lab validation.”</p>
-      <p class="cn">Micro-pilot 结果必须写成探索性、非临床、非统计定论。使用 “associated with”、“session-related change”、“feasibility signal”、“requires lab validation” 等表达。</p>
-    </div>
-  </div>
-</section>
+    <section id="aiq">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">07 // AiAiQ&lt;10 OPERATING PORTAL</div>
+          <h2>AI is the interaction layer, not the scientific proof.</h2>
+          <h2 class="cn">AI 是交互层，不是科学证明本身。</h2>
+          <p class="sub">AiAiQ&lt;10 integrates AiQ愛&lt;3 and AiQ愛&lt;7 as distinct interaction modes inside HRP. It supports state sampling, reflective feedback, rhythm recommendation, project reasoning, and pilot logging. It does not replace experimental data.</p>
+          <p class="sub cn">AiAiQ&lt;10 将 AiQ愛&lt;3 与 AiQ愛&lt;7 作为 HRP 的不同交互模式整合。它支持状态采样、反思反馈、节律推荐、项目推理与 pilot 记录，但不替代实验数据。</p>
+        </div>
+        <div class="card span-6">
+          <div class="num">AiQ愛&lt;3</div>
+          <h3>GPT + Claude / Stabilization + Mirror</h3>
+          <h3 class="cn">GPT + Claude / 稳定 + 镜像</h3>
+          <p>Low-bandwidth support for fragmented states: emotional pacing, reflective mirror, human return, safety language.</p>
+          <p class="cn">面向碎裂状态的低带宽支持：情绪定速、反思镜像、人类返回、安全语言。</p>
+        </div>
+        <div class="card span-6">
+          <div class="num">AiQ愛&lt;7</div>
+          <h3>Gemini + DeepSeek / Expansion + Deep Reasoning</h3>
+          <h3 class="cn">Gemini + DeepSeek / 扩展 + 深层推理</h3>
+          <p>High-bandwidth support for strategic reasoning, project propulsion, critique, and scientific boundary checking.</p>
+          <p class="cn">面向战略推理、项目推进、反证审查与科学边界校验的高带宽支持。</p>
+        </div>
+      </div>
+    </section>
 
 
-<section id="validation">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">VALIDATION PLAN // UX + SCIENTIFIC TESTING</div><h2>Design validation before neural validation.</h2><h2 class="cn">先做设计验证，再做神经验证。</h2><p class="sub">The validation pathway separates user need, interface comprehension, behavioral change, physiological proxy, and neural mechanism. This prevents AI output or aesthetic strength from being mistaken for scientific evidence.</p><p class="cn sub">验证路径将用户需求、界面理解、行为变化、生理代理指标与神经机制分开，避免把 AI 输出或美学强度误认为科学证据。</p></div>
-    <div class="card span-12"><table><thead><tr><th>Phase</th><th>Goal</th><th>N</th><th>Metrics</th><th>Failure / revision condition</th></tr></thead><tbody><tr><td>Phase 0 · Usability</td><td>Can users understand and complete the flow?</td><td>3–5</td><td>completion rate, confusion rating, time to understand</td><td>users cannot explain HRP back in one sentence</td></tr><tr><td>Phase 1 · Pain validation</td><td>Are pain points real and accurately framed?</td><td>5–8</td><td>interview themes, resonance, missing pain points</td><td>users do not recognize the pain points</td></tr><tr><td>Phase 2 · Micro-pilot</td><td>Does adaptive rhythm + AI show session-related signal?</td><td>8–12</td><td>pre/post focus, emotion, inner noise, task readiness, reaction task</td><td>adaptive condition does not differ from fixed/random</td></tr><tr><td>Phase 3 · Lab collaboration</td><td>Physiological / neural validation</td><td>20–30</td><td>HRV, EDA, EEG, fNIRS, acoustic features</td><td>no convergent behavioral/physiological/neural pattern</td></tr></tbody></table></div>
-    <div class="card span-12"><div class="eyebrow">A/B/C/D EXPERIMENTAL CONDITIONS</div><div class="loop"><div class="loop-item"><div class="num">A</div><h3>Baseline</h3><p>silence or ambient sound</p><p class="cn">静音或环境声</p></div><div class="loop-item"><div class="num">B</div><h3>Fixed rhythm</h3><p>matched fixed auditory condition</p><p class="cn">固定声音节律</p></div><div class="loop-item"><div class="num">C</div><h3>Random rhythm</h3><p>non-contingent random rhythm</p><p class="cn">非状态相关随机节律</p></div><div class="loop-item"><div class="num">D</div><h3>Adaptive + AiAiQ&lt;10</h3><p>state sampling + AI mode + rhythm recommendation</p><p class="cn">状态采样 + AI 模式 + 节律推荐</p></div></div></div>
-    <div class="card span-12"><div class="eyebrow">SCIENTIFIC BOUNDARY // 科学边界</div><p class="sub">HRP / AiAiQ&lt;10 is not a medical treatment, not a diagnosis tool, not a validated BCI, and not proof of neural regulation. It is a falsifiable adaptive auditory-AI research prototype with a planned validation pathway through self-report, behavior, physiology, and future neural measures.</p><p class="cn sub">HRP / AiAiQ&lt;10 不是医学治疗、不是诊断工具、不是已验证 BCI，也不是神经调节已被证明的证据。它是一个可证伪的自适应声音-AI 研究原型，验证路径包括自评、行为、生理与未来神经指标。</p><p class="jp sub">HRP / AiAiQ&lt;10 は医療・診断・検証済み BCI ではなく、神経調整の証明でもありません。自己報告、行動、生理、将来的な神経指標によって検証される研究プロトタイプです。</p></div>
-  </div>
-</section>
+    <section id="music">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">08 // EXPANDED MUSIC DESIGN // SOUND SAMPLING × CUFF PHYSIOLOGY</div>
+          <h2>Music is the adaptive intervention layer between body signal and human return.</h2>
+          <h2 class="cn">音乐是身体信号与人类返回之间的自适应干预层。</h2>
+          <p class="sub">
+            In BCI-HRP, music is not background ambience. It is the controllable auditory stimulus layer: BPM, syncopation, spectral density, repetition, timbre, amplitude modulation, and dynamic range are sampled as experimental variables and mapped to user state, AI feedback, and cuff-based physiological sensing.
+          </p>
+          <p class="sub cn">
+            在 BCI-HRP 中，音乐不是背景氛围，而是可控制的声音刺激层：BPM、切分深度、频谱密度、重复度、音色、振幅调制与动态范围都会被采样为实验变量，并映射到用户状态、AI 反馈与袖环生理传感。
+          </p>
+          <div class="tag-row">
+            <span class="tag">AUDITORY INTERVENTION</span>
+            <span class="tag">MUSIC SAMPLING</span>
+            <span class="tag">CUFF PHYSIOLOGY</span>
+            <span class="tag">HRV / EDA / TEMP / IMU</span>
+            <span class="tag">ADAPTIVE FEEDBACK</span>
+          </div>
+        </div>
 
-<section id="micro-pilot">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">MICRO-PILOT DATA CAPTURE // 最小数据采集</div><h2>Generate the first evidence layer.</h2><h2 class="cn">生成第一层证据。</h2><p class="sub">Use this lightweight form to collect non-clinical exploratory session data before Tokyo meetings. Exported CSV can be placed back into the validation page as “Informal Micro-Pilot · Exploratory, non-clinical, not statistically conclusive.”</p><p class="cn sub">在东京会谈前，用这个轻量表单收集非临床探索性 session 数据。导出的 CSV 可作为 “Informal Micro-Pilot · exploratory, non-clinical, not statistically conclusive” 放回验证页。</p></div>
-    <div class="card span-12"><div class="form-grid"><label>participant_id<input id="participant_id" value="P001"></label><label>session_id<input id="session_id" value="S001"></label><label>condition<select id="condition"><option>D_adaptive</option><option>A_baseline</option><option>B_fixed</option><option>C_random</option></select></label><label>ai_mode<select id="ai_mode"><option>AiQ愛<3</option><option>AiQ愛<7</option><option>none</option></select></label><label>audio_condition<input id="audio_condition" value="ambient-techno-427hz"></label><label>pre_focus<input id="pre_focus" type="number" min="1" max="7" value="3"></label><label>pre_emotion<input id="pre_emotion" type="number" min="1" max="7" value="6"></label><label>pre_inner_noise<input id="pre_inner_noise" type="number" min="1" max="7" value="6"></label><label>post_focus<input id="post_focus" type="number" min="1" max="7" value="5"></label><label>post_emotion<input id="post_emotion" type="number" min="1" max="7" value="4"></label><label>post_inner_noise<input id="post_inner_noise" type="number" min="1" max="7" value="3"></label><label>return_to_self<input id="return_to_self" type="number" min="1" max="7" value="5"></label><label>task_accuracy<input id="task_accuracy" value="0.82"></label><label>reaction_time<input id="reaction_time" value="540"></label><label>missed_trials<input id="missed_trials" type="number" value="2"></label><label>expectation_rating<input id="expectation_rating" type="number" min="1" max="7" value="4"></label></div><label style="margin-top:12px">user_note<textarea id="user_note">The rhythm made it easier to start without forcing focus.</textarea></label><div class="actions"><button class="button" onclick="addRow()">Add row</button><button class="button" onclick="downloadCSV()">Export CSV</button><button class="button" onclick="clearRows()">Clear</button></div><pre id="csvout" class="csvbox">No rows yet.</pre></div>
-  </div>
-</section>
+        <div class="card span-12">
+          <div class="eyebrow">LIVE SAMPLING MAP // 动态采样解释</div>
+          <div class="music-lab-grid">
+            <div class="music-sampling-stage">
+              <canvas id="musicSamplingCanvas"></canvas>
+              <div class="music-core-orb">
+                <span id="musicOrbLabel">BREAKBEATS<br><small>BODY ENTRY</small></span>
+              </div>
+              <div class="music-ring-label ring-bpm">BPM / TEMPO<small id="ringBpm">132–150</small></div>
+              <div class="music-ring-label ring-sync">SYNCOPATION<small id="ringSync">high / irregular</small></div>
+              <div class="music-ring-label ring-body">BODY RESPONSE<small id="ringBody">anti-dissociation</small></div>
+              <div class="music-ring-label ring-cuff">CUFF SIGNAL<small id="ringCuff">HRV + IMU shift</small></div>
+            </div>
 
-<section id="tokyo">
-  <div class="grid"><div class="card neon span-12"><div class="eyebrow">TOKYO COLLABORATION ASK // 東京共同研究依頼</div><h2>What we ask labs to help validate.</h2><h2 class="cn">我们希望实验室帮助验证什么。</h2><p class="sub">We are seeking BCI / NeuroAI / neuroscience / HCI / music technology collaborators for protocol feedback, sham-controlled design, EEG/fNIRS/HRV/EDA validation, acoustic feature operationalization, wearable sensing layer development, and exploratory pilot collaboration.</p><p class="cn sub">我们正在寻找 BCI / NeuroAI / 神经科学 / HCI / 音乐科技合作方，协助 protocol feedback、sham-controlled design、EEG/fNIRS/HRV/EDA 验证、声学特征操作化、可穿戴传感层开发与探索性 pilot 合作。</p><p class="jp sub">東京の BCI・NeuroAI・神経科学・HCI 研究室に、実験設計、EEG/fNIRS/HRV/EDA 検証、音響特徴分析、ウェアラブル sensing layer、pilot collaboration への協力を求めています。</p><div class="tag-row"><span class="tag green">UTokyo IRCN</span><span class="tag green">RIKEN CBS</span><span class="tag green">ARAYA</span><span class="tag green">NTT CS Labs</span><span class="tag green">Keio BMI</span><span class="tag green">ATR / CiNet</span><span class="tag green">Sony CSL</span></div></div>
-    <div class="card span-6"><div class="eyebrow">MEETING POSITION</div><h3>What to say</h3><p>“I have built the user-centered design research framing, interaction prototype, AI feedback layer, and falsifiable validation pathway. I am seeking collaboration to move HRP from web-based micro-pilot into physiological and neural validation.”</p><p class="cn">“我已经完成用户中心设计研究框架、交互原型、AI反馈层与可证伪验证路径。现在希望与实验室合作，把 HRP 从网页 micro-pilot 推进到生理与神经验证。”</p></div>
-    <div class="card span-6"><div class="eyebrow">DO NOT SAY</div><h3>Boundary discipline</h3><p>Do not say HRP is already a BCI, a treatment, or proven neural regulation. Say it is a falsifiable research prototype with a validation pathway.</p><p class="cn">不要说 HRP 已经是脑机、治疗工具或已证明神经调节。要说它是有验证路径的可证伪研究原型。</p></div>
-  </div>
-</section>
-</main>
-<script>
-const canvas=document.getElementById('field'),ctx=canvas.getContext('2d');let w,h,particles,mouse={x:.5,y:.5};function resize(){w=canvas.width=innerWidth*devicePixelRatio;h=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';particles=Array.from({length:Math.min(250,Math.floor(innerWidth/5))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.4,a:Math.random()*Math.PI*2,s:Math.random()*.36+.08,o:Math.random()*.55+.22,type:Math.random()>.7?'line':'dot'}))}function draw(){ctx.clearRect(0,0,w,h);const scroll=scrollY/Math.max(1,document.body.scrollHeight-innerHeight);for(const p of particles){p.a+=p.s*.012;p.x+=Math.cos(p.a)*(.24+scroll*1.1)+(mouse.x-.5)*.28;p.y+=Math.sin(p.a)*(.24+scroll*1.1)+(mouse.y-.5)*.28;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;const hue=p.type==='line'?310+scroll*30:185+scroll*80;ctx.beginPath();if(p.type==='line'){ctx.moveTo(p.x,p.y);ctx.lineTo(p.x+Math.cos(p.a)*26*devicePixelRatio,p.y+Math.sin(p.a)*26*devicePixelRatio);ctx.strokeStyle=`hsla(${hue},100%,68%,${p.o})`;ctx.lineWidth=.7*devicePixelRatio;ctx.stroke()}else{ctx.arc(p.x,p.y,p.r*devicePixelRatio,0,Math.PI*2);ctx.fillStyle=`hsla(${hue},100%,70%,${p.o})`;ctx.fill()}}requestAnimationFrame(draw)}addEventListener('resize',resize);addEventListener('mousemove',e=>{mouse.x=e.clientX/innerWidth;mouse.y=e.clientY/innerHeight});resize();draw();
-let rows=[];const fields=['timestamp','participant_id','session_id','condition','ai_mode','audio_condition','pre_focus','pre_emotion','pre_inner_noise','post_focus','post_emotion','post_inner_noise','return_to_self','task_accuracy','reaction_time','missed_trials','expectation_rating','user_note'];function esc(v){return '"'+String(v??'').replaceAll('"','""')+'"'}function renderCSV(){const csv=[fields.join(',')].concat(rows.map(r=>fields.map(f=>esc(r[f])).join(','))).join('\n');document.getElementById('csvout').textContent=rows.length?csv:'No rows yet.';return csv}function addRow(){const r={timestamp:new Date().toISOString()};for(const f of fields){if(f==='timestamp')continue;const el=document.getElementById(f);r[f]=el?el.value:''}rows.push(r);renderCSV()}function clearRows(){rows=[];renderCSV()}function downloadCSV(){const csv=renderCSV();const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hrp_micro_pilot.csv';a.click();URL.revokeObjectURL(a.href)}
-</script>
+            <div>
+              <div class="eyebrow">SELECT A SOUND PROTOCOL // 选择声音协议</div>
+              <div class="music-control-panel">
+                <button class="music-mode-btn active" data-music="breakbeats">Breakbeats / 碎拍</button>
+                <button class="music-mode-btn" data-music="hyperpop">Hyperpop / 超流行</button>
+                <button class="music-mode-btn" data-music="synthpop">Synthpop / 合成流行</button>
+                <button class="music-mode-btn" data-music="driftphonk">Drift Phonk / 漂移 Phonk</button>
+                <button class="music-mode-btn" data-music="darkwave">Darkwave / 暗潮</button>
+                <button class="music-mode-btn" data-music="ambient">Ambient Techno / 氛围科技舞曲</button>
+                <button class="music-mode-btn" data-music="anchor427">427Hz Anchor / 427Hz 锚点</button>
+              </div>
+
+              <div style="margin-top:22px;">
+                <div id="musicTitle" class="music-output-title">Breakbeats</div>
+                <p id="musicDesc">
+                  Breakbeats act as the entry language for high-density perception: irregular hits train uncertainty tolerance, interrupt dissociation, and help the body re-enter flexible timing.
+                </p>
+                <p id="musicDescCn" class="cn">
+                  碎拍是高密度感知系统的入口语言：不规则打击训练不确定性承受，打断解离，并帮助身体重新进入灵活时间。
+                </p>
+              </div>
+
+              <div class="music-param-grid">
+                <div class="param-card"><strong>BPM RANGE</strong><p id="paramBpm">132–150</p><div class="meter"><span id="meterBpm" style="--w:74%"></span></div></div>
+                <div class="param-card"><strong>SPECTRAL DENSITY</strong><p id="paramDensity">medium-high</p><div class="meter"><span id="meterDensity" style="--w:70%"></span></div></div>
+                <div class="param-card"><strong>REPETITION</strong><p id="paramRepeat">broken loop</p><div class="meter"><span id="meterRepeat" style="--w:46%"></span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">CUFF BRIDGE // 音乐如何由 44271 Neural Cuff 承接</div>
+          <h2>From physiological signal to music prescription to return feedback.</h2>
+          <h2 class="cn">从生理信号到音乐处方，再到返回反馈。</h2>
+          <div class="cuff-bridge">
+            <div class="bridge-step">
+              <div class="num">01</div>
+              <h3>Detect</h3>
+              <h3 class="cn">检测</h3>
+              <p>44271 Cuff reads HRV, EDA, temperature drift, and micro-motion.</p>
+              <p class="cn">44271 袖环读取 HRV、皮肤电、温度漂移与微运动。</p>
+            </div>
+            <div class="bridge-step">
+              <div class="num">02</div>
+              <h3>Infer</h3>
+              <h3 class="cn">推断</h3>
+              <p>QDR estimates rhythm state: drift, overload, freeze, flow, recovery.</p>
+              <p class="cn">QDR 推断节律状态：漂移、过载、冻结、入流、恢复。</p>
+            </div>
+            <div class="bridge-step">
+              <div class="num">03</div>
+              <h3>Prescribe</h3>
+              <h3 class="cn">处方</h3>
+              <p>Sound matrix selects genre profile, BPM, syncopation, density, and anchor.</p>
+              <p class="cn">声音矩阵选择类型、BPM、切分深度、密度与锚点。</p>
+            </div>
+            <div class="bridge-step">
+              <div class="num">04</div>
+              <h3>Return</h3>
+              <h3 class="cn">返回</h3>
+              <p>App plays sound; cuff sends pulse-side haptic cue; AiAiQ&lt;10 mirrors state.</p>
+              <p class="cn">App 播放声音；袖环发送脉侧触觉提示；AiAiQ&lt;10 镜像状态。</p>
+            </div>
+            <div class="bridge-step">
+              <div class="num">05</div>
+              <h3>Measure</h3>
+              <h3 class="cn">测量</h3>
+              <p>Pre/post state and physiology are logged for validation.</p>
+              <p class="cn">前后测状态与生理信号被记录用于验证。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">PHYSIOLOGICAL DETECTION MATRIX // 生理数据检测矩阵</div>
+          <h2>What the cuff detects and how music adapts.</h2>
+          <h2 class="cn">袖环检测什么，以及音乐如何自适应。</h2>
+          <table class="table sampling-table">
+            <thead>
+              <tr>
+                <th>Signal / 信号</th>
+                <th>What it may indicate / 可能指示</th>
+                <th>Music response / 音乐响应</th>
+                <th>Scientific boundary / 科学边界</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>HRV</td>
+                <td>Autonomic regulation, stress recovery, rhythm stability.<br>自主神经调节、压力恢复、节律稳定度。</td>
+                <td>Low HRV + high pressure → Ambient Techno / Darkwave / 427Hz anchor for down-regulation.<br>HRV 偏低且压强高 → 氛围科技舞曲 / 暗潮 / 427Hz 锚点用于降载。</td>
+                <td>HRV is proxy, not direct emotion reading.<br>HRV 是代理指标，不是直接读情绪。</td>
+              </tr>
+              <tr>
+                <td>EDA / Skin Conductance</td>
+                <td>Arousal pressure, sympathetic activation.<br>唤醒压强、交感激活。</td>
+                <td>Rising EDA → reduce spectral density, lower tempo, soften transient sharpness.<br>EDA 上升 → 降低频谱密度、降低速度、柔化瞬态。</td>
+                <td>EDA cannot identify cause of arousal alone.<br>EDA 不能单独判断唤醒原因。</td>
+              </tr>
+              <tr>
+                <td>Skin Temperature</td>
+                <td>Thermal drift, fatigue, stress response, peripheral regulation.<br>热漂移、疲惫、压力反应、外周调节。</td>
+                <td>Cooling / drift pattern → slower anchor, less aggressive rhythm, more spatial pad.<br>降温/漂移模式 → 更慢锚点、更少攻击性节奏、更多空间铺底。</td>
+                <td>Temperature is slow and context-sensitive.<br>温度变化慢且受环境影响。</td>
+              </tr>
+              <tr>
+                <td>IMU / Micro-motion</td>
+                <td>Restlessness, freeze, fidgeting, transition difficulty.<br>不安、冻结、小动作、转换困难。</td>
+                <td>High restless motion → Breakbeats for flexible entry; low motion + low readiness → Drift Phonk / Synthpop activation.<br>微运动不安 → 碎拍进入；低动作低准备度 → Drift Phonk / Synthpop 激活。</td>
+                <td>Motion is behavioral context, not diagnosis.<br>动作是行为语境，不是诊断。</td>
+              </tr>
+              <tr>
+                <td>Self-report + AiAiQ&lt;10</td>
+                <td>Subjective state texture: focus, emotion, body tension, inner noise.<br>主观状态质地：注意、情绪、身体紧绷、内在噪音。</td>
+                <td>Combines user-declared state with physiological proxies to choose sound protocol.<br>结合用户自述状态与生理代理信号选择声音协议。</td>
+                <td>User remains final authority; AI is support layer.<br>用户保留最终解释权；AI 是支持层。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">GENRE PROFILES // 声音类型与采样参数</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Genre / 类型</th>
+                <th>Sampling Variables / 采样变量</th>
+                <th>State Target / 状态目标</th>
+                <th>Cuff Trigger / 袖环触发</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Breakbeats<br>碎拍</td><td>BPM 132–150, high syncopation, irregular hits, medium-high density.</td><td>Uncertainty tolerance, anti-dissociation, flexible re-entry.<br>不确定性承受、反解离、灵活返回。</td><td>High IMU restlessness + fragmented focus.<br>高微运动 + 注意力碎裂。</td></tr>
+              <tr><td>Hyperpop<br>超流行</td><td>BPM 150–175, high spectral density, bright transient, controlled overload.</td><td>Peak traversal, intensity permission, safe apex then descent.<br>峰值穿越、强度许可、安全抵达再下降。</td><td>High arousal with high readiness, not freeze.<br>高唤醒且高准备度，非冻结。</td></tr>
+              <tr><td>Synthpop<br>合成流行</td><td>BPM 95–125, stable 4/4, melodic predictability, vocal warmth.</td><td>First breath, emotional narrative access, social safety.<br>第一口呼吸、情绪叙事入口、社交安全感。</td><td>EDA decreasing + task readiness emerging.<br>EDA 下降 + 任务准备度出现。</td></tr>
+              <tr><td>Drift Phonk<br>漂移 Phonk</td><td>BPM 120–160, heavy kick, cowbell pulse, strong low-frequency drive.</td><td>Embodiment, somatic activation, physical drive.<br>具身、身体激活、物理驱动。</td><td>Low motion + low energy + low task readiness.<br>低动作 + 低能量 + 低任务准备度。</td></tr>
+              <tr><td>Darkwave<br>暗潮</td><td>BPM 70–110, minor mode, deep reverb, low spectral glare.</td><td>Shadow integration, controlled descent, mourning regulation.<br>阴影整合、可控下降、哀悼调节。</td><td>High emotional intensity + need for down-regulation.<br>高情绪强度 + 需要下降调节。</td></tr>
+              <tr><td>Ambient Techno<br>氛围科技舞曲</td><td>BPM 105–130, minimal pulse, atmospheric pad, low surprise.</td><td>Spatial focus, environmental regulation, flow infrastructure.<br>空间专注、环境调节、心流基础设施。</td><td>Moderate arousal + need for sustained focus.<br>中等唤醒 + 需要持续专注。</td></tr>
+              <tr><td>427Hz Anchor<br>427Hz 锚点</td><td>Anchor tone, low modulation, stable reference layer.</td><td>System coherence, return marker, transition closure.<br>系统一致性、返回标记、转换闭合。</td><td>End of session, overload cooling, post-intervention stabilization.<br>session 结束、过载冷却、干预后稳定。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="prototypes">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">09 // FULL PROTOTYPE STACK // 全部原型栈</div>
+          <h2>Everything valuable from BCI, reorganized for lab review.</h2>
+          <h2 class="cn">把 BCI 中有价值的内容重组为实验室可审阅原型栈。</h2>
+        </div>
+        <div class="card span-4"><h3>1 · Lab Portal</h3><p>Professional collaboration-facing research site.</p><p class="cn">面向合作实验室的专业研究入口。</p></div>
+        <div class="card span-4"><h3>2 · UX Research Case</h3><p>Empathize, Define, HMW, Journey Map, Ideation, Testing.</p><p class="cn">共情、定义、HMW、用户旅程、构思、测试。</p></div>
+        <div class="card span-4"><h3>3 · AiAiQ&lt;10 Portal</h3><p>Dual AI operating layer: AiQ愛&lt;3 / AiQ愛&lt;7.</p><p class="cn">双 AI 操作层：AiQ愛&lt;3 / AiQ愛&lt;7。</p></div>
+        <div class="card span-4"><h3>4 · QDR Engine</h3><p>Auditable state-to-feedback logic.</p><p class="cn">可审计的状态到反馈逻辑。</p></div>
+        <div class="card span-4"><h3>5 · Human Return App Flow</h3><p>Dashboard, protocol, reflection log, personal rhythm map.</p><p class="cn">仪表盘、协议、反思记录、个人节律图谱。</p></div>
+        <div class="card span-4"><h3>6 · 44271 Neural Cuff</h3><p>Planned wearable sensing + haptic return layer.</p><p class="cn">计划中的可穿戴传感 + 触觉返回层。</p></div>
+        <div class="card span-4"><h3>7 · Sound Matrix</h3><p>Operational genre-driven intervention profiles.</p><p class="cn">可操作的类型驱动声音干预剖面。</p></div>
+        <div class="card span-4"><h3>8 · 2-Min Task</h3><p>Rhythm-gated target detection task for attention proxy.</p><p class="cn">用于注意力代理指标的节律门控目标检测任务。</p></div>
+        <div class="card span-4"><h3>9 · Data Export</h3><p>CSV schema for micro-pilot and lab extension.</p><p class="cn">用于 micro-pilot 与实验室扩展的 CSV 数据结构。</p></div>
+      </div>
+    </section>
+
+    <section id="experiment">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">10 // CONTROLLED EXPERIMENT DESIGN // 对照实验设计</div>
+          <h2>From strong concept to falsifiable study.</h2>
+          <h2 class="cn">从强概念进入可证伪研究。</h2>
+          <p class="sub">The controlled design separates natural recovery, fixed-rhythm effects, random novelty, adaptive contingency, AI mode effects, and expectation/placebo effects.</p>
+          <p class="sub cn">该对照设计区分自然恢复、固定节律效果、随机新奇效应、自适应条件性、AI 模式影响与期待/placebo 效应。</p>
+        </div>
+        <div class="card span-12">
+          <table class="table">
+            <thead><tr><th>Condition</th><th>Purpose</th><th>What it controls</th></tr></thead>
+            <tbody>
+              <tr><td>A · Baseline Rest<br>A · 基线休息</td><td>Silence or neutral ambient sound.</td><td>Natural recovery / regression to mean.</td></tr>
+              <tr><td>B · Fixed Rhythm<br>B · 固定节律</td><td>One pre-selected sound profile.</td><td>Generic rhythm effect.</td></tr>
+              <tr><td>C · Random Rhythm<br>C · 随机节律</td><td>Non-state-contingent random sound profile.</td><td>Novelty and variety effect.</td></tr>
+              <tr><td>D · Adaptive + AiQ愛&lt;3<br>D · 自适应 + AiQ愛&lt;3</td><td>Stabilization / mirror feedback.</td><td>Low-bandwidth reflective AI support.</td></tr>
+              <tr><td>E · Adaptive + AiQ愛&lt;7<br>E · 自适应 + AiQ愛&lt;7</td><td>Expansion / deep reasoning feedback.</td><td>High-bandwidth reasoning support.</td></tr>
+              <tr><td>F · Yoked Replay<br>F · 配对回放</td><td>Replay another session’s adaptive sequence.</td><td>True adaptation vs. sequence exposure.</td></tr>
+              <tr><td>G · Expectation-Control Script<br>G · 期待控制脚本</td><td>Standardized neutral explanation.</td><td>Demand characteristics / placebo expectation.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="micro-pilot">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">11 // MICRO-PILOT DATA CAPTURE // 微型试验数据采集</div>
+          <h2>Tokyo-before data: N=8–12, exploratory, non-clinical.</h2>
+          <h2 class="cn">东京前数据：N=8–12，探索性、非临床。</h2>
+          <p class="sub">This form is a local mockup for the exact data schema to be used before lab collaboration. It records subjective pre/post state, AI mode, audio condition, behavioral proxy outcomes, and notes. Exportable CSV is the minimum credibility threshold.</p>
+          <p class="sub cn">该表单是实验室合作前可用的数据结构模拟，记录前后测主观状态、AI 模式、声音条件、行为代理结果与备注。可导出 CSV 是最低可信度门槛。</p>
+        </div>
+        <div class="card span-12">
+          <form class="mini-form" id="pilotForm">
+            <label>Participant ID<input name="participant_id" placeholder="P001"></label>
+            <label>Session ID<input name="session_id" placeholder="S001"></label>
+            <label>Condition<select name="condition"><option>A_baseline</option><option>B_fixed</option><option>C_random</option><option>D_adaptive_aiq3</option><option>E_adaptive_aiq7</option><option>F_yoked_replay</option></select></label>
+            <label>AI Mode<select name="ai_mode"><option>none</option><option>AiQ愛<3</option><option>AiQ愛<7</option><option>AiAiQ<10</option></select></label>
+            <label>Audio Condition<input name="audio_condition" placeholder="Breakbeats / Ambient / 427Hz"></label>
+            <label>Pre Focus<input name="pre_focus" type="number" min="1" max="7"></label>
+            <label>Pre Emotion<input name="pre_emotion" type="number" min="1" max="7"></label>
+            <label>Pre Inner Noise<input name="pre_inner_noise" type="number" min="1" max="7"></label>
+            <label>Post Focus<input name="post_focus" type="number" min="1" max="7"></label>
+            <label>Post Emotion<input name="post_emotion" type="number" min="1" max="7"></label>
+            <label>Post Inner Noise<input name="post_inner_noise" type="number" min="1" max="7"></label>
+            <label>Return Score<input name="return_to_self_score" type="number" min="1" max="7"></label>
+            <label>Accuracy<input name="task_accuracy" placeholder="0.86"></label>
+            <label>Reaction Time<input name="reaction_time" placeholder="520ms"></label>
+            <label>Missed Trials<input name="missed_trials" type="number"></label>
+            <label>Expectation Rating<input name="expectation_rating" type="number" min="1" max="7"></label>
+            <label>Confusion Rating<input name="confusion_rating" type="number" min="1" max="7"></label>
+            <label>Adverse Event<select name="adverse_event"><option>none</option><option>mild_discomfort</option><option>headache</option><option>anxiety_increase</option><option>other</option></select></label>
+            <label>User Note<textarea name="user_note" placeholder="Short qualitative note"></textarea></label>
+          </form>
+          <div class="hero-actions"><button class="button primary" onclick="exportCSV()">EXPORT CSV</button><button class="button" onclick="document.getElementById('pilotForm').reset()">RESET</button></div>
+          <pre id="csvOut" style="white-space:pre-wrap;color:var(--green);font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.22);border:1px solid rgba(0,245,255,.16);border-radius:18px;padding:18px;overflow:auto;margin-top:18px;"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="claude">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">12 // CLAUDE MIRROR LAYER // 00–10 THEORY STACK</div>
+          <h2>Preserved from the original BCI: the deep mirror layer.</h2>
+          <h2 class="cn">从原 BCI 保留：深层镜像层。</h2>
+        </div>
+        <div class="span-12 accordion">
+          <details open><summary><div class="num">00</div><div><h3>Overview Map / 总览地图</h3><p>HRP is a complete human rhythm-return system, not merely an app, device, or therapy concept.</p><p class="cn">HRP 是完整的人类节律返回系统，不是单一 App、硬件或治疗概念。</p></div></summary><div class="details-body"><p>Historical significance: HRP moves technology away from optimizing human output and toward helping humans perceive, protect, regulate, and return to their own rhythm.</p><p class="cn">历史意义：HRP 把技术从优化人类输出转向帮助人重新感知、保护、调节并返回自身节律。</p></div></details>
+          <details><summary><div class="num">01</div><div><h3>Philosophical Foundation / 哲学基础</h3><p>Qualia before cognition; rhythm sovereignty; embodied time.</p><p class="cn">认知之前的感质；节律主权；具身时间。</p></div></summary><div class="details-body"><p>QDR does not solve the hard problem. It designs a system that samples, responds to, and protects first-person qualia.</p><p class="cn">QDR 不解决意识难问题，而是设计一个采样、回应、保护第一人称感质的系统。</p></div></details>
+          <details><summary><div class="num">02</div><div><h3>System Architecture / 系统架构</h3><p>Every arrow is a translation; every translation is a risk point.</p><p class="cn">每个箭头都是一次转译，每次转译都是一个风险点。</p></div></summary><div class="details-body"><p>Physiological signal to rhythm state must be framed as probabilistic inference, not mind-reading.</p><p class="cn">从生理信号到节律状态必须是概率推断，不是读心。</p></div></details>
+          <details><summary><div class="num">03</div><div><h3>Hardware Logic / 硬件逻辑</h3><p>Inner wrist, pulse line, no watch face.</p><p class="cn">内腕、脉搏线、无表盘。</p></div></summary><div class="details-body"><p>The cuff is a private interface, not a productivity watch.</p><p class="cn">袖环是私密界面，不是生产力手表。</p></div></details>
+          <details><summary><div class="num">04</div><div><h3>QDR Framework / QDR 框架</h3><p>Pain is not malfunction; pain is rhythm information.</p><p class="cn">痛苦不是故障，痛苦是节律信息。</p></div></summary><div class="details-body"><p>Five steps: sample, locate, de-bind, re-tune, minimum action.</p><p class="cn">五步：采样、定位、松动、重调、最小行动。</p></div></details>
+          <details><summary><div class="num">05</div><div><h3>Research Positioning / 研究定位</h3><p>Learning Sciences + HCI + Sound + AI.</p><p class="cn">学习科学 + HCI + 声音 + AI。</p></div></summary><div class="details-body"><p>HRP can be framed as Rhythm-Regulated Learning.</p><p class="cn">HRP 可被定位为节律调节学习。</p></div></details>
+          <details><summary><div class="num">06</div><div><h3>Internal Tensions / 内在张力</h3><p>External BCI support vs. internal rhythm sovereignty.</p><p class="cn">外部 BCI 支持与内部节律主权之间的张力。</p></div></summary><div class="details-body"><p>The system must be scaffold, not permanent authority.</p><p class="cn">系统必须是脚手架，而不是永久权威。</p></div></details>
+          <details><summary><div class="num">07</div><div><h3>Competitive Landscape / 竞争格局</h3><p>Not optimization system, but return system.</p><p class="cn">不是优化系统，而是返回系统。</p></div></summary><div class="details-body"><p>Differs from Muse, Whoop, Oura, Apple Watch, Calm, Headspace, Neuralink.</p><p class="cn">区别于 Muse、Whoop、Oura、Apple Watch、Calm、Headspace、Neuralink。</p></div></details>
+          <details><summary><div class="num">08</div><div><h3>Sound Science / 声音科学</h3><p>Sound is bodily intervention.</p><p class="cn">声音是身体干预。</p></div></summary><div class="details-body"><p>Entrainment, autonomic regulation, spatial anchoring, qualia return.</p><p class="cn">同步、自主神经调节、空间锚点、感质返回。</p></div></details>
+          <details><summary><div class="num">09</div><div><h3>Ethics / 伦理</h3><p>No diagnosis, no surveillance, user-correctable labels.</p><p class="cn">无诊断、无监控、用户可修正标签。</p></div></summary><div class="details-body"><p>Data minimization, trauma-informed design, neurodiversity affirmation.</p><p class="cn">数据最小化、创伤知情设计、神经多样性肯定。</p></div></details>
+          <details><summary><div class="num">10</div><div><h3>Action Roadmap / 行动路线</h3><p>Prototype, micro-pilot, lab validation.</p><p class="cn">原型、micro-pilot、实验室验证。</p></div></summary><div class="details-body"><p>Now: stabilize prototype. Soon: N=8–12 micro-pilot. Later: HRV/EDA/EEG/fNIRS collaboration.</p><p class="cn">现在：稳定原型。近期：N=8–12 micro-pilot。之后：HRV/EDA/EEG/fNIRS 合作验证。</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="gemini">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">13 // GEMINI ATTACK LAYER // TECHNICAL PITCH</div>
+          <h2>The attack layer: make the lab understand why this matters now.</h2>
+          <h2 class="cn">进攻层：让实验室理解为什么现在值得谈。</h2>
+        </div>
+        <div class="card span-6"><h3>One-sentence project description</h3><p>HRP is a falsifiable adaptive auditory-AI prototype that tests whether personalized rhythm and reflective AI feedback can support attention/emotional self-regulation and future physiological / neural validation.</p><p class="cn">HRP 是一个可证伪的自适应声音-AI原型，用于测试个性化节律与反思性 AI 反馈是否支持注意/情绪自我调节，并为未来生理/神经验证铺路。</p></div>
+        <div class="card span-6"><h3>Tokyo collaboration framing</h3><p>We have the interaction architecture and validation pathway; we seek a BCI / NeuroAI lab to help validate sensing, controls, and neural measures.</p><p class="cn">我们已有交互架构和验证路径；希望与 BCI / NeuroAI 实验室合作验证传感层、对照条件和神经指标。</p></div>
+        <div class="card span-12"><h3>30-second pitch</h3><p>I am building Human Return Protocol, an early-stage adaptive auditory-AI research prototype for attention and emotional self-regulation. It does not claim to be a completed BCI or medical device. It tests whether adaptive rhythm + AI feedback can produce measurable session-related changes in self-report, behavior, and future physiological/neural signals. I am seeking Tokyo-based BCI / NeuroAI collaboration for EEG, fNIRS, HRV, EDA, acoustic feature analysis, and pilot validation.</p><p class="cn">我正在做 Human Return Protocol，一个用于注意力与情绪自我调节的早期自适应声音-AI研究原型。它不声称是已完成脑机或医疗设备。它测试自适应节律 + AI 反馈是否能在主观报告、行为、以及未来生理/神经信号中产生可测量的 session-related 变化。我正在寻找东京 BCI / NeuroAI 合作方，共同推进 EEG、fNIRS、HRV、EDA、声学特征分析与 pilot 验证。</p></div>
+      </div>
+    </section>
+
+    <section id="tokyo">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">14 // TOKYO COLLABORATION ASK // 東京連携入口</div>
+          <h2>Why this is worth a neuroscience / BCI / NeuroAI meeting.</h2>
+          <h2 class="cn">为什么这值得一次神经科学 / BCI / NeuroAI 会谈。</h2>
+          <p class="sub">HRP is not only a technical system. It is a user-centered neuro-AI design research project. The goal is to validate both lived user need and physiological / neural mechanism — neither layer alone is sufficient.</p>
+          <p class="sub cn">HRP 不只是技术系统，它是一个以用户为中心的 neuro-AI 设计研究项目。目标是同时验证真实用户需要与生理/神经机制——任何一个单独层面都不充分。</p>
+          <p class="sub jp">HRP は単なる技術システムではなく、ユーザー中心の Neuro-AI デザイン研究プロジェクトです。ユーザーの実際のニーズと生理・神経メカニズムの両方を検証するため、東京の BCI / NeuroAI / 神経科学研究室との共同研究を希望しています。</p>
+        </div>
+        <div class="card span-4"><h3>Who should care</h3><h3 class="cn">适合合作对象</h3><p>UTokyo IRCN, RIKEN CBS, ARAYA, NTT Communication Science Labs, Keio, Sony CSL, ATR / CiNet.</p><p class="cn">东京大学 IRCN、RIKEN CBS、ARAYA、NTT、Keio、Sony CSL、ATR / CiNet。</p></div>
+        <div class="card span-4"><h3>What we ask</h3><h3 class="cn">合作请求</h3><p>Protocol feedback, lab visit, pilot collaboration, sensing-layer validation, EEG/fNIRS/HRV/EDA integration.</p><p class="cn">实验协议反馈、实验室访问、pilot 合作、传感层验证、EEG/fNIRS/HRV/EDA 接入。</p></div>
+        <div class="card span-4"><h3>What we bring</h3><h3 class="cn">我们带来的东西</h3><p>UX research logic, prototype stack, AI interaction layer, sound matrix, controlled experiment design, micro-pilot data structure.</p><p class="cn">UX 研究逻辑、原型栈、AI 交互层、声音矩阵、对照实验设计、micro-pilot 数据结构。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById("field");
+    const ctx = canvas.getContext("2d");
+    let w, h, particles;
+    let mouse = { x: 0.5, y: 0.5 };
+
+    function resize() {
+      w = canvas.width = window.innerWidth * window.devicePixelRatio;
+      h = canvas.height = window.innerHeight * window.devicePixelRatio;
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      particles = Array.from({ length: Math.min(260, Math.floor(window.innerWidth / 5)) }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.8 + 0.4,
+        a: Math.random() * Math.PI * 2,
+        s: Math.random() * 0.36 + 0.08,
+        o: Math.random() * 0.55 + 0.22,
+        type: Math.random() > 0.7 ? "line" : "dot"
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      const scroll = window.scrollY / Math.max(1, document.body.scrollHeight - window.innerHeight);
+      for (const p of particles) {
+        p.a += p.s * 0.012;
+        p.x += Math.cos(p.a) * (0.24 + scroll * 1.1) + (mouse.x - 0.5) * 0.28;
+        p.y += Math.sin(p.a) * (0.24 + scroll * 1.1) + (mouse.y - 0.5) * 0.28;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
+        const hueShift = p.type === "line" ? 310 + scroll * 30 : 185 + scroll * 80;
+        ctx.beginPath();
+        if (p.type === "line") {
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + Math.cos(p.a) * 26 * window.devicePixelRatio, p.y + Math.sin(p.a) * 26 * window.devicePixelRatio);
+          ctx.strokeStyle = `hsla(${hueShift}, 100%, 68%, ${p.o})`;
+          ctx.lineWidth = 0.7 * window.devicePixelRatio;
+          ctx.stroke();
+        } else {
+          ctx.arc(p.x, p.y, p.r * window.devicePixelRatio, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${hueShift}, 100%, 70%, ${p.o})`;
+          ctx.fill();
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", (event) => {
+      mouse.x = event.clientX / window.innerWidth;
+      mouse.y = event.clientY / window.innerHeight;
+    });
+    resize();
+    draw();
+
+
+    const musicProfiles = {
+      breakbeats: {
+        label: "BREAKBEATS<br><small>BODY ENTRY</small>",
+        title: "Breakbeats",
+        desc: "Breakbeats act as the entry language for high-density perception: irregular hits train uncertainty tolerance, interrupt dissociation, and help the body re-enter flexible timing.",
+        descCn: "碎拍是高密度感知系统的入口语言：不规则打击训练不确定性承受，打断解离，并帮助身体重新进入灵活时间。",
+        bpm: "132–150",
+        sync: "high / irregular",
+        body: "anti-dissociation",
+        cuff: "HRV + IMU shift",
+        density: "medium-high",
+        repeat: "broken loop",
+        bpmW: "74%",
+        densityW: "70%",
+        repeatW: "46%",
+        colorA: 185,
+        colorB: 315,
+        spikes: 0.9
+      },
+      hyperpop: {
+        label: "HYPERPOP<br><small>PEAK TRAVERSAL</small>",
+        title: "Hyperpop",
+        desc: "Hyperpop creates controlled intensity: fast tempo, dense spectrum, bright transient energy, and a peak-and-release curve for high-density nervous systems.",
+        descCn: "Hyperpop 创造可控强度：高速、密集频谱、明亮瞬态能量，以及适合高密度神经系统的峰值—释放曲线。",
+        bpm: "150–175",
+        sync: "medium / sharp",
+        body: "safe apex",
+        cuff: "EDA plateau + readiness",
+        density: "very high",
+        repeat: "glitch loop",
+        bpmW: "92%",
+        densityW: "92%",
+        repeatW: "64%",
+        colorA: 310,
+        colorB: 55,
+        spikes: 1.15
+      },
+      synthpop: {
+        label: "SYNTHPOP<br><small>FIRST BREATH</small>",
+        title: "Synthpop",
+        desc: "Synthpop translates linear rhythm into relief: stable 4/4, melodic predictability, vocal warmth, and narrative access after overload decreases.",
+        descCn: "Synthpop 把线性节律转化为缓解：稳定 4/4、旋律可预测性、人声温度，以及过载下降后的叙事入口。",
+        bpm: "95–125",
+        sync: "low / stable",
+        body: "predictable relief",
+        cuff: "EDA decrease + stable HR",
+        density: "medium",
+        repeat: "steady hook",
+        bpmW: "56%",
+        densityW: "54%",
+        repeatW: "78%",
+        colorA: 200,
+        colorB: 330,
+        spikes: 0.55
+      },
+      driftphonk: {
+        label: "DRIFT PHONK<br><small>SOMATIC DRIVE</small>",
+        title: "Drift Phonk",
+        desc: "Drift Phonk uses heavy kick, cowbell pulse, and low-frequency drive to bring cognition back into the body and initiate movement.",
+        descCn: "Drift Phonk 通过重踢、cowbell 脉冲与低频驱动，把认知带回身体，并启动行动。",
+        bpm: "120–160",
+        sync: "medium / driving",
+        body: "embodiment",
+        cuff: "low motion + low readiness",
+        density: "medium",
+        repeat: "motor loop",
+        bpmW: "78%",
+        densityW: "58%",
+        repeatW: "82%",
+        colorA: 90,
+        colorB: 185,
+        spikes: 0.8
+      },
+      darkwave: {
+        label: "DARKWAVE<br><small>SHADOW INTEGRATION</small>",
+        title: "Darkwave",
+        desc: "Darkwave supports controlled descent: slower tempo, minor mode, deep reverb, and low-glare atmosphere for emotional material that needs to be witnessed.",
+        descCn: "Darkwave 支持可控下降：较慢速度、小调、深混响与低眩光氛围，让需要被看见的情绪材料被承载。",
+        bpm: "70–110",
+        sync: "low / heavy",
+        body: "controlled descent",
+        cuff: "high emotion + cooling need",
+        density: "low-medium",
+        repeat: "slow wave",
+        bpmW: "38%",
+        densityW: "45%",
+        repeatW: "62%",
+        colorA: 260,
+        colorB: 190,
+        spikes: 0.42
+      },
+      ambient: {
+        label: "AMBIENT TECHNO<br><small>FLOW INFRASTRUCTURE</small>",
+        title: "Ambient Techno",
+        desc: "Ambient Techno provides spatial focus: minimal pulse, atmospheric pad, subtle repetition, and environmental continuity for sustained work.",
+        descCn: "Ambient Techno 提供空间专注：极简脉冲、氛围铺底、微妙重复与环境连续性，用于持续工作。",
+        bpm: "105–130",
+        sync: "low / minimal",
+        body: "spatial focus",
+        cuff: "moderate arousal",
+        density: "low-medium",
+        repeat: "stable loop",
+        bpmW: "60%",
+        densityW: "42%",
+        repeatW: "88%",
+        colorA: 175,
+        colorB: 230,
+        spikes: 0.35
+      },
+      anchor427: {
+        label: "427HZ<br><small>ANCHOR LAYER</small>",
+        title: "427Hz Anchor",
+        desc: "427Hz is treated as a signature anchor layer: a stable reference for transition closure, overload cooling, and post-intervention stabilization. It is tested as a design variable, not claimed as universal therapy.",
+        descCn: "427Hz 被作为签名锚点层：用于转换闭合、过载冷却与干预后稳定。它作为设计变量被测试，不声称普适治疗。",
+        bpm: "anchor / non-BPM",
+        sync: "minimal modulation",
+        body: "coherence marker",
+        cuff: "post-session stabilization",
+        density: "low",
+        repeat: "continuous anchor",
+        bpmW: "30%",
+        densityW: "24%",
+        repeatW: "94%",
+        colorA: 150,
+        colorB: 185,
+        spikes: 0.22
+      }
+    };
+
+    let currentMusic = "breakbeats";
+    const musicCanvas = document.getElementById("musicSamplingCanvas");
+    const mctx = musicCanvas ? musicCanvas.getContext("2d") : null;
+    let mw = 0, mh = 0, mt = 0;
+
+    function resizeMusicCanvas() {
+      if (!musicCanvas || !mctx) return;
+      const box = musicCanvas.getBoundingClientRect();
+      mw = musicCanvas.width = box.width * window.devicePixelRatio;
+      mh = musicCanvas.height = box.height * window.devicePixelRatio;
+      musicCanvas.style.width = box.width + "px";
+      musicCanvas.style.height = box.height + "px";
+    }
+
+    function drawMusicCanvas() {
+      if (!musicCanvas || !mctx) return;
+      mt += 0.018;
+      const profile = musicProfiles[currentMusic];
+      mctx.clearRect(0, 0, mw, mh);
+      const cx = mw / 2;
+      const cy = mh / 2;
+      const dpr = window.devicePixelRatio || 1;
+
+      for (let ring = 0; ring < 4; ring++) {
+        const radius = (70 + ring * 42 + Math.sin(mt + ring) * 4) * dpr;
+        mctx.beginPath();
+        mctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        mctx.strokeStyle = `hsla(${profile.colorA + ring * 18}, 100%, 68%, ${0.16 + ring * 0.035})`;
+        mctx.lineWidth = 1.2 * dpr;
+        mctx.stroke();
+      }
+
+      const bars = 72;
+      for (let i = 0; i < bars; i++) {
+        const angle = (Math.PI * 2 * i) / bars;
+        const noise = Math.sin(mt * (2 + profile.spikes) + i * 0.63) * 0.5 + Math.sin(mt * 1.7 + i * 0.19) * 0.5;
+        const amp = (24 + 54 * Math.abs(noise) * profile.spikes) * dpr;
+        const r1 = 118 * dpr;
+        const r2 = r1 + amp;
+        const x1 = cx + Math.cos(angle) * r1;
+        const y1 = cy + Math.sin(angle) * r1;
+        const x2 = cx + Math.cos(angle) * r2;
+        const y2 = cy + Math.sin(angle) * r2;
+        mctx.beginPath();
+        mctx.moveTo(x1, y1);
+        mctx.lineTo(x2, y2);
+        mctx.strokeStyle = `hsla(${i % 2 ? profile.colorA : profile.colorB}, 100%, 68%, ${0.38 + 0.28 * Math.abs(noise)})`;
+        mctx.lineWidth = (1 + profile.spikes * 1.2) * dpr;
+        mctx.stroke();
+      }
+
+      mctx.beginPath();
+      for (let x = 0; x <= mw; x += 8 * dpr) {
+        const y = cy + Math.sin(x * 0.014 + mt * 5) * 18 * dpr * profile.spikes + Math.sin(x * 0.043 + mt * 2) * 6 * dpr;
+        if (x === 0) mctx.moveTo(x, y);
+        else mctx.lineTo(x, y);
+      }
+      mctx.strokeStyle = `hsla(${profile.colorA}, 100%, 70%, .42)`;
+      mctx.lineWidth = 2 * dpr;
+      mctx.stroke();
+
+      requestAnimationFrame(drawMusicCanvas);
+    }
+
+    function setMusicProfile(key) {
+      currentMusic = key;
+      const p = musicProfiles[key];
+      if (!p) return;
+      document.querySelectorAll(".music-mode-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.music === key));
+      const set = (id, value) => { const el = document.getElementById(id); if (el) el.innerHTML = value; };
+      set("musicOrbLabel", p.label);
+      set("ringBpm", p.bpm);
+      set("ringSync", p.sync);
+      set("ringBody", p.body);
+      set("ringCuff", p.cuff);
+      set("musicTitle", p.title);
+      set("musicDesc", p.desc);
+      set("musicDescCn", p.descCn);
+      set("paramBpm", p.bpm);
+      set("paramDensity", p.density);
+      set("paramRepeat", p.repeat);
+      const meterBpm = document.getElementById("meterBpm");
+      const meterDensity = document.getElementById("meterDensity");
+      const meterRepeat = document.getElementById("meterRepeat");
+      if (meterBpm) meterBpm.style.setProperty("--w", p.bpmW);
+      if (meterDensity) meterDensity.style.setProperty("--w", p.densityW);
+      if (meterRepeat) meterRepeat.style.setProperty("--w", p.repeatW);
+    }
+
+    document.querySelectorAll(".music-mode-btn").forEach(btn => {
+      btn.addEventListener("click", () => setMusicProfile(btn.dataset.music));
+    });
+
+    window.addEventListener("resize", resizeMusicCanvas);
+    resizeMusicCanvas();
+    drawMusicCanvas();
+
+    function escapeCSV(value) {
+      const s = String(value ?? "");
+      if (s.includes(",") || s.includes('"') || s.includes("\n")) return '"' + s.replaceAll('"', '""') + '"';
+      return s;
+    }
+
+    function exportCSV() {
+      const form = document.getElementById("pilotForm");
+      const data = new FormData(form);
+      const fields = ["timestamp","participant_id","session_id","condition","ai_mode","audio_condition","pre_focus","pre_emotion","pre_inner_noise","post_focus","post_emotion","post_inner_noise","return_to_self_score","task_accuracy","reaction_time","missed_trials","expectation_rating","confusion_rating","adverse_event","user_note"];
+      const row = fields.map(f => f === "timestamp" ? new Date().toISOString() : data.get(f));
+      const csv = fields.join(",") + "\n" + row.map(escapeCSV).join(",");
+      document.getElementById("csvOut").textContent = csv;
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "bci_hrp_micro_pilot_row.csv";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
 </body>
 </html>
