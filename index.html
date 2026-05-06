@@ -858,6 +858,149 @@
       background: rgba(255,255,255,.03);
     }
 
+
+    /* v7 expanded QDR theory */
+    .qdr-thesis-block {
+      position: relative;
+      padding: 34px;
+      border-left: 1px solid rgba(53,255,159,.52);
+      border-top: 1px solid rgba(0,245,255,.20);
+      border-radius: 0 30px 30px 0;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(0,245,255,.12), transparent 32%),
+        radial-gradient(circle at 88% 82%, rgba(255,43,214,.10), transparent 34%),
+        rgba(8,10,28,.60);
+      box-shadow: var(--shadow-deep), inset 0 0 34px rgba(0,245,255,.035);
+    }
+
+    .qdr-bigline {
+      font-size: clamp(38px, 6vw, 82px);
+      line-height: .92;
+      letter-spacing: -.075em;
+      font-weight: 860;
+      margin: 0 0 24px;
+      text-shadow:
+        0 0 18px rgba(0,245,255,.18),
+        0 0 42px rgba(255,43,214,.12);
+    }
+
+    .qdr-definition-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .qdr-definition-card {
+      min-height: 210px;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(0,245,255,.18);
+      background:
+        linear-gradient(180deg, rgba(0,245,255,.045), rgba(255,43,214,.024)),
+        rgba(255,255,255,.032);
+    }
+
+    .qdr-definition-card strong {
+      display:block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .qdr-axis {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 18px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(0,245,255,.14);
+    }
+
+    .qdr-axis:first-child { border-top: 0; }
+
+    .qdr-axis-label {
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .qdr-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .qdr-proof {
+      border: 1px solid rgba(0,245,255,.18);
+      border-radius: 22px;
+      padding: 20px;
+      background: rgba(255,255,255,.032);
+    }
+
+    .qdr-flow-line {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .qdr-flow-node {
+      position: relative;
+      min-height: 164px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(0,245,255,.18);
+      background: linear-gradient(180deg, rgba(0,245,255,.04), rgba(255,43,214,.024)), rgba(255,255,255,.032);
+    }
+
+    .qdr-flow-node::after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--pink);
+      font-size: 26px;
+      text-shadow: 0 0 14px rgba(255,43,214,.7);
+      z-index: 2;
+    }
+
+    .qdr-flow-node:last-child::after { display:none; }
+
+    .qdr-mini-equation {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(53,255,159,.22);
+      background: linear-gradient(90deg, rgba(53,255,159,.07), rgba(0,245,255,.045)), rgba(255,255,255,.03);
+      color: rgba(244,247,255,.92);
+      font-family: var(--mono);
+      line-height: 1.8;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .qdr-definition-grid,
+      .qdr-proof-grid,
+      .qdr-flow-line {
+        grid-template-columns: 1fr;
+      }
+      .qdr-flow-node::after {
+        right: 50%;
+        top: auto;
+        bottom: -25px;
+        transform: translateX(50%) rotate(90deg);
+      }
+      .qdr-axis {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 980px) {
       .anchor-compare,
       .anchor-flow {
@@ -1141,109 +1284,130 @@
         <div class="card span-12 neon-card">
           <div class="eyebrow">06 // QDR ENGINE // QUALIA-DRIVEN RHYTHM // 感质驱动节律</div>
 
-          <h2>QDR means Qualia-Driven Rhythm.</h2>
-          <h2 class="cn">QDR 的全称是 Qualia-Driven Rhythm：感质驱动节律。</h2>
+          <div class="qdr-thesis-block">
+            <h2 class="qdr-bigline">QDR means Qualia-Driven Rhythm.</h2>
+            <h2 class="qdr-bigline cn">QDR 的全称是 Qualia-Driven Rhythm：感质驱动节律。</h2>
+
+            <p class="sub">
+              Qualia-Driven Rhythm is an original theoretical and design-research framework created by Mellow Jueran Wei. It proposes that before a system can meaningfully support attention, emotion, learning, creativity, or self-regulation, it must first sample the lived texture of the user's present state and translate that texture into a temporal pathway of return.
+            </p>
+
+            <p class="sub cn">
+              Qualia-Driven Rhythm 是魏珏然创造的原创理论与设计研究框架。它提出：在一个系统能够真正支持注意力、情绪、学习、创作或自我调节之前，它必须先采样用户当下活体状态的质地，并把这种质地转译成一条时间性的返回路径。
+            </p>
+
+            <div class="qdr-mini-equation">
+              QDR = Qualia as Input × Rhythm as Pathway × Design as Translation × Validation as Boundary<br />
+              QDR = 感质作为输入 × 节律作为路径 × 设计作为转译 × 验证作为边界
+            </div>
+
+            <div class="tag-row">
+              <span class="tag">CREATED BY MELLOW JUERAN WEI</span>
+              <span class="tag">ORIGINAL FRAMEWORK</span>
+              <span class="tag">QUALIA AS INPUT</span>
+              <span class="tag">RHYTHM AS PATHWAY</span>
+              <span class="tag">AI + SOUND + CUFF</span>
+              <span class="tag">FALSIFIABLE DESIGN THEORY</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">THEORETICAL CLAIM // 理论主张</div>
+          <h2>The user is not a data point first. The user is a lived state.</h2>
+          <h2 class="cn">用户首先不是一个数据点，而是一个活生生的状态。</h2>
 
           <p class="sub">
-            Qualia-Driven Rhythm is an original framework created by Mellow Jueran Wei. It starts from a simple but radical premise: before a person can regulate attention, emotion, behavior, or learning, the system must first understand the texture of that person’s lived state.
+            Most productivity, wellness, and AI systems begin from an external demand: finish the task, calm down, optimize performance, reduce symptoms, or follow a protocol. QDR begins from a different point: what is the felt quality of the user’s current state, and what rhythm would allow this state to become readable, adjustable, and returnable?
           </p>
 
           <p class="sub cn">
-            Qualia-Driven Rhythm 是魏珏然提出的原创框架。它从一个简单但根本的前提出发：在一个人能够调节注意力、情绪、行为或学习之前，系统必须先理解这个人当下活生生状态的质地。
+            大多数生产力、身心健康与 AI 系统从外部要求开始：完成任务、冷静下来、优化表现、降低症状、遵循协议。QDR 从另一个地方开始：用户当下状态的感受质地是什么？什么节律可以让这个状态变得可读、可调、可返回？
           </p>
 
-          <div class="tag-row">
-            <span class="tag">ORIGINAL FRAMEWORK</span>
-            <span class="tag">QUALIA AS INPUT</span>
-            <span class="tag">RHYTHM AS PATHWAY</span>
-            <span class="tag">AI + SOUND + CUFF</span>
-            <span class="tag">SELF-REGULATION DESIGN</span>
+          <div class="qdr-definition-grid">
+            <div class="qdr-definition-card">
+              <strong>QUALIA / 感质</strong>
+              <p>Subjective state texture: scattered, heavy, sharp, numb, overloaded, restless, frozen, open, coherent, ready.</p>
+              <p class="cn">主观状态质地：散、重、锐、麻、过载、不安、冻结、打开、连贯、准备好。</p>
+            </div>
+            <div class="qdr-definition-card">
+              <strong>RHYTHM / 节律</strong>
+              <p>Temporal regulation pathway: attention rhythm, body rhythm, emotional rhythm, learning rhythm, recovery rhythm.</p>
+              <p class="cn">时间性调节路径：注意节律、身体节律、情绪节律、学习节律、恢复节律。</p>
+            </div>
+            <div class="qdr-definition-card">
+              <strong>DRIVEN / 驱动</strong>
+              <p>The intervention is not chosen from generic categories; it is driven by the user's current felt state and return need.</p>
+              <p class="cn">干预不是从通用类别里随便选择，而是由用户当下感质与返回需求驱动。</p>
+            </div>
           </div>
         </div>
 
         <div class="card span-6">
-          <div class="eyebrow">WHAT IS QUALIA? // 什么是感质</div>
-
-          <h3>Qualia = subjective state texture.</h3>
-          <h3 class="cn">感质 = 主观状态的质地。</h3>
-
+          <div class="eyebrow">WHY QUALIA? // 为什么是感质</div>
+          <h3>Because the same behavior can carry different inner textures.</h3>
+          <h3 class="cn">因为同一种行为可能承载完全不同的内部质地。</h3>
           <p>
-            In QDR, qualia does not mean only an abstract philosophical puzzle. It means the lived texture of a user’s current state: scattered, heavy, sharp, numb, overloaded, restless, frozen, open, coherent, or ready.
+            A user who is not working may be bored, frozen, exhausted, overstimulated, ashamed, dissociated, or waiting for the right entry rhythm. A behavior-only system sees inactivity. QDR asks what kind of inactivity this is.
           </p>
-
           <p class="cn">
-            在 QDR 里，感质不只是抽象哲学难题。它指用户当下状态的活体质地：散、重、锐、麻、过载、不安、冻结、打开、连贯、准备好。
-          </p>
-
-          <p class="sub">
-            Qualia is treated as the first-person signal layer that self-report, language, body data, and AI reflection try to approximate.
-          </p>
-
-          <p class="sub cn">
-            感质被视为第一人称信号层；自评、语言、身体数据与 AI 镜像都只是对它的近似采样。
+            一个没有开始工作的用户，可能是无聊、冻结、疲惫、过度刺激、羞耻、解离，或正在等待正确进入节律。只看行为的系统看到的是“不动”。QDR 问的是：这是哪一种“不动”？
           </p>
         </div>
 
         <div class="card span-6">
-          <div class="eyebrow">WHAT IS RHYTHM? // 什么是节律</div>
-
-          <h3>Rhythm = temporal regulation pathway.</h3>
-          <h3 class="cn">节律 = 时间性的调节路径。</h3>
-
+          <div class="eyebrow">WHY RHYTHM? // 为什么是节律</div>
+          <h3>Because regulation happens through time, not only through insight.</h3>
+          <h3 class="cn">因为调节发生在时间中，而不只发生在理解中。</h3>
           <p>
-            Rhythm is not only music tempo. In QDR, rhythm includes attention rhythm, body rhythm, emotional rhythm, learning rhythm, interaction rhythm, recovery rhythm, and the timing of when a person can return to action.
+            A person can understand what they should do and still be unable to enter action. QDR treats this gap as a rhythm problem: the system must help the body, attention, emotion, and environment re-enter a workable temporal structure.
           </p>
-
           <p class="cn">
-            节律不只是音乐速度。在 QDR 中，节律包括注意力节律、身体节律、情绪节律、学习节律、互动节律、恢复节律，以及一个人何时能够重新进入行动的时间结构。
-          </p>
-
-          <p class="sub">
-            Rhythm is the pathway through which HRP translates state into sound, haptics, AI feedback, and minimum real action.
-          </p>
-
-          <p class="sub cn">
-            节律是 HRP 把状态转译成声音、触觉、AI 反馈与最小真实行动的路径。
+            一个人可以理解自己应该做什么，却仍然无法进入行动。QDR 把这个断裂理解为节律问题：系统必须帮助身体、注意力、情绪与环境重新进入可工作的时间结构。
           </p>
         </div>
 
         <div class="card span-12 neon-card">
-          <div class="eyebrow">CORE FORMULA // 核心公式</div>
+          <div class="eyebrow">FOUR MECHANISMS // 四个机制</div>
+          <h2>QDR works through sampling, translation, modulation, and verification.</h2>
+          <h2 class="cn">QDR 通过采样、转译、调制与验证工作。</h2>
 
-          <h2>Qualia becomes readable through rhythm. Rhythm becomes adjustable through design.</h2>
-          <h2 class="cn">感质通过节律变得可读。节律通过设计变得可调。</h2>
-
-          <div class="system-loop">
-            <div class="loop-item">
+          <div class="qdr-flow-line">
+            <div class="qdr-flow-node">
               <div class="num">01</div>
-              <h3>Sample Qualia</h3>
-              <h3 class="cn">采样感质</h3>
-              <p>User reports focus, emotion, body tension, inner noise, readiness, and return-to-self feeling.</p>
-              <p class="cn">用户报告注意力、情绪、身体紧绷、内在噪音、准备度与返回自己感。</p>
+              <h3>Qualia Sampling</h3>
+              <h3 class="cn">感质采样</h3>
+              <p>Self-report, language, body tension, inner noise, task readiness, and return-to-self score approximate first-person state.</p>
+              <p class="cn">自评、语言、身体紧绷、内在噪音、任务准备度与返回自己评分近似采样第一人称状态。</p>
             </div>
-
-            <div class="loop-item">
+            <div class="qdr-flow-node">
               <div class="num">02</div>
-              <h3>Detect Rhythm</h3>
-              <h3 class="cn">检测节律</h3>
-              <p>HRP reads patterns of drift, overload, freeze, flow, recovery demand, and transition difficulty.</p>
-              <p class="cn">HRP 读取漂移、过载、冻结、入流、恢复需求与转换困难的模式。</p>
+              <h3>Rhythm Detection</h3>
+              <h3 class="cn">节律检测</h3>
+              <p>HRP identifies drift, overload, freeze, flow, recovery demand, transition failure, or safety-seeking.</p>
+              <p class="cn">HRP 识别漂移、过载、冻结、入流、恢复需求、转换失败或寻求安全。</p>
             </div>
-
-            <div class="loop-item">
+            <div class="qdr-flow-node">
               <div class="num">03</div>
-              <h3>Prescribe Return</h3>
-              <h3 class="cn">生成返回路径</h3>
-              <p>QDR maps the state to sound protocol, AiAiQ&lt;10 feedback, cuff haptics, and a minimum real action.</p>
-              <p class="cn">QDR 将状态映射到声音协议、AiAiQ&lt;10 反馈、袖环触觉与一个最小真实行动。</p>
+              <h3>Protocol Mapping</h3>
+              <h3 class="cn">协议映射</h3>
+              <p>The state maps to sound profile, AiAiQ&lt;10 mode, cuff haptic cue, and action scale.</p>
+              <p class="cn">状态被映射到声音剖面、AiAiQ&lt;10 模式、袖环触觉提示与行动尺度。</p>
             </div>
-
-            <div class="loop-item">
+            <div class="qdr-flow-node">
               <div class="num">04</div>
-              <h3>Validate Change</h3>
-              <h3 class="cn">验证变化</h3>
-              <p>Pre/post self-report, behavior, HRV, EDA, EEG, or fNIRS can test whether the rhythm pathway helped.</p>
-              <p class="cn">前后测自评、行为、HRV、EDA、EEG 或 fNIRS 可用于测试节律路径是否产生帮助。</p>
+              <h3>Return Action</h3>
+              <h3 class="cn">返回行动</h3>
+              <p>The user receives one rhythm path and one minimum real action, not infinite analysis.</p>
+              <p class="cn">用户获得一条节律路径与一个最小真实行动，而不是无限分析。</p>
+            </div>
+            <div class="qdr-flow-node">
+              <div class="num">05</div>
+              <h3>Validation</h3>
+              <h3 class="cn">验证</h3>
+              <p>Pre/post measures test whether the mapping produced session-related change.</p>
+              <p class="cn">前后测检验这种映射是否产生 session-related change。</p>
             </div>
           </div>
         </div>
@@ -1327,6 +1491,81 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">THEORY AXES // 理论轴线</div>
+          <div>
+            <div class="qdr-axis">
+              <div class="qdr-axis-label">AXIS 01</div>
+              <div>
+                <h3>Experience before optimization</h3>
+                <h3 class="cn">经验先于优化</h3>
+                <p>QDR refuses to treat the user as a performance target first. It begins with the felt structure of the current state.</p>
+                <p class="cn">QDR 拒绝首先把用户当作表现优化目标，而是从当下状态的感受结构开始。</p>
+              </div>
+            </div>
+            <div class="qdr-axis">
+              <div class="qdr-axis-label">AXIS 02</div>
+              <div>
+                <h3>State texture before diagnostic label</h3>
+                <h3 class="cn">状态质地先于诊断标签</h3>
+                <p>QDR uses functional state language—drift, overload, freeze, flow—without turning the user into a diagnosis.</p>
+                <p class="cn">QDR 使用功能性状态语言——漂移、过载、冻结、入流——而不是把用户变成诊断对象。</p>
+              </div>
+            </div>
+            <div class="qdr-axis">
+              <div class="qdr-axis-label">AXIS 03</div>
+              <div>
+                <h3>Rhythm before command</h3>
+                <h3 class="cn">节律先于命令</h3>
+                <p>Instead of telling the user to focus, QDR asks what rhythm would make focus possible.</p>
+                <p class="cn">QDR 不先命令用户专注，而是询问什么节律会让专注成为可能。</p>
+              </div>
+            </div>
+            <div class="qdr-axis">
+              <div class="qdr-axis-label">AXIS 04</div>
+              <div>
+                <h3>Return before productivity</h3>
+                <h3 class="cn">返回先于生产力</h3>
+                <p>The goal is not to extract more output from the user, but to help the user regain access to themselves.</p>
+                <p class="cn">目标不是从用户身上提取更多输出，而是帮助用户重新接触自己。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">QDR IN HRP // QDR 如何驱动 HRP</div>
+          <h2>QDR is the logic that connects AiAiQ&lt;10, music, cuff sensing, and micro-pilot validation.</h2>
+          <h2 class="cn">QDR 是连接 AiAiQ&lt;10、音乐、袖环传感与 micro-pilot 验证的逻辑。</h2>
+
+          <div class="qdr-proof-grid">
+            <div class="qdr-proof">
+              <h3>AiAiQ&lt;10</h3>
+              <h3 class="cn">AI 交互层</h3>
+              <p>AiQ愛&lt;3 mirrors and stabilizes low-bandwidth states; AiQ愛&lt;7 supports expansion and deep reasoning. QDR decides which mode fits the current rhythm need.</p>
+              <p class="cn">AiQ愛&lt;3 镜像并稳定低带宽状态；AiQ愛&lt;7 支持扩展与深层推理。QDR 判断当前节律需求适合哪个模式。</p>
+            </div>
+            <div class="qdr-proof">
+              <h3>Sound Matrix</h3>
+              <h3 class="cn">声音矩阵</h3>
+              <p>Breakbeats, Hyperpop, Synthpop, Darkwave, Ambient Techno, 427Hz, and 724Hz are not moods; they are rhythm pathways selected by state texture.</p>
+              <p class="cn">碎拍、Hyperpop、Synthpop、Darkwave、Ambient Techno、427Hz 与 724Hz 不只是情绪氛围，而是由状态质地选择的节律路径。</p>
+            </div>
+            <div class="qdr-proof">
+              <h3>44271 Neural Cuff</h3>
+              <h3 class="cn">袖环传感层</h3>
+              <p>HRV, EDA, temperature, and IMU do not read the soul. They provide physiological proxies that help QDR test whether a rhythm pathway is associated with state change.</p>
+              <p class="cn">HRV、EDA、温度与 IMU 不是读灵魂，而是提供生理代理信号，帮助 QDR 测试某条节律路径是否与状态变化相关。</p>
+            </div>
+            <div class="qdr-proof">
+              <h3>Micro-Pilot</h3>
+              <h3 class="cn">微型试验</h3>
+              <p>The micro-pilot tests whether QDR mappings outperform baseline, fixed rhythm, random rhythm, yoked replay, and expectation-control conditions.</p>
+              <p class="cn">micro-pilot 测试 QDR 映射是否优于基线、固定节律、随机节律、配对回放与期待控制条件。</p>
+            </div>
+          </div>
         </div>
 
         <div class="card span-12">
