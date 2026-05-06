@@ -729,6 +729,154 @@
       width: 170px;
     }
 
+
+    /* v5 dual anchor frequency system */
+    .dual-anchor-hero {
+      border-left: 1px solid rgba(53,255,159,.45);
+      border-top: 1px solid rgba(0,245,255,.18);
+      border-radius: 0 30px 30px 0;
+      padding: 36px;
+      background:
+        radial-gradient(circle at 18% 30%, rgba(0,245,255,.10), transparent 28%),
+        radial-gradient(circle at 80% 70%, rgba(255,43,214,.10), transparent 30%),
+        rgba(8,10,28,.62);
+      box-shadow: var(--shadow-deep), inset 0 0 36px rgba(0,245,255,.035);
+    }
+
+    .dual-anchor-title {
+      font-size: clamp(42px, 7.5vw, 104px);
+      line-height: .9;
+      letter-spacing: -.085em;
+      font-weight: 860;
+      margin: 0 0 28px;
+      text-shadow:
+        0 0 18px rgba(0,245,255,.18),
+        0 0 40px rgba(255,43,214,.12);
+    }
+
+    .anchor-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .anchor-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(0,245,255,.20);
+      background:
+        linear-gradient(180deg, rgba(0,245,255,.055), rgba(255,43,214,.032)),
+        rgba(255,255,255,.035);
+      box-shadow: inset 0 0 28px rgba(255,255,255,.03), 0 0 30px rgba(0,245,255,.055);
+    }
+
+    .anchor-card.mellow-anchor {
+      border-color: rgba(0,245,255,.32);
+    }
+
+    .anchor-card.stallion-anchor {
+      border-color: rgba(255,230,109,.32);
+    }
+
+    .anchor-frequency {
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: .9;
+      letter-spacing: -.06em;
+      margin-bottom: 16px;
+      font-weight: 840;
+    }
+
+    .anchor-card.mellow-anchor .anchor-frequency {
+      color: var(--cyan);
+      text-shadow: 0 0 20px rgba(0,245,255,.55);
+    }
+
+    .anchor-card.stallion-anchor .anchor-frequency {
+      color: var(--yellow);
+      text-shadow: 0 0 20px rgba(255,230,109,.46);
+    }
+
+    .frequency-orbit {
+      position: relative;
+      min-height: 280px;
+      border: 1px solid rgba(0,245,255,.18);
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(0,245,255,.10), transparent 28%),
+        rgba(255,255,255,.03);
+      margin-top: 20px;
+    }
+
+    #frequencyOrbitCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .orbit-label {
+      position: absolute;
+      z-index: 3;
+      padding: 11px 13px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,245,255,.22);
+      background: rgba(3,4,10,.68);
+      backdrop-filter: blur(12px);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing:.08em;
+    }
+
+    .orbit-label small {
+      display:block;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .orbit-mellow { left: 24px; top: 24px; }
+    .orbit-stallion { right: 24px; bottom: 24px; }
+    .orbit-cuff { left: 50%; bottom: 24px; transform: translateX(-50%); }
+
+    .anchor-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .anchor-step {
+      min-height: 170px;
+      padding: 18px;
+      border: 1px solid rgba(0,245,255,.16);
+      border-radius: 22px;
+      background: rgba(255,255,255,.03);
+    }
+
+    @media (max-width: 980px) {
+      .anchor-compare,
+      .anchor-flow {
+        grid-template-columns: 1fr;
+      }
+      .dual-anchor-hero { padding: 24px; }
+      .orbit-mellow,
+      .orbit-stallion,
+      .orbit-cuff {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+      .orbit-mellow { top: 20px; }
+      .orbit-stallion { top: 88px; bottom: auto; }
+      .orbit-cuff { bottom: 20px; }
+      .frequency-orbit { min-height: 360px; }
+    }
+
     @media (max-width: 980px) {
       .music-lab-grid,
       .music-param-grid,
@@ -784,6 +932,7 @@
       <a href="#qdr">QDR</a>
       <a href="#aiq">AiAiQ&lt;10</a>
       <a href="#music">SOUND MATRIX</a>
+      <a href="#dual-anchor">DUAL ANCHOR</a>
       <a href="#prototypes">PROTOTYPES</a>
       <a href="#experiment">EXPERIMENT</a>
       <a href="#micro-pilot">MICRO-PILOT</a>
@@ -1229,6 +1378,170 @@
     </section>
 
 
+
+    <section id="dual-anchor">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">09 // DUAL ANCHOR FREQUENCY SYSTEM // 双锚点频率系统</div>
+          <div class="dual-anchor-hero">
+            <h2 class="dual-anchor-title">
+              Mellow returns through 427Hz.<br />
+              Stallion stabilizes through 724Hz.
+            </h2>
+            <h2 class="dual-anchor-title cn">
+              Mellow 通过 427Hz 返回。<br />
+              Stallion 通过 724Hz 稳定。
+            </h2>
+            <p class="sub">
+              The two routes are not weak/strong versions of each other. They are different nervous-system pathways. Mellow enters through density and returns through 427Hz. Stallion enters through safety and seals through 724Hz.
+            </p>
+            <p class="sub cn">
+              两条路径不是强弱版本，而是不同神经系统路径。Mellow 从密度进入，并通过 427Hz 返回。Stallion 从安全进入，并通过 724Hz 封存稳定。
+            </p>
+            <div class="tag-row">
+              <span class="tag">427Hz RETURN ANCHOR</span>
+              <span class="tag">724Hz STABILIZATION ANCHOR</span>
+              <span class="tag">DENSITY ROUTE</span>
+              <span class="tag">SAFETY ROUTE</span>
+              <span class="tag">CUFF-READY FREQUENCY LOGIC</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">DYNAMIC FREQUENCY EXPLANATION // 动态频率解释</div>
+          <div class="frequency-orbit">
+            <canvas id="frequencyOrbitCanvas"></canvas>
+            <div class="orbit-label orbit-mellow">
+              MELLOW ROUTE
+              <small>density → overload traversal → 427Hz return</small>
+            </div>
+            <div class="orbit-label orbit-stallion">
+              STALLION ROUTE
+              <small>safety → stabilization → 724Hz sealing</small>
+            </div>
+            <div class="orbit-label orbit-cuff">
+              44271 CUFF
+              <small>detects state shift, not metaphysical truth</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-6 mellow-anchor">
+          <div class="anchor-frequency">427Hz</div>
+          <h3>Mellow Return Route</h3>
+          <h3 class="cn">Mellow 返回路径</h3>
+          <p>
+            427Hz is treated as the return anchor: a frequency layer used after density, peak traversal, overload, or fragmentation. In the prototype, it functions as a post-intervention stabilization marker and transition closure signal.
+          </p>
+          <p class="cn">
+            427Hz 被设定为返回锚点：用于密度、峰值穿越、过载或碎裂之后。在原型中，它作为干预后的稳定标记与转换闭合信号。
+          </p>
+          <div class="tag-row">
+            <span class="tag">RETURN</span>
+            <span class="tag">DENSITY AFTERCARE</span>
+            <span class="tag">POST-SESSION COOLING</span>
+          </div>
+        </div>
+
+        <div class="card span-6 stallion-anchor">
+          <div class="anchor-frequency">724Hz</div>
+          <h3>Stallion Stabilization Route</h3>
+          <h3 class="cn">Stallion 稳定路径</h3>
+          <p>
+            724Hz is treated as the stabilization anchor: a frequency layer used when the system needs safety, sealing, steadiness, and low-threat continuity. In the prototype, it can be tested as a safety-route auditory marker.
+          </p>
+          <p class="cn">
+            724Hz 被设定为稳定锚点：用于系统需要安全、封存、稳定与低威胁连续性时。在原型中，它可作为安全路径的声音标记被测试。
+          </p>
+          <div class="tag-row">
+            <span class="tag">STABILIZATION</span>
+            <span class="tag">SAFETY ROUTE</span>
+            <span class="tag">LOW-THREAT CONTINUITY</span>
+          </div>
+        </div>
+
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">HOW THE CUFF RECEIVES BOTH ANCHORS // 袖环如何承接双锚点</div>
+          <h2>427Hz and 724Hz become testable auditory markers, not mystical proof.</h2>
+          <h2 class="cn">427Hz 与 724Hz 成为可测试的声音标记，而不是神秘证明。</h2>
+          <div class="anchor-flow">
+            <div class="anchor-step">
+              <div class="num">01</div>
+              <h3>State Detection</h3>
+              <h3 class="cn">状态检测</h3>
+              <p>HRV, EDA, temperature, IMU, self-report, and AiAiQ&lt;10 state notes estimate whether the user is in density, overload, freeze, drift, or safety-seeking mode.</p>
+              <p class="cn">HRV、EDA、温度、IMU、自评与 AiAiQ&lt;10 状态记录共同估计用户处于密度、过载、冻结、漂移或寻求安全模式。</p>
+            </div>
+            <div class="anchor-step">
+              <div class="num">02</div>
+              <h3>Route Selection</h3>
+              <h3 class="cn">路径选择</h3>
+              <p>Density route selects 427Hz as return closure. Safety route selects 724Hz as stabilization seal.</p>
+              <p class="cn">密度路径选择 427Hz 作为返回闭合；安全路径选择 724Hz 作为稳定封存。</p>
+            </div>
+            <div class="anchor-step">
+              <div class="num">03</div>
+              <h3>Haptic Coupling</h3>
+              <h3 class="cn">触觉耦合</h3>
+              <p>The cuff can pair each anchor with a distinct pulse-side haptic pattern: soft return pulse for 427Hz, steady sealing pulse for 724Hz.</p>
+              <p class="cn">袖环可以把每个锚点配对为不同脉侧触觉模式：427Hz 对应柔和返回脉冲；724Hz 对应稳定封存脉冲。</p>
+            </div>
+            <div class="anchor-step">
+              <div class="num">04</div>
+              <h3>Validation</h3>
+              <h3 class="cn">验证</h3>
+              <p>Compare pre/post focus, emotional intensity, inner noise, HRV, EDA, and user-reported safety/return ratings across 427Hz, 724Hz, and neutral anchors.</p>
+              <p class="cn">比较 427Hz、724Hz 与中性锚点条件下的前后测注意力、情绪强度、内在噪音、HRV、EDA 与用户安全/返回评分。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">CONTROL CONDITION // 对照条件</div>
+          <h2>Dual-anchor testing must include neutral and randomized anchors.</h2>
+          <h2 class="cn">双锚点测试必须包含中性锚点和随机锚点。</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Condition / 条件</th>
+                <th>Auditory Marker / 声音标记</th>
+                <th>Purpose / 目的</th>
+                <th>Interpretation Boundary / 解释边界</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A · Neutral Anchor<br>A · 中性锚点</td>
+                <td>Non-symbolic tone or ambient bed<br>无象征含义音调或环境铺底</td>
+                <td>Controls for simple sound exposure.<br>控制普通声音暴露效应。</td>
+                <td>Any improvement here means sound alone may help.<br>若这里也改善，说明单纯声音可能有效。</td>
+              </tr>
+              <tr>
+                <td>B · 427Hz Return<br>B · 427Hz 返回</td>
+                <td>427Hz anchor after density / overload<br>密度/过载后的 427Hz 锚点</td>
+                <td>Tests return-route hypothesis.<br>测试返回路径假设。</td>
+                <td>Can show association, not universal frequency truth.<br>只能显示相关性，不证明普适频率真理。</td>
+              </tr>
+              <tr>
+                <td>C · 724Hz Stabilization<br>C · 724Hz 稳定</td>
+                <td>724Hz anchor during safety / sealing<br>安全/封存时的 724Hz 锚点</td>
+                <td>Tests stabilization-route hypothesis.<br>测试稳定路径假设。</td>
+                <td>Can show perceived safety/stability change, not diagnosis.<br>可显示安全/稳定感变化，不用于诊断。</td>
+              </tr>
+              <tr>
+                <td>D · Random Anchor<br>D · 随机锚点</td>
+                <td>Randomized frequency marker<br>随机频率标记</td>
+                <td>Controls for novelty and expectation.<br>控制新奇感与期待效应。</td>
+                <td>If random performs equally, symbolic route must be revised.<br>若随机同样有效，象征路径必须修正。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
     <section id="prototypes">
       <div class="grid">
         <div class="card span-12 neon-card">
@@ -1647,6 +1960,96 @@
     window.addEventListener("resize", resizeMusicCanvas);
     resizeMusicCanvas();
     drawMusicCanvas();
+
+
+    const freqCanvas = document.getElementById("frequencyOrbitCanvas");
+    const fctx = freqCanvas ? freqCanvas.getContext("2d") : null;
+    let fw = 0, fh = 0, ft = 0;
+
+    function resizeFreqCanvas() {
+      if (!freqCanvas || !fctx) return;
+      const box = freqCanvas.getBoundingClientRect();
+      fw = freqCanvas.width = box.width * window.devicePixelRatio;
+      fh = freqCanvas.height = box.height * window.devicePixelRatio;
+      freqCanvas.style.width = box.width + "px";
+      freqCanvas.style.height = box.height + "px";
+    }
+
+    function drawFrequencyOrbit() {
+      if (!freqCanvas || !fctx) return;
+      ft += 0.016;
+      fctx.clearRect(0, 0, fw, fh);
+      const dpr = window.devicePixelRatio || 1;
+      const cx = fw / 2;
+      const cy = fh / 2;
+      const r427 = Math.min(fw, fh) * 0.22;
+      const r724 = Math.min(fw, fh) * 0.34;
+
+      // background rings
+      for (let i = 0; i < 5; i++) {
+        fctx.beginPath();
+        fctx.arc(cx, cy, (70 + i * 34 + Math.sin(ft + i) * 3) * dpr, 0, Math.PI * 2);
+        fctx.strokeStyle = `hsla(${180 + i * 24}, 100%, 68%, ${0.08 + i * 0.025})`;
+        fctx.lineWidth = 1 * dpr;
+        fctx.stroke();
+      }
+
+      // 427Hz density-return route
+      fctx.beginPath();
+      for (let a = 0; a <= Math.PI * 2 + 0.02; a += 0.025) {
+        const pulse = Math.sin(a * 7 + ft * 3.2) * 10 * dpr;
+        const rr = r427 + pulse;
+        const x = cx + Math.cos(a) * rr;
+        const y = cy + Math.sin(a) * rr;
+        if (a === 0) fctx.moveTo(x, y);
+        else fctx.lineTo(x, y);
+      }
+      fctx.closePath();
+      fctx.strokeStyle = "rgba(0,245,255,.58)";
+      fctx.lineWidth = 2.2 * dpr;
+      fctx.shadowColor = "rgba(0,245,255,.65)";
+      fctx.shadowBlur = 16 * dpr;
+      fctx.stroke();
+      fctx.shadowBlur = 0;
+
+      // 724Hz safety-stabilization route
+      fctx.beginPath();
+      for (let a = 0; a <= Math.PI * 2 + 0.02; a += 0.02) {
+        const pulse = Math.sin(a * 11 - ft * 2.4) * 5 * dpr;
+        const rr = r724 + pulse;
+        const x = cx + Math.cos(a) * rr;
+        const y = cy + Math.sin(a) * rr;
+        if (a === 0) fctx.moveTo(x, y);
+        else fctx.lineTo(x, y);
+      }
+      fctx.closePath();
+      fctx.strokeStyle = "rgba(255,230,109,.54)";
+      fctx.lineWidth = 2 * dpr;
+      fctx.shadowColor = "rgba(255,230,109,.55)";
+      fctx.shadowBlur = 14 * dpr;
+      fctx.stroke();
+      fctx.shadowBlur = 0;
+
+      // cuff center
+      fctx.beginPath();
+      fctx.arc(cx, cy, 18 * dpr + Math.sin(ft * 2) * 2 * dpr, 0, Math.PI * 2);
+      fctx.fillStyle = "rgba(53,255,159,.78)";
+      fctx.shadowColor = "rgba(53,255,159,.8)";
+      fctx.shadowBlur = 20 * dpr;
+      fctx.fill();
+      fctx.shadowBlur = 0;
+
+      fctx.font = `${11 * dpr}px DM Mono, monospace`;
+      fctx.fillStyle = "rgba(244,247,255,.82)";
+      fctx.textAlign = "center";
+      fctx.fillText("44271 CUFF", cx, cy + 42 * dpr);
+
+      requestAnimationFrame(drawFrequencyOrbit);
+    }
+
+    window.addEventListener("resize", resizeFreqCanvas);
+    resizeFreqCanvas();
+    drawFrequencyOrbit();
 
     function escapeCSV(value) {
       const s = String(value ?? "");
