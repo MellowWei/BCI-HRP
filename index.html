@@ -638,6 +638,55 @@
       background: linear-gradient(90deg, rgba(53,255,159,.09), rgba(0,245,255,.06));
     }
 
+    /* AUDIO ENGINE — playing state + stop button */
+    .music-mode-btn.playing {
+      border-color: rgba(255, 43, 214, .55);
+      background: linear-gradient(90deg, rgba(255,43,214,.12), rgba(53,255,159,.09));
+      box-shadow: 0 0 18px rgba(255, 43, 214, .25), inset 0 0 14px rgba(255,255,255,.04);
+    }
+    .music-mode-btn.playing::before {
+      content: "▶ ";
+      color: var(--green);
+      font-size: 10px;
+      letter-spacing: .1em;
+    }
+    .audio-stop-btn {
+      width: 100%;
+      margin-top: 4px;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 77, 109, .45);
+      border-radius: 16px;
+      background: linear-gradient(90deg, rgba(255,77,109,.10), rgba(255,43,214,.07));
+      color: var(--text);
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .audio-stop-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 77, 109, .85);
+      box-shadow: 0 0 18px rgba(255, 77, 109, .35);
+    }
+    .audio-stop-btn:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .audio-hint {
+      margin-top: 6px;
+      color: var(--dim);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
     .music-output-title {
       font-size: clamp(32px, 4vw, 56px);
       line-height: .92;
@@ -1102,7 +1151,7 @@
           This is no longer framed as a conventional Brain-Computer Interface. The core project is a Human-Machine Music Interface: music is the interface, qualia is the input, rhythm is the pathway, AI is the reflective layer, and wearable sensing / future BCI validation become the scientific testing layer.
         </p>
         <p class="sub cn">
-          本项目不再被主命名为传统“脑机接口”。它的核心是人机音乐接口：音乐是界面，感质是输入，节律是路径，AI 是反思层，可穿戴生理传感与未来 BCI 验证是科学测试层。
+          本项目不再被主命名为传统"脑机接口"。它的核心是人机音乐接口：音乐是界面，感质是输入，节律是路径，AI 是反思层，可穿戴生理传感与未来 BCI 验证是科学测试层。
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#identity-shift">NEW IDENTITY</a>
@@ -1122,7 +1171,7 @@
           <h2>What is built, what is renamed, what needs validation.</h2>
           <h2 class="cn">已建成什么、重新命名为什么、需要验证什么。</h2>
           <p class="sub">
-            Human Return Music Interface is an early-stage, falsifiable human-machine music system. It is not currently presented as a medical device, clinical treatment, completed BCI, or proven neural regulation system. The future BCI layer is treated as a validation pathway, not the project’s primary identity.
+            Human Return Music Interface is an early-stage, falsifiable human-machine music system. It is not currently presented as a medical device, clinical treatment, completed BCI, or proven neural regulation system. The future BCI layer is treated as a validation pathway, not the project's primary identity.
           </p>
           <p class="sub cn">
             Human Return Music Interface 是一个早期、可证伪的人机音乐系统。当前不把它表述为医疗设备、临床治疗、已完成的脑机接口或已证明的神经调节系统。未来 BCI 层是验证路径，不是项目主身份。
@@ -1274,7 +1323,7 @@
           <h2 class="cn">系统回应的八个真实痛点。</h2>
         </div>
 
-        <div class="card span-3"><div class="num">01</div><h3>Fragmented Attention</h3><h3 class="cn">注意力碎裂</h3><p>“I know what to do, but I cannot gather myself into doing it.”</p><p class="cn">“我知道要做什么，但我无法把自己聚拢到行动里。”</p></div>
+        <div class="card span-3"><div class="num">01</div><h3>Fragmented Attention</h3><h3 class="cn">注意力碎裂</h3><p>"I know what to do, but I cannot gather myself into doing it."</p><p class="cn">"我知道要做什么，但我无法把自己聚拢到行动里。"</p></div>
         <div class="card span-3"><div class="num">02</div><h3>Emotional Overload</h3><h3 class="cn">情绪过载</h3><p>Emotion exceeds available regulatory structure.</p><p class="cn">情绪超过了当下可承载的调节结构。</p></div>
         <div class="card span-3"><div class="num">03</div><h3>Transition Failure</h3><h3 class="cn">状态转换失败</h3><p>The bridge between rest, action, and recovery is missing.</p><p class="cn">休息、行动与恢复之间缺少桥。</p></div>
         <div class="card span-3"><div class="num">04</div><h3>Body-Signal Blindness</h3><h3 class="cn">身体信号不可读</h3><p>Users recognize fatigue only after collapse.</p><p class="cn">用户往往在崩掉之后才意识到自己已经累了。</p></div>
@@ -1398,7 +1447,7 @@
           <h2 class="cn">用户首先不是一个数据点，而是一个活生生的状态。</h2>
 
           <p class="sub">
-            Most productivity, wellness, and AI systems begin from an external demand: finish the task, calm down, optimize performance, reduce symptoms, or follow a protocol. QDR begins from a different point: what is the felt quality of the user’s current state, and what rhythm would allow this state to become readable, adjustable, and returnable?
+            Most productivity, wellness, and AI systems begin from an external demand: finish the task, calm down, optimize performance, reduce symptoms, or follow a protocol. QDR begins from a different point: what is the felt quality of the user's current state, and what rhythm would allow this state to become readable, adjustable, and returnable?
           </p>
 
           <p class="sub cn">
@@ -1432,7 +1481,7 @@
             A user who is not working may be bored, frozen, exhausted, overstimulated, ashamed, dissociated, or waiting for the right entry rhythm. A behavior-only system sees inactivity. QDR asks what kind of inactivity this is.
           </p>
           <p class="cn">
-            一个没有开始工作的用户，可能是无聊、冻结、疲惫、过度刺激、羞耻、解离，或正在等待正确进入节律。只看行为的系统看到的是“不动”。QDR 问的是：这是哪一种“不动”？
+            一个没有开始工作的用户，可能是无聊、冻结、疲惫、过度刺激、羞耻、解离，或正在等待正确进入节律。只看行为的系统看到的是"不动"。QDR 问的是：这是哪一种"不动"？
           </p>
         </div>
 
@@ -1509,8 +1558,8 @@
               <tr>
                 <td>Qualia Layer<br>感质层</td>
                 <td>
-                  “I feel scattered / numb / overloaded / restless.”<br>
-                  “我很散 / 麻 / 过载 / 不安。”
+                  "I feel scattered / numb / overloaded / restless."<br>
+                  "我很散 / 麻 / 过载 / 不安。"
                 </td>
                 <td>
                   Convert lived state into state texture.<br>
@@ -1755,11 +1804,12 @@
             <span class="tag">CUFF PHYSIOLOGY</span>
             <span class="tag">HRV / EDA / TEMP / IMU</span>
             <span class="tag">ADAPTIVE FEEDBACK</span>
+            <span class="tag">▶ LIVE AUDIO ENABLED</span>
           </div>
         </div>
 
         <div class="card span-12">
-          <div class="eyebrow">LIVE SAMPLING MAP // 动态采样解释</div>
+          <div class="eyebrow">LIVE SAMPLING MAP // 动态采样解释 // CLICK A GENRE TO HEAR IT</div>
           <div class="music-lab-grid">
             <div class="music-sampling-stage">
               <canvas id="musicSamplingCanvas"></canvas>
@@ -1773,7 +1823,7 @@
             </div>
 
             <div>
-              <div class="eyebrow">SELECT A SOUND PROTOCOL // 选择声音协议</div>
+              <div class="eyebrow">SELECT A SOUND PROTOCOL // 选择声音协议 // CLICK TO PLAY / CLICK AGAIN TO STOP</div>
               <div class="music-control-panel">
                 <button class="music-mode-btn active" data-music="breakbeats">Breakbeats / 碎拍</button>
                 <button class="music-mode-btn" data-music="hyperpop">Hyperpop / 超流行</button>
@@ -1782,6 +1832,8 @@
                 <button class="music-mode-btn" data-music="darkwave">Darkwave / 暗潮</button>
                 <button class="music-mode-btn" data-music="ambient">Ambient Techno / 氛围科技舞曲</button>
                 <button class="music-mode-btn" data-music="anchor427">427Hz Anchor / 427Hz 锚点</button>
+                <button class="audio-stop-btn" id="audioStopBtn" type="button" disabled>■ STOP ALL SOUND</button>
+                <div class="audio-hint">PROCEDURAL WEB AUDIO · NO EXTERNAL FILES · LOW VOLUME RECOMMENDED</div>
               </div>
 
               <div style="margin-top:22px;">
@@ -2121,7 +2173,7 @@
               <tr><td>C · Random Rhythm<br>C · 随机节律</td><td>Non-state-contingent random sound profile.</td><td>Novelty and variety effect.</td></tr>
               <tr><td>D · Adaptive + AiQ愛&lt;3<br>D · 自适应 + AiQ愛&lt;3</td><td>Stabilization / mirror feedback.</td><td>Low-bandwidth reflective AI support.</td></tr>
               <tr><td>E · Adaptive + AiQ愛&lt;7<br>E · 自适应 + AiQ愛&lt;7</td><td>Expansion / deep reasoning feedback.</td><td>High-bandwidth reasoning support.</td></tr>
-              <tr><td>F · Yoked Replay<br>F · 配对回放</td><td>Replay another session’s adaptive sequence.</td><td>True adaptation vs. sequence exposure.</td></tr>
+              <tr><td>F · Yoked Replay<br>F · 配对回放</td><td>Replay another session's adaptive sequence.</td><td>True adaptation vs. sequence exposure.</td></tr>
               <tr><td>G · Expectation-Control Script<br>G · 期待控制脚本</td><td>Standardized neutral explanation.</td><td>Demand characteristics / placebo expectation.</td></tr>
             </tbody>
           </table>
@@ -2474,7 +2526,6 @@
       currentMusic = key;
       const p = musicProfiles[key];
       if (!p) return;
-      document.querySelectorAll(".music-mode-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.music === key));
       const set = (id, value) => { const el = document.getElementById(id); if (el) el.innerHTML = value; };
       set("musicOrbLabel", p.label);
       set("ringBpm", p.bpm);
@@ -2495,8 +2546,218 @@
       if (meterRepeat) meterRepeat.style.setProperty("--w", p.repeatW);
     }
 
+    /* =========================================================
+       AUDIO ENGINE — procedural Web Audio for 7 sound protocols
+       no external assets · all synthesized from oscillators
+       ========================================================= */
+    const Audio = (function () {
+      let actx = null;
+      let masterGain = null;
+      let activeKey = null;        // currently playing genre key (or null)
+      let nodes = [];              // long-lived oscillators / lfos to stop on switch
+      let intervalId = null;       // setInterval id for stepped genres
+      let stepCounter = 0;
+
+      function getCtx() {
+        if (!actx) {
+          actx = new (window.AudioContext || window.webkitAudioContext)();
+          masterGain = actx.createGain();
+          masterGain.gain.value = 0.12;
+          masterGain.connect(actx.destination);
+        }
+        if (actx.state === "suspended") actx.resume();
+        return actx;
+      }
+
+      function setMaster(v) {
+        if (!masterGain) return;
+        masterGain.gain.cancelScheduledValues(actx.currentTime);
+        masterGain.gain.setTargetAtTime(v, actx.currentTime, 0.02);
+      }
+
+      // one-shot tone
+      function tone(freq, dur, type, vol) {
+        const ctx = getCtx();
+        const t0 = ctx.currentTime;
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = type || "sine";
+        o.frequency.setValueAtTime(freq, t0);
+        g.gain.setValueAtTime(0, t0);
+        g.gain.linearRampToValueAtTime(vol || 0.18, t0 + 0.005);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+        o.connect(g).connect(masterGain);
+        o.start(t0);
+        o.stop(t0 + dur + 0.02);
+      }
+
+      // continuous oscillator (kept until stopAll)
+      function sustain(freq, type, vol, detune) {
+        const ctx = getCtx();
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = type || "sine";
+        o.frequency.value = freq;
+        if (detune) o.detune.value = detune;
+        g.gain.value = 0;
+        g.gain.linearRampToValueAtTime(vol, ctx.currentTime + 0.4);
+        o.connect(g).connect(masterGain);
+        o.start();
+        nodes.push({ o, g });
+        return { o, g };
+      }
+
+      function stopAll() {
+        if (intervalId) { clearInterval(intervalId); intervalId = null; }
+        if (actx && nodes.length) {
+          const tEnd = actx.currentTime + 0.5;
+          nodes.forEach(({ o, g }) => {
+            try {
+              g.gain.cancelScheduledValues(actx.currentTime);
+              g.gain.setTargetAtTime(0, actx.currentTime, 0.08);
+              o.stop(tEnd);
+            } catch (e) {}
+          });
+        }
+        nodes = [];
+        stepCounter = 0;
+        activeKey = null;
+        document.querySelectorAll(".music-mode-btn").forEach(b => b.classList.remove("playing"));
+        const stopBtn = document.getElementById("audioStopBtn");
+        if (stopBtn) stopBtn.disabled = true;
+      }
+
+      // -------- per-genre patterns --------
+      function startBreakbeats() {
+        setMaster(0.14);
+        intervalId = setInterval(() => {
+          const s = stepCounter++;
+          if (s % 4 === 0) tone(90, 0.18, "sine", 0.34);              // kick
+          if (s % 4 === 2) tone(180, 0.10, "triangle", 0.18);          // snare body
+          if (s % 4 === 2) tone(1400, 0.06, "square", 0.06);           // snare top
+          if (s % 3 === 0) tone(427, 0.05, "triangle", 0.10);          // 427 accent
+          if (s % 5 === 1) tone(1280, 0.04, "square", 0.05);           // hat
+          if (s % 7 === 3) tone(720, 0.07, "sawtooth", 0.07);          // glitch
+        }, 145);
+      }
+
+      function startHyperpop() {
+        setMaster(0.10);
+        const tops = [427, 640, 854, 1280];
+        intervalId = setInterval(() => {
+          const s = stepCounter++;
+          tone(tops[s % tops.length], 0.08, "square", 0.10);
+          if (s % 4 === 0) tone(64, 0.12, "sine", 0.28);               // sub kick
+          if (s % 2 === 1) tone(1700, 0.04, "square", 0.06);           // sparkle
+        }, 120);
+      }
+
+      function startSynthpop() {
+        setMaster(0.13);
+        const chord = [427, 540, 640];
+        intervalId = setInterval(() => {
+          const s = stepCounter++;
+          tone(chord[s % chord.length], 0.38, "triangle", 0.16);
+          if (s % 4 === 0) tone(110, 0.20, "sine", 0.22);              // soft kick
+          if (s % 4 === 2) tone(220, 0.10, "sine", 0.10);              // bass tick
+        }, 520);
+      }
+
+      function startDriftPhonk() {
+        setMaster(0.15);
+        intervalId = setInterval(() => {
+          const s = stepCounter++;
+          if (s % 2 === 0) tone(53.375, 0.22, "sine", 0.40);           // heavy sub
+          if (s % 4 === 2) tone(800, 0.05, "square", 0.06);            // cowbell hi
+          if (s % 4 === 2) tone(600, 0.05, "square", 0.05);            // cowbell lo
+          if (s % 4 === 0) tone(427, 0.07, "sine", 0.12);              // 427 pulse
+        }, 160);
+      }
+
+      function startDarkwave() {
+        setMaster(0.11);
+        const pad = [106.75, 213.5, 427];
+        intervalId = setInterval(() => {
+          const s = stepCounter++;
+          tone(pad[s % pad.length], 0.55, "sawtooth", 0.09);
+          if (s % 2 === 0) tone(55, 0.45, "sine", 0.18);               // low pulse
+        }, 700);
+      }
+
+      function startAmbient() {
+        setMaster(0.09);
+        sustain(106.75, "sine", 0.18);
+        sustain(213.5, "sine", 0.14, 4);
+        sustain(427, "sine", 0.08, -4);
+        // slow tremolo LFO on master
+        const ctx = getCtx();
+        const lfo = ctx.createOscillator();
+        const lfoGain = ctx.createGain();
+        lfo.frequency.value = 0.16;
+        lfoGain.gain.value = 0.025;
+        lfo.connect(lfoGain).connect(masterGain.gain);
+        lfo.start();
+        nodes.push({ o: lfo, g: lfoGain });
+      }
+
+      function startAnchor427() {
+        setMaster(0.10);
+        sustain(427, "sine", 0.22);
+        sustain(213.5, "sine", 0.10, -2);
+        sustain(106.75, "sine", 0.06, 2);
+      }
+
+      const starters = {
+        breakbeats: startBreakbeats,
+        hyperpop: startHyperpop,
+        synthpop: startSynthpop,
+        driftphonk: startDriftPhonk,
+        darkwave: startDarkwave,
+        ambient: startAmbient,
+        anchor427: startAnchor427
+      };
+
+      function play(key) {
+        getCtx();          // unlock on user gesture
+        stopAll();
+        if (!starters[key]) return;
+        activeKey = key;
+        starters[key]();
+        const btn = document.querySelector('.music-mode-btn[data-music="' + key + '"]');
+        if (btn) btn.classList.add("playing");
+        const stopBtn = document.getElementById("audioStopBtn");
+        if (stopBtn) stopBtn.disabled = false;
+      }
+
+      function isPlaying(key) { return activeKey === key; }
+      function current() { return activeKey; }
+
+      return { play, stopAll, isPlaying, current };
+    })();
+
+    // Wire up: click toggles audio AND updates visual profile.
     document.querySelectorAll(".music-mode-btn").forEach(btn => {
-      btn.addEventListener("click", () => setMusicProfile(btn.dataset.music));
+      btn.addEventListener("click", () => {
+        const key = btn.dataset.music;
+        // visual selection (active class) — always switch
+        document.querySelectorAll(".music-mode-btn").forEach(b => b.classList.toggle("active", b === btn));
+        setMusicProfile(key);
+        // audio toggle: clicking the same playing genre stops it
+        if (Audio.isPlaying(key)) {
+          Audio.stopAll();
+        } else {
+          Audio.play(key);
+        }
+      });
+    });
+
+    // Stop button
+    const stopBtnEl = document.getElementById("audioStopBtn");
+    if (stopBtnEl) stopBtnEl.addEventListener("click", () => Audio.stopAll());
+
+    // Stop audio if the tab is hidden
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) Audio.stopAll();
     });
 
     window.addEventListener("resize", resizeMusicCanvas);
