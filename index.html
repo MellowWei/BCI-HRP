@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BCI-HRP V2.1 · Reflexive Musicology Integrated · Wei Jueran</title>
+<title>BCI-HRP V2.1 · Reflexive Musicology Integrated · Rhythmic Title · Wei Jueran</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
 
@@ -193,32 +193,34 @@
 
 
 
-    /* v2.2 HERO TITLE LOCK: softened pink / blue / white, hard cut, no gradient, no diffuse glow */
-    .cyber-glitch-title {
+    /* v2.4 HERO TITLE LOCK: rhythmic cut title, deep-bright pink / blue / white, no diffuse glitch */
+    .rhythm-cut-title {
       position: relative;
       display: inline-block;
       max-width: 1200px;
       text-transform: uppercase;
       font-weight: 950;
       line-height: .86;
-      letter-spacing: .012em;
-      word-spacing: .18em;
-      color: #f2f5ff;
+      letter-spacing: .010em;
+      word-spacing: .17em;
+      color: #f7faff;
       background: none;
       -webkit-background-clip: initial;
       background-clip: initial;
       -webkit-text-fill-color: currentColor;
       text-shadow:
-        1.25px 0 0 rgba(108, 218, 232, .76),
-        -1.25px 0 0 rgba(226, 128, 202, .72),
-        0 1px 0 rgba(255,255,255,.58);
-      filter: saturate(0.92) contrast(1.02);
-      animation: none;
+        1.15px 0 0 rgba(70, 185, 222, .72),
+        -1.15px 0 0 rgba(202, 70, 160, .68),
+        0 1.1px 0 rgba(255,255,255,.42),
+        0 2.1px 0 rgba(28, 34, 70, .58);
+      filter: saturate(1.12) contrast(1.08) brightness(1.02);
+      animation: titleBeatBody 3.84s cubic-bezier(.18,.82,.22,1) infinite;
+      transform-origin: left center;
       isolation: isolate;
     }
 
-    .cyber-glitch-title::before,
-    .cyber-glitch-title::after {
+    .rhythm-cut-title::before,
+    .rhythm-cut-title::after {
       content: attr(data-text);
       position: absolute;
       inset: 0;
@@ -228,57 +230,83 @@
       mix-blend-mode: normal;
       text-shadow: none;
       filter: none;
+      will-change: transform, opacity, clip-path;
     }
 
-    .cyber-glitch-title::before {
-      color: #78dce8;
-      opacity: .74;
-      transform: translate(2px, -1px);
-      clip-path: polygon(0 0, 100% 0, 100% 33%, 0 38%);
-      animation: titleBrightCutBlue 8.6s steps(1, end) infinite;
+    .rhythm-cut-title::before {
+      color: #4bc0e4;
+      opacity: .76;
+      transform: translate(1.9px, -1px);
+      clip-path: polygon(0 0, 100% 0, 100% 32%, 0 37%);
+      animation: titleBeatBlue 3.84s cubic-bezier(.2,.72,.18,1) infinite;
     }
 
-    .cyber-glitch-title::after {
-      color: #e28bcc;
+    .rhythm-cut-title::after {
+      color: #c94aa2;
       opacity: .72;
-      transform: translate(-2px, 1px);
-      clip-path: polygon(0 62%, 100% 57%, 100% 100%, 0 100%);
-      animation: titleBrightCutPink 9.8s steps(1, end) infinite;
+      transform: translate(-1.9px, 1px);
+      clip-path: polygon(0 63%, 100% 58%, 100% 100%, 0 100%);
+      animation: titleBeatPink 3.84s cubic-bezier(.22,.78,.18,1) infinite;
     }
 
-    .cyber-glitch-title .cut-mark {
-      display: inline-block;
+    @keyframes titleBeatBody {
+      /* 4/4 body pulse: kick / hold / snare / hold, subtle not chaotic */
+      0%, 100% { transform: translateY(0) scaleX(1); }
+      7% { transform: translateY(-.7px) scaleX(1.003); }
+      12% { transform: translateY(0) scaleX(1); }
+      31% { transform: translateY(-.35px) scaleX(1.001); }
+      38% { transform: translateY(0) scaleX(1); }
+      56% { transform: translateY(-.65px) scaleX(1.0025); }
+      62% { transform: translateY(0) scaleX(1); }
+      81% { transform: translateY(-.28px) scaleX(1.001); }
+      87% { transform: translateY(0) scaleX(1); }
     }
 
-    @keyframes titleBrightCutBlue {
-      0%, 90%, 100% { transform: translate(2px, -1px); opacity: .72; }
-      14% { transform: translate(3px, -1px); opacity: .80; }
-      15% { transform: translate(1.5px, -1px); opacity: .62; }
-      54% { transform: translate(2.5px, 0); opacity: .78; }
-      55% { transform: translate(2px, -1px); opacity: .72; }
+    @keyframes titleBeatBlue {
+      /* blue = high transient, appears on beat and lifts slightly upward */
+      0%, 100% { transform: translate(1.9px, -1px); opacity: .74; clip-path: polygon(0 0, 100% 0, 100% 32%, 0 37%); }
+      6% { transform: translate(2.8px, -1.5px); opacity: .90; clip-path: polygon(0 0, 100% 0, 100% 35%, 0 40%); }
+      10% { transform: translate(1.6px, -.8px); opacity: .68; }
+      30% { transform: translate(2.4px, -1.2px); opacity: .82; }
+      34% { transform: translate(1.8px, -.9px); opacity: .72; }
+      55% { transform: translate(2.7px, -1.45px); opacity: .88; clip-path: polygon(0 0, 100% 0, 100% 34%, 0 39%); }
+      60% { transform: translate(1.9px, -1px); opacity: .74; }
+      78% { transform: translate(2.25px, -1.15px); opacity: .80; }
+      84% { transform: translate(1.75px, -.9px); opacity: .70; }
     }
 
-    @keyframes titleBrightCutPink {
-      0%, 88%, 100% { transform: translate(-2px, 1px); opacity: .70; }
-      24% { transform: translate(-3px, 1px); opacity: .78; }
-      25% { transform: translate(-1.5px, 1px); opacity: .60; }
-      66% { transform: translate(-2.5px, 0); opacity: .76; }
-      67% { transform: translate(-2px, 1px); opacity: .70; }
+    @keyframes titleBeatPink {
+      /* pink = off-beat / syncopation, answers the blue slice after the beat */
+      0%, 100% { transform: translate(-1.9px, 1px); opacity: .70; clip-path: polygon(0 63%, 100% 58%, 100% 100%, 0 100%); }
+      12% { transform: translate(-2.7px, 1.45px); opacity: .86; clip-path: polygon(0 60%, 100% 55%, 100% 100%, 0 100%); }
+      17% { transform: translate(-1.7px, .8px); opacity: .66; }
+      42% { transform: translate(-2.4px, 1.25px); opacity: .80; }
+      48% { transform: translate(-1.8px, .9px); opacity: .70; }
+      67% { transform: translate(-2.85px, 1.5px); opacity: .88; clip-path: polygon(0 61%, 100% 56%, 100% 100%, 0 100%); }
+      72% { transform: translate(-1.9px, 1px); opacity: .70; }
+      90% { transform: translate(-2.35px, 1.18px); opacity: .78; }
+      95% { transform: translate(-1.8px, .9px); opacity: .68; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rhythm-cut-title,
+      .rhythm-cut-title::before,
+      .rhythm-cut-title::after { animation: none; }
     }
 
     @media (max-width: 700px) {
-      .cyber-glitch-title {
+      .rhythm-cut-title {
         letter-spacing: .002em;
         word-spacing: .08em;
         text-shadow:
-          .8px 0 0 rgba(108, 218, 232, .72),
-          -.8px 0 0 rgba(226, 128, 202, .68),
-          0 .8px 0 rgba(255,255,255,.50);
+          .85px 0 0 rgba(70, 185, 222, .68),
+          -.85px 0 0 rgba(202, 70, 160, .64),
+          0 .9px 0 rgba(255,255,255,.36),
+          0 1.5px 0 rgba(28, 34, 70, .50);
       }
-      .cyber-glitch-title::before { transform: translate(1.5px, -.7px); }
-      .cyber-glitch-title::after { transform: translate(-1.5px, .7px); }
+      .rhythm-cut-title::before { transform: translate(1.25px, -.7px); }
+      .rhythm-cut-title::after { transform: translate(-1.25px, .7px); }
     }
-
 
     .table .en-cell {
       color: var(--muted);
@@ -957,7 +985,7 @@
 <section id="top">
 <div>
 <div class="eyebrow">BCI-HRP V2.1 // LAB COLLABORATION PACKAGE // 返身音乐学整合 · 基于探针的身体—觉察对齐映射系统</div>
-<h1 class="cyber-glitch-title" data-text="THE HUMAN RETURN PROTOCOL.">THE HUMAN RETURN PROTOCOL.</h1>
+<h1 class="rhythm-cut-title" data-text="THE HUMAN RETURN PROTOCOL.">THE HUMAN RETURN PROTOCOL.</h1>
 <div class="thesis">
           Invention-first, lab-validated later: I bring the original system and prototype; the lab brings participants, measurement infrastructure, and scientific validation.
           <div class="cn">先有发明，再进入实验室验证：我提供原创系统与原型，实验室提供样本、测量基础设施与科学验证。</div>
