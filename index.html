@@ -717,8 +717,9 @@
       <a href="#ask">LAB ASK</a>
       <a href="#mvp">MVP</a>
       <a href="#architecture">ARCHITECTURE</a>
+      <a href="#hardware">HARDWARE</a>
       <a href="#research">RESEARCH Qs</a>
-      <a href="#probe">MUSIC PROBES</a>
+      <a href="#probe">INPUT PROBES</a>
       <a href="#ethics">BOUNDARIES</a>
       <a href="#pilot">PILOT</a>
       <a href="#evidence">EVIDENCE LOGIC</a>
@@ -761,8 +762,8 @@
           <h2>A non-diagnostic private tool for returning interpretive authority to the user.</h2>
           <h2 class="cn">一个把解释权交还给用户的非诊断私人工具。</h2>
           <div class="quote">
-            Human Return Protocol is a non-diagnostic private tool: when users cannot clearly say what they feel, it records what the body is doing, lets users probe it with music they choose, and returns a personal “music–body–awareness” pattern map to the user.
-            <div class="cn">Human Return Protocol 是一个非诊断的私人工具：在用户说不清自己感受时，它记录身体在做什么，让用户用自己选择的音乐去探测它，再把“音乐—身体—觉察”的个人模式地图交还给用户。</div>
+            Human Return Protocol is a non-diagnostic private tool: when users cannot clearly say what they feel, it records what the body — and, where measurable, neural activity — is doing, lets users probe it (music being one of several input classes they can choose), and returns a personal alignment map to the user.
+            <div class="cn">Human Return Protocol 是一个非诊断的私人工具：在用户说不清自己感受时，它记录身体——以及在可测时，神经活动——在做什么，让用户用探针去探测它（音乐只是可选的几类输入之一），再把个人对齐地图交还给用户。</div>
           </div>
           <div class="tag-row">
             <span class="tag green">NON-DIAGNOSTIC</span>
@@ -990,6 +991,88 @@
       </div>
     </section>
 
+    <section id="hardware">
+      <div class="grid">
+        <div class="card span-12 neon-card">
+          <div class="eyebrow">04B // HARDWARE LANDSCAPE // EXISTING DEVICES, NO CUSTOM HARDWARE</div>
+          <h2>The signals already exist in 2026 devices. The originality is not the sensor.</h2>
+          <h2 class="cn">2026 年的设备已能采到这些信号。原创性不在传感器。</h2>
+          <p class="sub">
+            A scan of 2026 consumer and research hardware finds no alignment-relevant signal channel that requires a custom-built device. Every channel is covered by existing, validated, purchasable hardware. This does not weaken the invention — it locates it above the commodity sensor layer, in the measurement framework, software, and the self-prediction criterion.
+          </p>
+          <p class="sub cn">
+            对 2026 年消费级与研究级硬件的盘点显示：没有任何"对齐相关"的信号通道需要自研设备。每一条通道都已被现成、经验证、可购买的硬件覆盖。这不削弱发明——它把发明定位在通用传感器层之上：测量框架、软件，与自我预测判据。
+          </p>
+        </div>
+
+        <div class="card span-6 neon-card">
+          <div class="eyebrow">MOMENTARY LAYER // 瞬时层</div>
+          <h3>Polar H10 / Verity Sense — real-time RR</h3>
+          <h3 class="cn">Polar H10 / Verity Sense — 实时 RR</h3>
+          <p>The self-prediction cornerstone needs in-the-moment, beat-to-beat, ECG-grade RR. Only a chest strap / armband streaming RR per second over BLE delivers this. Polar H10 agrees with ECG at r≈0.95 at rest and is research-validated, with real-time SDK support (Kubios / Polar).</p>
+          <p class="cn">自我预测拱心石需要当下、逐搏、ECG 级 RR。只有每秒经 BLE 流式输出 RR 的胸带/臂带能做到。Polar H10 静息态对 ECG r≈0.95，经研究验证，有实时 SDK 支持（Kubios / Polar）。</p>
+        </div>
+
+        <div class="card span-6">
+          <div class="eyebrow">LONGITUDINAL LAYER // 纵向层</div>
+          <h3>Oura Ring 4 — baseline trends</h3>
+          <h3 class="cn">Oura Ring 4 — 基线趋势</h3>
+          <p>Weeks-long HRV / temperature / sleep baselines give the longitudinal map. Oura has the strongest consumer HRV validity (CCC≈0.99 vs ECG) and all-day wear. Its API returns daily summaries — right grain for the longitudinal layer, but not for the moment, which is why the two layers use two devices.</p>
+          <p class="cn">数周的 HRV / 皮温 / 睡眠基线提供纵向地图。Oura 是消费级 HRV 验证最强者（对 ECG CCC≈0.99）且全天佩戴。其 API 返回每日汇总——正合纵向层的粒度，但不适合"当下"，这正是两层用两个设备的原因。</p>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">SIGNAL × DEVICE // 信号 × 设备 · WHAT EACH CAN AND CANNOT DO</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Signal / 信号</th>
+                <th>Best device / 最佳载体</th>
+                <th>Resting validity / 静息有效性</th>
+                <th>Honest limit / 诚实限制</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Real-time RR / HRV</td><td>Polar H10 (chest)</td><td>r≈0.95 vs ECG</td><td>Chest strap less comfortable for all-day wear.</td></tr>
+              <tr><td>Longitudinal HRV</td><td>Oura Ring 4</td><td>CCC≈0.99 vs ECG</td><td>Daily summary only — not real-time.</td></tr>
+              <tr><td>ECG (single-lead)</td><td>Apple Watch 11</td><td>FDA-cleared</td><td>On-demand only, not continuous.</td></tr>
+              <tr><td>EDA</td><td>Empatica EmbracePlus</td><td>Lab-valid</td><td>Correlation with self-report ≈ −0.03 to −0.11. Motion-fragile.</td></tr>
+              <tr><td>EEG bands</td><td>Muse S Athena (consumer)</td><td>Low test–retest</td><td>Measurement noise often exceeds the effect of interest. Lab-grade EEG = lab only.</td></tr>
+              <tr><td>fNIRS</td><td>Muse S Athena / lab</td><td>Early / unstable</td><td>Collapses under motion, speech, expression. Lab-chair only.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card span-12 warning-card">
+          <div class="eyebrow">WHY NO CUSTOM HARDWARE // 为何不自研硬件</div>
+          <h3>The one gap that might justify it is already filled — for ~$90.</h3>
+          <h3 class="cn">唯一可能证成自研的缺口，已被填满——约 90 美元。</h3>
+          <p>The dimension that could have justified custom hardware — a device streaming real-time, ambulatory, beat-to-beat RR for momentary self-prediction — is exactly what Polar H10 already does: ~$90, validated near-ECG, RR every second over BLE, research SDK. The only residual gap is comfort (chest strap vs. ring), which is a form-factor problem already addressed by armband options and contributes nothing to the invention's originality. Building a sensor to beat Polar is a hardware company's task, not this project's.</p>
+          <p class="cn">可能证成自研硬件的那个维度——一个为瞬时自我预测、实时、日常、逐搏流式输出 RR 的设备——正是 Polar H10 已经在做的：约 90 美元、验证逼近 ECG、每秒经 BLE 输出 RR、有研究 SDK。唯一残留的缺口是舒适度（胸带 vs 指环），那是形态问题、已被臂带方案解决，且对发明原创性零贡献。造一个超越 Polar 的传感器是硬件公司的活，不是本项目的活。</p>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">BUILDABLE MVP DEVICE LIST // 可造 MVP 设备清单</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Device / 设备</th>
+                <th>Price / 价格</th>
+                <th>Role / 职责</th>
+                <th>Necessity / 必需性</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Polar H10 or Verity Sense</td><td>~$90</td><td>Momentary real-time RR</td><td><strong>Core required</strong></td></tr>
+              <tr><td>Kubios HRV (Scientific)</td><td>Subscription</td><td>Real-time RR stream + storage + analysis</td><td>Core required</td></tr>
+              <tr><td>Oura Ring 4</td><td>~$300 + membership</td><td>Longitudinal baseline</td><td>Recommended, not launch-critical</td></tr>
+              <tr><td>Custom hardware</td><td>—</td><td>—</td><td><strong>Not needed</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <section id="research">
       <div class="grid">
         <div class="card span-12 neon-card">
@@ -1079,21 +1162,48 @@
     <section id="probe">
       <div class="grid">
         <div class="card span-12 neon-card">
-          <div class="eyebrow">06 // MUSIC PROBE SET // NOT PROTOCOL, NOT TREATMENT PROMISE</div>
-          <h2>Music is a probe for personal pattern discovery.</h2>
-          <h2 class="cn">音乐是个人模式发现的探针。</h2>
+          <div class="eyebrow">06 // ALIGNMENT INPUT PROBES // MUSIC IS ONE CLASS, NOT THE CORE</div>
+          <h2>The core is alignment measurement. Music is one class of input probe.</h2>
+          <h2 class="cn">核心是对齐测量。音乐只是输入探针的一类。</h2>
           <p class="sub">
-            The six Wei Jueran genres are not framed as therapeutic protocols. They are candidate acoustic conditions, authorship layer, and exclusion probes: they help users discover what kind of musical structure their body rejects, seeks, or recognizes.
+            What this system measures is whether body, awareness, and (where available) neural activity move together. A probe is anything that perturbs that system so the alignment becomes visible. Music is one class of probe — the acoustic class. Silence, context, task load, and attention direction are equally valid non-acoustic probes. The system does not depend on music working.
           </p>
           <p class="sub cn">
-            魏珏然六类音乐不再命名为治疗协议。它们是候选声学条件、作品署名层与排除式探针：帮助用户发现自己的身体拒绝、寻求或认出哪类音乐结构。
+            本系统测量的是身体、觉察、（在可得时）神经活动是否一同移动。探针是任何能扰动这个系统、让对齐变得可见的东西。音乐是探针的一类——声学类。沉默、情境、任务负荷、注意力指向是同等有效的非声学探针。系统不依赖音乐有效。
           </p>
+          <p class="sub">
+            Within the acoustic class, the six Wei Jueran genres are candidate acoustic conditions, an authorship layer, and exclusion probes — not therapeutic protocols. Whether they outperform a user's own library, or silence, is a research question (RQ3), not a claim.
+          </p>
+          <p class="sub cn">
+            在声学类内部，魏珏然六类音乐是候选声学条件、作品署名层与排除式探针——不是治疗协议。它们是否优于用户自带曲库、或优于沉默，是一个研究问题（RQ3），不是宣称。
+          </p>
+        </div>
+
+        <div class="card span-12">
+          <div class="eyebrow">PROBE CLASSES // 探针类别</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Probe class / 探针类</th>
+                <th>Example / 示例</th>
+                <th>Channel / 通道</th>
+                <th>Hardware needed / 所需硬件</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Acoustic</strong> / 声学</td><td>Music (incl. six genres), tones, soundscape</td><td>Audio playback</td><td>None — software</td></tr>
+              <tr><td><strong>Silence</strong> / 沉默</td><td>Absence of input as a baseline probe</td><td>Timed quiet window</td><td>None — software</td></tr>
+              <tr><td><strong>Context</strong> / 情境</td><td>Time of day, location, task, sleep state</td><td>Self-report + device metadata</td><td>None — software</td></tr>
+              <tr><td><strong>Task load</strong> / 任务负荷</td><td>A demanding vs. restful activity</td><td>Self-report + motion</td><td>None — software</td></tr>
+              <tr><td><strong>Attention</strong> / 注意力</td><td>Open prompt directing notice to the body</td><td>Open-ended question</td><td>None — software</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="card span-7">
           <div class="orb-stage">
-            <div class="ring-label r1">ACOUSTIC FEATURE<small id="rFeature">syncopation depth</small></div>
-            <div class="ring-label r2">BODY PROXY<small id="rProxy">movement / HRV</small></div>
+            <div class="ring-label r1">PROBE (ACOUSTIC CLASS)<small id="rFeature">syncopation depth</small></div>
+            <div class="ring-label r2">BODY / NEURAL PROXY<small id="rProxy">movement / HRV</small></div>
             <div class="ring-label r3">USER RESPONSE<small id="rResponse">recognize / reject</small></div>
             <div class="ring-label r4">INTERPRETATION<small id="rMeaning">user-owned</small></div>
             <div class="orb"><span id="probeOrb">BREAKBEATS<br><small>PROBE</small></span></div>
@@ -1399,8 +1509,8 @@
         <div class="card span-12">
           <div class="eyebrow">FINAL POSITIONING // 最终定位</div>
           <div class="quote">
-            HRP is not a wellness app, not a music therapy app, not a neural decoding project, and not AI repairing the human. It is a user-owned mapping system for body–awareness alignment, using music as a probe and AI as a reflection/report layer.
-            <div class="cn">HRP 不是普通身心健康 App，不是音乐治疗 App，不是神经解码项目，也不是 AI 修复人类。它是一个用户拥有的身体—觉察对齐映射系统，用音乐作为探针，用 AI 作为反思/报告层。</div>
+            HRP is not a wellness app, not a music therapy app, not a neural decoding project, and not AI repairing the human. It is a user-owned measurement system for body–awareness–neural alignment, using probes (music being one acoustic class among several) to make alignment visible, and AI as a reflection/report layer.
+            <div class="cn">HRP 不是普通身心健康 App，不是音乐治疗 App，不是神经解码项目，也不是 AI 修复人类。它是一个用户拥有的身体—觉察—神经对齐测量系统，用探针（音乐只是其中一类声学探针）让对齐变得可见，用 AI 作为反思/报告层。</div>
           </div>
         </div>
       </div>
