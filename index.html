@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Human Return Protocol · Probe-Based Alignment Measurement · Wei Jueran</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BCI-HRP V2.1 · Reflexive Musicology Integrated · Wei Jueran</title>
+<style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
 
     :root {
@@ -191,33 +192,132 @@
     }
 
 
-    .gradient-title {
+
+    /* v2.2 HERO TITLE LOCK: softened pink / blue / white, hard cut, no gradient, no diffuse glow */
+    .cyber-glitch-title {
+      position: relative;
       display: inline-block;
-      background: linear-gradient(
-        90deg,
-        #00f5ff 0%,
-        #64d2ff 18%,
-        #f4f7ff 34%,
-        #ff2bd6 52%,
-        #8d5cff 68%,
-        #00f5ff 100%
-      );
-      background-size: 260% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-      letter-spacing: -0.045em;
-      word-spacing: 0.12em;
-      animation: titleGradientFlow 5.8s ease-in-out infinite alternate;
-      text-shadow: none;
-      filter: drop-shadow(0 0 10px rgba(0,245,255,.34)) drop-shadow(0 0 18px rgba(255,43,214,.18));
+      max-width: 1200px;
+      text-transform: uppercase;
+      font-weight: 950;
+      line-height: .86;
+      letter-spacing: .012em;
+      word-spacing: .18em;
+      color: #f2f5ff;
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      -webkit-text-fill-color: currentColor;
+      text-shadow:
+        1.25px 0 0 rgba(108, 218, 232, .76),
+        -1.25px 0 0 rgba(226, 128, 202, .72),
+        0 1px 0 rgba(255,255,255,.58);
+      filter: saturate(0.92) contrast(1.02);
+      animation: none;
+      isolation: isolate;
     }
 
-    @keyframes titleGradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 20% 50%; }
+    .cyber-glitch-title::before,
+    .cyber-glitch-title::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: none;
+      -webkit-text-fill-color: currentColor;
+      mix-blend-mode: normal;
+      text-shadow: none;
+      filter: none;
+    }
+
+    .cyber-glitch-title::before {
+      color: #78dce8;
+      opacity: .74;
+      transform: translate(2px, -1px);
+      clip-path: polygon(0 0, 100% 0, 100% 33%, 0 38%);
+      animation: titleBrightCutBlue 8.6s steps(1, end) infinite;
+    }
+
+    .cyber-glitch-title::after {
+      color: #e28bcc;
+      opacity: .72;
+      transform: translate(-2px, 1px);
+      clip-path: polygon(0 62%, 100% 57%, 100% 100%, 0 100%);
+      animation: titleBrightCutPink 9.8s steps(1, end) infinite;
+    }
+
+    .cyber-glitch-title .cut-mark {
+      display: inline-block;
+    }
+
+    @keyframes titleBrightCutBlue {
+      0%, 90%, 100% { transform: translate(2px, -1px); opacity: .72; }
+      14% { transform: translate(3px, -1px); opacity: .80; }
+      15% { transform: translate(1.5px, -1px); opacity: .62; }
+      54% { transform: translate(2.5px, 0); opacity: .78; }
+      55% { transform: translate(2px, -1px); opacity: .72; }
+    }
+
+    @keyframes titleBrightCutPink {
+      0%, 88%, 100% { transform: translate(-2px, 1px); opacity: .70; }
+      24% { transform: translate(-3px, 1px); opacity: .78; }
+      25% { transform: translate(-1.5px, 1px); opacity: .60; }
+      66% { transform: translate(-2.5px, 0); opacity: .76; }
+      67% { transform: translate(-2px, 1px); opacity: .70; }
+    }
+
+    @media (max-width: 700px) {
+      .cyber-glitch-title {
+        letter-spacing: .002em;
+        word-spacing: .08em;
+        text-shadow:
+          .8px 0 0 rgba(108, 218, 232, .72),
+          -.8px 0 0 rgba(226, 128, 202, .68),
+          0 .8px 0 rgba(255,255,255,.50);
+      }
+      .cyber-glitch-title::before { transform: translate(1.5px, -.7px); }
+      .cyber-glitch-title::after { transform: translate(-1.5px, .7px); }
+    }
+
+
+    .table .en-cell {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .table td .cn {
+      margin-top: 7px;
+      color: rgba(244, 247, 255, .86);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .term-lock-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .term-lock-card {
+      border: 1px solid rgba(53,255,159,.26);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.028);
+    }
+
+    .term-lock-card strong {
+      display: block;
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 980px) {
+      .term-lock-grid { grid-template-columns: 1fr; }
     }
 
     .lang-link {
@@ -701,848 +801,1221 @@
       .r4 { top: auto; bottom: 20px; }
       .orb-stage { min-height: 520px; }
     }
+  
+
+    /* HESTIA BCI→BCI-HRP INTEGRATION v1.3 */
+    .integration-map {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:24px;
+    }
+    .integration-card {
+      min-height:220px;
+      padding:22px;
+      border:1px solid rgba(0,245,255,.18);
+      border-radius:24px;
+      background:linear-gradient(180deg,rgba(0,245,255,.05),rgba(255,43,214,.025)),rgba(255,255,255,.032);
+      box-shadow: inset 0 0 24px rgba(0,245,255,.035), 0 0 28px rgba(0,245,255,.05);
+    }
+    .integration-card strong,
+    .matrix-head,
+    .small-kicker {
+      display:block;
+      color:var(--green);
+      font-family:var(--mono);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+      text-shadow:0 0 10px rgba(53,255,159,.38);
+    }
+    .integration-card.yellow strong { color:var(--yellow); text-shadow:0 0 10px rgba(255,230,109,.38); }
+    .integration-card.pink strong { color:var(--pink); text-shadow:0 0 10px rgba(255,43,214,.38); }
+    .sovereignty-strip {
+      margin-top:22px;
+      padding:22px 26px;
+      border:1px solid rgba(53,255,159,.34);
+      border-radius:26px;
+      background:radial-gradient(circle at 8% 0%,rgba(53,255,159,.12),transparent 34%),radial-gradient(circle at 92% 10%,rgba(255,43,214,.11),transparent 36%),linear-gradient(90deg,rgba(0,245,255,.075),rgba(255,43,214,.045)),rgba(8,10,28,.70);
+      box-shadow:0 0 34px rgba(53,255,159,.10),0 0 56px rgba(0,245,255,.08),inset 0 0 28px rgba(255,255,255,.025);
+    }
+    .sovereignty-cn {
+      color:rgba(244,247,255,.96);
+      font-size:clamp(22px,2.5vw,36px);
+      line-height:1.18;
+      letter-spacing:-.04em;
+      text-shadow:0 0 16px rgba(0,245,255,.18),0 0 28px rgba(255,43,214,.12);
+    }
+    .sovereignty-en { margin-top:10px; color:var(--muted); font-size:15px; line-height:1.65; }
+    .relation-ladder {
+      display:grid;
+      grid-template-columns:1fr auto 1fr auto 1fr;
+      gap:14px;
+      align-items:stretch;
+      margin-top:26px;
+    }
+    .relation-arrow { display:grid; place-items:center; color:var(--pink); font-size:30px; text-shadow:0 0 18px rgba(255,43,214,.65); }
+    .relation-formula {
+      margin-top:22px;
+      padding:18px 20px;
+      border:1px solid rgba(53,255,159,.25);
+      border-radius:22px;
+      background:linear-gradient(90deg,rgba(53,255,159,.08),rgba(0,245,255,.055),rgba(255,43,214,.045)),rgba(255,255,255,.025);
+      font-family:var(--mono);
+      color:rgba(244,247,255,.88);
+      line-height:1.7;
+      letter-spacing:.055em;
+    }
+    .axis-grid {
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:1px;
+      margin-top:18px;
+      border:1px solid rgba(0,245,255,.18);
+      border-radius:20px;
+      overflow:hidden;
+      background:rgba(0,245,255,.12);
+    }
+    .axis-grid > div {
+      min-height:92px;
+      padding:13px;
+      background:rgba(8,10,28,.91);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.48;
+    }
+    .axis-grid .axis-head { color:var(--cyan); font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; min-height:auto; background:rgba(0,245,255,.07); }
+    .axis-grid .axis-label { color:var(--text); font-weight:800; background:rgba(53,255,159,.055); }
+    .source-strip {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:16px 0 0;
+      padding:12px 14px;
+      border:1px solid rgba(0,245,255,.18);
+      border-radius:18px;
+      background:linear-gradient(90deg,rgba(0,245,255,.045),rgba(255,43,214,.025)),rgba(255,255,255,.026);
+    }
+    .source-strip span {
+      padding:5px 9px;
+      border:1px solid rgba(0,245,255,.13);
+      border-radius:999px;
+      background:rgba(0,245,255,.035);
+      color:var(--muted);
+      font-family:var(--mono);
+      font-size:10px;
+      line-height:1.35;
+      letter-spacing:.035em;
+    }
+    .source-strip .title-pill { color:var(--green); border-color:rgba(53,255,159,.32); background:rgba(53,255,159,.065); }
+    .compact-list { margin:14px 0 0 18px; padding:0; color:var(--muted); }
+    .compact-list li { margin:8px 0; line-height:1.58; }
+    .two-col { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:18px; }
+    @media (max-width: 1024px) {
+      .integration-map, .two-col, .relation-ladder { grid-template-columns:1fr; }
+      .relation-arrow { transform:rotate(90deg); min-height:28px; }
+      .axis-grid { grid-template-columns:160px repeat(5,160px); overflow-x:auto; }
+    }
+
   </style>
 </head>
-
 <body>
-  <canvas id="field"></canvas>
-  <div class="grid-bg"></div>
-  <div class="vignette"></div>
-
-  <header>
-    <div class="brand"><span class="dot"></span> HRP LAB COLLABORATION PACKAGE // PROBE-BASED ALIGNMENT MEASUREMENT // WEI JUERAN · v1.1 · CST 2026-05-29</div>
-    <nav>
-      <a href="#top">HOME</a>
-      <a href="#definition">DEFINITION</a>
-      <a href="#ask">LAB ASK</a>
-      <a href="#mvp">MVP</a>
-      <a href="#architecture">ARCHITECTURE</a>
-      <a href="#hardware">HARDWARE</a>
-      <a href="#research">RESEARCH Qs</a>
-      <a href="#probe">INPUT PROBES</a>
-      <a href="#ethics">BOUNDARIES</a>
-      <a href="#pilot">PILOT</a>
-      <a href="#evidence">EVIDENCE LOGIC</a>
-      <a href="#deliverables">DELIVERABLES</a>
-      <a class="lang-link" href="./index-en.html">EN ONLY</a>
-      <a class="lang-link" href="./index-zh.html">中文版</a>
-      <a class="lang-link" href="./index-ja.html">日本語版</a>
-      <a href="https://mellowwei.github.io/MellowWei/" target="_blank" rel="noopener">MELLOWWEI ↗</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="top">
-      <div>
-        <div class="eyebrow">HUMAN RETURN PROTOCOL // LAB COLLABORATION PACKAGE // 非诊断身体—觉察—探针反应映射系统</div>
-        <h1 class="gradient-title">Human Return Protocol.</h1>
-        <div class="thesis">
+<canvas id="field"></canvas>
+<div class="grid-bg"></div>
+<div class="vignette"></div>
+<header>
+<div class="brand"><span class="dot"></span> BCI-HRP V2.1 // PROBE-BASED ALIGNMENT MAPPING // REFLEXIVE MUSICOLOGY INTEGRATED // WEI JUERAN · CST 2026-05-29</div>
+<nav>
+<a href="#top">HOME</a>
+<a href="#definition">DEFINITION</a>
+<a href="#terms">TERMS</a>
+<a href="#reflexive-musicology">REFLEXIVE MUSIC</a>
+<a href="#iterative-listening">ITERATIVE LISTENING</a>
+<a href="#ask">LAB ASK</a>
+<a href="#mvp">MVP</a>
+<a href="#architecture">ARCHITECTURE</a>
+<a href="#hardware">HARDWARE</a>
+<a href="#research">RESEARCH Qs</a>
+<a href="#probe">INPUT PROBES</a>
+<a href="#ethics">BOUNDARIES</a>
+<a href="#pilot">PILOT</a>
+<a href="#evidence">EVIDENCE LOGIC</a>
+<a href="#bci-main-transfer">BCI TRANSFER</a>
+<a href="#metalogic-qrm">METALOGIC/QRM</a>
+<a href="#dual-intelligence">DUAL INTEL</a>
+<a href="#music-evidence">MUSIC EVIDENCE</a>
+<a href="#data-safety">DATA SAFETY</a>
+<a href="#deliverables">DELIVERABLES</a>
+<a class="lang-link" href="./index-en.html">EN ONLY</a>
+<a class="lang-link" href="./index-zh.html">中文版</a>
+<a class="lang-link" href="./index-ja.html">日本語版</a>
+<a href="https://mellowwei.github.io/MellowWei/" rel="noopener" target="_blank">MELLOWWEI ↗</a>
+</nav>
+</header>
+<main>
+<section id="top">
+<div>
+<div class="eyebrow">BCI-HRP V2.1 // LAB COLLABORATION PACKAGE // 返身音乐学整合 · 基于探针的身体—觉察对齐映射系统</div>
+<h1 class="cyber-glitch-title" data-text="THE HUMAN RETURN PROTOCOL.">THE HUMAN RETURN PROTOCOL.</h1>
+<div class="thesis">
           Invention-first, lab-validated later: I bring the original system and prototype; the lab brings participants, measurement infrastructure, and scientific validation.
           <div class="cn">先有发明，再进入实验室验证：我提供原创系统与原型，实验室提供样本、测量基础设施与科学验证。</div>
-        </div>
-        <p class="sub">
-          HRP is not a mind-reading tool, not a diagnostic system, not a medical treatment, and not a neural decoding device. It is a private, non-diagnostic tool for mapping how body signals, self-awareness, context, and selected probe responses — including music as one acoustic class — change together over time.
+</div>
+<p class="sub">
+          BCI-HRP is not a mind-reading tool, not a diagnostic system, not a medical intervention, and not a neural decoding device. It is a private, user-owned, non-diagnostic tool for mapping how body signals, self-awareness, context, and selected probe responses — including music as one acoustic class — change together over time.
         </p>
-        <p class="sub cn">
-          HRP 不是读心工具，不是诊断系统，不是医疗治疗，也不是神经解码设备。它是一个非诊断的私人工具，用来映射身体信号、自我觉察、情境与所选探针反应——其中音乐只是声学类之一——如何随时间共同变化。
+<p class="sub cn">
+          BCI-HRP 不是读心工具，不是诊断系统，不是医疗干预，也不是神经解码设备。它是一个用户私有、非诊断的个人工具，用来映射身体信号、自我觉察、情境与所选探针反应——其中音乐只是声学类之一——如何随时间共同变化。
         </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#definition">ENTER DEFINITION</a>
-          <a class="button" href="#ask">LAB COLLABORATION ASK</a>
-          <a class="button" href="#mvp">LOCKED MVP</a>
-          <a class="button" href="#pilot">2–4 WEEK PILOT</a>
-        </div>
-      </div>
-    </section>
+<div class="hero-actions">
+<a class="button primary" href="#definition">ENTER DEFINITION</a>
+<a class="button" href="#ask">LAB COLLABORATION ASK</a>
+<a class="button" href="#mvp">LOCKED MVP</a>
+<a class="button" href="#pilot">2–4 WEEK PILOT</a>
+</div>
+</div>
+</section>
+<section id="definition">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">01 // LOCKED ONE-SENTENCE DEFINITION</div>
+<h2>A private, user-owned, non-diagnostic tool for returning interpretive authority to the user.</h2>
+<h2 class="cn">一个把解释权交还给用户的用户私有、非诊断个人工具。</h2>
+<div class="quote">
+            Human Return Protocol is a private, user-owned, non-diagnostic tool: when users cannot clearly say what they feel, it records what the body — and, where measurable, neural activity — is doing, lets users probe it (music being one of several input classes they can choose), and returns a user-owned alignment map to the user.
+            <div class="cn">Human Return Protocol 是一个用户私有、非诊断的个人工具：在用户说不清自己感受时，它记录身体——以及在可测时，神经活动——在做什么，让用户用探针去探测它（音乐只是可选的几类输入之一），再把用户拥有的对齐地图交还给用户。</div>
+</div>
+<div class="tag-row">
+<span class="tag green">NON-DIAGNOSTIC</span>
+<span class="tag green">USER-OWNED INTERPRETATION</span>
+<span class="tag green">MUSIC AS PROBE</span>
+<span class="tag green">BODY–AWARENESS ALIGNMENT HISTORY</span>
+<span class="tag yellow">LAB VALIDATION NEEDED</span>
+</div>
+</div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">SECOND AUDIT LOCK // 二审锁定</div>
+<h3>Music is no longer the core claim. Prediction is the core test.</h3>
+<h3 class="cn">音乐不再是核心主张。预测力才是核心测试。</h3>
+<p>HRP should not claim that a genre produces a fixed emotional or neural effect. It tests whether repeated, user-owned records across probes can improve prospective self-prediction: before a probe begins, can the user predict the direction of their own body/self-rating response?</p>
+<p class="cn">HRP 不应声称某种音乐类型会产生固定情绪或神经效果。它测试的是：用户拥有的多次探针记录，是否能提升前瞻性自我预测——探针开始前，用户能否预测自己的身体/自评变化方向？</p>
+<div class="tag-row">
+<span class="tag yellow">NO UNIVERSAL MUSIC→EMOTION MAP</span>
+<span class="tag yellow">NO MIND READING</span>
+<span class="tag green">PROBE-RESPONSE MAP</span>
+<span class="tag green">PROSPECTIVE SELF-PREDICTION</span>
+</div>
+</div>
+<div class="card span-4">
+<div class="num">WHAT IT DOES</div>
+<h3>Records alignment history</h3>
+<h3 class="cn">记录对齐史</h3>
+<p>HRP places body state, self-awareness, context, and music response side by side, so users can notice patterns without being forced into a label.</p>
+<p class="cn">HRP 把身体状态、自我觉察、情境与音乐反应并排呈现，让用户看见模式，而不是被迫进入标签。</p>
+</div>
+<div class="card span-4">
+<div class="num">WHAT IT DOES NOT DO</div>
+<h3>Does not name the user’s emotion</h3>
+<h3 class="cn">不替用户命名情绪</h3>
+<p>It never declares “you are anxious,” “you are depressed,” or “this is trauma.” It only shows recorded differences and asks the user to interpret.</p>
+<p class="cn">它不说“你焦虑”“你抑郁”“这是创伤”。它只展示被记录的差异，并请用户自己解释。</p>
+</div>
+<div class="card span-4">
+<div class="num">WHERE LABS ENTER</div>
+<h3>Validation, samples, signals</h3>
+<h3 class="cn">验证、样本、信号</h3>
+<p>Labs can help test whether this pattern map becomes meaningful, predictive, and usable across repeated sessions.</p>
+<p class="cn">实验室可以帮助验证这种模式地图是否在重复 session 中变得有意义、可预测、可使用。</p>
+</div>
+</div>
+</section>
+<section id="terms">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">02 // TERMINOLOGY LOCK // 术语锁定层</div>
+<h2>BCI-HRP V2.1 is a terminology-locked bilingual lab prototype with Reflexive Musicology integrated as its acoustic-theory layer.</h2>
+<h2 class="cn">BCI-HRP V2.1 是术语锁定的双语实验室合作原型，并将 Reflexive Musicology 作为声学理论层正式接入。</h2>
+<p class="sub">This section prevents the project from drifting into medical claims, mind-reading language, generic wellness wording, or AI-over-human framing.</p>
+<p class="sub cn">这一层用于防止项目滑向医疗承诺、读心话语、泛身心健康表述，或 AI 凌驾于人的框架。</p>
+<div class="sovereignty-strip">
+<div class="small-kicker">SUBJECT AUTHORITY PRINCIPLE // 主体权原则</div>
+<div class="sovereignty-cn">信号不能凌驾于主体，硬件不能消解人，AI 不能替代用户的解释权。</div>
+<div class="sovereignty-en">Signals cannot outrank the subject. Hardware cannot erase the human. AI cannot replace the user's interpretive authority.</div>
+</div>
+</div>
+<div class="card span-12">
+<div class="eyebrow">MASTER LEDGER // 主术语台账</div>
+<table class="table">
+<thead>
+<tr>
+<th>Locked English</th>
+<th>锁定中文</th>
+<th>Use</th>
+<th>Do not drift into</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>BCI-HRP</td><td>BCI-HRP / 人类回归协议实验室合作系统</td><td><div class="en-cell">Project / website / lab-facing prototype.</div><div class="cn">项目、网站与面向实验室的合作原型。</div></td><td><div class="en-cell">Do not reduce it to a wellness app.</div><div class="cn">不要降格成普通身心健康 App。</div></td></tr>
+<tr><td>Human Return Protocol</td><td>人类回归协议</td><td><div class="en-cell">The underlying protocol body.</div><div class="cn">底层协议本体。</div></td><td><div class="en-cell">Do not mix with Human Return Portal unless intentionally renamed.</div><div class="cn">不要与 Human Return Portal 混用，除非主动改名。</div></td></tr>
+<tr><td>Probe-Based Alignment Mapping</td><td>基于探针的对齐映射</td><td><div class="en-cell">Core operational description.</div><div class="cn">核心操作化描述。</div></td><td><div class="en-cell">Avoid mixing mapping and measurement at the project-title level.</div><div class="cn">项目标题层不要随意混用 mapping / measurement。</div></td></tr>
+<tr><td>body–awareness alignment</td><td>身体—觉察对齐</td><td><div class="en-cell">Main measured relationship.</div><div class="cn">主要被记录/显影的关系。</div></td><td><div class="en-cell">Do not flatten into mood or emotion.</div><div class="cn">不要压扁成情绪或心情。</div></td></tr>
+<tr><td>body proxy indicator / physiological proxy indicator</td><td>身体代理指标 / 生理代理指标</td><td><div class="en-cell">Non-diagnostic signal approximation.</div><div class="cn">非诊断的信号近似指标。</div></td><td><div class="en-cell">Do not call it ground truth.</div><div class="cn">不要称为真实状态本身。</div></td></tr>
+<tr><td>wearable proxy indicator</td><td>可穿戴代理指标</td><td><div class="en-cell">Consumer/research wearable signal layer.</div><div class="cn">消费级/研究级可穿戴信号层。</div></td><td><div class="en-cell">Do not imply medical-grade diagnosis.</div><div class="cn">不要暗示医疗级诊断。</div></td></tr>
+<tr><td>acoustic probe</td><td>声学探针</td><td><div class="en-cell">Music, tones, and soundscape as probe inputs.</div><div class="cn">音乐、音调、声景作为探针输入。</div></td><td><div class="en-cell">Do not call it music therapy.</div><div class="cn">不要称为音乐治疗。</div></td></tr>
+<tr><td>Six-Genre Probe Set</td><td>六类音乐探针集</td><td><div class="en-cell">Wei Jueran authored acoustic probe family.</div><div class="cn">魏珏然署名的声学探针家族。</div></td><td><div class="en-cell">Not a treatment protocol.</div><div class="cn">不是治疗承诺。</div></td></tr>
 
-    <section id="definition">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">01 // LOCKED ONE-SENTENCE DEFINITION</div>
-          <h2>A non-diagnostic private tool for returning interpretive authority to the user.</h2>
-          <h2 class="cn">一个把解释权交还给用户的非诊断私人工具。</h2>
-          <div class="quote">
-            Human Return Protocol is a non-diagnostic private tool: when users cannot clearly say what they feel, it records what the body — and, where measurable, neural activity — is doing, lets users probe it (music being one of several input classes they can choose), and returns a personal alignment map to the user.
-            <div class="cn">Human Return Protocol 是一个非诊断的私人工具：在用户说不清自己感受时，它记录身体——以及在可测时，神经活动——在做什么，让用户用探针去探测它（音乐只是可选的几类输入之一），再把个人对齐地图交还给用户。</div>
-          </div>
-          <div class="tag-row">
-            <span class="tag green">NON-DIAGNOSTIC</span>
-            <span class="tag green">USER-OWNED INTERPRETATION</span>
-            <span class="tag green">MUSIC AS PROBE</span>
-            <span class="tag green">BODY–AWARENESS ALIGNMENT HISTORY</span>
-            <span class="tag yellow">LAB VALIDATION NEEDED</span>
-          </div>
-        </div>
+<tr><td>Reflexive Musicology</td><td>返身音乐学 / 照见音乐学</td><td><div class="en-cell">Upstream acoustic-theory layer explaining why music can function as a reflexive probe.</div><div class="cn">上游声学理论层，用来说明为什么音乐可以作为返身探针。</div></td><td><div class="en-cell">Not medical evidence; not a therapy discipline.</div><div class="cn">不是医疗证据，也不是治疗学科。</div></td></tr>
+<tr><td>Iterative Reflexive Listening</td><td>迭代返身聆听</td><td><div class="en-cell">Repeated use of the same track as a stable acoustic probe across time.</div><div class="cn">把同一首歌作为稳定声学探针，在不同时间点重复聆听。</div></td><td><div class="en-cell">Do not frame it as the song preserving a fixed self.</div><div class="cn">不要写成音乐保存一个固定的自我。</div></td></tr>
+<tr><td>stable acoustic probe</td><td>稳定声学探针</td><td><div class="en-cell">A repeated sound object used to make temporal self-difference visible.</div><div class="cn">用于显影时间中自我差异的重复声音对象。</div></td><td><div class="en-cell">Not a universal stimulus with fixed effects.</div><div class="cn">不是具有固定效果的普适刺激。</div></td></tr>
+<tr><td>reflexive alignment report</td><td>返身对齐报告</td><td><div class="en-cell">A reflection report that compares repeated listening encounters and returns the change map to the user.</div><div class="cn">比较多次聆听相遇，并把变化地图交还给用户的反思报告。</div></td><td><div class="en-cell">Not an affective diagnosis or automatic interpretation.</div><div class="cn">不是情绪诊断，也不是自动解释。</div></td></tr>
+<tr><td>reflection report</td><td>反思报告</td><td><div class="en-cell">User-editable, non-diagnostic summary.</div><div class="cn">可由用户修改的非诊断摘要。</div></td><td><div class="en-cell">Not a diagnostic report.</div><div class="cn">不是诊断报告。</div></td></tr>
+<tr><td>user-owned alignment map</td><td>用户拥有的对齐地图</td><td><div class="en-cell">The map belongs to the user and can be edited/rejected.</div><div class="cn">地图属于用户，可被修改或拒绝。</div></td><td><div class="en-cell">Do not make AI the final interpreter.</div><div class="cn">不要让 AI 成为最终解释者。</div></td></tr>
+<tr><td>interpretive authority</td><td>解释权</td><td><div class="en-cell">User's final authority over meaning.</div><div class="cn">用户对意义的最终裁定权。</div></td><td><div class="en-cell">Do not outsource it to signal, hardware, or AI.</div><div class="cn">不要外包给信号、硬件或 AI。</div></td></tr>
+<tr><td>data vault</td><td>数据保险库</td><td><div class="en-cell">User-held, exportable, revocable record layer.</div><div class="cn">用户持有、可导出、可撤回的记录层。</div></td><td><div class="en-cell">Not a surveillance archive.</div><div class="cn">不是监控档案库。</div></td></tr>
+<tr><td>crisis referral</td><td>危机转介</td><td><div class="en-cell">Redirect to real human/emergency support when needed.</div><div class="cn">必要时转向真实人员或紧急支持。</div></td><td><div class="en-cell">Not autonomous crisis intervention.</div><div class="cn">不是自主危机干预。</div></td></tr>
+</tbody>
+</table>
+</div>
+<div class="card span-4 term-lock-card"><strong>CLAIM LOCK</strong><p>BCI-HRP maps alignment; it does not diagnose emotion.</p><p class="cn">BCI-HRP 映射对齐，不诊断情绪。</p></div>
+<div class="card span-4 term-lock-card"><strong>HARDWARE LOCK</strong><p>Existing wearables are enough for MVP; custom hardware is not required.</p><p class="cn">MVP 使用现成可穿戴即可，不要求自研硬件。</p></div>
+<div class="card span-4 term-lock-card"><strong>AI LOCK</strong><p>AI organizes records and proposes reflection; the user remains final interpreter.</p><p class="cn">AI 整理记录并提出反思；用户始终是最终解释者。</p></div>
+</div>
+</section>
 
-        <div class="card span-12 warning-card">
-          <div class="eyebrow">SECOND AUDIT LOCK // 二审锁定</div>
-          <h3>Music is no longer the core claim. Prediction is the core test.</h3>
-          <h3 class="cn">音乐不再是核心主张。预测力才是核心测试。</h3>
-          <p>HRP should not claim that a genre produces a fixed emotional or neural effect. It tests whether repeated, user-owned records across probes can improve prospective self-prediction: before a probe begins, can the user predict the direction of their own body/self-rating response?</p>
-          <p class="cn">HRP 不应声称某种音乐类型会产生固定情绪或神经效果。它测试的是：用户拥有的多次探针记录，是否能提升前瞻性自我预测——探针开始前，用户能否预测自己的身体/自评变化方向？</p>
-          <div class="tag-row">
-            <span class="tag yellow">NO UNIVERSAL MUSIC→EMOTION MAP</span>
-            <span class="tag yellow">NO MIND READING</span>
-            <span class="tag green">PROBE-RESPONSE MAP</span>
-            <span class="tag green">PROSPECTIVE SELF-PREDICTION</span>
-          </div>
-        </div>
+<section id="reflexive-musicology">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">03 // REFLEXIVE MUSICOLOGY TRANSFER // 返身音乐学转入层</div>
+<h2>Reflexive Musicology is the music-theory root; BCI-HRP is its experimental body.</h2>
+<h2 class="cn">返身音乐学是音乐理论母体；BCI-HRP 是它的实验身体。</h2>
+<p class="sub">Reflexive Musicology explains why music should not be treated as a fixed emotional button, a therapy claim, or a background stimulus. It frames music as a reflexive acoustic probe: a sound event that can help the listener notice how they are being affected, without taking interpretive authority away from them.</p>
+<p class="sub cn">返身音乐学解释为什么音乐不应被当成固定情绪按钮、治疗承诺或背景刺激。它把音乐定义为返身声学探针：声音事件可以帮助听者看见自己如何被作用，但不夺走听者的解释权。</p>
+<div class="sovereignty-strip">
+<div class="small-kicker">TRANSFER FORMULA // 转入公式</div>
+<div class="sovereignty-cn">Reflexive Musicology 解释音乐如何照见主体；BCI-HRP 把这种照见记录、映射、预测、验证。</div>
+<div class="sovereignty-en">Reflexive Musicology explains how music reveals the subject; BCI-HRP records, maps, predicts, and validates that revealing process.</div>
+</div>
+</div>
 
-        <div class="card span-4">
-          <div class="num">WHAT IT DOES</div>
-          <h3>Records alignment history</h3>
-          <h3 class="cn">记录对齐史</h3>
-          <p>HRP places body state, self-awareness, context, and music response side by side, so users can notice patterns without being forced into a label.</p>
-          <p class="cn">HRP 把身体状态、自我觉察、情境与音乐反应并排呈现，让用户看见模式，而不是被迫进入标签。</p>
-        </div>
+<div class="card span-4">
+<div class="num">THEORY ROOT</div>
+<h3>Music as reflexive probe</h3>
+<h3 class="cn">音乐作为返身探针</h3>
+<p>Music does not define the user from outside. It creates a listening encounter in which the user may notice body, memory, attention, and self-description changing together.</p>
+<p class="cn">音乐不从外部定义用户。它创造一个聆听相遇，让用户可能看见身体、记忆、注意力与自我描述如何共同变化。</p>
+</div>
 
-        <div class="card span-4">
-          <div class="num">WHAT IT DOES NOT DO</div>
-          <h3>Does not name the user’s emotion</h3>
-          <h3 class="cn">不替用户命名情绪</h3>
-          <p>It never declares “you are anxious,” “you are depressed,” or “this is trauma.” It only shows recorded differences and asks the user to interpret.</p>
-          <p class="cn">它不说“你焦虑”“你抑郁”“这是创伤”。它只展示被记录的差异，并请用户自己解释。</p>
-        </div>
+<div class="card span-4">
+<div class="num">SYSTEM TRANSLATION</div>
+<h3>From being seen to being mapped</h3>
+<h3 class="cn">从被照见到被映射</h3>
+<p>BCI-HRP translates reflexive listening into recordable sessions: selected probe, context, body proxy indicators, self-rating, recognition note, and prediction result.</p>
+<p class="cn">BCI-HRP 把返身聆听转译为可记录 session：所选探针、情境、身体代理指标、自评、认出笔记与预测结果。</p>
+</div>
 
-        <div class="card span-4">
-          <div class="num">WHERE LABS ENTER</div>
-          <h3>Validation, samples, signals</h3>
-          <h3 class="cn">验证、样本、信号</h3>
-          <p>Labs can help test whether this pattern map becomes meaningful, predictive, and usable across repeated sessions.</p>
-          <p class="cn">实验室可以帮助验证这种模式地图是否在重复 session 中变得有意义、可预测、可使用。</p>
-        </div>
-      </div>
-    </section>
+<div class="card span-4 warning-card">
+<div class="num">BOUNDARY LOCK</div>
+<h3>Not proof of treatment</h3>
+<h3 class="cn">不是治疗证明</h3>
+<p>Reflexive Musicology is an acoustic-theory and phenomenological-method layer. It does not prove medical benefit, diagnose emotion, or replace lab validation.</p>
+<p class="cn">返身音乐学是声学理论与现象学方法层。它不证明医疗效果，不诊断情绪，也不替代实验室验证。</p>
+</div>
 
-    <section id="ask">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">02 // LAB COLLABORATION ASK // I AM NOT ASKING THE LAB TO INVENT IT FOR ME</div>
-          <h2>I bring the invention. I need resources, samples, measurement, and validation.</h2>
-          <h2 class="cn">我带来发明。我需要资源、样本、测量与验证。</h2>
-          <p class="sub">
+<div class="card span-12">
+<div class="eyebrow">CONNECT / DISCONNECT AUDIT // 接线 / 断线审计</div>
+<table class="table">
+<thead>
+<tr><th>Element / 元素</th><th>Connect to BCI-HRP / 应接入</th><th>Do not connect as / 不应接成</th></tr>
+</thead>
+<tbody>
+<tr><td><div class="en-cell">Reflexive Listening</div><div class="cn">返身聆听</div></td><td><div class="en-cell">Rationale for music as acoustic probe.</div><div class="cn">作为“音乐为何可作为声学探针”的理论依据。</div></td><td><div class="en-cell">A claim that music reveals objective truth about the user.</div><div class="cn">不要写成音乐揭示用户的客观真相。</div></td></tr>
+<tr><td><div class="en-cell">Being Seen</div><div class="cn">被照见</div></td><td><div class="en-cell">Phenomenological description of recognition events.</div><div class="cn">作为“认出事件”的现象学描述。</div></td><td><div class="en-cell">Clinical improvement or therapeutic outcome.</div><div class="cn">不要接成临床改善或治疗结果。</div></td></tr>
+<tr><td><div class="en-cell">Six-step method</div><div class="cn">六步法</div></td><td><div class="en-cell">Reflection-report pipeline: naming, pressure, sliding, phase change, welding, summoning.</div><div class="cn">作为反思报告管线：命名、加压、滑义、相变、焊接、召唤。</div></td><td><div class="en-cell">A diagnostic scale.</div><div class="cn">不要接成诊断量表。</div></td></tr>
+<tr><td><div class="en-cell">Non-occupation ethics</div><div class="cn">非占有伦理</div></td><td><div class="en-cell">Reinforces the subject-authority rule: sound, signal, and AI may reveal, not possess.</div><div class="cn">强化主体权原则：声音、信号与 AI 可以显影，但不能占有。</div></td><td><div class="en-cell">AI or music replacing the user's interpretation.</div><div class="cn">不要接成 AI 或音乐替代用户解释。</div></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card span-12 warning-card">
+<div class="eyebrow">LAB-SAFE SENTENCE // 实验室安全表述</div>
+<div class="quote">Reflexive Musicology provides the acoustic-theory rationale for BCI-HRP: music is used as a user-selected reflexive probe that may help reveal changes in body–awareness alignment over time, without diagnosing emotion or claiming therapeutic effect.<div class="cn">返身音乐学为 BCI-HRP 提供声学理论依据：音乐被用作用户自选的返身探针，可能帮助显影身体—觉察对齐如何随时间变化，但不诊断情绪，也不声称治疗效果。</div></div>
+<div class="hero-actions"><a class="button" href="https://mellowwei.github.io/ReflexiveMusicology/" target="_blank" rel="noopener">OPEN REFLEXIVE MUSICOLOGY ↗</a></div>
+</div>
+</div>
+</section>
+
+<section id="iterative-listening">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">04 // ITERATIVE REFLEXIVE LISTENING // 迭代返身聆听</div>
+<h2>The same song becomes a temporal mirror, not a fixed self-container.</h2>
+<h2 class="cn">同一首歌成为时间镜子，而不是固定自我的容器。</h2>
+<p class="sub">Iterative Reflexive Listening is a repeated-listening method: the same track is used as a stable acoustic probe so that differences across sessions can reveal how the user's body–awareness alignment changes over time.</p>
+<p class="sub cn">迭代返身聆听是一种重复聆听方法：把同一首歌作为稳定声学探针，让多次 session 之间的差异显影用户的身体—觉察对齐如何随时间变化。</p>
+<div class="relation-formula">same track × different time × changed subject = alignment history<br /><span class="cn">同一首歌 × 不同时间 × 已变化的主体 = 对齐史</span></div>
+</div>
+
+<div class="card span-4">
+<div class="num">01 // STABLE PROBE</div>
+<h3>Keep the track constant</h3>
+<h3 class="cn">保持歌曲恒定</h3>
+<p>Using the same track reduces input variability, making temporal self-difference easier to notice.</p>
+<p class="cn">使用同一首歌可降低输入变量，让时间中的自我差异更容易被看见。</p>
+</div>
+<div class="card span-4">
+<div class="num">02 // TEMPORAL DIFFERENCE</div>
+<h3>Compare across sessions</h3>
+<h3 class="cn">跨 session 比较</h3>
+<p>The system compares body proxy indicators, self-ratings, context, and recognition notes across repeated listens.</p>
+<p class="cn">系统比较多次聆听中的身体代理指标、自评、情境与认出笔记。</p>
+</div>
+<div class="card span-4">
+<div class="num">03 // PREDICTION TEST</div>
+<h3>Can the user predict the shift?</h3>
+<h3 class="cn">用户能否预测变化？</h3>
+<p>Before replaying the same track, the user predicts whether body sense, clarity, or inner noise will rise, fall, or remain stable.</p>
+<p class="cn">再次播放同一首歌前，用户预测身体感、清晰度或内部噪声会上升、下降或保持稳定。</p>
+</div>
+
+<div class="card span-12">
+<div class="eyebrow">PROTOCOLIZATION // 操作化流程</div>
+<table class="table">
+<thead>
+<tr><th>Stage / 阶段</th><th>What happens / 发生什么</th><th>BCI-HRP record / BCI-HRP 记录</th><th>Evidence value / 证据价值</th></tr>
+</thead>
+<tbody>
+<tr><td><div class="en-cell">First listen</div><div class="cn">第一次聆听</div></td><td><div class="en-cell">User selects a track and records baseline body/self-ratings.</div><div class="cn">用户选择一首歌，并记录基线身体/自评。</div></td><td><div class="en-cell">Track, context, ratings, open note.</div><div class="cn">歌曲、情境、评分、开放笔记。</div></td><td><div class="en-cell">Initial map, not proof.</div><div class="cn">初始地图，不是证明。</div></td></tr>
+<tr><td><div class="en-cell">Repeated listen</div><div class="cn">重复聆听</div></td><td><div class="en-cell">Same track returns under a new time/context condition.</div><div class="cn">同一首歌在新的时间/情境条件下返回。</div></td><td><div class="en-cell">Pre/post ratings, proxy indicators, recognition note.</div><div class="cn">前后评分、代理指标、认出笔记。</div></td><td><div class="en-cell">Temporal comparison becomes possible.</div><div class="cn">时间比较变得可能。</div></td></tr>
+<tr><td><div class="en-cell">Prediction trial</div><div class="cn">预测测试</div></td><td><div class="en-cell">Before listening, user predicts the direction of change.</div><div class="cn">聆听前，用户预测变化方向。</div></td><td><div class="en-cell">Predicted direction vs. observed direction.</div><div class="cn">预测方向 vs. 实际方向。</div></td><td><div class="en-cell">Tests self-prediction, not mood improvement.</div><div class="cn">测试自我预测，不测试心情改善。</div></td></tr>
+<tr><td><div class="en-cell">Reflexive report</div><div class="cn">返身报告</div></td><td><div class="en-cell">System returns differences without naming emotion.</div><div class="cn">系统返回差异，但不替用户命名情绪。</div></td><td><div class="en-cell">Longitudinal comparison and user-editable interpretation.</div><div class="cn">纵向比较 + 用户可修改解释。</div></td><td><div class="en-cell">Supports recognition while preserving interpretive authority.</div><div class="cn">支持认出，同时保留解释权。</div></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card span-12 warning-card">
+<div class="eyebrow">REPORT LANGUAGE LOCK // 报告语言锁定</div>
+<div class="quote">Compared with your previous listening sessions of the same track, your body–awareness alignment shifted in this direction. This is not a diagnosis. You may accept, edit, reject, or rename the pattern.<div class="cn">与此前多次聆听同一首歌相比，你的身体—觉察对齐发生了以下方向性变化。这不是诊断。你可以接受、修改、拒绝或重新命名这个模式。</div></div>
+</div>
+</div>
+</section>
+
+<section id="ask">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">02 // LAB COLLABORATION ASK // I AM NOT ASKING THE LAB TO INVENT IT FOR ME</div>
+<h2>I bring the invention. I need resources, samples, measurement, and validation.</h2>
+<h2 class="cn">我带来发明。我需要资源、样本、测量与验证。</h2>
+<p class="sub">
             The collaboration request is specific: test whether a non-diagnostic body-awareness and probe-response mapping system can help users improve recognition of their own body–awareness alignment over time.
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             合作请求是具体的：验证一个非诊断的身体—觉察—探针反应映射系统，是否能帮助用户逐渐提高对自身身体—觉察对齐状态的识别能力。
           </p>
-        </div>
-
-        <div class="card span-6">
-          <div class="eyebrow">WHAT WEI JUERAN BRINGS</div>
-          <h3>Original system, prototype, language, music logic</h3>
-          <h3 class="cn">原创系统、原型、语言、音乐逻辑</h3>
-          <div class="split-line"><div class="split-label">01</div><div><p>Original invention framework: Human Return Protocol.</p><p class="cn">原创发明框架：Human Return Protocol。</p></div></div>
-          <div class="split-line"><div class="split-label">02</div><div><p>QDR / Human Return theoretical language and design logic.</p><p class="cn">QDR / Human Return 理论语言与设计逻辑。</p></div></div>
-          <div class="split-line"><div class="split-label">03</div><div><p>Interaction prototype, reflection report logic, user flow, probe system, including an acoustic/music probe set.</p><p class="cn">交互原型、反思报告逻辑、用户流程、探针系统，其中包括声学/音乐探针集。</p></div></div>
-          <div class="split-line"><div class="split-label">04</div><div><p>Learning Sciences + HCI framing and user-centered research questions.</p><p class="cn">学习科学 + HCI 定位与用户中心研究问题。</p></div></div>
-        </div>
-
-        <div class="card span-6">
-          <div class="eyebrow">WHAT THE LAB BRINGS</div>
-          <h3>Participants, sensors, methods, credibility</h3>
-          <h3 class="cn">样本、传感、方法、可信度</h3>
-          <div class="split-line"><div class="split-label">01</div><div><p>Participant recruitment and ethically reviewed study environment.</p><p class="cn">样本招募与伦理审查过的研究环境。</p></div></div>
-          <div class="split-line"><div class="split-label">02</div><div><p>Wearable / physiological measurement: HRV, EDA, respiration, temperature, optional EEG/fNIRS.</p><p class="cn">可穿戴/生理测量：HRV、EDA、呼吸、温度，可选 EEG/fNIRS。</p></div></div>
-          <div class="split-line"><div class="split-label">03</div><div><p>Causal evaluation, statistics, signal processing, and validity threat control.</p><p class="cn">因果评估、统计、信号处理与效度威胁控制。</p></div></div>
-          <div class="split-line"><div class="split-label">04</div><div><p>Publication pathway, scientific review, and prototype iteration support.</p><p class="cn">发表路径、科学审查与原型迭代支持。</p></div></div>
-        </div>
-
-        <div class="card span-12 warning-card">
-          <div class="eyebrow">THE ASK SENTENCE // 可直接对实验室说</div>
-          <p class="quote">
+</div>
+<div class="card span-6">
+<div class="eyebrow">WHAT WEI JUERAN BRINGS</div>
+<h3>Original system, prototype, language, music logic</h3>
+<h3 class="cn">原创系统、原型、语言、音乐逻辑</h3>
+<div class="split-line"><div class="split-label">01</div><div><p>Original invention framework: Human Return Protocol.</p><p class="cn">原创发明框架：Human Return Protocol。</p></div></div>
+<div class="split-line"><div class="split-label">02</div><div><p>QDR / Human Return theoretical language and design logic.</p><p class="cn">QDR / Human Return 理论语言与设计逻辑。</p></div></div>
+<div class="split-line"><div class="split-label">03</div><div><p>Interaction prototype, reflection report logic, user flow, probe system, including an acoustic/music probe set.</p><p class="cn">交互原型、反思报告逻辑、用户流程、探针系统，其中包括声学/音乐探针集。</p></div></div>
+<div class="split-line"><div class="split-label">04</div><div><p>Learning Sciences + HCI framing and user-centered research questions.</p><p class="cn">学习科学 + HCI 定位与用户中心研究问题。</p></div></div>
+</div>
+<div class="card span-6">
+<div class="eyebrow">WHAT THE LAB BRINGS</div>
+<h3>Participants, sensors, methods, credibility</h3>
+<h3 class="cn">样本、传感、方法、可信度</h3>
+<div class="split-line"><div class="split-label">01</div><div><p>Participant recruitment and ethically reviewed study environment.</p><p class="cn">样本招募与伦理审查过的研究环境。</p></div></div>
+<div class="split-line"><div class="split-label">02</div><div><p>Wearable / physiological measurement: HRV, EDA, respiration, temperature, optional EEG/fNIRS.</p><p class="cn">可穿戴/生理测量：HRV、EDA、呼吸、温度，可选 EEG/fNIRS。</p></div></div>
+<div class="split-line"><div class="split-label">03</div><div><p>Causal evaluation, statistics, signal processing, and validity threat control.</p><p class="cn">因果评估、统计、信号处理与效度威胁控制。</p></div></div>
+<div class="split-line"><div class="split-label">04</div><div><p>Publication pathway, scientific review, and prototype iteration support.</p><p class="cn">发表路径、科学审查与原型迭代支持。</p></div></div>
+</div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">THE ASK SENTENCE // 可直接对实验室说</div>
+<p class="quote">
             I am seeking a lab collaboration to test whether a non-diagnostic body-awareness and probe-response mapping system can help users improve self-recognition of body–awareness alignment over time. I bring the invention framework, prototype, theoretical model, interaction design, and probe system, including an acoustic/music probe set. I am looking for collaborators who can support participant recruitment, wearable/physiological data collection, causal evaluation, and ethical study design.
           </p>
-          <p class="quote cn">
+<p class="quote cn">
             我希望寻找实验室合作，验证一个非诊断的身体—觉察—探针反应映射系统，是否能帮助用户逐渐提高对自身身体—觉察对齐状态的识别能力。我提供发明框架、原型、理论模型、交互设计与探针系统，其中包括声学/音乐探针集；希望实验室支持样本招募、生理数据采集、因果评估与伦理研究设计。
           </p>
-        </div>
-
-        <div class="card span-12 warning-card">
-          <div class="eyebrow">CONFLICT-OF-INTEREST DISCLOSURE // 利益声明</div>
-          <h3>Wei Jueran is both designer and probe author.</h3>
-          <h3 class="cn">魏珏然同时是系统设计者与默认六类音乐探针的作者。</h3>
-          <p>The six-genre probe set is not framed as treatment. Whether user-selected music outperforms the author's probes is itself a pre-registered research question (see RQ3 below). Any study comparing the two should be conducted under independent design and independent analysis.</p>
-          <p class="cn">该六类音乐探针集不作为治疗承诺。用户自选音乐是否优于作者探针，本身是一个预注册研究问题（见下方 RQ3）。涉及二者对比的研究应在独立设计与独立分析下进行。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="mvp">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">03 // LOCKED MVP // DO NOT EXPAND</div>
-          <h2>The MVP is pure software: body–awareness alignment history + multi-class probe library + reflection report.</h2>
-          <h2 class="cn">MVP 是纯软件：身体—觉察对齐史 + 多类探针库 + 反思报告。</h2>
-          <p class="sub">
+</div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">CONFLICT-OF-INTEREST DISCLOSURE // 利益声明</div>
+<h3>Wei Jueran is both designer and probe author.</h3>
+<h3 class="cn">魏珏然同时是系统设计者与默认六类音乐探针的作者。</h3>
+<p>The six-genre probe set is not framed as a treatment claim. Whether user-selected music outperforms the author's probes is itself a pre-registered research question (see RQ3 below). Any study comparing the two should be conducted under independent design and independent analysis.</p>
+<p class="cn">该六类音乐探针集不作为治疗承诺。用户自选音乐是否优于作者探针，本身是一个预注册研究问题（见下方 RQ3）。涉及二者对比的研究应在独立设计与独立分析下进行。</p>
+</div>
+</div>
+</section>
+<section id="mvp">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">03 // LOCKED MVP // DO NOT EXPAND</div>
+<h2>The MVP is pure software: body–awareness alignment history + multi-class probe library + reflection report.</h2>
+<h2 class="cn">MVP 是纯软件：身体—觉察对齐史 + 多类探针库 + 反思报告。</h2>
+<p class="sub">
             The first build does not require self-developed hardware, head sensors, dream control, or closed-loop sleep intervention. Those stay as later research branches handled with appropriate lab partners.
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             第一版不需要自研硬件、头部传感、梦境控制或闭环睡眠干预。那些保留为后续研究分支，由合适的实验室伙伴处理。
           </p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">MVP CORE A</div>
-          <h3>Body–awareness alignment history</h3>
-          <h3 class="cn">身体—觉察对齐史</h3>
-          <p>Records what the user notices, what the body proxy suggests, what the context is, and where they diverge.</p>
-          <p class="cn">记录用户觉察到什么、身体代理信号显示什么、探针/情境是什么，以及二者在哪里分叉。</p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">MVP CORE B</div>
-          <h3>Multi-class user-selected probes</h3>
-          <h3 class="cn">用户自选多类探针</h3>
-          <p>The system starts from the user’s own chosen probes and context. Music is one acoustic probe class; Wei Jueran’s six genres are optional authored probes, not forced treatment.</p>
-          <p class="cn">系统从用户自己的探针选择与情境开始。音乐只是声学探针类之一；魏珏然六类音乐是可选署名探针，不是强加治疗。</p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">MVP CORE C</div>
-          <h3>Reflection report</h3>
-          <h3 class="cn">反思报告</h3>
-          <p>AI formats user-owned records into exportable, non-diagnostic summaries that users may review privately or choose to share with a coach or clinician.</p>
-          <p class="cn">AI 将用户拥有的记录格式化为可导出、非诊断摘要，用户可私下复盘，也可选择分享给教练或临床人员。</p>
-        </div>
-
-        <div class="card span-12">
-          <div class="eyebrow">OUT OF MVP // 不进入 MVP</div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Not now / 暂不进入</th>
-                <th>Why / 原因</th>
-                <th>Future status / 未来位置</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Custom hardware / 自研硬件</td>
-                <td>Hardware increases cost, timeline, and regulatory complexity; not required to test the locked research question.</td>
-                <td>Use existing consumer wearables only. No future hardware product claim from this project.</td>
-              </tr>
-              <tr>
-                <td>EEG / fNIRS / head sensors</td>
-                <td>Requires lab-grade instrumentation and expertise.</td>
-                <td>Lab validation branch only, brought by the partner lab. Not part of the solo MVP.</td>
-              </tr>
-              <tr>
-                <td>Nightmare reduction / dream control</td>
-                <td>Medical and vulnerable-state intervention risk.</td>
-                <td>Remote clinical research only; never product promise now.</td>
-              </tr>
-              <tr>
-                <td>Emotion diagnosis / 情绪诊断</td>
-                <td>Contradicts the invention’s core restraint: return authority to user.</td>
-                <td>Never core product function.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="architecture">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">04 // SYSTEM ARCHITECTURE // FROM RECORDING TO RECOGNITION</div>
-          <h2>The chain is buildable in front; research-open in back.</h2>
-          <h2 class="cn">前半截可建，后半截开放研究。</h2>
-          <p class="sub">
+</div>
+<div class="card span-4">
+<div class="num">MVP CORE A</div>
+<h3>Body–awareness alignment history</h3>
+<h3 class="cn">身体—觉察对齐史</h3>
+<p>Records what the user notices, what the body proxy indicator suggests, what the context is, and where they diverge.</p>
+<p class="cn">记录用户觉察到什么、身体代理指标显示什么、探针/情境是什么，以及二者在哪里分叉。</p>
+</div>
+<div class="card span-4">
+<div class="num">MVP CORE B</div>
+<h3>Multi-class user-selected probes</h3>
+<h3 class="cn">用户自选多类探针</h3>
+<p>The system starts from the user’s own chosen probes and context. Music is one acoustic probe class; Wei Jueran’s six genres are optional authored probes, not forced treatment.</p>
+<p class="cn">系统从用户自己的探针选择与情境开始。音乐只是声学探针类之一；魏珏然六类音乐是可选署名探针，不是强加的矫正行动。</p>
+</div>
+<div class="card span-4">
+<div class="num">MVP CORE C</div>
+<h3>Reflection report</h3>
+<h3 class="cn">反思报告</h3>
+<p>AI formats user-owned records into exportable, non-diagnostic summaries that users may review privately or choose to share with a coach or clinician.</p>
+<p class="cn">AI 将用户拥有的记录格式化为可导出、非诊断摘要，用户可私下复盘，也可选择分享给教练或临床人员。</p>
+</div>
+<div class="card span-12">
+<div class="eyebrow">OUT OF MVP // 不进入 MVP</div>
+<table class="table">
+<thead>
+<tr>
+<th>Not now / 暂不进入</th>
+<th>Why / 原因</th>
+<th>Future status / 未来位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="en-cell">Custom hardware</div><div class="cn">自研硬件</div></td>
+<td><div class="en-cell">Hardware increases cost, timeline, and regulatory complexity; not required to test the locked research question.</div><div class="cn">硬件会增加成本、周期与监管复杂度；测试当前锁定研究问题并不需要自研硬件。</div></td>
+<td><div class="en-cell">Use existing consumer wearables only. No future hardware product claim from this project.</div><div class="cn">仅使用现成消费级可穿戴设备；本项目暂不做未来硬件产品承诺。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">EEG / fNIRS / head sensors</div><div class="cn">EEG / fNIRS / 头部传感器</div></td>
+<td><div class="en-cell">Requires lab-grade instrumentation and expertise.</div><div class="cn">需要实验室级仪器与专业能力。</div></td>
+<td><div class="en-cell">Lab validation branch only, brought by the partner lab. Not part of the solo MVP.</div><div class="cn">仅作为实验室验证分支，由合作实验室提供；不进入单人 MVP。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">Nightmare reduction / dream control</div><div class="cn">减少噩梦 / 梦境控制</div></td>
+<td><div class="en-cell">Medical and vulnerable-state intervention risk.</div><div class="cn">涉及医疗与脆弱状态干预风险。</div></td>
+<td><div class="en-cell">Remote clinical research only; never product promise now.</div><div class="cn">仅保留为远期临床研究问题；当前绝不作为产品承诺。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">Emotion diagnosis</div><div class="cn">情绪诊断</div></td>
+<td><div class="en-cell">Contradicts the invention’s core restraint: return authority to user.</div><div class="cn">违背本发明的核心克制：把解释权交还给用户。</div></td>
+<td><div class="en-cell">Never core product function.</div><div class="cn">永不作为核心产品功能。</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="architecture">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">04 // SYSTEM ARCHITECTURE // FROM RECORDING TO RECOGNITION</div>
+<h2>The chain is buildable in front; research-open in back.</h2>
+<h2 class="cn">前半截可建，后半截开放研究。</h2>
+<p class="sub">
             HRP should be honest about its chain: capture → probe → present is buildable now; recognition → map growth → return/improvement must be tested.
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             HRP 必须诚实区分链条：采集 → 探针 → 并排呈现现在可建；认出 → 地图生长 → 返回/改善必须验证。
           </p>
-
-          <div class="flow">
-            <div class="flow-node">
-              <div class="num">01 // CAPTURE</div>
-              <h3>Body + awareness + context</h3>
-              <p>Self-report, context notes, optional wearable proxies.</p>
-              <p class="cn">自评、情境记录、可选可穿戴代理信号。</p>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-node">
-              <div class="num">02 // PROBE</div>
-              <h3>User-selected music</h3>
-              <p>Music is used as a probe, not a universal intervention claim.</p>
-              <p class="cn">音乐作为探针，而不是普适干预承诺。</p>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-node">
-              <div class="num">03 // PRESENT</div>
-              <h3>Side-by-side map</h3>
-              <p>The system presents differences without naming emotion.</p>
-              <p class="cn">系统并排呈现差异，但不命名情绪。</p>
-            </div>
-            <div class="flow-arrow">→</div>
-            <div class="flow-node">
-              <div class="num">04 // TEST</div>
-              <h3>Recognition and prediction</h3>
-              <p>Can the user predict future body response before listening?</p>
-              <p class="cn">用户能否在听之前预测未来身体反应？</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card span-6">
-          <div class="eyebrow">BUILDABLE NOW</div>
-          <h3>Capture → probe → present</h3>
-          <h3 class="cn">采集 → 探针 → 呈现</h3>
-          <p>Software can already record self-awareness, context, music exposure, and optional wearable summaries, then present them as a personal pattern log.</p>
-          <p class="cn">软件现在就能记录自我觉察、情境、音乐暴露和可选可穿戴摘要，并将其呈现为个人模式日志。</p>
-        </div>
-
-        <div class="card span-6 warning-card">
-          <div class="eyebrow">RESEARCH QUESTION</div>
-          <h3>Recognition → map growth → return</h3>
-          <h3 class="cn">认出 → 地图生长 → 返回</h3>
-          <p>This cannot be promised yet. It becomes the research target: does repeated mapping improve user prediction, recognition, and action choice?</p>
-          <p class="cn">这一段不能被承诺。它成为研究目标：重复映射是否提升用户预测、认出与行动选择？</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="hardware">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">04B // HARDWARE LANDSCAPE // EXISTING DEVICES, NO CUSTOM HARDWARE</div>
-          <h2>The signals already exist in 2026 devices. The originality is not the sensor.</h2>
-          <h2 class="cn">2026 年的设备已能采到这些信号。原创性不在传感器。</h2>
-          <p class="sub">
+<div class="flow">
+<div class="flow-node">
+<div class="num">01 // CAPTURE</div>
+<h3>Body + awareness + context</h3>
+<p>Self-report, context notes, optional wearable proxy indicators.</p>
+<p class="cn">自评、情境记录、可选可穿戴代理指标。</p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-node">
+<div class="num">02 // PROBE</div>
+<h3>User-selected music</h3>
+<p>Music is used as a probe, not a universal intervention claim.</p>
+<p class="cn">音乐作为探针，而不是普适干预承诺。</p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-node">
+<div class="num">03 // PRESENT</div>
+<h3>Side-by-side map</h3>
+<p>The system presents differences without naming emotion.</p>
+<p class="cn">系统并排呈现差异，但不命名情绪。</p>
+</div>
+<div class="flow-arrow">→</div>
+<div class="flow-node">
+<div class="num">04 // TEST</div>
+<h3>Recognition and prediction</h3>
+<p>Can the user predict future body response before listening?</p>
+<p class="cn">用户能否在听之前预测未来身体反应？</p>
+</div>
+</div>
+</div>
+<div class="card span-6">
+<div class="eyebrow">BUILDABLE NOW</div>
+<h3>Capture → probe → present</h3>
+<h3 class="cn">采集 → 探针 → 呈现</h3>
+<p>Software can already record self-awareness, context, music exposure, and optional wearable summaries, then present them as a personal pattern log.</p>
+<p class="cn">软件现在就能记录自我觉察、情境、音乐暴露和可选可穿戴摘要，并将其呈现为个人模式日志。</p>
+</div>
+<div class="card span-6 warning-card">
+<div class="eyebrow">RESEARCH QUESTION</div>
+<h3>Recognition → map growth → return</h3>
+<h3 class="cn">认出 → 地图生长 → 返回</h3>
+<p>This cannot be promised yet. It becomes the research target: does repeated mapping improve user prediction, recognition, and action choice?</p>
+<p class="cn">这一段不能被承诺。它成为研究目标：重复映射是否提升用户预测、认出与行动选择？</p>
+</div>
+</div>
+</section>
+<section id="hardware">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">04B // HARDWARE LANDSCAPE // EXISTING DEVICES, NO CUSTOM HARDWARE</div>
+<h2>The signals already exist in 2026 devices. The originality is not the sensor.</h2>
+<h2 class="cn">2026 年的设备已能采到这些信号。原创性不在传感器。</h2>
+<p class="sub">
             A scan of 2026 consumer and research hardware finds no alignment-relevant signal channel that requires a custom-built device. Every channel is covered by existing, validated, purchasable hardware. This does not weaken the invention — it locates it above the commodity sensor layer, in the measurement framework, software, and the self-prediction criterion.
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             对 2026 年消费级与研究级硬件的盘点显示：没有任何"对齐相关"的信号通道需要自研设备。每一条通道都已被现成、经验证、可购买的硬件覆盖。这不削弱发明——它把发明定位在通用传感器层之上：测量框架、软件，与自我预测判据。
           </p>
-        </div>
+</div>
+<div class="card span-6 neon-card">
+<div class="eyebrow">MOMENTARY LAYER // 瞬时层</div>
+<h3>Polar H10 / Verity Sense — real-time RR</h3>
+<h3 class="cn">Polar H10 / Verity Sense — 实时 RR</h3>
+<p>The self-prediction cornerstone needs in-the-moment, beat-to-beat, ECG-grade RR. Only a chest strap / armband streaming RR per second over BLE delivers this. Polar H10 agrees with ECG at r≈0.95 at rest and is research-validated, with real-time SDK support (Kubios / Polar).</p>
+<p class="cn">自我预测拱心石需要当下、逐搏、ECG 级 RR。只有每秒经 BLE 流式输出 RR 的胸带/臂带能做到。Polar H10 静息态对 ECG r≈0.95，经研究验证，有实时 SDK 支持（Kubios / Polar）。</p>
+</div>
+<div class="card span-6">
+<div class="eyebrow">LONGITUDINAL LAYER // 纵向层</div>
+<h3>Oura Ring 4 — baseline trends</h3>
+<h3 class="cn">Oura Ring 4 — 基线趋势</h3>
+<p>Weeks-long HRV / temperature / sleep baselines give the longitudinal map. Oura has the strongest consumer HRV validity (CCC≈0.99 vs ECG) and all-day wear. Its API returns daily summaries — right grain for the longitudinal layer, but not for the moment, which is why the two layers use two devices.</p>
+<p class="cn">数周的 HRV / 皮温 / 睡眠基线提供纵向地图。Oura 是消费级 HRV 验证最强者（对 ECG CCC≈0.99）且全天佩戴。其 API 返回每日汇总——正合纵向层的粒度，但不适合"当下"，这正是两层用两个设备的原因。</p>
+</div>
+<div class="card span-12">
+<div class="eyebrow">SIGNAL × DEVICE // 信号 × 设备 · WHAT EACH CAN AND CANNOT DO</div>
+<table class="table">
+<thead>
+<tr>
+<th>Signal / 信号</th>
+<th>Best device / 最佳载体</th>
+<th>Resting validity / 静息有效性</th>
+<th>Honest limit / 诚实限制</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><div class="en-cell">Real-time RR / HRV</div><div class="cn">实时 RR / HRV</div></td><td><div class="en-cell">Polar H10 or equivalent research-used RR device</div><div class="cn">Polar H10 或同等研究常用 RR 设备</div></td><td><div class="en-cell">Candidate for momentary layer</div><div class="cn">可作为瞬时层候选</div></td><td><div class="en-cell">Validate within protocol; chest strap comfort may limit adherence.</div><div class="cn">需在本协议内验证；胸带舒适度可能影响依从性。</div></td></tr>
+<tr><td><div class="en-cell">Longitudinal HRV / temperature / sleep</div><div class="cn">纵向 HRV / 皮温 / 睡眠</div></td><td><div class="en-cell">Oura / Apple Watch / other wearable trend sources</div><div class="cn">Oura / Apple Watch / 其他可穿戴趋势来源</div></td><td><div class="en-cell">Candidate for baseline layer</div><div class="cn">可作为基线层候选</div></td><td><div class="en-cell">Use as trend context, not momentary ground truth; cite device-specific validity.</div><div class="cn">作为趋势情境使用，不作为瞬时真实值；需引用具体设备有效性。</div></td></tr>
+<tr><td><div class="en-cell">ECG (single-lead)</div><div class="cn">ECG（单导联）</div></td><td><div class="en-cell">Consumer watch, where available</div><div class="cn">可用时使用消费级手表</div></td><td><div class="en-cell">Contextual / on-demand</div><div class="cn">情境性 / 按需使用</div></td><td><div class="en-cell">Not the preferred continuous RR stream for the MVP.</div><div class="cn">不是 MVP 首选的连续 RR 数据流。</div></td></tr>
+<tr><td><div class="en-cell">EDA</div><div class="cn">EDA / 皮电</div></td><td><div class="en-cell">Research-grade or lab-supported wearable</div><div class="cn">研究级或实验室支持的可穿戴设备</div></td><td><div class="en-cell">Optional lab branch</div><div class="cn">可选实验室分支</div></td><td><div class="en-cell">Motion-sensitive and often weakly aligned with self-report; not required for MVP.</div><div class="cn">对动作敏感，且常与自评弱对齐；MVP 不要求。</div></td></tr>
+<tr><td><div class="en-cell">EEG / fNIRS</div><div class="cn">EEG / fNIRS</div></td><td><div class="en-cell">Lab-grade instrumentation only</div><div class="cn">仅限实验室级仪器</div></td><td><div class="en-cell">Later validation setting</div><div class="cn">后续验证情境</div></td><td><div class="en-cell">Not part of the private-tool MVP; never used as mind-reading claim.</div><div class="cn">不属于用户私有工具 MVP；绝不用于读心主张。</div></td></tr>
+</tbody>
+</table>
+</div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">WHY NO CUSTOM HARDWARE // 为何不自研硬件</div>
+<h3>The MVP does not need custom hardware.</h3>
+<h3 class="cn">MVP 不需要自研硬件。</h3>
+<p>The early invention question is not “can we build a better sensor?” It is “can a user-owned alignment map become prospectively predictive?” Existing RR-capable wearables are sufficient to test that question. Any later hardware form factor should be justified only after the software criterion works.</p>
+<p class="cn">早期发明问题不是“我们能不能造更好的传感器”，而是“用户拥有的对齐地图能否变得前瞻性可预测”。现有可测 RR 的可穿戴设备已足以测试这个问题。任何后续硬件形态，都必须在软件判据成立之后才有必要。</p>
+</div>
+<div class="card span-12">
+<div class="eyebrow">BUILDABLE MVP DEVICE LIST // 可造 MVP 设备清单</div>
+<table class="table">
+<thead>
+<tr>
+<th>Device / 设备</th>
+<th>Price / 价格</th>
+<th>Role / 职责</th>
+<th>Necessity / 必需性</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><div class="en-cell">Polar H10 or equivalent RR-streaming device</div><div class="cn">Polar H10 或同等 RR 流式设备</div></td><td><div class="en-cell">Low-cost consumer/research candidate</div><div class="cn">低成本消费级/研究候选</div></td><td><div class="en-cell">Momentary real-time RR</div><div class="cn">瞬时实时 RR</div></td><td><div class="en-cell"><strong>Core candidate for pilot</strong></div><div class="cn"><strong>微型试验核心候选</strong></div></td></tr>
+<tr><td><div class="en-cell">Kubios HRV / Polar SDK / equivalent pipeline</div><div class="cn">Kubios HRV / Polar SDK / 同等管线</div></td><td><div class="en-cell">Tooling varies</div><div class="cn">工具成本不一</div></td><td><div class="en-cell">RR stream, storage, analysis</div><div class="cn">RR 数据流、存储、分析</div></td><td><div class="en-cell">Core candidate for pilot</div><div class="cn">微型试验核心候选</div></td></tr>
+<tr><td><div class="en-cell">Oura / watch / longitudinal wearable</div><div class="cn">Oura / 手表 / 纵向可穿戴设备</div></td><td><div class="en-cell">Optional</div><div class="cn">可选</div></td><td><div class="en-cell">Longitudinal baseline context</div><div class="cn">纵向基线情境</div></td><td><div class="en-cell">Recommended, not launch-critical</div><div class="cn">建议使用，但非上线关键</div></td></tr>
+<tr><td><div class="en-cell">Custom hardware</div><div class="cn">自研硬件</div></td><td><div class="en-cell">—</div><div class="cn">—</div></td><td><div class="en-cell">—</div><div class="cn">—</div></td><td><div class="en-cell"><strong>Not needed for MVP</strong></div><div class="cn"><strong>MVP 不需要</strong></div></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="research">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">05 // RESEARCH QUESTIONS // LAB-READY</div>
+<h2>The core question is not “can music produce fixed improvement?” It is “can a user-owned map become predictive?”</h2>
+<h2 class="cn">核心问题不是“音乐是否能带来固定改善”，而是“用户拥有的地图能否变得可预测”。</h2>
+</div>
+<div class="card span-6">
+<div class="num">RQ1</div>
+<h3>Alignment visibility</h3>
+<h3 class="cn">对齐可见性</h3>
+<p>Can users notice body–awareness divergence more clearly after repeated HRP sessions across multiple probe classes?</p>
+<p class="cn">重复使用 HRP 后，用户能否在多类探针中更清楚地看见身体—觉察分叉？</p>
+</div>
+<div class="card span-6">
+<div class="num">RQ2</div>
+<h3>Self-prediction</h3>
+<h3 class="cn">自我预测力</h3>
+<p>By week 3–4, can users predict their own body/self-rating direction before exposure to a selected probe?</p>
+<p class="cn">到第 3–4 周，用户能否在接触某个探针之前预测自己的身体/自评变化方向？</p>
+</div>
+<div class="card span-6">
+<div class="num">RQ3</div>
+<h3>Music individuality</h3>
+<h3 class="cn">音乐个体差异</h3>
+<p>Do user-selected acoustic probes outperform generic categories, silence/context probes, or Wei Jueran authored probes for self-recognition?</p>
+<p class="cn">用户自选声学探针是否比通用分类、沉默/情境探针或魏珏然署名探针更能帮助自我认出？</p>
+</div>
+<div class="card span-6">
+<div class="num">RQ4</div>
+<h3>Report usefulness</h3>
+<h3 class="cn">报告可用性</h3>
+<p>Can non-diagnostic reflection reports support better self-description in coaching, professional conversations, or personal review?</p>
+<p class="cn">非诊断反思报告能否支持用户在教练支持、专业会谈或个人复盘中更好描述自己？</p>
+</div>
+<div class="card span-12 warning-card">
+<div class="num" style="color:var(--yellow)">RQ5 · TRIGGER PARADOX</div>
+<h3>How records actually get triggered</h3>
+<h3 class="cn">记录到底如何被触发</h3>
+<p>HRP's intended users are people who often cannot clearly name what they feel. If logging depends on self-initiation in those exact moments, the trigger condition depends on the capacity the tool exists to supplement. This is an EMA-paradigm paradox that must be studied directly, not assumed away.</p>
+<p class="cn">HRP 的目标用户往往正是说不清自己感受的人。如果记录依赖他们在那种时刻自我发起，触发条件正好依赖于该工具要补足的那种能力。这是 EMA 范式的一个悖论，必须被直接研究，不能假装它不存在。</p>
+<p style="margin-top:12px"><strong style="color:var(--yellow)">Sub-questions:</strong> What ratio of records is self-initiated vs. scheduled prompts vs. context-triggered (e.g., HRV inflection, time-of-day, location)? Which trigger mode yields more meaningful recognition events? Does trigger mode interact with alexithymia / interoceptive-awareness baseline?</p>
+<p class="cn"><strong style="color:var(--yellow)">子问题：</strong>自我发起、定时提示、情境触发（如 HRV 拐点、时段、地点）三种触发方式的比例如何？哪种触发模式产生更多有意义的认出事件？触发模式是否与述情障碍/内感受基线相互作用？</p>
+</div>
 
-        <div class="card span-6 neon-card">
-          <div class="eyebrow">MOMENTARY LAYER // 瞬时层</div>
-          <h3>Polar H10 / Verity Sense — real-time RR</h3>
-          <h3 class="cn">Polar H10 / Verity Sense — 实时 RR</h3>
-          <p>The self-prediction cornerstone needs in-the-moment, beat-to-beat, ECG-grade RR. Only a chest strap / armband streaming RR per second over BLE delivers this. Polar H10 agrees with ECG at r≈0.95 at rest and is research-validated, with real-time SDK support (Kubios / Polar).</p>
-          <p class="cn">自我预测拱心石需要当下、逐搏、ECG 级 RR。只有每秒经 BLE 流式输出 RR 的胸带/臂带能做到。Polar H10 静息态对 ECG r≈0.95，经研究验证，有实时 SDK 支持（Kubios / Polar）。</p>
-        </div>
 
-        <div class="card span-6">
-          <div class="eyebrow">LONGITUDINAL LAYER // 纵向层</div>
-          <h3>Oura Ring 4 — baseline trends</h3>
-          <h3 class="cn">Oura Ring 4 — 基线趋势</h3>
-          <p>Weeks-long HRV / temperature / sleep baselines give the longitudinal map. Oura has the strongest consumer HRV validity (CCC≈0.99 vs ECG) and all-day wear. Its API returns daily summaries — right grain for the longitudinal layer, but not for the moment, which is why the two layers use two devices.</p>
-          <p class="cn">数周的 HRV / 皮温 / 睡眠基线提供纵向地图。Oura 是消费级 HRV 验证最强者（对 ECG CCC≈0.99）且全天佩戴。其 API 返回每日汇总——正合纵向层的粒度，但不适合"当下"，这正是两层用两个设备的原因。</p>
-        </div>
+<div class="card span-6">
+<div class="num">RQ6</div>
+<h3>Second-order reflexive recognition</h3>
+<h3 class="cn">二阶返身认出</h3>
+<p>Can repeated acoustic probes help users notice not only what they feel, but how they notice themselves being affected?</p>
+<p class="cn">重复声学探针能否帮助用户不仅看见自己感受到什么，也看见自己如何意识到“正在被作用”？</p>
+</div>
 
-        <div class="card span-12">
-          <div class="eyebrow">SIGNAL × DEVICE // 信号 × 设备 · WHAT EACH CAN AND CANNOT DO</div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Signal / 信号</th>
-                <th>Best device / 最佳载体</th>
-                <th>Resting validity / 静息有效性</th>
-                <th>Honest limit / 诚实限制</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Real-time RR / HRV</td><td>Polar H10 or equivalent research-used RR device</td><td>Candidate for momentary layer</td><td>Validate within protocol; chest strap comfort may limit adherence.</td></tr>
-              <tr><td>Longitudinal HRV / temperature / sleep</td><td>Oura / Apple Watch / other wearable trend sources</td><td>Candidate for baseline layer</td><td>Use as trend context, not momentary ground truth; cite device-specific validity.</td></tr>
-              <tr><td>ECG (single-lead)</td><td>Consumer watch, where available</td><td>Contextual / on-demand</td><td>Not the preferred continuous RR stream for the MVP.</td></tr>
-              <tr><td>EDA</td><td>Research-grade or lab-supported wearable</td><td>Optional lab branch</td><td>Motion-sensitive and often weakly aligned with self-report; not required for MVP.</td></tr>
-              <tr><td>EEG / fNIRS</td><td>Lab-grade instrumentation only</td><td>Later validation setting</td><td>Not part of the private-tool MVP; never used as mind-reading claim.</td></tr>
-            </tbody>
-          </table>
-        </div>
+<div class="card span-6">
+<div class="num">RQ7</div>
+<h3>Iterative listening and temporal self-difference</h3>
+<h3 class="cn">迭代聆听与时间中的自我差异</h3>
+<p>When the same track is repeated across sessions, can users improve prediction of their own body–awareness shift?</p>
+<p class="cn">当同一首歌跨 session 重复出现时，用户能否提升对自身身体—觉察变化方向的预测力？</p>
+</div>
 
-        <div class="card span-12 warning-card">
-          <div class="eyebrow">WHY NO CUSTOM HARDWARE // 为何不自研硬件</div>
-          <h3>The MVP does not need custom hardware.</h3>
-          <h3 class="cn">MVP 不需要自研硬件。</h3>
-          <p>The early invention question is not “can we build a better sensor?” It is “can a user-owned alignment map become prospectively predictive?” Existing RR-capable wearables are sufficient to test that question. Any later hardware form factor should be justified only after the software criterion works.</p>
-          <p class="cn">早期发明问题不是“我们能不能造更好的传感器”，而是“用户拥有的对齐地图能否变得前瞻性可预测”。现有可测 RR 的可穿戴设备已足以测试这个问题。任何后续硬件形态，都必须在软件判据成立之后才有必要。</p>
-        </div>
-
-        <div class="card span-12">
-          <div class="eyebrow">BUILDABLE MVP DEVICE LIST // 可造 MVP 设备清单</div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Device / 设备</th>
-                <th>Price / 价格</th>
-                <th>Role / 职责</th>
-                <th>Necessity / 必需性</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Polar H10 or equivalent RR-streaming device</td><td>Low-cost consumer/research candidate</td><td>Momentary real-time RR</td><td><strong>Core candidate for pilot</strong></td></tr>
-              <tr><td>Kubios HRV / Polar SDK / equivalent pipeline</td><td>Tooling varies</td><td>RR stream, storage, analysis</td><td>Core candidate for pilot</td></tr>
-              <tr><td>Oura / watch / longitudinal wearable</td><td>Optional</td><td>Longitudinal baseline context</td><td>Recommended, not launch-critical</td></tr>
-              <tr><td>Custom hardware</td><td>—</td><td>—</td><td><strong>Not needed for MVP</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="research">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">05 // RESEARCH QUESTIONS // LAB-READY</div>
-          <h2>The core question is not “can music heal?” It is “can a user-owned map become predictive?”</h2>
-          <h2 class="cn">核心问题不是“音乐能否疗愈”，而是“用户拥有的地图能否变得可预测”。</h2>
-        </div>
-
-        <div class="card span-6">
-          <div class="num">RQ1</div>
-          <h3>Alignment visibility</h3>
-          <h3 class="cn">对齐可见性</h3>
-          <p>Can users notice body–awareness divergence more clearly after repeated HRP sessions across multiple probe classes?</p>
-          <p class="cn">重复使用 HRP 后，用户能否在多类探针中更清楚地看见身体—觉察分叉？</p>
-        </div>
-
-        <div class="card span-6">
-          <div class="num">RQ2</div>
-          <h3>Self-prediction</h3>
-          <h3 class="cn">自我预测力</h3>
-          <p>By week 3–4, can users predict their own body/self-rating direction before exposure to a selected probe?</p>
-          <p class="cn">到第 3–4 周，用户能否在接触某个探针之前预测自己的身体/自评变化方向？</p>
-        </div>
-
-        <div class="card span-6">
-          <div class="num">RQ3</div>
-          <h3>Music individuality</h3>
-          <h3 class="cn">音乐个体差异</h3>
-          <p>Do user-selected acoustic probes outperform generic categories, silence/context probes, or Wei Jueran authored probes for self-recognition?</p>
-          <p class="cn">用户自选声学探针是否比通用分类、沉默/情境探针或魏珏然署名探针更能帮助自我认出？</p>
-        </div>
-
-        <div class="card span-6">
-          <div class="num">RQ4</div>
-          <h3>Report usefulness</h3>
-          <h3 class="cn">报告可用性</h3>
-          <p>Can non-diagnostic reflection reports support better self-description in coaching, therapy, or personal review?</p>
-          <p class="cn">非诊断反思报告能否支持用户在教练、咨询或自我复盘中更好描述自己？</p>
-        </div>
-
-        <div class="card span-12 warning-card">
-          <div class="num" style="color:var(--yellow)">RQ5 · TRIGGER PARADOX</div>
-          <h3>How records actually get triggered</h3>
-          <h3 class="cn">记录到底如何被触发</h3>
-          <p>HRP's intended users are people who often cannot clearly name what they feel. If logging depends on self-initiation in those exact moments, the trigger condition depends on the capacity the tool exists to supplement. This is an EMA-paradigm paradox that must be studied directly, not assumed away.</p>
-          <p class="cn">HRP 的目标用户往往正是说不清自己感受的人。如果记录依赖他们在那种时刻自我发起，触发条件正好依赖于该工具要补足的那种能力。这是 EMA 范式的一个悖论，必须被直接研究，不能假装它不存在。</p>
-          <p style="margin-top:12px"><strong style="color:var(--yellow)">Sub-questions:</strong> What ratio of records is self-initiated vs. scheduled prompts vs. context-triggered (e.g., HRV inflection, time-of-day, location)? Which trigger mode yields more meaningful recognition events? Does trigger mode interact with alexithymia / interoceptive-awareness baseline?</p>
-          <p class="cn"><strong style="color:var(--yellow)">子问题：</strong>自我发起、定时提示、情境触发（如 HRV 拐点、时段、地点）三种触发方式的比例如何？哪种触发模式产生更多有意义的认出事件？触发模式是否与述情障碍/内感受基线相互作用？</p>
-        </div>
-
-        <div class="card span-12">
-          <div class="eyebrow">OPERATIONALIZING “MEANINGFUL RECOGNITION” // 操作化“有意义的认出”</div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Weak version / 弱版本</th>
-                <th>Problem / 问题</th>
-                <th>Harder version / 更硬版本</th>
-                <th>Measurement / 测量</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>“I feel this music helps me.”</td>
-                <td>May be confabulation, mood, or demand effect.</td>
-                <td>Before listening, user predicts whether body proxy / self-rating will rise, fall, or stay stable.</td>
-                <td>Prediction accuracy across repeated sessions.</td>
-              </tr>
-              <tr>
-                <td>“This report feels meaningful.”</td>
-                <td>May be vague validation.</td>
-                <td>User uses the report to choose a next track/action, then tests whether it matches actual response.</td>
-                <td>Pre-registered choice → outcome comparison.</td>
-              </tr>
-              <tr>
-                <td>“I understand myself better.”</td>
-                <td>Hard to verify.</td>
-                <td>User improves future self-description specificity without system naming the emotion.</td>
-                <td>Blind-coded specificity / consistency score.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="probe">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">06 // ALIGNMENT INPUT PROBES // MUSIC IS ONE CLASS, NOT THE CORE</div>
-          <h2>The core is alignment measurement. Music is one class of input probe.</h2>
-          <h2 class="cn">核心是对齐测量。音乐只是输入探针的一类。</h2>
-          <p class="sub">
+<div class="card span-12">
+<div class="eyebrow">OPERATIONALIZING “MEANINGFUL RECOGNITION” // 操作化“有意义的认出”</div>
+<table class="table">
+<thead>
+<tr>
+<th>Weak version / 弱版本</th>
+<th>Problem / 问题</th>
+<th>Harder version / 更硬版本</th>
+<th>Measurement / 测量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="en-cell">“I feel this music helps me.”</div><div class="cn">“我感觉这首歌帮到我了。”</div></td>
+<td><div class="en-cell">May be confabulation, mood, or demand effect.</div><div class="cn">可能是事后编造、即时心情或需求效应。</div></td>
+<td><div class="en-cell">Before listening, user predicts whether body proxy indicator / self-rating will rise, fall, or stay stable.</div><div class="cn">听之前，用户预测身体代理指标 / 自评会上升、下降或保持稳定。</div></td>
+<td><div class="en-cell">Prediction accuracy across repeated sessions.</div><div class="cn">重复 session 中的预测准确率。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">“This report feels meaningful.”</div><div class="cn">“这份报告感觉很有意义。”</div></td>
+<td><div class="en-cell">May be vague validation.</div><div class="cn">可能只是模糊的被确认感。</div></td>
+<td><div class="en-cell">User uses the report to choose a next track/action, then tests whether it matches actual response.</div><div class="cn">用户用报告选择下一首曲目/下一步行动，再测试是否匹配实际反应。</div></td>
+<td><div class="en-cell">Pre-registered choice → outcome comparison.</div><div class="cn">预注册的选择 → 结果比较。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">“I understand myself better.”</div><div class="cn">“我更理解自己了。”</div></td>
+<td><div class="en-cell">Hard to verify.</div><div class="cn">难以验证。</div></td>
+<td><div class="en-cell">User improves future self-description specificity without system naming the emotion.</div><div class="cn">在系统不替用户命名情绪的前提下，用户未来自我描述的具体性提高。</div></td>
+<td><div class="en-cell">Blind-coded specificity / consistency score.</div><div class="cn">盲评编码的具体性 / 一致性评分。</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="probe">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">06 // ALIGNMENT INPUT PROBES // MUSIC IS ONE CLASS, NOT THE CORE</div>
+<h2>The core is alignment mapping. Music is one class of input probe.</h2>
+<h2 class="cn">核心是对齐映射。音乐只是输入探针的一类。</h2>
+<p class="sub">
             What this system measures is whether body and awareness move together; lab-grade neural measurement can be added only in later validation settings. A probe is anything that perturbs that system so the alignment becomes visible. Music is one class of probe — the acoustic class. Silence, context, task load, and attention direction are equally valid non-acoustic probes. The system does not depend on music working.
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             本系统首先测量身体与觉察是否共同移动；实验室级神经测量只在后续验证情境中加入。探针是任何能扰动这个系统、让对齐变得可见的东西。音乐是探针的一类——声学类。沉默、情境、任务负荷、注意力指向是同等有效的非声学探针。系统不依赖音乐有效。
           </p>
-          <p class="sub">
-            Within the acoustic class, the six Wei Jueran genres are candidate acoustic conditions, an authorship layer, and exclusion probes — not therapeutic protocols. Whether they outperform a user's own library, or silence, is a research question (RQ3), not a claim.
+<p class="sub">
+            Within the acoustic class, the six Wei Jueran genres are candidate acoustic conditions, an authorship layer, and exclusion probes — not treatment protocols. Whether they outperform a user's own library, or silence, is a research question (RQ3), not a claim.
           </p>
-          <p class="sub cn">
-            在声学类内部，魏珏然六类音乐是候选声学条件、作品署名层与排除式探针——不是治疗协议。它们是否优于用户自带曲库、或优于沉默，是一个研究问题（RQ3），不是宣称。
+<p class="sub cn">
+            在声学类内部，魏珏然六类音乐是候选声学条件、作品署名层与排除式探针——不是治疗或干预承诺。它们是否优于用户自带曲库、或优于沉默，是一个研究问题（RQ3），不是宣称。
           </p>
-        </div>
-
-        <div class="card span-12">
-          <div class="eyebrow">PROBE CLASSES // 探针类别</div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Probe class / 探针类</th>
-                <th>Example / 示例</th>
-                <th>Channel / 通道</th>
-                <th>Hardware needed / 所需硬件</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Acoustic</strong> / 声学</td><td>Music (incl. six genres), tones, soundscape</td><td>Audio playback</td><td>None — software</td></tr>
-              <tr><td><strong>Silence</strong> / 沉默</td><td>Absence of input as a baseline probe</td><td>Timed quiet window</td><td>None — software</td></tr>
-              <tr><td><strong>Context</strong> / 情境</td><td>Time of day, location, task, sleep state</td><td>Self-report + device metadata</td><td>None — software</td></tr>
-              <tr><td><strong>Task load</strong> / 任务负荷</td><td>A demanding vs. restful activity</td><td>Self-report + motion</td><td>None — software</td></tr>
-              <tr><td><strong>Attention</strong> / 注意力</td><td>Open prompt directing notice to the body</td><td>Open-ended question</td><td>None — software</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card span-7">
-          <div class="orb-stage">
-            <div class="ring-label r1">PROBE (ACOUSTIC CLASS)<small id="rFeature">syncopation depth</small></div>
-            <div class="ring-label r2">BODY / NEURAL PROXY<small id="rProxy">movement / HRV</small></div>
-            <div class="ring-label r3">USER RESPONSE<small id="rResponse">recognize / reject</small></div>
-            <div class="ring-label r4">INTERPRETATION<small id="rMeaning">user-owned</small></div>
-            <div class="orb"><span id="probeOrb">BREAKBEATS<br><small>PROBE</small></span></div>
-          </div>
-        </div>
-
-        <div class="card span-5">
-          <div class="eyebrow">SELECT PROBE</div>
-          <div class="controls">
-            <button class="probe-btn active" data-probe="breakbeats">Breakbeats / 碎拍</button>
-            <button class="probe-btn" data-probe="hyperpop">Hyperpop / 超流行</button>
-            <button class="probe-btn" data-probe="synthpop">Synthpop / 合成流行</button>
-            <button class="probe-btn" data-probe="driftphonk">Drift Phonk / 漂移 Phonk</button>
-            <button class="probe-btn" data-probe="darkwave">Darkwave / 暗潮</button>
-            <button class="probe-btn" data-probe="ambient">Ambient Techno / 氛围科技舞曲</button>
-          </div>
-          <div style="margin-top:22px;">
-            <h3 id="probeTitle">Breakbeats as Probe</h3>
-            <h3 class="cn" id="probeTitleCn">碎拍作为探针</h3>
-            <p id="probeDesc">Tests tolerance for irregularity, syncopation, and flexible timing.</p>
-            <p class="cn" id="probeDescCn">测试用户对不规则、切分与灵活时间的承受/识别方式。</p>
-          </div>
-          <div class="metrics">
-            <div class="metric"><strong>Feature</strong><p id="mFeature">Syncopation</p><div class="meter"><span id="barA" style="--w:82%"></span></div></div>
-            <div class="metric"><strong>Load</strong><p id="mLoad">Medium-high</p><div class="meter"><span id="barB" style="--w:72%"></span></div></div>
-            <div class="metric"><strong>Question</strong><p id="mQuestion">Does irregularity help or disrupt?</p><div class="meter"><span id="barC" style="--w:58%"></span></div></div>
-          </div>
-        </div>
-
-        <div class="card span-12">
-          <div class="eyebrow">PROBE TABLE // 探针表</div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Probe / 探针</th>
-                <th>What it tests / 测什么</th>
-                <th>Possible user response / 可能反应</th>
-                <th>What not to claim / 不应声称</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Breakbeats</td><td>Irregularity, syncopation, flexible timing.</td><td>Recognition, activation, rejection, overwhelm.</td><td>Do not claim it treats dissociation.</td></tr>
-              <tr><td>Hyperpop</td><td>Density, brightness, overload tolerance.</td><td>Excitement, irritation, clarity, excess.</td><td>Do not claim it safely regulates all users.</td></tr>
-              <tr><td>Synthpop</td><td>Predictability, melody, social warmth.</td><td>Relief, nostalgia, narrative access, boredom.</td><td>Do not claim stable rhythm always calms.</td></tr>
-              <tr><td>Drift Phonk</td><td>Low-frequency drive, embodiment, motor entry.</td><td>Grounding, movement, aggression, fatigue.</td><td>Do not claim universal body activation.</td></tr>
-              <tr><td>Darkwave</td><td>Minor mode, descent, emotional depth.</td><td>Containment, heaviness, sadness, release.</td><td>Do not claim trauma processing.</td></tr>
-              <tr><td>Ambient Techno</td><td>Spatial continuity, minimal pulse, sustained focus.</td><td>Focus, drift, comfort, numbness.</td><td>Do not claim deep sleep improvement.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="ethics">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">07 // ETHICAL AND REGULATORY BOUNDARIES // PRODUCT RESTRAINT AS ORIGINALITY</div>
-          <h2>The system’s originality is restraint: return, not control.</h2>
-          <h2 class="cn">系统原创性在于克制：归还，而不是控制。</h2>
-          <p class="sub">
+</div>
+<div class="card span-12">
+<div class="eyebrow">PROBE CLASSES // 探针类别</div>
+<table class="table">
+<thead>
+<tr>
+<th>Probe class / 探针类</th>
+<th>Example / 示例</th>
+<th>Channel / 通道</th>
+<th>Hardware needed / 所需硬件</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><div class="en-cell"><strong>Acoustic</strong> / 声学</div><div class="cn"><strong>声学</strong></div></td><td><div class="en-cell">Music (incl. six genres), tones, soundscape</div><div class="cn">音乐（含六类音乐探针集）、音调、声景</div></td><td><div class="en-cell">Audio playback</div><div class="cn">音频播放</div></td><td><div class="en-cell">None — software</div><div class="cn">无需硬件 — 软件即可</div></td></tr>
+<tr><td><div class="en-cell"><strong>Silence</strong> / 沉默</div><div class="cn"><strong>沉默</strong></div></td><td><div class="en-cell">Absence of input as a baseline probe</div><div class="cn">以输入缺席作为基线探针</div></td><td><div class="en-cell">Timed quiet window</div><div class="cn">定时安静窗口</div></td><td><div class="en-cell">None — software</div><div class="cn">无需硬件 — 软件即可</div></td></tr>
+<tr><td><div class="en-cell"><strong>Context</strong> / 情境</div><div class="cn"><strong>情境</strong></div></td><td><div class="en-cell">Time of day, location, task, sleep state</div><div class="cn">时段、地点、任务、睡眠状态</div></td><td><div class="en-cell">Self-report + device metadata</div><div class="cn">自评 + 设备元数据</div></td><td><div class="en-cell">None — software</div><div class="cn">无需硬件 — 软件即可</div></td></tr>
+<tr><td><div class="en-cell"><strong>Task load</strong> / 任务负荷</div><div class="cn"><strong>任务负荷</strong></div></td><td><div class="en-cell">A demanding vs. restful activity</div><div class="cn">高负荷活动 vs. 休息活动</div></td><td><div class="en-cell">Self-report + motion</div><div class="cn">自评 + 动作</div></td><td><div class="en-cell">None — software</div><div class="cn">无需硬件 — 软件即可</div></td></tr>
+<tr><td><div class="en-cell"><strong>Attention</strong> / 注意力</div><div class="cn"><strong>注意力</strong></div></td><td><div class="en-cell">Open prompt directing notice to the body</div><div class="cn">把注意力导向身体的开放提示</div></td><td><div class="en-cell">Open-ended question</div><div class="cn">开放式问题</div></td><td><div class="en-cell">None — software</div><div class="cn">无需硬件 — 软件即可</div></td></tr>
+</tbody>
+</table>
+</div>
+<div class="card span-7">
+<div class="orb-stage">
+<div class="ring-label r1">PROBE (ACOUSTIC CLASS)<small id="rFeature">syncopation depth</small></div>
+<div class="ring-label r2">BODY / NEURAL PROXY<small id="rProxy">movement / HRV</small></div>
+<div class="ring-label r3">USER RESPONSE<small id="rResponse">recognize / reject</small></div>
+<div class="ring-label r4">INTERPRETATION<small id="rMeaning">user-owned</small></div>
+<div class="orb"><span id="probeOrb">BREAKBEATS<br/><small>PROBE</small></span></div>
+</div>
+</div>
+<div class="card span-5">
+<div class="eyebrow">SELECT PROBE</div>
+<div class="controls">
+<button class="probe-btn active" data-probe="breakbeats">Breakbeats / 碎拍</button>
+<button class="probe-btn" data-probe="hyperpop">Hyperpop / 超流行</button>
+<button class="probe-btn" data-probe="synthpop">Synthpop / 合成流行</button>
+<button class="probe-btn" data-probe="driftphonk">Drift Phonk / 漂移 Phonk</button>
+<button class="probe-btn" data-probe="darkwave">Darkwave / 暗潮</button>
+<button class="probe-btn" data-probe="ambient">Ambient Techno / 氛围科技舞曲</button>
+</div>
+<div style="margin-top:22px;">
+<h3 id="probeTitle">Breakbeats as Probe</h3>
+<h3 class="cn" id="probeTitleCn">碎拍作为探针</h3>
+<p id="probeDesc">Tests tolerance for irregularity, syncopation, and flexible timing.</p>
+<p class="cn" id="probeDescCn">测试用户对不规则、切分与灵活时间的承受/识别方式。</p>
+</div>
+<div class="metrics">
+<div class="metric"><strong>Feature</strong><p id="mFeature">Syncopation</p><div class="meter"><span id="barA" style="--w:82%"></span></div></div>
+<div class="metric"><strong>Load</strong><p id="mLoad">Medium-high</p><div class="meter"><span id="barB" style="--w:72%"></span></div></div>
+<div class="metric"><strong>Question</strong><p id="mQuestion">Does irregularity help or disrupt?</p><div class="meter"><span id="barC" style="--w:58%"></span></div></div>
+</div>
+</div>
+<div class="card span-12">
+<div class="eyebrow">PROBE TABLE // 探针表</div>
+<table class="table">
+<thead>
+<tr>
+<th>Probe / 探针</th>
+<th>What it tests / 测什么</th>
+<th>Possible user response / 可能反应</th>
+<th>What not to claim / 不应声称</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><div class="en-cell">Breakbeats</div><div class="cn">碎拍</div></td><td><div class="en-cell">Irregularity, syncopation, flexible timing.</div><div class="cn">不规则、切分、灵活时间。</div></td><td><div class="en-cell">Recognition, activation, rejection, overwhelm.</div><div class="cn">认出、激活、拒绝、过载。</div></td><td><div class="en-cell">Do not claim it treats dissociation.</div><div class="cn">不要声称它治疗解离。</div></td></tr>
+<tr><td><div class="en-cell">Hyperpop</div><div class="cn">超流行</div></td><td><div class="en-cell">Density, brightness, overload tolerance.</div><div class="cn">密度、亮度、过载承受。</div></td><td><div class="en-cell">Excitement, irritation, clarity, excess.</div><div class="cn">兴奋、烦躁、清晰、过量。</div></td><td><div class="en-cell">Do not claim it safely regulates all users.</div><div class="cn">不要声称它能安全调节所有用户。</div></td></tr>
+<tr><td><div class="en-cell">Synthpop</div><div class="cn">合成流行</div></td><td><div class="en-cell">Predictability, melody, social warmth.</div><div class="cn">可预测性、旋律、社交温度。</div></td><td><div class="en-cell">Relief, nostalgia, narrative access, boredom.</div><div class="cn">缓解、怀旧、叙事进入、无聊。</div></td><td><div class="en-cell">Do not claim stable rhythm always calms.</div><div class="cn">不要声称稳定节律总会使人平静。</div></td></tr>
+<tr><td><div class="en-cell">Drift Phonk</div><div class="cn">漂移 Phonk</div></td><td><div class="en-cell">Low-frequency drive, embodiment, motor entry.</div><div class="cn">低频驱动、具身、运动入口。</div></td><td><div class="en-cell">Grounding, movement, aggression, fatigue.</div><div class="cn">落地、运动、攻击感、疲惫。</div></td><td><div class="en-cell">Do not claim universal body activation.</div><div class="cn">不要声称普适身体激活。</div></td></tr>
+<tr><td><div class="en-cell">Darkwave</div><div class="cn">暗潮</div></td><td><div class="en-cell">Minor mode, descent, emotional depth.</div><div class="cn">小调、下降、情绪深度。</div></td><td><div class="en-cell">Containment, heaviness, sadness, release.</div><div class="cn">承载、沉重、悲伤、释放。</div></td><td><div class="en-cell">Do not claim trauma processing.</div><div class="cn">不要声称创伤处理。</div></td></tr>
+<tr><td><div class="en-cell">Ambient Techno</div><div class="cn">氛围科技舞曲</div></td><td><div class="en-cell">Spatial continuity, minimal pulse, sustained focus.</div><div class="cn">空间连续性、极简脉冲、持续专注。</div></td><td><div class="en-cell">Focus, drift, comfort, numbness.</div><div class="cn">专注、漂移、舒适、麻木。</div></td><td><div class="en-cell">Do not claim deep sleep improvement.</div><div class="cn">不要声称改善深度睡眠。</div></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="ethics">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">07 // ETHICAL AND REGULATORY BOUNDARIES // PRODUCT RESTRAINT AS ORIGINALITY</div>
+<h2>The system’s originality is restraint: return, not control.</h2>
+<h2 class="cn">系统原创性在于克制：归还，而不是控制。</h2>
+<p class="sub">
             HRP must remain strict: no diagnosis, no emotion naming, no automatic intervention without user confirmation, no dream control, no medical promise, no “AI knows you better than you.”
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             HRP 必须严格：不诊断、不命名情绪、不在未经确认时自动干预、不控制梦境、不做医疗承诺、不说“AI 比你更懂你”。
           </p>
-        </div>
-
-        <div class="card span-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Risky phrase / 风险措辞</th>
-                <th>Safer replacement / 安全替代表述</th>
-                <th>Reason / 原因</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Detects anxiety / detects depression</td><td>Shows possible body–awareness divergence</td><td>Avoids diagnosis and emotion naming.</td></tr>
-              <tr><td>Treats trauma / reduces nightmares</td><td>Remote clinical research question only</td><td>Medical claim and vulnerable-state risk.</td></tr>
-              <tr><td>Reads your mind / decodes emotion</td><td>Records user input and optional body proxies</td><td>Avoids brain-reading / overclaim.</td></tr>
-              <tr><td>Proves music regulates the nervous system</td><td>Tests whether selected music is associated with state changes</td><td>Keeps claims falsifiable.</td></tr>
-              <tr><td>Automatic intervention</td><td>Present → user confirms → optional action</td><td>Protects agency and consent.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card span-3">
-          <div class="num">BOUNDARY 01</div>
-          <h3>Disclosure</h3>
-          <h3 class="cn">披露</h3>
-          <p>The AI layer must clearly say it is AI, not a human clinician or companion substitute.</p>
-          <p class="cn">AI 层必须清楚说明自己是 AI，不是人类临床人员或真人陪伴替代。</p>
-        </div>
-
-        <div class="card span-3">
-          <div class="num">BOUNDARY 02</div>
-          <h3>Crisis redirect</h3>
-          <h3 class="cn">危机转介</h3>
-          <p>If a user indicates imminent harm or crisis, the system stops reflective interpretation and redirects to real support.</p>
-          <p class="cn">如果用户表现出即时伤害或危机，系统停止反思性解释，并转向真实支持。</p>
-        </div>
-
-        <div class="card span-3">
-          <div class="num">BOUNDARY 03</div>
-          <h3>User correction</h3>
-          <h3 class="cn">用户修正</h3>
-          <p>Every label, report, and map entry must be editable or rejectable by the user.</p>
-          <p class="cn">每个标签、报告与地图条目都必须可被用户修改或拒绝。</p>
-        </div>
-
-        <div class="card span-3">
-          <div class="num">BOUNDARY 04</div>
-          <h3>Data ownership</h3>
-          <h3 class="cn">数据所有权</h3>
-          <p>All records belong to the user: locally stored by default, fully exportable, withdrawable, and never sold. Any cloud or research use requires explicit, revocable consent and ethics review.</p>
-          <p class="cn">所有记录归用户所有：默认本地存储，可完整导出、可撤回、永不售卖。任何云端或研究用途需用户明确且可撤销的同意与伦理审查。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="pilot">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">08 // 2–4 WEEK MINIMUM TEST // BEFORE LAB MEETING</div>
-          <h2>Before asking for resources, show the lab a clean micro-signal.</h2>
-          <h2 class="cn">在请求资源前，给实验室看一个干净的微型信号。</h2>
-          <p class="sub">
+</div>
+<div class="card span-12">
+<table class="table">
+<thead>
+<tr>
+<th>Risky phrase / 风险措辞</th>
+<th>Safer replacement / 安全替代表述</th>
+<th>Reason / 原因</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><div class="en-cell">Detects anxiety / detects depression</div><div class="cn">检测焦虑 / 检测抑郁</div></td><td><div class="en-cell">Shows possible body–awareness divergence</div><div class="cn">显示可能的身体—觉察分叉</div></td><td><div class="en-cell">Avoids diagnosis and emotion naming.</div><div class="cn">避免诊断与替用户命名情绪。</div></td></tr>
+<tr><td><div class="en-cell">Treats trauma / reduces nightmares</div><div class="cn">治疗创伤 / 减少噩梦</div></td><td><div class="en-cell">Remote clinical research question only</div><div class="cn">仅作为远期临床研究问题</div></td><td><div class="en-cell">Medical claim and vulnerable-state risk.</div><div class="cn">涉及医疗承诺与脆弱状态风险。</div></td></tr>
+<tr><td><div class="en-cell">Reads your mind / decodes emotion</div><div class="cn">读取思想 / 解码情绪</div></td><td><div class="en-cell">Records user input and optional body proxy indicators</div><div class="cn">记录用户输入与可选身体代理指标</div></td><td><div class="en-cell">Avoids brain-reading / overclaim.</div><div class="cn">避免读脑与过度声称。</div></td></tr>
+<tr><td><div class="en-cell">Proves music regulates the nervous system</div><div class="cn">证明音乐调节神经系统</div></td><td><div class="en-cell">Tests whether selected music is associated with state changes</div><div class="cn">测试所选音乐是否与状态变化相关</div></td><td><div class="en-cell">Keeps claims falsifiable.</div><div class="cn">保持主张可证伪。</div></td></tr>
+<tr><td><div class="en-cell">Automatic intervention</div><div class="cn">自动干预</div></td><td><div class="en-cell">Present → user confirms → optional action</div><div class="cn">呈现 → 用户确认 → 可选行动</div></td><td><div class="en-cell">Protects agency and consent.</div><div class="cn">保护行动权与同意。</div></td></tr>
+</tbody>
+</table>
+</div>
+<div class="card span-3">
+<div class="num">BOUNDARY 01</div>
+<h3>Disclosure</h3>
+<h3 class="cn">披露</h3>
+<p>The AI layer must clearly say it is AI, not a human clinician or companion substitute.</p>
+<p class="cn">AI 层必须清楚说明自己是 AI，不是人类临床人员或真人陪伴替代。</p>
+</div>
+<div class="card span-3">
+<div class="num">BOUNDARY 02</div>
+<h3>Crisis redirect</h3>
+<h3 class="cn">危机转介</h3>
+<p>If a user indicates imminent harm or crisis, the system stops reflective interpretation and redirects to real support.</p>
+<p class="cn">如果用户表现出即时伤害或危机，系统停止反思性解释，并转向真实支持。</p>
+</div>
+<div class="card span-3">
+<div class="num">BOUNDARY 03</div>
+<h3>User correction</h3>
+<h3 class="cn">用户修正</h3>
+<p>Every label, report, and map entry must be editable or rejectable by the user.</p>
+<p class="cn">每个标签、报告与地图条目都必须可被用户修改或拒绝。</p>
+</div>
+<div class="card span-3">
+<div class="num">BOUNDARY 04</div>
+<h3>Data ownership</h3>
+<h3 class="cn">数据所有权</h3>
+<p>All records belong to the user: locally stored by default, fully exportable, withdrawable, and never sold. Any cloud or research use requires explicit, revocable consent and ethics review.</p>
+<p class="cn">所有记录归用户所有：默认本地存储，可完整导出、可撤回、永不售卖。任何云端或研究用途需用户明确且可撤销的同意与伦理审查。</p>
+</div>
+</div>
+</section>
+<section id="pilot">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">08 // 2–4 WEEK MINIMUM TEST // BEFORE LAB MEETING</div>
+<h2>Before asking for resources, show the lab a clean micro-signal.</h2>
+<h2 class="cn">在请求资源前，给实验室看一个干净的微型信号。</h2>
+<p class="sub">
             This is not full validation. It is a credibility signal: the invention is operationalized enough that a lab can join without first cleaning the whole concept.
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             这不是完整验证，而是可信度信号：这个发明已经被操作化到足够清楚，实验室可以加入，而不是先替你清理整个概念。
           </p>
-        </div>
+</div>
+<div class="card span-12">
+<div class="eyebrow">MICRO-PILOT FLOW // 微型试验流程</div>
+<div class="system-loop">
+<div class="loop-item"><div class="num">WEEK 1</div><h3>Baseline diary</h3><h3 class="cn">基线日记</h3><p>Record state, body proxy indicator if available, context, and music choice.</p><p class="cn">记录状态、可用身体代理指标、情境与音乐选择。</p></div>
+<div class="loop-item"><div class="num">WEEK 2</div><h3>Probe exposure</h3><h3 class="cn">探针暴露</h3><p>Use user library + optional Wei Jueran probe set under fixed timing.</p><p class="cn">使用用户曲库 + 可选魏珏然 probe set，并固定时长。</p></div>
+<div class="loop-item"><div class="num">WEEK 3</div><h3>Prediction trial</h3><h3 class="cn">预测测试</h3><p>Before listening, user predicts body/self-rating direction.</p><p class="cn">听之前，用户预测身体/自评变化方向。</p></div>
+<div class="loop-item"><div class="num">WEEK 4</div><h3>Report test</h3><h3 class="cn">报告测试</h3><p>Does reflection report improve next-session prediction or self-description?</p><p class="cn">反思报告是否提升下一次预测或自我描述？</p></div>
+</div>
+</div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">MINIMUM COMPLETION THRESHOLD // 最低依赖率门槛 · PRE-REGISTERED</div>
+<h3>How low is "the run failed", not "the result was null"?</h3>
+<h3 class="cn">多低算"试验失败"，而非"结果为零"？</h3>
+<p>Pre-registered minimum for the micro-pilot to be informative: each participant completes at least <strong style="color:var(--yellow)">2 sessions per week across 4 weeks (≥ 8 sessions)</strong>, including at least <strong style="color:var(--yellow)">4 prediction trials in weeks 3–4</strong>. Below this threshold, the run is reported as a feasibility failure rather than a null result, and trigger-mode logs (RQ5) are reviewed first.</p>
+<p class="cn">微型试验有效性的预注册最低门槛：每位被试在 4 周内完成至少<strong style="color:var(--yellow)">每周 2 次、共 8 次以上 session</strong>，其中第 3–4 周完成至少 <strong style="color:var(--yellow)">4 次预测试验</strong>。低于此门槛者按"可行性失败"而非"零结果"报告，并优先复核 RQ5 的触发模式日志。</p>
+</div>
+<div class="card span-12">
+<div class="eyebrow" style="color:var(--yellow)">LOCAL DATA CAPTURE · MOCKUP · VISUAL ONLY · NOT A LIVE FORM // 本地数据记录 · 仅为视觉示意 · 非真实采集</div>
+<form class="mini-form" id="pilotForm">
+<label>Participant ID<input name="participant_id" placeholder="P001"/></label>
+<label>Session ID<input name="session_id" placeholder="S001"/></label>
+<label>Probe Source<select name="probe_source"><option>user_selected_probe</option><option>wei_acoustic_probe_set</option><option>silence_or_context_control</option></select></label>
+<label>Probe / Track<input name="track" placeholder="track name or probe"/></label>
+<label>Context<input name="context" placeholder="study / rest / transition"/></label>
+<label>Before: body sense<input max="7" min="1" name="pre_body" placeholder="1-7" type="number"/></label>
+<label>Before: clarity<input max="7" min="1" name="pre_clarity" placeholder="1-7" type="number"/></label>
+<label>Before: inner noise<input max="7" min="1" name="pre_noise" placeholder="1-7" type="number"/></label>
+<label>Prediction<select name="prediction"><option>body_up</option><option>body_down</option><option>body_same</option><option>uncertain</option></select></label>
+<label>After: body sense<input max="7" min="1" name="post_body" placeholder="1-7" type="number"/></label>
+<label>After: clarity<input max="7" min="1" name="post_clarity" placeholder="1-7" type="number"/></label>
+<label>After: inner noise<input max="7" min="1" name="post_noise" placeholder="1-7" type="number"/></label>
+<label>Prediction matched?<select name="prediction_matched"><option>unknown</option><option>yes</option><option>no</option><option>partial</option></select></label>
+<label>Recognition note<textarea name="recognition_note" placeholder="Open note. Do not name emotion unless user chooses to."></textarea></label>
+</form>
+<div class="hero-actions">
+<button class="button primary" onclick="exportCSV()">EXPORT CSV</button>
+<button class="button" onclick="document.getElementById('pilotForm').reset(); document.getElementById('csvOut').textContent='';">RESET</button>
+</div>
+<pre id="csvOut" style="white-space:pre-wrap;color:var(--green);font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.22);border:1px solid rgba(0,245,255,.16);border-radius:18px;padding:18px;overflow:auto;margin-top:18px;"></pre>
+</div>
+</div>
+</section>
+<section id="bci-main-transfer">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">BCI MAIN SITE → BCI-HRP // VALUE TRANSFER LAYER</div>
+<h2>What survives the transfer: meaning-return, subject authority, QDR, QRM, and probe-based alignment mapping.</h2>
+<h2 class="cn">从 BCI 主站转入 BCI-HRP V2.1 的，是意义返回、主体权、QDR、QRM 与基于探针的对齐映射。</h2>
+<p class="sub">The old BCI main site contains several valuable system organs. In this BCI-HRP V2.1 version, they are integrated without reopening the old risk: no mind-reading claim, no custom-hardware dependency, no universal music-effect claim, and no medical framing.</p>
+<p class="sub cn">BCI 主站里有很多有价值的系统器官。现在把它们整合进 BCI-HRP V2.1，但不重新打开旧风险：不写读心、不依赖自研硬件、不声称普适音乐效果、不进入医疗叙事。</p>
+<div class="sovereignty-strip">
+<div class="small-kicker">DIMENSIONAL SOVEREIGNTY // SUBJECT AUTHORITY</div>
+<div class="sovereignty-cn">信号不能凌驾于主体，硬件不能消解人，AI 不能替代用户的解释权。</div>
+<div class="sovereignty-en">Signals cannot outrank the subject. Hardware cannot erase the human. AI cannot replace the user's interpretive authority.</div>
+</div>
+</div>
+<div class="card span-12">
+<div class="eyebrow">NOT UPLOADING, BUT RETURN // 不是上传，而是回归</div>
+<h2>BCI should not stop at signal decoding. It must return meaning to the human.</h2>
+<h2 class="cn">BCI 不应止步于信号解码。它必须把意义还给人。</h2>
+<p class="sub">Current BCI research often sees the signal but misses meaning. It tries to decode neural activity with precision, yet can forget that under electrochemical pulses there is a human who longs for love, fears erasure, and searches for meaning. HRP recalibrates from that dislocation: not mind-reading, but meaning-returning; not uploading, but returning.</p>
+<p class="sub cn">当前 BCI 研究常常看见信号，却忽视意义；它试图精密解码神经活动，却可能遗忘电化学脉冲之下，是一个渴望爱、惧怕湮灭、寻求意义的人。HRP 从这个错位处重新校准：不是读心，而是意义返回；不是上传，而是回归。</p>
+<div class="relation-formula">Not mind-reading → meaning-returning<br>Not uploading → returning<br/><span class="cn">不是读取思想 → 而是返回意义<br/>不是上传 → 而是回归</span></div>
+</div>
+<div class="card span-12">
+<div class="eyebrow">TRANSFER AUDIT // 转入审计</div>
+<div class="integration-map">
+<article class="integration-card"><strong>Keep // 保留</strong><h3>Human Return philosophy</h3><p>Meaning-return, subject authority, non-diagnostic stance, user-owned interpretation.</p><p class="cn">意义返回、主体权、非诊断立场、用户拥有解释权。</p></article>
+<article class="integration-card yellow"><strong>Translate // 转译</strong><h3>Neural Cuff language</h3><p>Old custom-cuff imagery becomes optional/future device language. MVP uses existing wearables and software.</p><p class="cn">旧的自研袖环意象转译为可选/远期设备语言。MVP 使用现成可穿戴与软件。</p></article>
+<article class="integration-card pink"><strong>Downgrade // 降级</strong><h3>Six genres</h3><p>Six genres are Probe Set / research hypothesis layer, not protocol, treatment claim, or homepage hook.</p><p class="cn">六类音乐是 Probe Set / 研究假设层，不是治疗承诺、协议承诺或首页钩子。</p></article>
+</div>
+</div>
+</div>
+</section>
+<section id="metalogic-qrm">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">METALOGIC ROOT // QRM DISCIPLINE // QDR OPERATION</div>
+<h2>MetaLogic is the method root. QRM is the discipline. QDR is the operating layer.</h2>
+<h2 class="cn">MetaLogic 是方法根。QRM 是母学科。QDR 是操作层。</h2>
+<p class="sub">This is the strongest theoretical content from the BCI main site. BCI-HRP should not appear as an isolated product idea. It belongs to the same system ecology: language generates logic, logic generates measurable structure, and measurable structure returns interpretive authority to the user.</p>
+<p class="sub cn">这是 BCI 主站最值得并入的理论内容。BCI-HRP 不应像一个孤立产品点子；它属于同一个系统生态：语言生成逻辑，逻辑生成可测结构，可测结构再把解释权还给用户。</p>
+<div class="relation-ladder">
+<article class="integration-card yellow"><strong>01 // METHOD ROOT</strong><h3>MetaLogic</h3><h3 class="cn">元逻辑生成学</h3><p>Explains how language, body, symbols, relation, and rhythm reorganize reality-feeling.</p><p class="cn">解释语言、身体、符号、关系与节律如何重组现实感。</p></article>
+<div class="relation-arrow">→</div>
+<article class="integration-card"><strong>02 // DISCIPLINE BODY</strong><h3>QualiaRhythmMatrix</h3><h3 class="cn">感质-节律-意识学</h3><p>Frames consciousness as a dynamic center generated by vibration, qualia, rhythm, language, and feedback.</p><p class="cn">把意识理解为由振动、感质、节律、语言与反馈生成的动态中心。</p></article>
+<div class="relation-arrow">→</div>
+<article class="integration-card pink"><strong>03 // OPERATION</strong><h3>QDR Reflection</h3><h3 class="cn">QDR 反思层</h3><p>Turns body-awareness/probe records into non-diagnostic reflection reports and prediction tests.</p><p class="cn">把身体—觉察/探针记录转化为非诊断反思报告与预测力测试。</p></article>
+</div>
+<div class="relation-formula">MetaLogic → QualiaRhythmMatrix → HRP / QDR Reflection → User-owned alignment map<br/><span class="cn">元逻辑生成学 → 感质-节律-意识学 → HRP / QDR 反思 → 用户拥有的对齐地图</span></div>
+</div>
+<div class="card span-12">
+<div class="eyebrow">GENERATIVE CHAIN // 生成链</div>
+<h3>Vibration → Qualia → Rhythm → Language → Logic → Structure → Protocol → System → Reality → Feedback</h3>
+<h3 class="cn">振动 → 感质 → 节律 → 语言 → 逻辑 → 结构 → 协议 → 系统 → 现实 → 反馈</h3>
+<p>BCI-HRP operationalizes the rhythm-language-protocol-system-feedback portion of this chain. The key move is not “detecting consciousness”; it is measuring alignment and returning the map without stealing the user’s interpretation.</p>
+<p class="cn">BCI-HRP 操作化的是这条链上的节律—语言—协议—系统—反馈段。关键不是“检测意识”，而是测量对齐，并在不偷走用户解释权的前提下把地图返回。</p>
+</div>
+</div>
+</section>
+<section id="dual-intelligence">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">DUAL-INTELLIGENCE INTERFACE // 双层智能接口</div>
+<h2>HRP is not AI supporting the human. It is a negotiated interface between two intelligences.</h2>
+<h2 class="cn">HRP 不是 AI 单向支持人，而是两种智能在接口中协商。</h2>
+<p class="sub">The human remains the active subject: sensing, choosing, refusing, naming, and correcting. The AI/QDR layer can organize records, surface differences, generate reflection prompts, and export reports. Its output is always a proposal, never a command.</p>
+<p class="sub cn">人始终是主动主体：感知、选择、拒绝、命名、修正。AI/QDR 层可以整理记录、显影差异、生成反思提示、导出报告。它的输出永远是建议，不是命令。</p>
+</div>
+<div class="card span-6"><div class="eyebrow">01 // HUMAN INTELLIGENCE</div><h3>The user holds final interpretation.</h3><h3 class="cn">用户持有最终解释权。</h3><p>The user names the felt texture, decides whether a pattern is meaningful, and can edit, refuse, or delete any generated reflection.</p><p class="cn">用户命名感受质地，决定模式是否有意义，并可编辑、拒绝或删除任何生成反思。</p></div>
+<div class="card span-6"><div class="eyebrow">02 // AI / QDR REFLECTION</div><h3>The system organizes, not diagnoses.</h3><h3 class="cn">系统负责整理，不负责诊断。</h3><p>The system compares records, asks open questions, prepares a report, and helps the user test future self-prediction.</p><p class="cn">系统比较记录、提出开放问题、准备报告，并帮助用户测试未来自我预测力。</p></div>
+<div class="card span-12 warning-card"><div class="eyebrow">INTERFACE RULE</div><h3>Physiological data are mirrors, not judges.</h3><h3 class="cn">生理数据是镜子，不是法官。</h3><p>Any output must remain exit-able, adjustable, user-correctable, and explicitly non-diagnostic. This is the interface version of the subject-sovereignty rule.</p><p class="cn">所有输出必须可退出、可调节、可由用户修正，并明确非诊断。这是主体主权原则在界面层的版本。</p></div>
+</div>
+</section>
+<section id="music-evidence">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">MUSIC AS PROBE SET // ACOUSTIC–NEURAL–QUALIA RATIONALE</div>
+<h2>Music is not the core proof. Music is one strong probe family.</h2>
+<h2 class="cn">音乐不是核心证明。音乐是一组强探针家族。</h2>
+<p class="sub">The BCI main site’s six-genre matrix is valuable, but in BCI-HRP it must be reframed: not as a treatment claim, not as a fixed genre→emotion map, and not as a universal intervention claim. It becomes a signed Probe Set for studying acoustic variables, personal preference, body response, and self-prediction.</p>
+<p class="sub cn">BCI 主站的六类音乐矩阵很有价值，但在 BCI-HRP 中必须重写：不是治疗或干预承诺，不是固定的“流派→情绪”映射，也不是普适干预承诺。它成为一个署名 Probe Set，用来研究声学变量、个人偏好、身体反应与自我预测。</p>
+<div class="source-strip"><span class="title-pill">AUTHORITATIVE BASIS</span><span>Juslin &amp; Västfjäll 2008</span><span>Koelsch 2014</span><span>Chanda &amp; Levitin 2013</span><span>Salimpoor et al. 2011</span><span>Patel &amp; Iversen 2014</span><span>Large &amp; Jones 1999</span><span>Thaut 2005 / 2015</span></div>
+</div>
 
-        <div class="card span-12">
-          <div class="eyebrow">MICRO-PILOT FLOW // 微型试验流程</div>
-          <div class="system-loop">
-            <div class="loop-item"><div class="num">WEEK 1</div><h3>Baseline diary</h3><h3 class="cn">基线日记</h3><p>Record state, body proxy if available, context, and music choice.</p><p class="cn">记录状态、可用身体代理、情境与音乐选择。</p></div>
-            <div class="loop-item"><div class="num">WEEK 2</div><h3>Probe exposure</h3><h3 class="cn">探针暴露</h3><p>Use user library + optional Wei Jueran probe set under fixed timing.</p><p class="cn">使用用户曲库 + 可选魏珏然 probe set，并固定时长。</p></div>
-            <div class="loop-item"><div class="num">WEEK 3</div><h3>Prediction trial</h3><h3 class="cn">预测测试</h3><p>Before listening, user predicts body/self-rating direction.</p><p class="cn">听之前，用户预测身体/自评变化方向。</p></div>
-            <div class="loop-item"><div class="num">WEEK 4</div><h3>Report test</h3><h3 class="cn">报告测试</h3><p>Does reflection report improve next-session prediction or self-description?</p><p class="cn">反思报告是否提升下一次预测或自我描述？</p></div>
-          </div>
-        </div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">REFLEXIVE MUSICOLOGY UPGRADE // 返身音乐学升级</div>
+<h3>Music is not only a probe family; it is the acoustic route into metacognitive self-recognition.</h3>
+<h3 class="cn">音乐不只是探针家族；它是进入元认知自我认出的声学路径。</h3>
+<p>BCI-HRP uses Reflexive Musicology to keep the music layer precise: the goal is not to prove that a genre creates a fixed effect, but to test whether repeated listening encounters can improve the user's recognition and prediction of their own body–awareness alignment.</p>
+<p class="cn">BCI-HRP 用返身音乐学来校准音乐层：目标不是证明某种流派产生固定效果，而是测试重复聆听相遇是否能提升用户对自身身体—觉察对齐的认出与预测。</p>
+</div>
 
-        <div class="card span-12 warning-card">
-          <div class="eyebrow">MINIMUM COMPLETION THRESHOLD // 最低依赖率门槛 · PRE-REGISTERED</div>
-          <h3>How low is "the run failed", not "the result was null"?</h3>
-          <h3 class="cn">多低算"试验失败"，而非"结果为零"？</h3>
-          <p>Pre-registered minimum for the micro-pilot to be informative: each participant completes at least <strong style="color:var(--yellow)">2 sessions per week across 4 weeks (≥ 8 sessions)</strong>, including at least <strong style="color:var(--yellow)">4 prediction trials in weeks 3–4</strong>. Below this threshold, the run is reported as a feasibility failure rather than a null result, and trigger-mode logs (RQ5) are reviewed first.</p>
-          <p class="cn">微型试验有效性的预注册最低门槛：每位被试在 4 周内完成至少<strong style="color:var(--yellow)">每周 2 次、共 8 次以上 session</strong>，其中第 3–4 周完成至少 <strong style="color:var(--yellow)">4 次预测试验</strong>。低于此门槛者按"可行性失败"而非"零结果"报告，并优先复核 RQ5 的触发模式日志。</p>
-        </div>
-
-        <div class="card span-12">
-          <div class="eyebrow" style="color:var(--yellow)">LOCAL DATA CAPTURE · MOCKUP · VISUAL ONLY · NOT A LIVE FORM // 本地数据记录 · 仅为视觉示意 · 非真实采集</div>
-          <form class="mini-form" id="pilotForm">
-            <label>Participant ID<input name="participant_id" placeholder="P001"></label>
-            <label>Session ID<input name="session_id" placeholder="S001"></label>
-            <label>Probe Source<select name="probe_source"><option>user_selected_probe</option><option>wei_acoustic_probe_set</option><option>silence_or_context_control</option></select></label>
-            <label>Probe / Track<input name="track" placeholder="track name or probe"></label>
-            <label>Context<input name="context" placeholder="study / rest / transition"></label>
-            <label>Before: body sense<input name="pre_body" type="number" min="1" max="7" placeholder="1-7"></label>
-            <label>Before: clarity<input name="pre_clarity" type="number" min="1" max="7" placeholder="1-7"></label>
-            <label>Before: inner noise<input name="pre_noise" type="number" min="1" max="7" placeholder="1-7"></label>
-            <label>Prediction<select name="prediction"><option>body_up</option><option>body_down</option><option>body_same</option><option>uncertain</option></select></label>
-            <label>After: body sense<input name="post_body" type="number" min="1" max="7" placeholder="1-7"></label>
-            <label>After: clarity<input name="post_clarity" type="number" min="1" max="7" placeholder="1-7"></label>
-            <label>After: inner noise<input name="post_noise" type="number" min="1" max="7" placeholder="1-7"></label>
-            <label>Prediction matched?<select name="prediction_matched"><option>unknown</option><option>yes</option><option>no</option><option>partial</option></select></label>
-            <label>Recognition note<textarea name="recognition_note" placeholder="Open note. Do not name emotion unless user chooses to."></textarea></label>
-          </form>
-          <div class="hero-actions">
-            <button class="button primary" onclick="exportCSV()">EXPORT CSV</button>
-            <button class="button" onclick="document.getElementById('pilotForm').reset(); document.getElementById('csvOut').textContent='';">RESET</button>
-          </div>
-          <pre id="csvOut" style="white-space:pre-wrap;color:var(--green);font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.22);border:1px solid rgba(0,245,255,.16);border-radius:18px;padding:18px;overflow:auto;margin-top:18px;"></pre>
-        </div>
-      </div>
-    </section>
-
-    <section id="evidence">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">09 // EVIDENCE LOGIC // WHAT WOULD COUNT AS A SIGNAL</div>
-          <h2>The first evidence is not “feeling better.” It is improved self-prediction.</h2>
-          <h2 class="cn">第一证据不是“感觉更好”，而是自我预测力提升。</h2>
-        </div>
-
-        <div class="card span-12">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Evidence tier / 证据层级</th>
-                <th>Signal / 信号</th>
-                <th>Why it matters / 意义</th>
-                <th>Threat / 威胁</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Tier 0 · Usability</td>
-                <td>Users complete logs without confusion.</td>
-                <td>Shows the tool can be used.</td>
-                <td>Does not validate the theory.</td>
-              </tr>
-              <tr>
-                <td>Tier 1 · Pattern visibility</td>
-                <td>Users identify repeated body–probe–awareness patterns.</td>
-                <td>Shows map is interpretable.</td>
-                <td>Could still be confabulation.</td>
-              </tr>
-              <tr>
-                <td>Tier 2 · Self-prediction</td>
-                <td>Prediction accuracy improves over sessions.</td>
-                <td>Stronger sign that recognition is functional.</td>
-                <td>Memory, expectation, small sample.</td>
-              </tr>
-              <tr>
-                <td>Tier 3 · External proxy</td>
-                <td>Self-prediction corresponds to wearable proxy direction.</td>
-                <td>Bridges first-person and body data.</td>
-                <td>Wearable noise and context confounds.</td>
-              </tr>
-              <tr>
-                <td>Tier 4 · Lab validation</td>
-                <td>Controlled sample with HRV/EDA/EEG/fNIRS and preregistered conditions.</td>
-                <td>Scientific collaboration begins here.</td>
-                <td>Requires lab resources.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card span-12 warning-card">
-          <div class="eyebrow">KEY VALIDITY THREAT // 最大效度威胁</div>
-          <h2>Meaningful recognition vs. confabulation.</h2>
-          <h2 class="cn">有意义的认出 vs. 事后编造。</h2>
-          <p class="sub">
+<div class="card span-12">
+<div class="eyebrow">SIX PROBE FAMILIES × SIX SYSTEMS // 六类探针 × 六大系统</div>
+<div class="axis-grid">
+<div class="axis-head">Probe<div class="cn">探针</div></div><div class="axis-head">Emotion<div class="cn">情绪</div></div><div class="axis-head">Perception<div class="cn">感知</div></div><div class="axis-head">Neural Timing<div class="cn">神经时间</div></div><div class="axis-head">Body<div class="cn">身体</div></div><div class="axis-head">Cognition / Meaning<div class="cn">认知 / 意义</div></div>
+<div class="axis-label">Breakbeats<div class="cn">碎拍</div></div><div>interrupt rumination / activate<div class="cn">打断反刍 / 激活</div></div><div>prediction update<div class="cn">预测更新</div></div><div>auditory-motor timing<div class="cn">听觉—运动时间</div></div><div>micro-motion anchor<div class="cn">微动作锚点</div></div><div>chaos becomes trackable<div class="cn">混乱变得可追踪</div></div>
+<div class="axis-label">Hyperpop<div class="cn">超流行</div></div><div>amplify to apex<div class="cn">放大到峰值</div></div><div>sensory saturation<div class="cn">感官饱和</div></div><div>salience / reward<div class="cn">显著性 / 奖赏</div></div><div>arousal rise<div class="cn">唤醒上升</div></div><div>density as identity signal<div class="cn">密度成为身份信号</div></div>
+<div class="axis-label">Drift Phonk<div class="cn">漂移 Phonk</div></div><div>activate drive<div class="cn">激活驱动力</div></div><div>speed field<div class="cn">速度场</div></div><div>pulse-locking<div class="cn">脉冲锁定</div></div><div>low-frequency motion<div class="cn">低频运动</div></div><div>task initiation / forward weight<div class="cn">任务启动 / 前进重量</div></div>
+<div class="axis-label">Darkwave<div class="cn">暗潮</div></div><div>contain grief<div class="cn">承载悲伤</div></div><div>cold indoor space<div class="cn">冷室内空间</div></div><div>autonomic downshift<div class="cn">自主神经下行</div></div><div>slow breath / HRV<div class="cn">慢呼吸 / HRV</div></div><div>darkness becomes bearable<div class="cn">黑暗变得可承受</div></div>
+<div class="axis-label">Ambient Techno<div class="cn">氛围科技舞曲</div></div><div>indirect settling<div class="cn">间接安定</div></div><div>long temporal span<div class="cn">长时间跨度</div></div><div>entrainment / α-θ proxy<div class="cn">夹带 / α-θ 代理</div></div><div>background micro-movement<div class="cn">背景微运动</div></div><div>sustained-task scaffold<div class="cn">持续任务脚手架</div></div>
+<div class="axis-label">Synthpop<div class="cn">合成流行</div></div><div>warm reward<div class="cn">温暖奖赏</div></div><div>bright resolution<div class="cn">明亮解决</div></div><div>reward anticipation<div class="cn">奖赏预期</div></div><div>release / breath<div class="cn">释放 / 呼吸</div></div><div>homecoming / narrative coherence<div class="cn">返家感 / 叙事连贯</div></div>
+</div>
+<div class="quote" style="margin-top:18px;">Claim limit: HRP does not claim that genres diagnose, treat, cure, mitigate, or prevent disease. The researchable claim is narrower: specific acoustic variables and user-selected music may produce measurable body/self-report patterns, and users may learn to predict those patterns over time.<div class="cn">声明边界：HRP 不声称任何音乐类型能诊断、治疗、治愈、缓解或预防疾病。可研究主张更窄：特定声学变量与用户自选音乐，可能产生可测的身体/自评模式，而用户可能随时间学会预测这些模式。</div></div>
+</div>
+<div class="card span-6"><div class="eyebrow">PROBE SET NAME LOCK</div><h3>Six-Genre Probe Set / 六类音乐探针集, not Protocol.</h3><h3 class="cn">叫 Six-Genre Probe Set，不叫 Protocol。</h3><p>This keeps your authorship and music-world originality while protecting the lab-facing claim from becoming a medical promise.</p><p class="cn">这样既保留你的作者署名与音乐世界原创性，又保护面向实验室的主张不滑向医疗承诺。</p></div>
+<div class="card span-6"><div class="eyebrow">RQ TRANSFER</div><h3>User-selected music vs author probe set.</h3><h3 class="cn">用户自选音乐 vs 作者探针集。</h3><p>RQ3 should remain explicit: do user-selected tracks outperform Wei Jueran’s Probe Set for self-prediction and recognition?</p><p class="cn">RQ3 应明确保留：用户自选曲目是否在自我预测与认出上优于魏珏然 Probe Set？</p></div>
+</div>
+</section>
+<section id="data-safety">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">DATA VAULT &amp; SAFETY // 可携带数据与安全边界</div>
+<h2>The record belongs to the user. The system presents; it does not decide.</h2>
+<h2 class="cn">记录属于用户。系统负责呈现，不负责替人决定。</h2>
+<p class="sub">This is the most useful safety layer from the BCI main site. In BCI-HRP, it becomes a lightweight data-vault principle: encrypted, user-held, exportable, revocable, non-diagnostic, and useful for professional conversations without pretending to be clinical judgment.</p>
+<p class="sub cn">这是 BCI 主站最有用的安全层。进入 BCI-HRP 后，它成为轻量数据保险库原则：加密、用户持有、可导出、可撤销、非诊断，并能辅助专业沟通，但不假装自己是临床判断。</p>
+</div>
+<div class="card span-4"><div class="eyebrow">TIER 1 // DATA VAULT</div><h3>Encrypted, user-held, exportable.</h3><h3 class="cn">加密、用户持有、可导出。</h3><p>PDF / CSV export can summarize sessions, probes, self-ratings, wearable proxy indicators, and prediction accuracy.</p><p class="cn">PDF / CSV 可总结 session、探针、自评、可穿戴代理指标与预测准确率。</p></div>
+<div class="card span-4"><div class="eyebrow">TIER 2 // HUMAN HELP GATE</div><h3>User-initiated support only.</h3><h3 class="cn">只允许用户发起求助。</h3><p>If safety features exist, the person presses first; the system packages information and asks for confirmation before any sharing.</p><p class="cn">若有安全功能，必须由人先按下；系统只打包信息，并在分享前请求确认。</p></div>
+<div class="card span-4 warning-card"><div class="eyebrow">TIER 3 // NOT MVP</div><h3>No autonomous crisis detection.</h3><h3 class="cn">不做自主危机检测。</h3><p>Automatic crisis detection, dream regulation, nightmare reduction, or trauma intervention remain distant clinical research only.</p><p class="cn">自动危机检测、梦境调节、减少噩梦或创伤干预，只能作为远期临床研究。</p></div>
+<div class="card span-12"><div class="eyebrow">MANDATORY PRODUCT SAFETY FUNCTION</div><h3>AI disclosure + crisis referral must be built as functions, not just website disclaimers.</h3><h3 class="cn">AI 身份披露 + 危机转介必须做成产品功能，而不只是网页声明。</h3><p>Any reflective AI layer must clearly disclose that it is AI, not a human or clinician. It should avoid diagnosis, avoid body-part suggestion, keep prompts open, allow exit/delete, and provide crisis referral language when relevant.</p><p class="cn">任何反思型 AI 层都必须明确披露自己是 AI，不是人类或临床人员。它应避免诊断、避免指定身体部位、保持开放提问、允许退出/删除，并在相关时提供危机转介语言。</p></div>
+</div>
+</section>
+<section id="evidence">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">09 // EVIDENCE LOGIC // WHAT WOULD COUNT AS A SIGNAL</div>
+<h2>The first evidence is not “feeling better.” It is improved self-prediction.</h2>
+<h2 class="cn">第一证据不是“感觉更好”，而是自我预测力提升。</h2>
+</div>
+<div class="card span-12">
+<table class="table">
+<thead>
+<tr>
+<th>Evidence tier / 证据层级</th>
+<th>Signal / 信号</th>
+<th>Why it matters / 意义</th>
+<th>Threat / 威胁</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="en-cell">Tier 0 · Usability</div><div class="cn">第 0 层 · 可用性</div></td>
+<td><div class="en-cell">Users complete logs without confusion.</div><div class="cn">用户能无混乱地完成记录。</div></td>
+<td><div class="en-cell">Shows the tool can be used.</div><div class="cn">说明工具可以被使用。</div></td>
+<td><div class="en-cell">Does not validate the theory.</div><div class="cn">不验证理论本身。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">Tier 1 · Pattern visibility</div><div class="cn">第 1 层 · 模式可见性</div></td>
+<td><div class="en-cell">Users identify repeated body–probe–awareness patterns.</div><div class="cn">用户识别重复出现的身体—探针—觉察模式。</div></td>
+<td><div class="en-cell">Shows map is interpretable.</div><div class="cn">说明地图可被解释。</div></td>
+<td><div class="en-cell">Could still be confabulation.</div><div class="cn">仍可能是事后编造。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">Tier 2 · Self-prediction</div><div class="cn">第 2 层 · 自我预测</div></td>
+<td><div class="en-cell">Prediction accuracy improves over sessions.</div><div class="cn">预测准确率随 session 增加而提高。</div></td>
+<td><div class="en-cell">Stronger sign that recognition is functional.</div><div class="cn">更强地说明“认出”具有功能性。</div></td>
+<td><div class="en-cell">Memory, expectation, small sample.</div><div class="cn">记忆、期待、小样本。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">Tier 3 · External proxy</div><div class="cn">第 3 层 · 外部代理指标</div></td>
+<td><div class="en-cell">Self-prediction corresponds to wearable proxy indicator direction.</div><div class="cn">自我预测与可穿戴代理指标方向相对应。</div></td>
+<td><div class="en-cell">Bridges first-person and body data.</div><div class="cn">连接第一人称体验与身体数据。</div></td>
+<td><div class="en-cell">Wearable noise and context confounds.</div><div class="cn">可穿戴噪声与情境混杂。</div></td>
+</tr>
+<tr>
+<td><div class="en-cell">Tier 4 · Lab validation</div><div class="cn">第 4 层 · 实验室验证</div></td>
+<td><div class="en-cell">Controlled sample with HRV/EDA/EEG/fNIRS and preregistered conditions.</div><div class="cn">使用 HRV/EDA/EEG/fNIRS 与预注册条件的受控样本。</div></td>
+<td><div class="en-cell">Scientific collaboration begins here.</div><div class="cn">科学合作从这里开始。</div></td>
+<td><div class="en-cell">Requires lab resources.</div><div class="cn">需要实验室资源。</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">KEY VALIDITY THREAT // 最大效度威胁</div>
+<h2>Meaningful recognition vs. confabulation.</h2>
+<h2 class="cn">有意义的认出 vs. 事后编造。</h2>
+<p class="sub">
             HRP must not confuse “the report feels true” with evidence. The strongest early test is behavioral and prospective: can the user predict their own response before the selected probe starts, and does this improve with repeated maps?
           </p>
-          <p class="sub cn">
+<p class="sub cn">
             HRP 不能把“报告感觉很准”误当证据。最强的早期测试是行为性的、前瞻性的：用户能否在所选探针开始前预测自己的反应，并且这种预测是否随着重复地图而提高？
           </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="deliverables">
-      <div class="grid">
-        <div class="card span-12 neon-card">
-          <div class="eyebrow">10 // LAB MEETING DELIVERABLES // MEETING-READY PACKAGE</div>
-          <h2>Bring the lab a clean package, not an infinite universe.</h2>
-          <h2 class="cn">给实验室一个干净合作包，而不是无限宇宙。</h2>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">01</div>
-          <h3>One-page brief</h3>
-          <h3 class="cn">一页简介</h3>
-          <p>Definition, MVP, lab ask, research questions, boundary statements.</p>
-          <p class="cn">定义、MVP、合作请求、研究问题、边界声明。</p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">02</div>
-          <h3>Clickable prototype</h3>
-          <h3 class="cn">可点击原型</h3>
-          <p>Software flow: record → selected probe → side-by-side map → reflection report.</p>
-          <p class="cn">软件流程：记录 → 所选探针 → 并排地图 → 反思报告。</p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">03</div>
-          <h3>Micro-pilot CSV</h3>
-          <h3 class="cn">微型试验 CSV</h3>
-          <p>A few rows showing operationalized data, not proof.</p>
-          <p class="cn">几行操作化数据，显示结构清楚，不假装已证明。</p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">04</div>
-          <h3>Boundary sheet</h3>
-          <h3 class="cn">边界表</h3>
-          <p>No diagnosis, no medical promise, no dream control, user correction always.</p>
-          <p class="cn">不诊断、不医疗承诺、不控制梦境、始终允许用户修正。</p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">05</div>
-          <h3>Study proposal</h3>
-          <h3 class="cn">研究计划</h3>
-          <p>2–4 week feasibility test and later lab validation branch.</p>
-          <p class="cn">2–4 周可行性测试，以及后续实验室验证分支。</p>
-        </div>
-
-        <div class="card span-4">
-          <div class="num">06</div>
-          <h3>Collaboration ask</h3>
-          <h3 class="cn">合作请求</h3>
-          <p>Participant recruitment, sensors, causal evaluation, signal processing, ethics.</p>
-          <p class="cn">样本招募、传感器、因果评估、信号处理、伦理。</p>
-        </div>
-
-        <div class="card span-12">
-          <div class="eyebrow">FINAL POSITIONING // 最终定位</div>
-          <div class="quote">
-            HRP is not a wellness app, not a music therapy app, not a neural decoding project, and not AI repairing the human. It is a user-owned measurement system for body–awareness alignment, with optional lab-grade neural validation, using probes (music being one acoustic class among several) to make alignment visible, and AI as a reflection/report layer.
-            <div class="cn">HRP 不是普通身心健康 App，不是音乐治疗 App，不是神经解码项目，也不是 AI 修复人类。它是一个用户拥有的身体—觉察对齐，并在实验室条件下可选加入神经验证测量系统，用探针（音乐只是其中一类声学探针）让对齐变得可见，用 AI 作为反思/报告层。</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span style="color:var(--cyan);letter-spacing:.18em;">v1.1 · CST 2026-05-29 · SECOND-AUDIT REORIENTATION</span>
-    <br /><br />
-    Human Return Protocol · Probe-Based Alignment Measurement · Wei Jueran / Mellow Wei / xingyeLing7Ai · This website is a research and collaboration prototype, not a medical product, diagnostic tool, or crisis service.
-    <br />
-    Human Return Protocol · 实验室合作包 · 魏珏然 · 本网站是研究与合作原型，不是医疗产品、诊断工具或危机服务。
-    <br /><br />
-    <span style="color:var(--dim)">If you are in crisis, please contact local emergency services or a qualified clinician. HRP does not provide crisis intervention.</span>
-    <br />
-    <span style="color:var(--dim)">如处于紧急状态，请联系当地紧急服务或合资格的临床人员。HRP 不提供危机干预。</span>
-  </footer>
-
-  <script>
+</div>
+</div>
+</section>
+<section id="deliverables">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">10 // LAB MEETING DELIVERABLES // MEETING-READY PACKAGE</div>
+<h2>Bring the lab a clean package, not an infinite universe.</h2>
+<h2 class="cn">给实验室一个干净合作包，而不是无限宇宙。</h2>
+</div>
+<div class="card span-4">
+<div class="num">01</div>
+<h3>One-page brief</h3>
+<h3 class="cn">一页简介</h3>
+<p>Definition, MVP, lab ask, research questions, boundary statements.</p>
+<p class="cn">定义、MVP、合作请求、研究问题、边界声明。</p>
+</div>
+<div class="card span-4">
+<div class="num">02</div>
+<h3>Clickable prototype</h3>
+<h3 class="cn">可点击原型</h3>
+<p>Software flow: record → selected probe → side-by-side map → reflection report.</p>
+<p class="cn">软件流程：记录 → 所选探针 → 并排地图 → 反思报告。</p>
+</div>
+<div class="card span-4">
+<div class="num">03</div>
+<h3>Micro-pilot CSV</h3>
+<h3 class="cn">微型试验 CSV</h3>
+<p>A few rows showing operationalized data, not proof.</p>
+<p class="cn">几行操作化数据，显示结构清楚，不假装已证明。</p>
+</div>
+<div class="card span-4">
+<div class="num">04</div>
+<h3>Boundary sheet</h3>
+<h3 class="cn">边界表</h3>
+<p>No diagnosis, no medical promise, no dream control, user correction always.</p>
+<p class="cn">不诊断、不医疗承诺、不控制梦境、始终允许用户修正。</p>
+</div>
+<div class="card span-4">
+<div class="num">05</div>
+<h3>Study proposal</h3>
+<h3 class="cn">研究计划</h3>
+<p>2–4 week feasibility test and later lab validation branch.</p>
+<p class="cn">2–4 周可行性测试，以及后续实验室验证分支。</p>
+</div>
+<div class="card span-4">
+<div class="num">06</div>
+<h3>Collaboration ask</h3>
+<h3 class="cn">合作请求</h3>
+<p>Participant recruitment, sensors, causal evaluation, signal processing, ethics.</p>
+<p class="cn">样本招募、传感器、因果评估、信号处理、伦理。</p>
+</div>
+<div class="card span-12">
+<div class="eyebrow">FINAL POSITIONING // 最终定位</div>
+<div class="quote">
+            BCI-HRP is not a wellness app, not a music therapy app, not a neural decoding project, and not AI correcting the human on the user’s behalf. It is a user-owned alignment mapping system for body–awareness alignment. Reflexive Musicology supplies the acoustic-theory layer; iterative listening supplies the temporal method; BCI-HRP supplies the record, report, prediction, and lab-validation structure.
+            <div class="cn">BCI-HRP 不是普通身心健康 App，不是音乐治疗 App，不是神经解码项目，也不是让 AI 替人完成自我修正。它是一个由用户拥有的身体—觉察对齐映射系统。返身音乐学提供声学理论层；迭代返身聆听提供时间方法；BCI-HRP 提供记录、报告、预测与实验室验证结构。</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<span style="color:var(--cyan);letter-spacing:.18em;">V2.0 · TERMINOLOGY-LOCKED BILINGUAL LAB PROTOTYPE · CST 2026-05-29</span>
+<br/><br/>
+    BCI-HRP V2.1 · Probe-Based Alignment Mapping · Wei Jueran / Mellow Wei / xingyeLing7Ai · This website is a research and collaboration prototype, not a medical product, diagnostic tool, or crisis service.
+    <br/>
+    BCI-HRP V2.1 · 基于探针的对齐映射 · 实验室合作原型 · 魏珏然 · 本网站是研究与合作原型，不是医疗产品、诊断工具或危机服务。
+    <br/><br/>
+<span style="color:var(--dim)">If you are in crisis, please contact local emergency services or a qualified clinician. HRP does not provide crisis intervention.</span>
+<br/>
+<span style="color:var(--dim)">如处于紧急状态，请联系当地紧急服务或合资格的临床人员。HRP 不提供危机干预。</span>
+</footer>
+<script>
     const canvas = document.getElementById("field");
     const ctx = canvas.getContext("2d");
     let w, h, particles;
