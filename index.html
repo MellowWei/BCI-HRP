@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BCI-HRP V2.1 · Reflexive Musicology Integrated · Rhythmic Title · Wei Jueran</title>
+<title>BCI-HRP V2.2 · Reflexive Musicology + Nowhere State Integrated · Wei Jueran</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
 
@@ -32,7 +32,7 @@
 
     body {
       margin: 0;
-      padding-top: 118px;
+      padding-top: 104px;
       color: var(--text);
       background:
         radial-gradient(circle at 16% 8%, rgba(0, 245, 255, 0.16), transparent 32%),
@@ -164,15 +164,15 @@
 
     section {
       position: relative;
-      min-height: 86vh;
+      min-height: auto;
       display: grid;
       align-items: center;
-      padding: 82px 0 64px;
-      scroll-margin-top: 126px;
+      padding: 40px 0 32px;
+      scroll-margin-top: 96px;
     }
 
     .eyebrow {
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       color: var(--cyan);
       font-family: var(--mono);
       font-size: 12px;
@@ -184,7 +184,7 @@
     h1 {
       max-width: 1160px;
       margin: 0;
-      font-size: clamp(48px, 8.2vw, 118px);
+      font-size: clamp(32px, 5vw, 64px);
       line-height: .88;
       letter-spacing: -.09em;
       font-weight: 860;
@@ -193,7 +193,7 @@
 
 
 
-    /* v2.4 HERO TITLE LOCK: rhythmic cut title, deep-bright pink / blue / white, no diffuse glitch */
+    /* V2.2 HERO TITLE LOCK: rhythmic cut title, deep-bright pink / blue / white, no diffuse glitch */
     .rhythm-cut-title {
       position: relative;
       display: inline-block;
@@ -324,7 +324,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 22px;
+      margin-top: 14px;
     }
 
     .term-lock-card {
@@ -358,8 +358,8 @@
 
     h2 {
       max-width: 1080px;
-      margin: 0 0 24px;
-      font-size: clamp(34px, 5vw, 70px);
+      margin: 0 0 16px;
+      font-size: clamp(23px, 3vw, 40px);
       line-height: .98;
       letter-spacing: -.07em;
       font-weight: 820;
@@ -369,7 +369,7 @@
     h3 {
       margin: 0 0 12px;
       color: var(--text);
-      font-size: 23px;
+      font-size: 19px;
       letter-spacing: -.035em;
       text-shadow: 0 0 14px rgba(0,245,255,.18);
     }
@@ -389,9 +389,9 @@
 
     .sub {
       max-width: 980px;
-      margin-top: 22px;
+      margin-top: 14px;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.65;
     }
 
@@ -399,7 +399,7 @@
       max-width: 1050px;
       margin-top: 34px;
       color: rgba(244,247,255,.93);
-      font-size: clamp(22px, 3vw, 38px);
+      font-size: clamp(18px, 2.2vw, 27px);
       line-height: 1.12;
       letter-spacing: -.045em;
       text-shadow: 0 0 18px rgba(0,245,255,.12);
@@ -408,13 +408,13 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
+      gap: 12px;
     }
 
     .card {
       position: relative;
       overflow: hidden;
-      padding: 28px;
+      padding: 20px;
       border: 1px solid rgba(0,245,255,.20);
       border-radius: 28px;
       background: linear-gradient(180deg, rgba(0,245,255,.06), rgba(255,43,214,.035)), var(--panel);
@@ -455,7 +455,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 22px;
+      margin-top: 14px;
     }
 
     .tag {
@@ -519,7 +519,7 @@
     }
 
     .num {
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       color: var(--green);
       font-family: var(--mono);
       font-size: 12px;
@@ -557,7 +557,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 14px;
-      margin-top: 24px;
+      margin-top: 16px;
     }
 
     .loop-item {
@@ -598,7 +598,7 @@
     .split-line {
       display: grid;
       grid-template-columns: 180px 1fr;
-      gap: 18px;
+      gap: 12px;
       padding: 18px 0;
       border-top: 1px solid rgba(0,245,255,.14);
     }
@@ -792,7 +792,7 @@
       border-radius: 0 24px 24px 0;
       background: radial-gradient(circle at 12% 18%, rgba(0,245,255,.10), transparent 32%), rgba(8,10,28,.58);
       color: rgba(244,247,255,.92);
-      font-size: clamp(18px, 2.2vw, 28px);
+      font-size: clamp(15px, 1.7vw, 21px);
       line-height: 1.42;
       letter-spacing: -.025em;
     }
@@ -816,8 +816,8 @@
       .system-loop, .flow, .mini-form, .metrics { grid-template-columns: 1fr; }
       .flow-arrow { transform: rotate(90deg); }
       .split-line { grid-template-columns: 1fr; }
-      h1 { font-size: clamp(42px, 17vw, 84px); }
-      h2 { font-size: clamp(30px, 10vw, 52px); }
+      h1 { font-size: clamp(28px, 9vw, 46px); }
+      h2 { font-size: clamp(21px, 6vw, 32px); }
       .r1, .r2, .r3, .r4 {
         left: 50%;
         right: auto;
@@ -836,7 +836,7 @@
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap:14px;
-      margin-top:24px;
+      margin-top:16px;
     }
     .integration-card {
       min-height:220px;
@@ -861,7 +861,7 @@
     .integration-card.yellow strong { color:var(--yellow); text-shadow:0 0 10px rgba(255,230,109,.38); }
     .integration-card.pink strong { color:var(--pink); text-shadow:0 0 10px rgba(255,43,214,.38); }
     .sovereignty-strip {
-      margin-top:22px;
+      margin-top:14px;
       padding:22px 26px;
       border:1px solid rgba(53,255,159,.34);
       border-radius:26px;
@@ -870,7 +870,7 @@
     }
     .sovereignty-cn {
       color:rgba(244,247,255,.96);
-      font-size:clamp(22px,2.5vw,36px);
+      font-size:clamp(17px,1.9vw,25px);
       line-height:1.18;
       letter-spacing:-.04em;
       text-shadow:0 0 16px rgba(0,245,255,.18),0 0 28px rgba(255,43,214,.12);
@@ -881,11 +881,11 @@
       grid-template-columns:1fr auto 1fr auto 1fr;
       gap:14px;
       align-items:stretch;
-      margin-top:26px;
+      margin-top:16px;
     }
     .relation-arrow { display:grid; place-items:center; color:var(--pink); font-size:30px; text-shadow:0 0 18px rgba(255,43,214,.65); }
     .relation-formula {
-      margin-top:22px;
+      margin-top:14px;
       padding:18px 20px;
       border:1px solid rgba(53,255,159,.25);
       border-radius:22px;
@@ -953,28 +953,18 @@
 <div class="grid-bg"></div>
 <div class="vignette"></div>
 <header>
-<div class="brand"><span class="dot"></span> BCI-HRP V2.1 // PROBE-BASED ALIGNMENT MAPPING // REFLEXIVE MUSICOLOGY INTEGRATED // WEI JUERAN · CST 2026-05-29</div>
+<div class="brand"><span class="dot"></span> BCI-HRP V2.2 // PROBE-BASED ALIGNMENT MAPPING // REFLEXIVE MUSICOLOGY + NOWHERE STATE // WEI JUERAN · CST 2026-05-30</div>
 <nav>
 <a href="#top">HOME</a>
 <a href="#definition">DEFINITION</a>
 <a href="#terms">TERMS</a>
-<a href="#reflexive-musicology">REFLEXIVE MUSIC</a>
-<a href="#iterative-listening">ITERATIVE LISTENING</a>
-<a href="#nowhere-state">NOWHERE STATE</a>
-<a href="#ask">LAB ASK</a>
+<a href="#reflexive-musicology">THEORY</a>
+<a href="#nowhere-state">NOWHERE</a>
 <a href="#mvp">MVP</a>
-<a href="#architecture">ARCHITECTURE</a>
-<a href="#hardware">HARDWARE</a>
-<a href="#research">RESEARCH Qs</a>
-<a href="#probe">INPUT PROBES</a>
-<a href="#ethics">BOUNDARIES</a>
-<a href="#pilot">PILOT</a>
-<a href="#evidence">EVIDENCE LOGIC</a>
-<a href="#bci-main-transfer">BCI TRANSFER</a>
-<a href="#metalogic-qrm">METALOGIC/QRM</a>
-<a href="#dual-intelligence">DUAL INTEL</a>
-<a href="#music-evidence">MUSIC EVIDENCE</a>
-<a href="#data-safety">DATA SAFETY</a>
+<a href="#research">RESEARCH</a>
+<a href="#probe">PROBES</a>
+<a href="#ethics">SAFETY</a>
+<a href="#evidence">EVIDENCE</a>
 <a href="#deliverables">DELIVERABLES</a>
 <a class="lang-link" href="./index-en.html">EN ONLY</a>
 <a class="lang-link" href="./index-zh.html">中文版</a>
@@ -985,7 +975,7 @@
 <main>
 <section id="top">
 <div>
-<div class="eyebrow">BCI-HRP V2.1 // LAB COLLABORATION PACKAGE // 返身音乐学整合 · 基于探针的身体—觉察对齐映射系统</div>
+<div class="eyebrow">BCI-HRP V2.2 // LAB COLLABORATION PACKAGE // 返身音乐学 + 非地点态整合 · 基于探针的身体—觉察对齐映射系统</div>
 <h1 class="rhythm-cut-title" data-text="THE HUMAN RETURN PROTOCOL.">THE HUMAN RETURN PROTOCOL.</h1>
 <div class="thesis">
           Invention-first, lab-validated later: I bring the original system and prototype; the lab brings participants, measurement infrastructure, and scientific validation.
@@ -1063,8 +1053,8 @@
 <div class="grid">
 <div class="card span-12 neon-card">
 <div class="eyebrow">02 // TERMINOLOGY LOCK // 术语锁定层</div>
-<h2>BCI-HRP V2.1 is a terminology-locked bilingual lab prototype with Reflexive Musicology integrated as its acoustic-theory layer.</h2>
-<h2 class="cn">BCI-HRP V2.1 是术语锁定的双语实验室合作原型，并将 Reflexive Musicology 作为声学理论层正式接入。</h2>
+<h2>BCI-HRP V2.2 is a terminology-locked bilingual lab prototype with Reflexive Musicology and Nowhere State integrated as its acoustic-theory and liminal-state research layers.</h2>
+<h2 class="cn">BCI-HRP V2.2 是术语锁定的双语实验室合作原型，并将返身音乐学与非地点态分别作为声学理论层和临界状态研究层正式接入。</h2>
 <p class="sub">This section prevents the project from drifting into medical claims, mind-reading language, generic wellness wording, or AI-over-human framing.</p>
 <p class="sub cn">这一层用于防止项目滑向医疗承诺、读心话语、泛身心健康表述，或 AI 凌驾于人的框架。</p>
 <div class="sovereignty-strip">
@@ -1094,7 +1084,7 @@
 <tr><td>acoustic probe</td><td>声学探针</td><td><div class="en-cell">Music, tones, and soundscape as probe inputs.</div><div class="cn">音乐、音调、声景作为探针输入。</div></td><td><div class="en-cell">Do not call it music therapy.</div><div class="cn">不要称为音乐治疗。</div></td></tr>
 <tr><td>Six-Genre Probe Set</td><td>六类音乐探针集</td><td><div class="en-cell">Wei Jueran authored acoustic probe family.</div><div class="cn">魏珏然署名的声学探针家族。</div></td><td><div class="en-cell">Not a treatment protocol.</div><div class="cn">不是治疗承诺。</div></td></tr>
 
-<tr><td>Reflexive Musicology</td><td>返身音乐学 / 照见音乐学</td><td><div class="en-cell">Upstream acoustic-theory layer explaining why music can function as a reflexive probe.</div><div class="cn">上游声学理论层，用来说明为什么音乐可以作为返身探针。</div></td><td><div class="en-cell">Not medical evidence; not a therapy discipline.</div><div class="cn">不是医疗证据，也不是治疗学科。</div></td></tr>
+<tr><td>Reflexive Musicology<br/><span class="cn">public-facing alias: Illuminative / Being-Seen Musicology</span></td><td>返身音乐学<br/><span class="cn">“照见音乐学”仅作为公众/诗性别名</span></td><td><div class="en-cell">Upstream acoustic-theory layer explaining why music can function as a reflexive probe.</div><div class="cn">上游声学理论层，用来说明为什么音乐可以作为返身探针。</div></td><td><div class="en-cell">Not medical evidence; not a therapy discipline.</div><div class="cn">不是医疗证据，也不是治疗学科。</div></td></tr>
 <tr><td>Iterative Reflexive Listening</td><td>迭代返身聆听</td><td><div class="en-cell">Repeated use of the same track as a stable acoustic probe across time.</div><div class="cn">把同一首歌作为稳定声学探针，在不同时间点重复聆听。</div></td><td><div class="en-cell">Do not frame it as the song preserving a fixed self.</div><div class="cn">不要写成音乐保存一个固定的自我。</div></td></tr>
 <tr><td>stable acoustic probe</td><td>稳定声学探针</td><td><div class="en-cell">A repeated sound object used to make temporal self-difference visible.</div><div class="cn">用于显影时间中自我差异的重复声音对象。</div></td><td><div class="en-cell">Not a universal stimulus with fixed effects.</div><div class="cn">不是具有固定效果的普适刺激。</div></td></tr>
 <tr><td>reflexive alignment report</td><td>返身对齐报告</td><td><div class="en-cell">A reflection report that compares repeated listening encounters and returns the change map to the user.</div><div class="cn">比较多次聆听相遇，并把变化地图交还给用户的反思报告。</div></td><td><div class="en-cell">Not an affective diagnosis or automatic interpretation.</div><div class="cn">不是情绪诊断，也不是自动解释。</div></td></tr>
@@ -1274,7 +1264,7 @@
 <tr><th>Element / 元素</th><th>Connect as / 应接成</th><th>Do not connect as / 不应接成</th></tr>
 </thead>
 <tbody>
-<tr><td><div class="en-cell">Club music / movement</div><div class="cn">Club 音乐 / 运动</div></td><td><div class="en-cell">A high-intensity end of the acoustic probe class.</div><div class="cn">声学探针类的高强度端。</div></td><td><div class="en-cell">A fixed state-inducing button or guaranteed effect.</div><div class="cn">不要接成固定诱导按钮或保证效果。</div></td></tr>
+<tr><td><div class="en-cell">Club music / movement</div><div class="cn">Club 音乐 / 运动</div></td><td><div class="en-cell">A high-intensity end of the acoustic probe class.</div><div class="cn">声学探针类的高强度端。</div></td><td><div class="en-cell">A fixed state-triggering button or guaranteed effect.</div><div class="cn">不要接成固定触发按钮或保证效果。</div></td></tr>
 <tr><td><div class="en-cell">Entry / exit</div><div class="cn">进入 / 退出</div></td><td><div class="en-cell">A self-prediction target: can the user predict their own entry and exit?</div><div class="cn">作为自我预测目标：用户能否预测自己的进入与退出？</div></td><td><div class="en-cell">A claim that the system controls consciousness.</div><div class="cn">不要接成系统控制意识的主张。</div></td></tr>
 <tr><td><div class="en-cell">Return anchor (e.g. 427Hz)</div><div class="cn">返回锚（如 427Hz）</div></td><td><div class="en-cell">A symbolic-stabilizing anchor that ends every session in grounding.</div><div class="cn">作为象征性稳定锚，让每次 session 以落地结束。</div></td><td><div class="en-cell">A medically-proven physiological frequency.</div><div class="cn">不要接成已被医学证明的生理频率。</div></td></tr>
 <tr><td><div class="en-cell">Measurement</div><div class="cn">测量</div></td><td><div class="en-cell">Same machinery: pre/post self-report, body proxy indicators, recognition note.</div><div class="cn">同一套机器：前后自报、身体代理指标、认出笔记。</div></td><td><div class="en-cell">A diagnosis of the user's state.</div><div class="cn">不要接成对用户状态的诊断。</div></td></tr>
@@ -1290,10 +1280,10 @@
 </div>
 <div class="card span-6">
 <div class="num">RQ-N1</div>
-<h3>Induction without surrender</h3>
-<h3 class="cn">诱发而不交出</h3>
-<p>Do acoustic + movement probes induce user-reported Nowhere (altered self-location) while perceptual sovereignty is preserved and the user can still exit on demand?</p>
-<p class="cn">声学 + 运动探针能否诱发用户报告的非地点态（自我定位改变），同时保留感知主权、用户仍能随时退出？</p>
+<h3>Voluntary entry without surrender</h3>
+<h3 class="cn">自愿进入而不交出</h3>
+<p>Are acoustic + movement probes associated with voluntarily reported entry into Nowhere-like altered self-location, while perceptual sovereignty is preserved and the user can still exit on demand?</p>
+<p class="cn">声学 + 运动探针是否与用户自愿报告的非地点态式自我定位变化相关，同时保留感知主权、用户仍能随时退出？</p>
 </div>
 <div class="card span-6">
 <div class="num">RQ-N2</div>
@@ -1311,14 +1301,14 @@
 </div>
 <div class="card span-12 warning-card">
 <div class="eyebrow">LAB-SAFE SENTENCE // 实验室安全表述</div>
-<div class="quote">Nowhere State is a research construct describing music-and-movement-induced altered self-location with preserved sovereignty. BCI-HRP studies whether user-selected acoustic and movement probes can induce user-reported Nowhere, whether users can learn to predict their own entry and return, and how this state differs from dissociation — without diagnosing, without claiming a fixed effect, without hardware dependency, and always with a built-in Return.<div class="cn">非地点态是一个研究构念，描述音乐与运动诱发的、保留主权的自我定位改变。BCI-HRP 研究的是：用户自选的声学与运动探针能否诱发用户报告的 Nowhere、用户能否学会预测自己的进入与返回、以及该状态与解离有何区别——不诊断、不声称固定效果、不依赖硬件、且始终带有内置返回。</div></div>
+<div class="quote">Nowhere State is a research construct describing music-and-movement-associated reports of altered self-location with preserved sovereignty. BCI-HRP studies whether user-selected acoustic and movement probes are associated with voluntarily reported Nowhere-like entry, whether users can learn to predict their own entry and return, and how this state differs from dissociation — without diagnosing, without claiming a fixed effect, without hardware dependency, and always with a built-in Return.<div class="cn">非地点态是一个研究构念，描述与音乐和运动相关的、保留主权的自我定位改变报告。BCI-HRP 研究的是：用户自选的声学与运动探针是否与用户自愿报告的 Nowhere 式进入相关、用户能否学会预测自己的进入与返回、以及该状态与解离有何区别——不诊断、不声称固定效果、不依赖硬件、且始终带有内置返回。</div></div>
 </div>
 </div>
 </section>
 <section id="ask">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">02 // LAB COLLABORATION ASK // I AM NOT ASKING THE LAB TO INVENT IT FOR ME</div>
+<div class="eyebrow">06 // LAB COLLABORATION ASK // I AM NOT ASKING THE LAB TO INVENT IT FOR ME</div>
 <h2>I bring the invention. I need resources, samples, measurement, and validation.</h2>
 <h2 class="cn">我带来发明。我需要资源、样本、测量与验证。</h2>
 <p class="sub">
@@ -1367,7 +1357,7 @@
 <section id="mvp">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">03 // LOCKED MVP // DO NOT EXPAND</div>
+<div class="eyebrow">07 // LOCKED MVP // DO NOT EXPAND</div>
 <h2>The MVP is pure software: body–awareness alignment history + multi-class probe library + reflection report.</h2>
 <h2 class="cn">MVP 是纯软件：身体—觉察对齐史 + 多类探针库 + 反思报告。</h2>
 <p class="sub">
@@ -1437,7 +1427,7 @@
 <section id="architecture">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">04 // SYSTEM ARCHITECTURE // FROM RECORDING TO RECOGNITION</div>
+<div class="eyebrow">08 // SYSTEM ARCHITECTURE // FROM RECORDING TO RECOGNITION</div>
 <h2>The chain is buildable in front; research-open in back.</h2>
 <h2 class="cn">前半截可建，后半截开放研究。</h2>
 <p class="sub">
@@ -1495,29 +1485,29 @@
 <section id="hardware">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">04B // HARDWARE LANDSCAPE // EXISTING DEVICES, NO CUSTOM HARDWARE</div>
+<div class="eyebrow">09 // HARDWARE LANDSCAPE // EXISTING DEVICES, NO CUSTOM HARDWARE</div>
 <h2>The signals already exist in 2026 devices. The originality is not the sensor.</h2>
 <h2 class="cn">2026 年的设备已能采到这些信号。原创性不在传感器。</h2>
 <p class="sub">
-            A scan of 2026 consumer and research hardware finds no alignment-relevant signal channel that requires a custom-built device. Every channel is covered by existing, validated, purchasable hardware. This does not weaken the invention — it locates it above the commodity sensor layer, in the measurement framework, software, and the self-prediction criterion.
+            For the MVP, no alignment-relevant signal channel requires custom-built hardware. Existing consumer and research devices are sufficient candidate sources for testing the software criterion. This does not weaken the invention — it locates it above the commodity sensor layer, in the measurement framework, software, and the self-prediction criterion.
           </p>
 <p class="sub cn">
-            对 2026 年消费级与研究级硬件的盘点显示：没有任何"对齐相关"的信号通道需要自研设备。每一条通道都已被现成、经验证、可购买的硬件覆盖。这不削弱发明——它把发明定位在通用传感器层之上：测量框架、软件，与自我预测判据。
+            对 MVP 而言，没有任何“对齐相关”的信号通道必须依赖自研设备。现成消费级与研究级设备已经足以作为测试软件判据的候选数据来源。这不削弱发明——它把发明定位在通用传感器层之上：测量框架、软件，与自我预测判据。
           </p>
 </div>
 <div class="card span-6 neon-card">
 <div class="eyebrow">MOMENTARY LAYER // 瞬时层</div>
 <h3>Polar H10 / Verity Sense — real-time RR</h3>
 <h3 class="cn">Polar H10 / Verity Sense — 实时 RR</h3>
-<p>The self-prediction cornerstone needs in-the-moment, beat-to-beat, ECG-grade RR. Only a chest strap / armband streaming RR per second over BLE delivers this. Polar H10 agrees with ECG at r≈0.95 at rest and is research-validated, with real-time SDK support (Kubios / Polar).</p>
-<p class="cn">自我预测拱心石需要当下、逐搏、ECG 级 RR。只有每秒经 BLE 流式输出 RR 的胸带/臂带能做到。Polar H10 静息态对 ECG r≈0.95，经研究验证，有实时 SDK 支持（Kubios / Polar）。</p>
+<p>The self-prediction cornerstone benefits from in-the-moment, beat-to-beat RR. An RR-streaming chest strap / armband such as Polar H10 or an equivalent research-used device is a candidate for the momentary layer. Device validity must be checked within the protocol and cited for the exact condition; no wearable signal is treated as ground truth.</p>
+<p class="cn">自我预测拱心石适合使用当下、逐搏 RR。Polar H10 或同等研究常用 RR 流式胸带/臂带可作为瞬时层候选。设备有效性必须在具体协议与条件下检查并引用；任何可穿戴信号都不被当作 ground truth。</p>
 </div>
 <div class="card span-6">
 <div class="eyebrow">LONGITUDINAL LAYER // 纵向层</div>
 <h3>Oura Ring 4 — baseline trends</h3>
 <h3 class="cn">Oura Ring 4 — 基线趋势</h3>
-<p>Weeks-long HRV / temperature / sleep baselines give the longitudinal map. Oura has the strongest consumer HRV validity (CCC≈0.99 vs ECG) and all-day wear. Its API returns daily summaries — right grain for the longitudinal layer, but not for the moment, which is why the two layers use two devices.</p>
-<p class="cn">数周的 HRV / 皮温 / 睡眠基线提供纵向地图。Oura 是消费级 HRV 验证最强者（对 ECG CCC≈0.99）且全天佩戴。其 API 返回每日汇总——正合纵向层的粒度，但不适合"当下"，这正是两层用两个设备的原因。</p>
+<p>Weeks-long HRV / temperature / sleep baselines can support the longitudinal map. Oura, Apple Watch, and similar devices may provide useful trend context, but each device must be treated as a proxy source and interpreted according to device-specific validation evidence. Daily summaries fit the longitudinal layer, not the momentary layer.</p>
+<p class="cn">数周的 HRV / 皮温 / 睡眠基线可以支持纵向地图。Oura、Apple Watch 与类似设备可提供有用的趋势情境，但每种设备都必须被视为代理来源，并按具体设备的验证证据解释。每日汇总适合纵向层，不适合瞬时层。</p>
 </div>
 <div class="card span-12">
 <div class="eyebrow">SIGNAL × DEVICE // 信号 × 设备 · WHAT EACH CAN AND CANNOT DO</div>
@@ -1565,12 +1555,19 @@
 </tbody>
 </table>
 </div>
+<div class="card span-12 warning-card">
+<div class="eyebrow">VALIDATION NOTES // 设备验证说明</div>
+<h3>Wearable signals are proxy indicators, not ground truth.</h3>
+<h3 class="cn">可穿戴信号是代理指标，不是真实状态本身。</h3>
+<p>Before public or lab-facing use, every device-specific claim must be tied to a citation, protocol condition, and signal-quality rule. BCI-HRP can use existing devices for MVP testing, but it must report missing data, motion artifacts, device limits, and context confounds instead of treating any device output as direct access to the user's state.</p>
+<p class="cn">在公开或面向实验室使用前，任何具体设备主张都必须绑定引用、协议条件与信号质量规则。BCI-HRP 可以使用现成设备进行 MVP 测试，但必须报告缺失数据、运动伪迹、设备限制与情境混杂，而不是把任何设备输出当成用户状态的直接入口。</p>
+</div>
 </div>
 </section>
 <section id="research">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">05 // RESEARCH QUESTIONS // LAB-READY</div>
+<div class="eyebrow">10 // RESEARCH QUESTIONS // LAB-READY</div>
 <h2>The core question is not “can music produce fixed improvement?” It is “can a user-owned map become predictive?”</h2>
 <h2 class="cn">核心问题不是“音乐是否能带来固定改善”，而是“用户拥有的地图能否变得可预测”。</h2>
 </div>
@@ -1667,7 +1664,7 @@
 <section id="probe">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">06 // ALIGNMENT INPUT PROBES // MUSIC IS ONE CLASS, NOT THE CORE</div>
+<div class="eyebrow">11 // ALIGNMENT INPUT PROBES // MUSIC IS ONE CLASS, NOT THE CORE</div>
 <h2>The core is alignment mapping. Music is one class of input probe.</h2>
 <h2 class="cn">核心是对齐映射。音乐只是输入探针的一类。</h2>
 <p class="sub">
@@ -1722,7 +1719,7 @@
 <button class="probe-btn" data-probe="darkwave">Darkwave / 暗潮</button>
 <button class="probe-btn" data-probe="ambient">Ambient Techno / 氛围科技舞曲</button>
 </div>
-<div style="margin-top:22px;">
+<div style="margin-top:14px;">
 <h3 id="probeTitle">Breakbeats as Probe</h3>
 <h3 class="cn" id="probeTitleCn">碎拍作为探针</h3>
 <p id="probeDesc">Tests tolerance for irregularity, syncopation, and flexible timing.</p>
@@ -1760,7 +1757,7 @@
 <section id="ethics">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">07 // ETHICAL AND REGULATORY BOUNDARIES // PRODUCT RESTRAINT AS ORIGINALITY</div>
+<div class="eyebrow">12 // ETHICAL AND REGULATORY BOUNDARIES // PRODUCT RESTRAINT AS ORIGINALITY</div>
 <h2>The system’s originality is restraint: return, not control.</h2>
 <h2 class="cn">系统原创性在于克制：归还，而不是控制。</h2>
 <p class="sub">
@@ -1821,7 +1818,7 @@
 <section id="pilot">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">08 // 2–4 WEEK MINIMUM TEST // BEFORE LAB MEETING</div>
+<div class="eyebrow">13 // 2–4 WEEK MINIMUM TEST // BEFORE LAB MEETING</div>
 <h2>Before asking for resources, show the lab a clean micro-signal.</h2>
 <h2 class="cn">在请求资源前，给实验室看一个干净的微型信号。</h2>
 <p class="sub">
@@ -1876,11 +1873,11 @@
 <section id="bci-main-transfer">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">BCI MAIN SITE → BCI-HRP // VALUE TRANSFER LAYER</div>
+<div class="eyebrow">14 // SYSTEM LINEAGE A // BCI MAIN SITE → BCI-HRP</div>
 <h2>What survives the transfer: meaning-return, subject authority, QDR, QRM, and probe-based alignment mapping.</h2>
-<h2 class="cn">从 BCI 主站转入 BCI-HRP V2.1 的，是意义返回、主体权、QDR、QRM 与基于探针的对齐映射。</h2>
-<p class="sub">The old BCI main site contains several valuable system organs. In this BCI-HRP V2.1 version, they are integrated without reopening the old risk: no mind-reading claim, no custom-hardware dependency, no universal music-effect claim, and no medical framing.</p>
-<p class="sub cn">BCI 主站里有很多有价值的系统器官。现在把它们整合进 BCI-HRP V2.1，但不重新打开旧风险：不写读心、不依赖自研硬件、不声称普适音乐效果、不进入医疗叙事。</p>
+<h2 class="cn">从 BCI 主站转入 BCI-HRP V2.2 的，是意义返回、主体权、QDR、QRM 与基于探针的对齐映射。</h2>
+<p class="sub">The old BCI main site contains several valuable system organs. In this BCI-HRP V2.2 version, they are integrated without reopening the old risk: no mind-reading claim, no custom-hardware dependency, no universal music-effect claim, and no medical framing.</p>
+<p class="sub cn">BCI 主站里有很多有价值的系统器官。现在把它们整合进 BCI-HRP V2.2，但不重新打开旧风险：不写读心、不依赖自研硬件、不声称普适音乐效果、不进入医疗叙事。</p><p class="sub">Lineage sections are kept as compressed system background; the lab-facing core remains the MVP, research questions, safety boundaries, and evidence logic.</p><p class="sub cn">系统谱系部分仅作为压缩背景保留；面向实验室的核心仍然是 MVP、研究问题、安全边界与证据逻辑。</p>
 <div class="sovereignty-strip">
 <div class="small-kicker">DIMENSIONAL SOVEREIGNTY // SUBJECT AUTHORITY</div>
 <div class="sovereignty-cn">信号不能凌驾于主体，硬件不能消解人，AI 不能替代用户的解释权。</div>
@@ -1908,7 +1905,7 @@
 <section id="metalogic-qrm">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">METALOGIC ROOT // QRM DISCIPLINE // QDR OPERATION</div>
+<div class="eyebrow">15 // SYSTEM LINEAGE B // METALOGIC ROOT · QRM DISCIPLINE · QDR OPERATION</div>
 <h2>MetaLogic is the method root. QRM is the discipline. QDR is the operating layer.</h2>
 <h2 class="cn">MetaLogic 是方法根。QRM 是母学科。QDR 是操作层。</h2>
 <p class="sub">This is the strongest theoretical content from the BCI main site. BCI-HRP should not appear as an isolated product idea. It belongs to the same system ecology: language generates logic, logic generates measurable structure, and measurable structure returns interpretive authority to the user.</p>
@@ -1934,7 +1931,7 @@
 <section id="dual-intelligence">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">DUAL-INTELLIGENCE INTERFACE // 双层智能接口</div>
+<div class="eyebrow">16 // DUAL-INTELLIGENCE INTERFACE // 双层智能接口</div>
 <h2>HRP is not AI supporting the human. It is a negotiated interface between two intelligences.</h2>
 <h2 class="cn">HRP 不是 AI 单向支持人，而是两种智能在接口中协商。</h2>
 <p class="sub">The human remains the active subject: sensing, choosing, refusing, naming, and correcting. The AI/QDR layer can organize records, surface differences, generate reflection prompts, and export reports. Its output is always a proposal, never a command.</p>
@@ -1948,12 +1945,12 @@
 <section id="music-evidence">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">MUSIC AS PROBE SET // ACOUSTIC–NEURAL–QUALIA RATIONALE</div>
+<div class="eyebrow">17 // MUSIC AS PROBE SET // ACOUSTIC–NEURAL–QUALIA RATIONALE</div>
 <h2>Music is not the core proof. Music is one strong probe family.</h2>
 <h2 class="cn">音乐不是核心证明。音乐是一组强探针家族。</h2>
 <p class="sub">The BCI main site’s six-genre matrix is valuable, but in BCI-HRP it must be reframed: not as a treatment claim, not as a fixed genre→emotion map, and not as a universal intervention claim. It becomes a signed Probe Set for studying acoustic variables, personal preference, body response, and self-prediction.</p>
 <p class="sub cn">BCI 主站的六类音乐矩阵很有价值，但在 BCI-HRP 中必须重写：不是治疗或干预承诺，不是固定的“流派→情绪”映射，也不是普适干预承诺。它成为一个署名 Probe Set，用来研究声学变量、个人偏好、身体反应与自我预测。</p>
-<div class="source-strip"><span class="title-pill">AUTHORITATIVE BASIS</span><span>Juslin &amp; Västfjäll 2008</span><span>Koelsch 2014</span><span>Chanda &amp; Levitin 2013</span><span>Salimpoor et al. 2011</span><span>Patel &amp; Iversen 2014</span><span>Large &amp; Jones 1999</span><span>Thaut 2005 / 2015</span></div>
+<div class="source-strip"><span class="title-pill">AUTHORITATIVE BASIS</span><span>Juslin &amp; Västfjäll 2008</span><span>Koelsch 2014</span><span>Chanda &amp; Levitin 2013</span><span>Salimpoor et al. 2011</span><span>Patel &amp; Iversen 2014</span><span>Large &amp; Jones 1999</span><span>Thaut 2005 / 2015</span></div><p class="sub">Reference note: full bibliographic entries should be added before academic submission or lab circulation.</p><p class="sub cn">引用说明：在学术投稿或正式发给实验室前，应补齐完整参考文献条目。</p>
 </div>
 
 <div class="card span-12 warning-card">
@@ -1984,7 +1981,7 @@
 <section id="data-safety">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">DATA VAULT &amp; SAFETY // 可携带数据与安全边界</div>
+<div class="eyebrow">18 // DATA VAULT &amp; SAFETY // 可携带数据与安全边界</div>
 <h2>The record belongs to the user. The system presents; it does not decide.</h2>
 <h2 class="cn">记录属于用户。系统负责呈现，不负责替人决定。</h2>
 <p class="sub">This is the most useful safety layer from the BCI main site. In BCI-HRP, it becomes a lightweight data-vault principle: encrypted, user-held, exportable, revocable, non-diagnostic, and useful for professional conversations without pretending to be clinical judgment.</p>
@@ -1999,7 +1996,7 @@
 <section id="evidence">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">09 // EVIDENCE LOGIC // WHAT WOULD COUNT AS A SIGNAL</div>
+<div class="eyebrow">19 // EVIDENCE LOGIC // WHAT WOULD COUNT AS A SIGNAL</div>
 <h2>The first evidence is not “feeling better.” It is improved self-prediction.</h2>
 <h2 class="cn">第一证据不是“感觉更好”，而是自我预测力提升。</h2>
 </div>
@@ -2063,7 +2060,7 @@
 <section id="deliverables">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">10 // LAB MEETING DELIVERABLES // MEETING-READY PACKAGE</div>
+<div class="eyebrow">20 // LAB MEETING DELIVERABLES // MEETING-READY PACKAGE</div>
 <h2>Bring the lab a clean package, not an infinite universe.</h2>
 <h2 class="cn">给实验室一个干净合作包，而不是无限宇宙。</h2>
 </div>
@@ -2120,11 +2117,11 @@
 </section>
 </main>
 <footer>
-<span style="color:var(--cyan);letter-spacing:.18em;">V2.1 · TERMINOLOGY-LOCKED BILINGUAL LAB PROTOTYPE · NOWHERE STATE INTEGRATED · CST 2026-05-29</span>
+<span style="color:var(--cyan);letter-spacing:.18em;">V2.2 · TERMINOLOGY-LOCKED BILINGUAL LAB PROTOTYPE · NOWHERE STATE STABLE · CST 2026-05-30</span>
 <br/><br/>
-    BCI-HRP V2.1 · Probe-Based Alignment Mapping · Wei Jueran / Mellow Wei / xingyeLing7Ai · This website is a research and collaboration prototype, not a medical product, diagnostic tool, or crisis service.
+    BCI-HRP V2.2 · Probe-Based Alignment Mapping · Wei Jueran / Mellow Wei / xingyeLing7Ai · This website is a research and collaboration prototype, not a medical product, diagnostic tool, or crisis service.
     <br/>
-    BCI-HRP V2.1 · 基于探针的对齐映射 · 实验室合作原型 · 魏珏然 · 本网站是研究与合作原型，不是医疗产品、诊断工具或危机服务。
+    BCI-HRP V2.2 · 基于探针的对齐映射 · 实验室合作原型 · 魏珏然 · 本网站是研究与合作原型，不是医疗产品、诊断工具或危机服务。
     <br/><br/>
 <span style="color:var(--dim)">If you are in crisis, please contact local emergency services or a qualified clinician. HRP does not provide crisis intervention.</span>
 <br/>
