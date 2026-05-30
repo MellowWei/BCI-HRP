@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>BCI-HRP V2.2 · Reflexive Musicology + Nowhere State Integrated · Wei Jueran</title>
+<title>BCI-HRP V2.4 · Brain–Human–Music–Rhythm Interface + Scene-to-Sound Memory Return · Wei Jueran</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
 
@@ -193,7 +193,7 @@
 
 
 
-    /* V2.2 HERO TITLE LOCK: rhythmic cut title, deep-bright pink / blue / white, no diffuse glitch */
+    /* V2.4 TITLE UI LOCK: rhythmic cut title, deep-bright pink / blue / white, no diffuse glitch */
     .rhythm-cut-title {
       position: relative;
       display: inline-block;
@@ -946,6 +946,19 @@
       .axis-grid { grid-template-columns:160px repeat(5,160px); overflow-x:auto; }
     }
 
+
+
+    /* V2.4 BHMR + Memory Return additions */
+    .interface-stack { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .interface-card { border: 1px solid rgba(0,245,255,.20); border-radius: 24px; padding: 20px; background: linear-gradient(180deg, rgba(0,245,255,.052), rgba(255,43,214,.03)), rgba(255,255,255,.03); min-height: 220px; }
+    .interface-card strong { display:block; color: var(--cyan); font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
+    .memory-chain { margin-top: 16px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .memory-step { border: 1px solid rgba(53,255,159,.22); border-radius: 20px; padding: 16px; background: rgba(53,255,159,.035); min-height: 132px; }
+    .memory-step b { display:block; color: var(--green); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+    .reference-list { margin: 16px 0 0 18px; padding: 0; color: var(--muted); line-height: 1.6; }
+    .reference-list li { margin: 8px 0; }
+    @media (max-width: 1024px) { .interface-stack, .memory-chain { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body>
@@ -953,13 +966,15 @@
 <div class="grid-bg"></div>
 <div class="vignette"></div>
 <header>
-<div class="brand"><span class="dot"></span> BCI-HRP V2.2 // PROBE-BASED ALIGNMENT MAPPING // REFLEXIVE MUSICOLOGY + NOWHERE STATE // WEI JUERAN · CST 2026-05-30</div>
+<div class="brand"><span class="dot"></span> BCI-HRP V2.4 // BRAIN–HUMAN–MUSIC–RHYTHM INTERFACE // ACOUSTIC FAMILIARITY MEMORY RETURN // WEI JUERAN · CST 2026-05-30</div>
 <nav>
 <a href="#top">HOME</a>
 <a href="#definition">DEFINITION</a>
 <a href="#terms">TERMS</a>
 <a href="#reflexive-musicology">THEORY</a>
 <a href="#nowhere-state">NOWHERE</a>
+<a href="#bhmr-interface">INTERFACE</a>
+<a href="#memory-return">MEMORY</a>
 <a href="#mvp">MVP</a>
 <a href="#research">RESEARCH</a>
 <a href="#probe">PROBES</a>
@@ -975,7 +990,7 @@
 <main>
 <section id="top">
 <div>
-<div class="eyebrow">BCI-HRP V2.2 // LAB COLLABORATION PACKAGE // 返身音乐学 + 非地点态整合 · 基于探针的身体—觉察对齐映射系统</div>
+<div class="eyebrow">BCI-HRP V2.4 // LAB COLLABORATION PACKAGE // 脑机—人机—音乐—节律接口 · 声学熟悉感记忆回返 · 基于探针的身体—觉察对齐映射系统</div>
 <h1 class="rhythm-cut-title" data-text="THE HUMAN RETURN PROTOCOL.">THE HUMAN RETURN PROTOCOL.</h1>
 <div class="thesis">
           Invention-first, lab-validated later: I bring the original system and prototype; the lab brings participants, measurement infrastructure, and scientific validation.
@@ -991,6 +1006,7 @@
 <a class="button primary" href="#definition">ENTER DEFINITION</a>
 <a class="button" href="#ask">LAB COLLABORATION ASK</a>
 <a class="button" href="#mvp">LOCKED MVP</a>
+<a class="button" href="#memory-return">MEMORY RETURN</a>
 <a class="button" href="#pilot">2–4 WEEK PILOT</a>
 </div>
 </div>
@@ -1053,8 +1069,8 @@
 <div class="grid">
 <div class="card span-12 neon-card">
 <div class="eyebrow">02 // TERMINOLOGY LOCK // 术语锁定层</div>
-<h2>BCI-HRP V2.2 is a terminology-locked bilingual lab prototype with Reflexive Musicology and Nowhere State integrated as its acoustic-theory and liminal-state research layers.</h2>
-<h2 class="cn">BCI-HRP V2.2 是术语锁定的双语实验室合作原型，并将返身音乐学与非地点态分别作为声学理论层和临界状态研究层正式接入。</h2>
+<h2>BCI-HRP V2.4 is a terminology-locked bilingual lab prototype with Reflexive Musicology and Nowhere State integrated as its acoustic-theory and liminal-state research layers.</h2>
+<h2 class="cn">BCI-HRP V2.4 是术语锁定的双语实验室合作原型，并将返身音乐学与非地点态分别作为声学理论层和临界状态研究层正式接入。</h2>
 <p class="sub">This section prevents the project from drifting into medical claims, mind-reading language, generic wellness wording, or AI-over-human framing.</p>
 <p class="sub cn">这一层用于防止项目滑向医疗承诺、读心话语、泛身心健康表述，或 AI 凌驾于人的框架。</p>
 <div class="sovereignty-strip">
@@ -1083,6 +1099,17 @@
 <tr><td>wearable proxy indicator</td><td>可穿戴代理指标</td><td><div class="en-cell">Consumer/research wearable signal layer.</div><div class="cn">消费级/研究级可穿戴信号层。</div></td><td><div class="en-cell">Do not imply medical-grade diagnosis.</div><div class="cn">不要暗示医疗级诊断。</div></td></tr>
 <tr><td>acoustic probe</td><td>声学探针</td><td><div class="en-cell">Music, tones, and soundscape as probe inputs.</div><div class="cn">音乐、音调、声景作为探针输入。</div></td><td><div class="en-cell">Do not call it music therapy.</div><div class="cn">不要称为音乐治疗。</div></td></tr>
 <tr><td>Six-Genre Probe Set</td><td>六类音乐探针集</td><td><div class="en-cell">Wei Jueran authored acoustic probe family.</div><div class="cn">魏珏然署名的声学探针家族。</div></td><td><div class="en-cell">Not a treatment protocol.</div><div class="cn">不是治疗承诺。</div></td></tr>
+<tr><td>Brain–Human–Music–Rhythm Interface</td><td>脑机—人机—音乐—节律接口</td><td><div class="en-cell">V2.4 product-vision hardware interface combining acoustic output, optional head proxy sensing, wrist rhythm proxy sensing, and user-owned reporting.</div><div class="cn">V2.4 产品愿景中的硬件接口，组合声学输出、可选头部代理指标、腕部节律代理指标与用户拥有的报告层。</div></td><td><div class="en-cell">Not brain decoding, memory reading, or automatic therapy.</div><div class="cn">不是脑解码、记忆读取或自动治疗。</div></td></tr>
+<tr><td>AI Headphones</td><td>AI 耳机</td><td><div class="en-cell">Acoustic familiarity delivery layer for generated/selected memory-scene music, spatial sound, rhythm anchors, and return sequences.</div><div class="cn">声学熟悉感输出层，用于生成/选择回忆场景音乐、空间声音、节律锚点与返回序列。</div></td><td><div class="en-cell">Do not claim guaranteed memory recovery or medical treatment.</div><div class="cn">不要声称保证恢复记忆或提供医疗治疗。</div></td></tr>
+<tr><td>Head Patch</td><td>头部贴片</td><td><div class="en-cell">Future lightweight head-based proxy interface for attention, arousal, and listening-state indicators.</div><div class="cn">未来轻量头部代理指标接口，用于注意、唤醒与聆听状态指标。</div></td><td><div class="en-cell">Does not read memories, thoughts, or true emotion.</div><div class="cn">不读取记忆、思想或真实情绪。</div></td></tr>
+<tr><td>Wristband</td><td>腕环</td><td><div class="en-cell">Body-rhythm proxy layer for optional HRV, EDA, temperature, motion, and breathing-related indicators.</div><div class="cn">身体节律代理层，用于可选 HRV、EDA、皮温、运动与呼吸相关指标。</div></td><td><div class="en-cell">Not a diagnostic device or emotional judge.</div><div class="cn">不是诊断设备，也不是情绪裁判。</div></td></tr>
+<tr><td>Scene-to-Sound Memory Return</td><td>回忆场景—声音回返</td><td><div class="en-cell">A scene-first generation pathway: the user starts from a memory scene rather than a known song title.</div><div class="cn">以场景为起点的生成路径：用户从回忆场景开始，而不是从已知歌名开始。</div></td><td><div class="en-cell">Not factual reconstruction of the past.</div><div class="cn">不是对过去事实的复原。</div></td></tr>
+<tr><td>Acoustic Familiarity Memory Return</td><td>声学熟悉感记忆回返</td><td><div class="en-cell">Research branch testing whether AI-generated or AI-selected acoustic familiarity cues support user-reported autobiographical recall.</div><div class="cn">研究 AI 生成或选择的声学熟悉感线索是否支持用户报告自传式回忆的分支。</div></td><td><div class="en-cell">Supports recall reports; does not verify memory truth.</div><div class="cn">支持回忆报告，但不验证记忆真伪。</div></td></tr>
+<tr><td>Familiarity-before-Recall</td><td>回忆前熟悉感</td><td><div class="en-cell">A measurable pre-retrieval threshold in which a cue feels personally familiar before a memory is named.</div><div class="cn">一种可测的提取前阈值：线索先产生私人熟悉感，记忆尚未被命名。</div></td><td><div class="en-cell">Familiarity is not factual accuracy.</div><div class="cn">熟悉感不等于事实准确性。</div></td></tr>
+<tr><td>Familiarity Cue Generator</td><td>熟悉感线索生成器</td><td><div class="en-cell">Generates or selects acoustic cues from user-approved life-period, scene, preference, and prior alignment data.</div><div class="cn">根据用户批准的生命阶段、场景、偏好与既有对齐数据生成或选择声学线索。</div></td><td><div class="en-cell">Not a hidden manipulator of memory.</div><div class="cn">不是隐藏式记忆操控器。</div></td></tr>
+<tr><td>Autobiographical Recall Probe</td><td>自传式回忆探针</td><td><div class="en-cell">Tests whether a cue is associated with user-reported familiarity, fragments, bodily memory, warmth, or event recall.</div><div class="cn">测试线索是否与用户报告的熟悉感、片段、身体记忆、温暖感或事件回忆相关。</div></td><td><div class="en-cell">Not proof that an event occurred.</div><div class="cn">不是事件确实发生过的证明。</div></td></tr>
+<tr><td>Memory Return Report</td><td>记忆回返报告</td><td><div class="en-cell">User-editable report returning cue features, familiarity rating, proxy indicators, memory notes, confidence, and renaming.</div><div class="cn">用户可修改报告，返回线索特征、熟悉感评分、代理指标、记忆笔记、置信度与重新命名。</div></td><td><div class="en-cell">Not a verified memory record.</div><div class="cn">不是经验证的记忆档案。</div></td></tr>
+<tr><td>Anti-suggestion Guardrail</td><td>反暗示护栏</td><td><div class="en-cell">Prompt and interface rules that avoid leading questions, certainty language, and AI over-interpretation.</div><div class="cn">避免诱导问题、确定性措辞与 AI 过度解释的提示语与界面规则。</div></td><td><div class="en-cell">Do not lead the user toward a specific memory.</div><div class="cn">不要把用户引向某个特定记忆。</div></td></tr>
 
 <tr><td>Reflexive Musicology<br/><span class="cn">public-facing alias: Illuminative / Being-Seen Musicology</span></td><td>返身音乐学<br/><span class="cn">“照见音乐学”仅作为公众/诗性别名</span></td><td><div class="en-cell">Upstream acoustic-theory layer explaining why music can function as a reflexive probe.</div><div class="cn">上游声学理论层，用来说明为什么音乐可以作为返身探针。</div></td><td><div class="en-cell">Not medical evidence; not a therapy discipline.</div><div class="cn">不是医疗证据，也不是治疗学科。</div></td></tr>
 <tr><td>Iterative Reflexive Listening</td><td>迭代返身聆听</td><td><div class="en-cell">Repeated use of the same track as a stable acoustic probe across time.</div><div class="cn">把同一首歌作为稳定声学探针，在不同时间点重复聆听。</div></td><td><div class="en-cell">Do not frame it as the song preserving a fixed self.</div><div class="cn">不要写成音乐保存一个固定的自我。</div></td></tr>
@@ -1222,7 +1249,7 @@
 <section id="nowhere-state">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">NOWHERE STATE // 非地点态 · THIRD REFLEXIVE CONSTRUCT · 第三返身构念</div>
+<div class="eyebrow">05 // NOWHERE STATE // 非地点态 · THIRD REFLEXIVE CONSTRUCT · 第三返身构念</div>
 <h2>Nowhere is altered self-location without surrendered sovereignty.</h2>
 <h2 class="cn">非地点态：自我定位改变，但主权未交出。</h2>
 <p class="sub">Nowhere State is a music-and-movement liminal condition in which repetitive rhythm, low-frequency bass, bodily movement, spatial sound, and (in club settings) collective synchrony suspend the ordinary coordinates of self-location, while perceptual sovereignty is preserved. The subject is not lost. It is released from the old map long enough to feel itself before being named again. In BCI-HRP, Nowhere is studied as a research construct — not delivered as a device, and never claimed as a fixed effect.</p>
@@ -1305,10 +1332,89 @@
 </div>
 </div>
 </section>
+<section id="bhmr-interface"><div class="grid"><div class="card span-12 neon-card"><div class="eyebrow">06 // BRAIN–HUMAN–MUSIC–RHYTHM INTERFACE // 脑机—人机—音乐—节律接口</div><h2>AI headphones, head patch, and wristband become the hardware interface for memory-return music.</h2><h2 class="cn">AI 耳机、头部贴片与腕环，构成记忆回返音乐的硬件接口。</h2><p class="sub">BCI-HRP V2.4 defines a future hardware branch without confusing it with the immediate lab MVP. The MVP can still be tested with existing devices; the product vision is a user-controlled Brain–Human–Music–Rhythm Interface that delivers AI-generated acoustic familiarity cues while recording optional proxy indicators from the head and wrist.</p><p class="sub cn">BCI-HRP V2.4 在不混淆当前实验室 MVP 的前提下，正式定义未来硬件分支。MVP 仍可用现成设备测试；产品愿景则是一个由用户主权控制的脑机—人机—音乐—节律接口：通过 AI 耳机播放 AI 生成的声学熟悉感线索，同时由头部与腕部记录可选代理指标。</p><div class="sovereignty-strip"><div class="small-kicker">PRODUCT DECLARATION // 发明宣言</div><div class="sovereignty-cn">我的 AI 耳机不是让人听歌，而是让一首新歌替他们打开回忆的门；头部贴片和腕环不是读心，而是守在门边，记录身体如何认出那条回去的路。</div><div class="sovereignty-en">My AI headphones do not merely play music. They let a new song open the door to memory. The head patch and wristband do not decode the mind; they stand at the doorway and record how the body recognizes the path back.</div></div></div><div class="card span-12"><div class="eyebrow">HARDWARE TRIAD // 三件套硬件定义</div><div class="interface-stack"><div class="interface-card"><strong>AI HEADPHONES / AI 耳机</strong><h3>Acoustic familiarity delivery</h3><h3 class="cn">声学熟悉感输出层</h3><p>Generates, selects, spatializes, and plays memory-scene music, nostalgic cues, rhythm anchors, and return sequences.</p><p class="cn">生成、选择、空间化并播放回忆场景音乐、怀旧线索、节律锚点与返回序列。</p></div><div class="interface-card"><strong>HEAD PATCH / 头部贴片</strong><h3>Head-based proxy layer</h3><h3 class="cn">头部代理指标层</h3><p>Future lightweight EEG/fNIRS or head-based sensing interface for attention, arousal, and listening-state proxies. It never reads memory.</p><p class="cn">未来轻量 EEG/fNIRS 或头部信号接口，用于注意、唤醒与聆听状态代理指标。它绝不读取记忆。</p></div><div class="interface-card"><strong>WRISTBAND / 腕环</strong><h3>Body-rhythm proxy layer</h3><h3 class="cn">身体节律代理层</h3><p>Records optional HRV, EDA, temperature, motion, and breathing-related proxy indicators during acoustic familiarity sessions.</p><p class="cn">在声学熟悉感 session 中记录可选 HRV、EDA、皮温、运动与呼吸相关代理指标。</p></div><div class="interface-card"><strong>AI-QDR SOFTWARE / AI-QDR 软件层</strong><h3>User-owned report layer</h3><h3 class="cn">用户拥有的报告层</h3><p>Combines user prompts, cue parameters, proxy indicators, memory notes, and confidence ratings into editable, non-diagnostic reports.</p><p class="cn">把用户提示、线索参数、代理指标、回忆笔记与置信度评分整合为可修改、非诊断报告。</p></div></div></div><div class="card span-12 warning-card"><div class="eyebrow">MVP / PRODUCT BRANCH LOCK // MVP 与产品分支分离</div><h3>The lab MVP does not require custom hardware; the product branch defines the future proprietary interface.</h3><h3 class="cn">实验室 MVP 不要求自研硬件；产品分支定义未来专属接口。</h3><p>For scientific validation, existing headphones and validated wearable or lab devices can test the core question. For product identity, the AI headphones + head patch + wristband form the intended embodied interface. This separation protects feasibility while preserving the invention’s hardware destiny.</p><p class="cn">科学验证阶段，现成耳机与经验证的可穿戴/实验室设备足以测试核心问题。产品身份阶段，AI 耳机 + 头部贴片 + 腕环构成最终的具身接口。这种分离同时保护可行性与保留发明的硬件命运。</p></div><div class="card span-12"><div class="eyebrow">SCENE-TO-SOUND MEMORY RETURN // 回忆场景—声音回返</div><div class="memory-chain"><div class="memory-step"><b>01 // SCENE PROMPT</b><p>User starts from a scene, not a song title.</p><p class="cn">用户从场景开始，而不是从歌名开始。</p></div><div class="memory-step"><b>02 // ACOUSTIC GENERATION</b><p>AI generates an era-, place-, and body-speed-sensitive cue.</p><p class="cn">AI 生成具有年代、地点与身体速度敏感性的声学线索。</p></div><div class="memory-step"><b>03 // HEADPHONE DELIVERY</b><p>The cue is delivered as music, spatial sound, or a return sequence.</p><p class="cn">线索以音乐、空间声场或返回序列被播放。</p></div><div class="memory-step"><b>04 // PROXY SENSING</b><p>Head and wrist indicators record arousal, attention, motion, and rhythm.</p><p class="cn">头部与腕部指标记录唤醒、注意、运动与节律。</p></div><div class="memory-step"><b>05 // USER REPORT</b><p>The user decides what came back, edits it, or rejects it.</p><p class="cn">用户决定什么回来了，并可修改或拒绝。</p></div></div><div class="relation-formula">memory scene prompt → AI acoustic familiarity cue → headphone delivery → head/wrist proxy sensing → user-reported recall → editable memory-return report<br/><span class="cn">回忆场景提示 → AI 声学熟悉感线索 → 耳机播放 → 头部/腕部代理指标记录 → 用户报告回忆 → 可修改记忆回返报告</span></div></div><div class="card span-12 warning-card"><div class="eyebrow">PARENTS / OLDER ADULTS USE CASE // 父母与长辈使用场景</div><h3>They do not need to remember a lost favorite song. They can begin from a warm scene.</h3><h3 class="cn">他们不需要真的想起某首遗失的旧歌。他们可以从一个温暖场景开始。</h3><p>Users may say: “I want to return to my childhood summer afternoon,” “I want to remember the road home after school,” or “I want to feel the room where my parents were still young.” The system responds by generating acoustic familiarity cues, not by asserting factual memory recovery.</p><p class="cn">用户可以说：“我想回到小时候夏天的下午”，“我想想起放学回家的路”，“我想感受父母还年轻时那个房间。” 系统回应的是声学熟悉感线索，而不是宣称恢复事实记忆。</p></div></div></section>
+<section id="memory-return">
+<div class="grid">
+<div class="card span-12 neon-card">
+<div class="eyebrow">07 // ACOUSTIC FAMILIARITY MEMORY RETURN // 声学熟悉感记忆回返</div>
+<h2>When the original song cannot be recalled, a new song may act as a familiarity cue.</h2>
+<h2 class="cn">当原来的歌想不起来时，一首新的歌可以成为熟悉感线索。</h2>
+<p class="sub">This branch translates the invention sentence — “When you cannot remember a song, I will make a new song remember you” — into a lab-safe research construct. The system does not promise to recover true memories. It investigates whether AI-generated or AI-selected acoustic familiarity cues can support user-reported autobiographical recall while preserving interpretive authority.</p>
+<p class="sub cn">这一分支把发明宣言——“当你想不起一首歌，我会让一首新的歌想起你”——转译为实验室安全的研究构念。系统不承诺恢复真实记忆。它研究 AI 生成或 AI 选择的声学熟悉感线索，是否能在保留用户解释权的前提下，支持用户报告的自传式回忆回返。</p>
+<div class="quote">Music as probe → Familiarity-before-Recall → User-reported autobiographical memory return<div class="cn">音乐作为探针 → 回忆前熟悉感 → 用户报告的自传式记忆回返</div></div>
+</div>
+
+<div class="card span-12 warning-card">
+<div class="eyebrow">CLAIM LOCK // 声明边界</div>
+<h3>It supports recall reports; it does not verify memory truth.</h3>
+<h3 class="cn">它支持回忆报告，但不验证记忆真伪。</h3>
+<p>Because autobiographical memory is reconstructive and vulnerable to suggestion, BCI-HRP treats every memory output as user-reported phenomenology, not objective fact. The system may ask, “What came back?” It must not assert, “This is what happened.”</p>
+<p class="cn">由于自传式记忆具有重构性，并可能受暗示影响，BCI-HRP 把所有记忆输出都视为用户报告的现象学材料，而不是客观事实。系统可以问：“什么回来了？”但不能断言：“这就是真实发生过的事。”</p>
+</div>
+
+<div class="card span-12">
+<div class="eyebrow">AUTHORITATIVE ACADEMIC BASIS // 权威学术依据</div>
+<table class="table">
+<thead><tr><th>Research field / 研究领域</th><th>What it supports / 支持什么</th><th>How BCI-HRP uses it / 如何接入</th><th>Claim limit / 边界</th></tr></thead>
+<tbody>
+<tr><td><div class="en-cell">Music-Evoked Autobiographical Memories (MEAMs)</div><div class="cn">音乐诱发自传式记忆</div></td><td><div class="en-cell">Music is a strong autobiographical cue; Janata’s fMRI work links familiar music, self-referential processing, and autobiographical memory in medial prefrontal cortex.</div><div class="cn">音乐是强自传式线索；Janata 的 fMRI 研究把熟悉音乐、自我相关加工与自传式记忆同内侧前额叶皮层联系起来。</div></td><td><div class="en-cell">Use music as an autobiographical acoustic probe class.</div><div class="cn">把音乐作为自传式声学探针类别。</div></td><td><div class="en-cell">Does not prove any generated cue will recall a specific memory.</div><div class="cn">不证明任一生成线索必然唤起具体记忆。</div></td></tr>
+<tr><td><div class="en-cell">Familiarity and memory accessibility</div><div class="cn">熟悉感与记忆可及性</div></td><td><div class="en-cell">Jakubowski and colleagues indicate that musical familiarity primarily affects memory accessibility: highly familiar music tends to evoke more memories and faster retrieval.</div><div class="cn">Jakubowski 等人的研究显示，音乐熟悉感主要影响记忆可及性：高熟悉度音乐倾向于唤起更多记忆，并更快被提取。</div></td><td><div class="en-cell">Model Familiarity-before-Recall as a measurable pre-retrieval threshold.</div><div class="cn">把“回忆前熟悉感”作为可测的提取前阈值。</div></td><td><div class="en-cell">Familiarity is not factual accuracy.</div><div class="cn">熟悉感不等于事实准确性。</div></td></tr>
+<tr><td><div class="en-cell">Reminiscence bump and life-period music</div><div class="cn">回忆高峰与生命阶段音乐</div></td><td><div class="en-cell">Autobiographical memory research often finds disproportionate recall for adolescence and early adulthood; music from these periods can be especially salient.</div><div class="cn">自传式记忆研究常发现青春期与成年早期在后续回忆中占比更高；这些时期的音乐往往更显著。</div></td><td><div class="en-cell">Generate era-sensitive and life-period-sensitive acoustic cues for parents and older adults.</div><div class="cn">为父母与长辈生成具有年代敏感性与生命阶段敏感性的声学线索。</div></td><td><div class="en-cell">Age period is a cue prior, not a deterministic memory key.</div><div class="cn">年龄阶段只是线索先验，不是确定性记忆钥匙。</div></td></tr>
+<tr><td><div class="en-cell">Generative AI for music-based reminiscence</div><div class="cn">生成式 AI 支持音乐性回忆</div></td><td><div class="en-cell">CHI 2024 work on older adults shows that generative AI can support music-based reminiscence design, especially when users begin from simple descriptions and conversation.</div><div class="cn">CHI 2024 关于长辈的研究显示，生成式 AI 可以支持音乐性回忆设计，尤其适合用户从简单描述与对话开始。</div></td><td><div class="en-cell">Allow users to begin from a memory-scene prompt rather than a known song title.</div><div class="cn">允许用户从回忆场景提示开始，而不是从已知歌名开始。</div></td><td><div class="en-cell">Conversational support is not memory verification.</div><div class="cn">对话支持不等于记忆验证。</div></td></tr>
+<tr><td><div class="en-cell">AI-generated reminiscence cues</div><div class="cn">AI 生成回忆线索</div></td><td><div class="en-cell">Treasurefinder shows that AI-generated open-ended cues can support personal reminiscing, recall, reflection, and interpersonal insight.</div><div class="cn">Treasurefinder 显示，AI 生成的开放式线索可以支持个人回忆、回想、反思与关系理解。</div></td><td><div class="en-cell">Translate text-based cueing into acoustic cue generation / selection.</div><div class="cn">把文本线索扩展为声学线索生成/选择。</div></td><td><div class="en-cell">Cueing support is not automatic memory truth.</div><div class="cn">线索化支持不等于自动记忆真理。</div></td></tr>
+<tr><td><div class="en-cell">Nostalgia Brain-Music Interface</div><div class="cn">怀旧脑—音乐接口</div></td><td><div class="en-cell">Recent N-BMI research combines subjective nostalgia ratings, acoustic features, and in-ear EEG to recommend nostalgic music for younger and older users.</div><div class="cn">近期 N-BMI 研究结合主观怀旧评分、声学特征与入耳式 EEG，为年轻与年长用户推荐怀旧音乐。</div></td><td><div class="en-cell">BCI-HRP extends this direction from recommending existing songs to generating scene-sensitive acoustic familiarity cues.</div><div class="cn">BCI-HRP 将这一方向从“推荐已有歌曲”推进到“生成场景敏感的声学熟悉感线索”。</div></td><td><div class="en-cell">Nostalgia response is individualized and must be validated.</div><div class="cn">怀旧反应高度个体化，必须验证。</div></td></tr>
+<tr><td><div class="en-cell">False memory and suggestibility</div><div class="cn">错误记忆与暗示性</div></td><td><div class="en-cell">Loftus, Roediger–McDermott, and recent AI-memory studies warn that memory can be distorted by misleading, suggestive, or synthetic cues.</div><div class="cn">Loftus、Roediger–McDermott 以及近期 AI 记忆研究提醒：记忆可能被误导性、暗示性或合成线索扭曲。</div></td><td><div class="en-cell">Build anti-suggestion UX: open prompts, confidence calibration, source-monitoring notes, user correction.</div><div class="cn">建立反暗示界面：开放式问题、置信度校准、来源监控笔记、用户修正。</div></td><td><div class="en-cell">The system must never implant, certify, or “recover” memories.</div><div class="cn">系统绝不能植入、认证或“恢复”记忆。</div></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card span-12">
+<div class="eyebrow">MODULES // 模块</div>
+<div class="interface-stack">
+<div class="interface-card"><strong>FAMILIARITY CUE GENERATOR / 熟悉感线索生成器</strong><h3>From scene to sound</h3><h3 class="cn">从回忆场景到声学线索</h3><p>Generates or selects sound cues using user-approved inputs: life period, city, listening history, timbre preference, disliked sounds, context tags, and prior body–awareness maps.</p><p class="cn">基于用户批准的输入生成或选择声音线索：生命阶段、城市、聆听历史、偏好音色、厌恶声音、情境标签与既有身体—觉察地图。</p></div>
+<div class="interface-card"><strong>AUTOBIOGRAPHICAL RECALL PROBE / 自传式回忆探针</strong><h3>What returned?</h3><h3 class="cn">什么回来了？</h3><p>Tests whether the cue produces user-reported familiarity, scene fragments, bodily memory, life-period atmosphere, warmth, or specific event recall.</p><p class="cn">测试该线索是否产生用户报告的熟悉感、场景片段、身体记忆、生命阶段氛围、温暖感或具体事件回忆。</p></div>
+<div class="interface-card"><strong>MEMORY RETURN REPORT / 记忆回返报告</strong><h3>User-editable output</h3><h3 class="cn">用户可修改的记忆回返报告</h3><p>Returns cue features, familiarity rating, body proxy indicators, memory fragment notes, confidence rating, and the user’s own renaming.</p><p class="cn">返回线索特征、熟悉感评分、身体代理指标、记忆片段笔记、置信度评分与用户自己的重新命名。</p></div>
+<div class="interface-card"><strong>ANTI-SUGGESTION GUARDRAIL / 反暗示护栏</strong><h3>No leading questions</h3><h3 class="cn">反暗示护栏：不诱导提问</h3><p>The system avoids “Did this remind you of your childhood home?” and asks “Did anything come back? If yes, describe it in your own words.”</p><p class="cn">系统避免“这是否让你想起童年家？”这类诱导问题，而使用：“有什么回来了吗？如果有，请用自己的话描述。”</p></div>
+</div>
+</div>
+
+<div class="card span-12">
+<div class="eyebrow">RESEARCH QUESTIONS // 研究问题</div>
+<table class="table">
+<thead><tr><th>RQ / 问题</th><th>Question / 研究问题</th><th>Measurement / 测量</th></tr></thead>
+<tbody>
+<tr><td>RQ-M1</td><td><div class="en-cell">Do AI-generated acoustic familiarity cues based on user-described memory scenes evoke more user-reported autobiographical recall than neutral or random generated cues?</div><div class="cn">基于用户描述回忆场景生成的声学熟悉感线索，是否比中性或随机生成线索更容易带来用户报告的自传式回忆？</div></td><td><div class="en-cell">Recall occurrence, specificity, vividness, familiarity rating, warmth rating.</div><div class="cn">回忆出现率、具体性、生动性、熟悉感评分、温暖感评分。</div></td></tr>
+<tr><td>RQ-M2</td><td><div class="en-cell">Does Familiarity-before-Recall predict later memory specificity, vividness, warmth, or personal meaning?</div><div class="cn">回忆前熟悉感是否预测后续记忆的具体性、生动性、温暖感或个人意义？</div></td><td><div class="en-cell">Lagged analysis: pre-recall familiarity before fragment detail.</div><div class="cn">滞后分析：先熟悉感评分，再片段细节。</div></td></tr>
+<tr><td>RQ-M3</td><td><div class="en-cell">Do head-patch and wristband proxy indicators correspond to self-reported familiarity, warmth, recognition, or memory vividness?</div><div class="cn">头部贴片与腕环代理指标，是否与用户报告的熟悉感、温暖感、认出感或记忆生动性相对应？</div></td><td><div class="en-cell">Head/wrist proxy direction, self-report, cue features, session context.</div><div class="cn">头部/腕部代理指标方向、自评、线索特征、session 情境。</div></td></tr>
+<tr><td>RQ-M4</td><td><div class="en-cell">Can older adults use scene-based AI music reminiscence without losing control, feeling manipulated, or being forced into false certainty?</div><div class="cn">长辈用户能否在不失去控制、不感到被操控、不被推向虚假确定性的前提下，使用基于场景的 AI 音乐回忆系统？</div></td><td><div class="en-cell">Usability, perceived autonomy, comfort, source-monitoring, correction rate.</div><div class="cn">可用性、主权感、舒适度、来源监控、修正率。</div></td></tr>
+<tr><td>RQ-M5</td><td><div class="en-cell">Which prompt styles reduce suggestibility while still supporting warm, meaningful reminiscence?</div><div class="cn">哪些提示方式既能支持温暖、有意义的回忆，又能降低暗示性与错误记忆风险？</div></td><td><div class="en-cell">Prompt audit, confidence calibration, false-certainty checks, user correction.</div><div class="cn">提示语审计、置信度校准、虚假确定性检查、用户修正。</div></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card span-12 warning-card">
+<div class="eyebrow">LAB-SAFE SENTENCE // 实验室安全表述</div>
+<div class="quote">BCI-HRP V2.4 investigates whether AI-generated or AI-selected acoustic familiarity cues, delivered through headphones and paired with optional head-patch and wristband proxy indicators, can support user-reported autobiographical reminiscence, warmth, and self-recognition without claiming to recover, verify, or implant factual memory.<div class="cn">BCI-HRP V2.4 研究的是：通过耳机播放的 AI 生成或 AI 选择声学熟悉感线索，并结合可选头部贴片与腕环代理指标，是否能够支持用户报告的自传式回忆、温暖感与自我认出，同时不声称恢复、验证或植入事实记忆。</div></div>
+</div>
+
+<div class="card span-12">
+<div class="eyebrow">SELECTED REFERENCES TO ADD BEFORE SUBMISSION // 正式提交前需补齐的参考文献</div>
+<ul class="reference-list">
+<li>Janata, P. (2009). The neural architecture of music-evoked autobiographical memories. <em>Cerebral Cortex</em>.</li>
+<li>Jakubowski, K. and colleagues. Work on musical familiarity, emotional expression, and music-evoked autobiographical memories.</li>
+<li>Rao, J. A. and colleagues. Work on popular music, reminiscence bump, and life-period music memory.</li>
+<li>Jin, Y., Cai, W., Chen, L., Zhang, Y., Doherty, G., &amp; Jiang, T. (2024). Generative AI for music-based reminiscence in older adults. CHI.</li>
+<li>Jeung, J. L., &amp; Huang, J. Y.-C. (2024). Treasurefinder / AI-generated cues in personal reminiscing. CHI.</li>
+<li>Sakakibara, Y. and colleagues. (2025). Nostalgia Brain-Music Interface. <em>Scientific Reports</em>.</li>
+<li>Loftus, E. F.; Roediger, H. L.; McDermott, K. B.; and recent HCI work on AI-generated content, suggestibility, and false memories.</li>
+</ul>
+</div>
+</div>
+</section>
 <section id="ask">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">06 // LAB COLLABORATION ASK // I AM NOT ASKING THE LAB TO INVENT IT FOR ME</div>
+<div class="eyebrow">08 // LAB COLLABORATION ASK // I AM NOT ASKING THE LAB TO INVENT IT FOR ME</div>
 <h2>I bring the invention. I need resources, samples, measurement, and validation.</h2>
 <h2 class="cn">我带来发明。我需要资源、样本、测量与验证。</h2>
 <p class="sub">
@@ -1357,7 +1463,7 @@
 <section id="mvp">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">07 // LOCKED MVP // DO NOT EXPAND</div>
+<div class="eyebrow">09 // LOCKED MVP // DO NOT EXPAND</div>
 <h2>The MVP is pure software: body–awareness alignment history + multi-class probe library + reflection report.</h2>
 <h2 class="cn">MVP 是纯软件：身体—觉察对齐史 + 多类探针库 + 反思报告。</h2>
 <p class="sub">
@@ -1427,7 +1533,7 @@
 <section id="architecture">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">08 // SYSTEM ARCHITECTURE // FROM RECORDING TO RECOGNITION</div>
+<div class="eyebrow">10 // SYSTEM ARCHITECTURE // FROM RECORDING TO RECOGNITION</div>
 <h2>The chain is buildable in front; research-open in back.</h2>
 <h2 class="cn">前半截可建，后半截开放研究。</h2>
 <p class="sub">
@@ -1485,7 +1591,7 @@
 <section id="hardware">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">09 // HARDWARE LANDSCAPE // EXISTING DEVICES, NO CUSTOM HARDWARE</div>
+<div class="eyebrow">11 // HARDWARE LANDSCAPE // EXISTING DEVICES, NO CUSTOM HARDWARE</div>
 <h2>The signals already exist in 2026 devices. The originality is not the sensor.</h2>
 <h2 class="cn">2026 年的设备已能采到这些信号。原创性不在传感器。</h2>
 <p class="sub">
@@ -1567,7 +1673,7 @@
 <section id="research">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">10 // RESEARCH QUESTIONS // LAB-READY</div>
+<div class="eyebrow">12 // RESEARCH QUESTIONS // LAB-READY</div>
 <h2>The core question is not “can music produce fixed improvement?” It is “can a user-owned map become predictive?”</h2>
 <h2 class="cn">核心问题不是“音乐是否能带来固定改善”，而是“用户拥有的地图能否变得可预测”。</h2>
 </div>
@@ -1664,7 +1770,7 @@
 <section id="probe">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">11 // ALIGNMENT INPUT PROBES // MUSIC IS ONE CLASS, NOT THE CORE</div>
+<div class="eyebrow">13 // ALIGNMENT INPUT PROBES // MUSIC IS ONE CLASS, NOT THE CORE</div>
 <h2>The core is alignment mapping. Music is one class of input probe.</h2>
 <h2 class="cn">核心是对齐映射。音乐只是输入探针的一类。</h2>
 <p class="sub">
@@ -1757,7 +1863,7 @@
 <section id="ethics">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">12 // ETHICAL AND REGULATORY BOUNDARIES // PRODUCT RESTRAINT AS ORIGINALITY</div>
+<div class="eyebrow">14 // ETHICAL AND REGULATORY BOUNDARIES // PRODUCT RESTRAINT AS ORIGINALITY</div>
 <h2>The system’s originality is restraint: return, not control.</h2>
 <h2 class="cn">系统原创性在于克制：归还，而不是控制。</h2>
 <p class="sub">
@@ -1818,7 +1924,7 @@
 <section id="pilot">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">13 // 2–4 WEEK MINIMUM TEST // BEFORE LAB MEETING</div>
+<div class="eyebrow">15 // 2–4 WEEK MINIMUM TEST // BEFORE LAB MEETING</div>
 <h2>Before asking for resources, show the lab a clean micro-signal.</h2>
 <h2 class="cn">在请求资源前，给实验室看一个干净的微型信号。</h2>
 <p class="sub">
@@ -1873,11 +1979,11 @@
 <section id="bci-main-transfer">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">14 // SYSTEM LINEAGE A // BCI MAIN SITE → BCI-HRP</div>
+<div class="eyebrow">16 // SYSTEM LINEAGE A // BCI MAIN SITE → BCI-HRP</div>
 <h2>What survives the transfer: meaning-return, subject authority, QDR, QRM, and probe-based alignment mapping.</h2>
-<h2 class="cn">从 BCI 主站转入 BCI-HRP V2.2 的，是意义返回、主体权、QDR、QRM 与基于探针的对齐映射。</h2>
-<p class="sub">The old BCI main site contains several valuable system organs. In this BCI-HRP V2.2 version, they are integrated without reopening the old risk: no mind-reading claim, no custom-hardware dependency, no universal music-effect claim, and no medical framing.</p>
-<p class="sub cn">BCI 主站里有很多有价值的系统器官。现在把它们整合进 BCI-HRP V2.2，但不重新打开旧风险：不写读心、不依赖自研硬件、不声称普适音乐效果、不进入医疗叙事。</p><p class="sub">Lineage sections are kept as compressed system background; the lab-facing core remains the MVP, research questions, safety boundaries, and evidence logic.</p><p class="sub cn">系统谱系部分仅作为压缩背景保留；面向实验室的核心仍然是 MVP、研究问题、安全边界与证据逻辑。</p>
+<h2 class="cn">从 BCI 主站转入 BCI-HRP V2.4 的，是意义返回、主体权、QDR、QRM 与基于探针的对齐映射。</h2>
+<p class="sub">The old BCI main site contains several valuable system organs. In this BCI-HRP V2.4 version, they are integrated without reopening the old risk: no mind-reading claim, no custom-hardware dependency, no universal music-effect claim, and no medical framing.</p>
+<p class="sub cn">BCI 主站里有很多有价值的系统器官。现在把它们整合进 BCI-HRP V2.4，但不重新打开旧风险：不写读心、不依赖自研硬件、不声称普适音乐效果、不进入医疗叙事。</p><p class="sub">Lineage sections are kept as compressed system background; the lab-facing core remains the MVP, research questions, safety boundaries, and evidence logic.</p><p class="sub cn">系统谱系部分仅作为压缩背景保留；面向实验室的核心仍然是 MVP、研究问题、安全边界与证据逻辑。</p>
 <div class="sovereignty-strip">
 <div class="small-kicker">DIMENSIONAL SOVEREIGNTY // SUBJECT AUTHORITY</div>
 <div class="sovereignty-cn">信号不能凌驾于主体，硬件不能消解人，AI 不能替代用户的解释权。</div>
@@ -1905,7 +2011,7 @@
 <section id="metalogic-qrm">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">15 // SYSTEM LINEAGE B // METALOGIC ROOT · QRM DISCIPLINE · QDR OPERATION</div>
+<div class="eyebrow">17 // SYSTEM LINEAGE B // METALOGIC ROOT · QRM DISCIPLINE · QDR OPERATION</div>
 <h2>MetaLogic is the method root. QRM is the discipline. QDR is the operating layer.</h2>
 <h2 class="cn">MetaLogic 是方法根。QRM 是母学科。QDR 是操作层。</h2>
 <p class="sub">This is the strongest theoretical content from the BCI main site. BCI-HRP should not appear as an isolated product idea. It belongs to the same system ecology: language generates logic, logic generates measurable structure, and measurable structure returns interpretive authority to the user.</p>
@@ -1931,7 +2037,7 @@
 <section id="dual-intelligence">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">16 // DUAL-INTELLIGENCE INTERFACE // 双层智能接口</div>
+<div class="eyebrow">18 // DUAL-INTELLIGENCE INTERFACE // 双层智能接口</div>
 <h2>HRP is not AI supporting the human. It is a negotiated interface between two intelligences.</h2>
 <h2 class="cn">HRP 不是 AI 单向支持人，而是两种智能在接口中协商。</h2>
 <p class="sub">The human remains the active subject: sensing, choosing, refusing, naming, and correcting. The AI/QDR layer can organize records, surface differences, generate reflection prompts, and export reports. Its output is always a proposal, never a command.</p>
@@ -1945,7 +2051,7 @@
 <section id="music-evidence">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">17 // MUSIC AS PROBE SET // ACOUSTIC–NEURAL–QUALIA RATIONALE</div>
+<div class="eyebrow">19 // MUSIC AS PROBE SET // ACOUSTIC–NEURAL–QUALIA RATIONALE</div>
 <h2>Music is not the core proof. Music is one strong probe family.</h2>
 <h2 class="cn">音乐不是核心证明。音乐是一组强探针家族。</h2>
 <p class="sub">The BCI main site’s six-genre matrix is valuable, but in BCI-HRP it must be reframed: not as a treatment claim, not as a fixed genre→emotion map, and not as a universal intervention claim. It becomes a signed Probe Set for studying acoustic variables, personal preference, body response, and self-prediction.</p>
@@ -1981,7 +2087,7 @@
 <section id="data-safety">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">18 // DATA VAULT &amp; SAFETY // 可携带数据与安全边界</div>
+<div class="eyebrow">20 // DATA VAULT &amp; SAFETY // 可携带数据与安全边界</div>
 <h2>The record belongs to the user. The system presents; it does not decide.</h2>
 <h2 class="cn">记录属于用户。系统负责呈现，不负责替人决定。</h2>
 <p class="sub">This is the most useful safety layer from the BCI main site. In BCI-HRP, it becomes a lightweight data-vault principle: encrypted, user-held, exportable, revocable, non-diagnostic, and useful for professional conversations without pretending to be clinical judgment.</p>
@@ -1996,7 +2102,7 @@
 <section id="evidence">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">19 // EVIDENCE LOGIC // WHAT WOULD COUNT AS A SIGNAL</div>
+<div class="eyebrow">21 // EVIDENCE LOGIC // WHAT WOULD COUNT AS A SIGNAL</div>
 <h2>The first evidence is not “feeling better.” It is improved self-prediction.</h2>
 <h2 class="cn">第一证据不是“感觉更好”，而是自我预测力提升。</h2>
 </div>
@@ -2060,7 +2166,7 @@
 <section id="deliverables">
 <div class="grid">
 <div class="card span-12 neon-card">
-<div class="eyebrow">20 // LAB MEETING DELIVERABLES // MEETING-READY PACKAGE</div>
+<div class="eyebrow">22 // LAB MEETING DELIVERABLES // MEETING-READY PACKAGE</div>
 <h2>Bring the lab a clean package, not an infinite universe.</h2>
 <h2 class="cn">给实验室一个干净合作包，而不是无限宇宙。</h2>
 </div>
@@ -2109,19 +2215,19 @@
 <div class="card span-12">
 <div class="eyebrow">FINAL POSITIONING // 最终定位</div>
 <div class="quote">
-            BCI-HRP is not a wellness app, not a music therapy app, not a neural decoding project, and not AI correcting the human on the user’s behalf. It is a user-owned alignment mapping system for body–awareness alignment. Reflexive Musicology supplies the acoustic-theory layer; iterative listening supplies the temporal method; BCI-HRP supplies the record, report, prediction, and lab-validation structure.
-            <div class="cn">BCI-HRP 不是普通身心健康 App，不是音乐治疗 App，不是神经解码项目，也不是让 AI 替人完成自我修正。它是一个由用户拥有的身体—觉察对齐映射系统。返身音乐学提供声学理论层；迭代返身聆听提供时间方法；BCI-HRP 提供记录、报告、预测与实验室验证结构。</div>
+            BCI-HRP is not a wellness app, not a music therapy app, not a neural decoding project, and not AI correcting the human on the user’s behalf. It is a user-owned Brain–Human–Music–Rhythm Interface for body–awareness alignment and acoustic familiarity memory return. Reflexive Musicology supplies the acoustic-theory layer; iterative listening supplies the temporal method; AI headphones, head patch, and wristband supply the future hardware interface; BCI-HRP supplies the record, report, prediction, and lab-validation structure.
+            <div class="cn">BCI-HRP 不是普通身心健康 App，不是音乐治疗 App，不是神经解码项目，也不是让 AI 替人完成自我修正。它是一个由用户拥有的脑机—人机—音乐—节律接口，用于身体—觉察对齐与声学熟悉感记忆回返。返身音乐学提供声学理论层；迭代返身聆听提供时间方法；AI 耳机、头部贴片与腕环提供未来硬件接口；BCI-HRP 提供记录、报告、预测与实验室验证结构。</div>
 </div>
 </div>
 </div>
 </section>
 </main>
 <footer>
-<span style="color:var(--cyan);letter-spacing:.18em;">V2.2 · TERMINOLOGY-LOCKED BILINGUAL LAB PROTOTYPE · NOWHERE STATE STABLE · CST 2026-05-30</span>
+<span style="color:var(--cyan);letter-spacing:.18em;">V2.4 · TERMINOLOGY-LOCKED · BRAIN–HUMAN–MUSIC–RHYTHM INTERFACE · SCENE-TO-SOUND MEMORY RETURN · CST 2026-05-30</span>
 <br/><br/>
-    BCI-HRP V2.2 · Probe-Based Alignment Mapping · Wei Jueran / Mellow Wei / xingyeLing7Ai · This website is a research and collaboration prototype, not a medical product, diagnostic tool, or crisis service.
+    BCI-HRP V2.4 · Brain–Human–Music–Rhythm Interface · Probe-Based Alignment Mapping · Wei Jueran / Mellow Wei / xingyeLing7Ai · This website is a research and collaboration prototype, not a medical product, diagnostic tool, or crisis service.
     <br/>
-    BCI-HRP V2.2 · 基于探针的对齐映射 · 实验室合作原型 · 魏珏然 · 本网站是研究与合作原型，不是医疗产品、诊断工具或危机服务。
+    BCI-HRP V2.4 · 脑机—人机—音乐—节律接口 · 基于探针的对齐映射 · 实验室合作原型 · 魏珏然 · 本网站是研究与合作原型，不是医疗产品、诊断工具或危机服务。
     <br/><br/>
 <span style="color:var(--dim)">If you are in crisis, please contact local emergency services or a qualified clinician. HRP does not provide crisis intervention.</span>
 <br/>
